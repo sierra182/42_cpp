@@ -1,9 +1,9 @@
-NAME = megaphone.cpp
-CC = c++
+NAME = megaphone
+CXX = c++
 
 X_HDR_DIR = x_includes
 HDR_DIR = includes
-SRC_DIR = #sources
+SRC_DIR = .#sources
 
 CFLAGS = $(X_HDRFLAGS) $(HDRFLAGS) -std=c++98 -g -Wall -Wextra -Werror
 LDFLAGS = 
@@ -66,17 +66,17 @@ SRC = \
 
 .PHONY: all clean fclean re intro l newline backline emoticon 
 
-# all: intro $(NAME) 
+all: intro $(NAME) 
 
-all: emoticon $(NAME) # l
+l: emoticon $(NAME) 
 
 $(SRC_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR) $(X_HDR)
 	@echo "\033[0;32m compiling $(NAME) object $<...\033[0m" 🚀
-	@$(CC) $(CFLAGS) $< -c -o $@
+	@$(CXX) $(CFLAGS) $< -c -o $@
 
 $(NAME) : $(OBJ) 
 	@echo "\n\033[0;32m linking $(NAME) objects...\033[0m 🚀\n\n 💗 💎 💎 💗\n"
-	@$(CC) $(OBJ) $(LDFLAGS) -o $@
+	@$(CXX) $(OBJ) $(LDFLAGS) -o $@
 
 emoticon:
 	@echo "\n 💗 😀 😃 😍\n"
@@ -115,10 +115,14 @@ intro:
 
 clean:
 	@echo "\n cleanning $(NAME) objects 🧻"
-	@rm -f $(OBJ)	
+	@rm -f $(OBJ)
+	@$(MAKE) -s newline	
 
-fclean: clean
+fclean:
+	@echo "\n cleanning $(NAME) objects 🧻"
+	@rm -f $(OBJ)
 	@echo " cleanning $(NAME) 🚽" 
 	@rm -f $(NAME)	
+	@$(MAKE) -s newline	
 
 re: fclean backline l
