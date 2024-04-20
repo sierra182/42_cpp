@@ -1,85 +1,76 @@
-NAME = philo
+NAME = megaphone.cpp
+CC = c++
+
 X_HDR_DIR = x_includes
 HDR_DIR = includes
-SRC_DIR = sources
-CC = cc
-THREAD = -pthread
+SRC_DIR = #sources
 
-CFLAGS = $(X_HDRFLAGS) $(HDRFLAGS) $(THREAD) -g -Wall -Wextra -Werror
-LDFLAGS = $(THREAD)
+CFLAGS = $(X_HDRFLAGS) $(HDRFLAGS) -std=c++98 -g -Wall -Wextra -Werror
+LDFLAGS = 
 
 X_HDRFLAGS = \
-	-I$(X_HDR_DIR)/exit_area \
-	-I$(X_HDR_DIR)/philo_utils \
-	-I$(X_HDR_DIR)/setup \
-	-I$(X_HDR_DIR)/setup/error_zone
+	# -I$(X_HDR_DIR)/exit_area \
+	# -I$(X_HDR_DIR)/philo_utils \
+	# -I$(X_HDR_DIR)/setup \
+	# -I$(X_HDR_DIR)/setup/error_zone
 
 X_HDR =	\
-	$(X_HDR_DIR)/exit_area/x_exit.h \
-	$(X_HDR_DIR)/exit_area/x_data_store.h \
-	$(X_HDR_DIR)/philo_utils/x_philo_struct.h \
-	$(X_HDR_DIR)/philo_utils/x_philo_utils.h \
-	$(X_HDR_DIR)/setup/x_init.h \
-	$(X_HDR_DIR)/setup/x_setup.h \
-	$(X_HDR_DIR)/setup/error_zone/x_error_utils.h 
+	# $(X_HDR_DIR)/exit_area/x_exit.h \
+	# $(X_HDR_DIR)/exit_area/x_data_store.h \
+	# $(X_HDR_DIR)/philo_utils/x_philo_struct.h \
+	# $(X_HDR_DIR)/philo_utils/x_philo_utils.h \
+	# $(X_HDR_DIR)/setup/x_init.h \
+	# $(X_HDR_DIR)/setup/x_setup.h \
+	# $(X_HDR_DIR)/setup/error_zone/x_error_utils.h 
 
 HDRFLAGS = \
-	-I$(HDR_DIR) \
-	-I$(HDR_DIR)/exit_area \
-	-I$(HDR_DIR)/mortuary \
-	-I$(HDR_DIR)/philo_utils \
-	-I$(HDR_DIR)/routine \
-	-I$(HDR_DIR)/setup \
-	-I$(HDR_DIR)/setup/error_zone
+	# -I$(HDR_DIR) \
+	# -I$(HDR_DIR)/exit_area \
+	# -I$(HDR_DIR)/mortuary \
+	# -I$(HDR_DIR)/philo_utils \
+	# -I$(HDR_DIR)/routine \
+	# -I$(HDR_DIR)/setup \
+	# -I$(HDR_DIR)/setup/error_zone
 
 HDR = \
-	$(HDR_DIR)/main.h \
-	$(HDR_DIR)/exit_area/exit.h \
-	$(HDR_DIR)/exit_area/data_store.h \
-	$(HDR_DIR)/mortuary/mortuary.h \
-	$(HDR_DIR)/philo_utils/ft_calloc.h \
-	$(HDR_DIR)/philo_utils/philo_utils.h \
-	$(HDR_DIR)/philo_utils/time.h \
-	$(HDR_DIR)/routine/eat.h \
-	$(HDR_DIR)/routine/routine.h \
-	$(HDR_DIR)/setup/init.h \
-	$(HDR_DIR)/setup/setup.h \
-	$(HDR_DIR)/setup/error_zone/check_argv.h \
-	$(HDR_DIR)/setup/error_zone/error_utils.h	
+	# $(HDR_DIR)/main.h \
+	# $(HDR_DIR)/exit_area/exit.h \
+	# $(HDR_DIR)/exit_area/data_store.h \
+	# $(HDR_DIR)/mortuary/mortuary.h \
+	# $(HDR_DIR)/philo_utils/ft_calloc.h \
+	# $(HDR_DIR)/philo_utils/philo_utils.h \
+	# $(HDR_DIR)/philo_utils/time.h \
+	# $(HDR_DIR)/routine/eat.h \
+	# $(HDR_DIR)/routine/routine.h \
+	# $(HDR_DIR)/setup/init.h \
+	# $(HDR_DIR)/setup/setup.h \
+	# $(HDR_DIR)/setup/error_zone/check_argv.h \
+	# $(HDR_DIR)/setup/error_zone/error_utils.h	
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 
 SRC = \
-	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/exit_area/exit.c \
-	$(SRC_DIR)/exit_area/data_store.c \
-	$(SRC_DIR)/mortuary/mortuary.c \
-	$(SRC_DIR)/philo_utils/ft_calloc.c \
-	$(SRC_DIR)/philo_utils/philo_utils.c \
-	$(SRC_DIR)/philo_utils/time.c \
-	$(SRC_DIR)/routine/eat.c \
-	$(SRC_DIR)/routine/routine.c \
-	$(SRC_DIR)/setup/init.c \
-	$(SRC_DIR)/setup/setup.c \
-	$(SRC_DIR)/setup/error_zone/check_argv.c \
-	$(SRC_DIR)/setup/error_zone/error_utils.c
+	$(SRC_DIR)/main.cpp \
+	# $(SRC_DIR)/exit_area/exit.c \
+	# $(SRC_DIR)/exit_area/data_store.c \
+	# $(SRC_DIR)/mortuary/mortuary.c \
+	# $(SRC_DIR)/philo_utils/ft_calloc.c \
+	# $(SRC_DIR)/philo_utils/philo_utils.c \
+	# $(SRC_DIR)/philo_utils/time.c \
+	# $(SRC_DIR)/routine/eat.c \
+	# $(SRC_DIR)/routine/routine.c \
+	# $(SRC_DIR)/setup/init.c \
+	# $(SRC_DIR)/setup/setup.c \
+	# $(SRC_DIR)/setup/error_zone/check_argv.c \
+	# $(SRC_DIR)/setup/error_zone/error_utils.c
 
-.PHONY: all clean fclean re intro l newline backline emoticon address thread bonus
+.PHONY: all clean fclean re intro l newline backline emoticon 
 
-all: intro $(NAME) 
+# all: intro $(NAME) 
 
-address:
-	@$(MAKE) -s l THREAD="-pthread -fsanitize=address"
+all: emoticon $(NAME) # l
 
-thread:
-	@$(MAKE) -s l THREAD="-pthread -fsanitize=thread"
-
-l: emoticon $(NAME)
-
-bonus:
-	@$(MAKE) l -s -C ../philo_bonus
-
-$(SRC_DIR)/%.o : $(SRC_DIR)/%.c $(HDR) $(X_HDR)
+$(SRC_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR) $(X_HDR)
 	@echo "\033[0;32m compiling $(NAME) object $<...\033[0m" 🚀
 	@$(CC) $(CFLAGS) $< -c -o $@
 
@@ -124,14 +115,10 @@ intro:
 
 clean:
 	@echo "\n cleanning $(NAME) objects 🧻"
-	@rm -f $(OBJ) $(OBJ_BONUS);	
-	@$(MAKE) clean -s -C ../philo_bonus	
+	@rm -f $(OBJ)	
 
-fclean: 
-	@echo "\n cleanning $(NAME) objects 🧻"
-	@rm -f $(OBJ) $(OBJ_BONUS);
+fclean: clean
 	@echo " cleanning $(NAME) 🚽" 
-	@rm -f $(NAME) $(NAME_BONUS)	
-	@$(MAKE) fclean -s -C ../philo_bonus
+	@rm -f $(NAME)	
 
 re: fclean backline l
