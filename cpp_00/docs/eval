@@ -62,7 +62,8 @@ Account.hpp
 tests.cpp
 Tests préliminaires
 
-Si un cas de triche est suspecté, la notation et l'évaluation prennent fin immédiatement. Pour le signaler, sélectionnez le flag "Cheat". Faites attention à l'utiliser avec calme, précaution et discernement.
+Si un cas de triche est suspecté, la notation et l'évaluation prennent fin immédiatement. Pour le signaler,
+sélectionnez le flag "Cheat". Faites attention à l'utiliser avec calme, précaution et discernement.
 Prérequis
 
 Le code doit compiler avec c++ et les flags -Wall -Wextra -Werror
@@ -94,10 +95,12 @@ Il doit être résolu avec une approche C++ (string/upper).
 
 Exercice 01 : My Awesome Phonebook
 
-Cet exercice est une première approche pour écrire une classe simple et l'utiliser dans un programme interactif. Si l'exercice ne fonctionne pas parfaitement, notez ce qui peut l'être.
+Cet exercice est une première approche pour écrire une classe simple et l'utiliser dans un programme interactif.
+Si l'exercice ne fonctionne pas parfaitement, notez ce qui peut l'être.
 Gestion d'erreur
 
-Il y a un peu de gestion d'erreur à faire dans ce programme mais les comportements ne sont pas précisés dans le sujet. Quitter le programme proprement ou gérer les erreurs est ok. Un segfault ne l'est pas ! :D
+Il y a un peu de gestion d'erreur à faire dans ce programme mais les comportements ne sont pas précisés dans le sujet. 
+Quitter le programme proprement ou gérer les erreurs est ok. Un segfault ne l'est pas ! :D
 
 Rate it from 0 (failed) through 5 (excellent)
 La commande EXIT
@@ -134,9 +137,11 @@ Notez la commande ADD en vous basant sur ce qui est demandé dans le sujet.
 Rate it from 0 (failed) through 5 (excellent)
 La commande SEARCH
 
-Notez la commande SEARCH en vous basant sur ce qui est demandé dans le sujet. Une légère divergence dans le format attendu n'est pas importante. Cette partie vise à utiliser les "iomanips" en C++ et c'est ce sur quoi vous devez vous concentrer.
+Notez la commande SEARCH en vous basant sur ce qui est demandé dans le sujet. Une légère divergence dans le format
+attendu n'est pas importante. Cette partie vise à utiliser les "iomanips" en C++ et c'est ce sur quoi vous devez vous concentrer.
 
 Rate it from 0 (failed) through 5 (excellent)
+
 Exercice 02 : Le boulot de vos rêves
 
 Le but de cet exercice est de récupérer les informations cachées au milieu du bruit et d'insérer du code dans un contexte existant.
