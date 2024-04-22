@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:12:02 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 16:34:09 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/22 17:13:31 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ class Contact
         Contact(Contact const &src);
         Contact &operator=(Contact const &rhs);
         virtual ~Contact(void);
-    
+
+        void    getContat(int index);
+        void    setContact(int)
     private:
 
         std::string _firstname;

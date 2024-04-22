@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 16:52:34 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/22 17:00:56 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class PhoneBook
         PhoneBook(PhoneBook const &src);
         PhoneBook &operator=(PhoneBook const &rhs);
         virtual ~PhoneBook(void);
-        
+
         void    add(void);
         void    search(void);
-        
+
     private: 
 
         Contact _contact[8];              
