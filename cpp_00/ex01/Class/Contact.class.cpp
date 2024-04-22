@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 16:24:04 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/22 16:53:22 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,14 @@ Contact &Contact::operator=(Contact const &rhs)
 Contact::~Contact(void)
 {
     return ;
+}
+
+void    add()
+{
+    
+}
+
+void    search()
+{
+    
 }
