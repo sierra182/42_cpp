@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 16:11:05 by svidot           ###   ########.fr       */
+/*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
+/*   Updated: 2024/04/22 16:11:41 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.class.hpp"
 #include <iostream>
 
-int main(void)
-{
+PhoneBook::PhoneBook(void)
+{    
+    return ;
+}
 
-    return (0);    
+PhoneBook::PhoneBook(PhoneBook const & src)
+{
+    *this = src;
+    return ;
+}
+
+PhoneBook &PhoneBook::operator=(PhoneBook const & rhs)
+{    
+    (void) rhs;
+    //this->_jacque = rhs._jacque;   
+    return (*this);
+}
+
+PhoneBook::~PhoneBook(void)
+{  
+    return ;
 }

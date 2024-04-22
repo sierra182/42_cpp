@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 15:23:43 by svidot           ###   ########.fr       */
+/*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
+/*   Updated: 2024/04/22 16:10:32 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
-#include <iostream>
+#ifndef PHONEBOOK_CLASS_HPP
+# define PHONEBOOK_CLASS_HPP
 
-PhoneBook::PhoneBook(void) : _jacque(42)
-{    
-    return ;
-}
-
-PhoneBook::PhoneBook(PhoneBook const & src)
+class PhoneBook
 {
-    *this = src;
-    return ;
-}
+    public:
+    
+        PhoneBook(void);
+        PhoneBook(PhoneBook const &src);
+        PhoneBook &operator=(PhoneBook const &rhs);
+        virtual ~PhoneBook(void);
 
-PhoneBook &PhoneBook::operator=(PhoneBook const & rhs)
-{    
-    this->_jacque = rhs._jacque;   
-    return (*this);
-}
+    private:        
+};
 
-PhoneBook::~PhoneBook(void)
-{  
-    return ;
-}
+#endif

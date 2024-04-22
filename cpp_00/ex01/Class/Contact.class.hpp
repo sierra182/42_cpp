@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
+/*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 14:35:24 by svidot           ###   ########.fr       */
+/*   Created: 2024/04/22 16:12:02 by svidot            #+#    #+#             */
+/*   Updated: 2024/04/22 16:21:27 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef CONTACT_CLASS_HPP
+# define CONTACT_CLASS_HPP
 
-class PhoneBook
+class Contact
 {
     public:
-    
-        PhoneBook(void);
-        PhoneBook(PhoneBook const &src);
-        PhoneBook &operator=(PhoneBook const &rhs);
-        virtual ~PhoneBook(void);
-            
-        int _jacque;
+        
+        Contact(void);
+        Contact(Contact const &src);
+        Contact &operator=(Contact const &rhs);
+        virtual ~Contact(void);
 };
 
 #endif

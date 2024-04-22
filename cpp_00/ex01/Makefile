@@ -7,14 +7,17 @@ SRC_DIR = .
 CFLAGS = $(HDRFLAGS) -std=c++98 -g -Wall -Wextra -Werror
 LDFLAGS = 
 
-HDRFLAGS = 
-HDR = $(SRC_DIR)/PhoneBook.class.hpp \
-
-OBJ = $(SRC:.cpp=.o)
+HDRFLAGS = -I$(SRC_DIR)/Class
+HDR = \
+	$(SRC_DIR)/Class/PhoneBook.class.hpp \
+	$(SRC_DIR)/Class/Contact.class.hpp \
 
 SRC = \
 	$(SRC_DIR)/main.cpp \
-	$(SRC_DIR)/PhoneBook.class.cpp \
+	$(SRC_DIR)/Class/PhoneBook.class.cpp \
+	$(SRC_DIR)/Class/Contact.class.cpp \
+
+OBJ = $(SRC:.cpp=.o)
 
 .PHONY: all clean fclean re intro l newline backline emoticon 
 

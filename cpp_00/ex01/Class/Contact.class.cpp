@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 16:11:05 by svidot           ###   ########.fr       */
+/*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
+/*   Updated: 2024/04/22 16:24:04 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
-#include <iostream>
+#include "Contact.class.hpp"
 
-int main(void)
+Contact::Contact(void)
 {
+    return ;
+}
 
-    return (0);    
+Contact::Contact(Contact const &src)
+{
+    *this = src;
+    return ;
+}
+
+Contact &Contact::operator=(Contact const &rhs)
+{
+    (void) rhs;
+    return (*this);
+}
+
+Contact::~Contact(void)
+{
+    return ;
 }
