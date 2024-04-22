@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 16:57:59 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/22 18:44:02 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main(void)
     {        
         std::cin >> buffer;
         if (!buffer.compare("ADD"))
-            add();
+            book.add();
         else if (!buffer.compare("SEARCH"))
-            search();           
+            book.search();           
         else if (!buffer.compare("EXIT"))
             break ;
     }

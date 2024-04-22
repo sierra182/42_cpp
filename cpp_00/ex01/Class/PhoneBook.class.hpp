@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 17:00:56 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/22 22:35:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_CLASS_HPP
 # define PHONEBOOK_CLASS_HPP
+
+# define N_CT 2
 
 # include "Contact.class.hpp"
 
@@ -29,7 +31,8 @@ class PhoneBook
 
     private: 
 
-        Contact _contact[8];              
+        Contact _contact[N_CT]; 
+		int		_nContact;            
 };
 
 #endif

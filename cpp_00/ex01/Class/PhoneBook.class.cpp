@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 17:11:58 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/22 22:30:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.class.hpp"
-#include <iostream>
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void) : _nContact(0)
 {
     return ;
 }
@@ -36,13 +35,14 @@ PhoneBook::~PhoneBook(void)
     return ;
 }
 
-void    PhoneBook::add()
-{       
-    std::cout << "enter firstname:" << std::endl;
-    std::cin >> this->_contact[0]       
+void	PhoneBook::add()
+{  
+	this->_nContact = (this->_nContact + 1) % (N_CT - 1);
+	this->_contact[_nContact].add();
+	this->_nContact++;
 }
 
-void    search()
+void    PhoneBook::search()
 {
     
 }

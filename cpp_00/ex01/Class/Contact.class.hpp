@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:12:02 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 17:13:31 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/22 22:05:03 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_CLASS_HPP
 # define CONTACT_CLASS_HPP
 
-# include <ostream>
+# include <iostream>
 
 class Contact
 {
@@ -23,16 +23,18 @@ class Contact
         Contact(Contact const &src);
         Contact &operator=(Contact const &rhs);
         virtual ~Contact(void);
+		
+        void    add(void);
 
-        void    getContat(int index);
-        void    setContact(int)
     private:
 
         std::string _firstname;
         std::string _lastname;
         std::string _nickname;
-        std::string _phoneNumber;
+        int			_phoneNumber;
         std::string _darkestSecret;
+		
+		void	getEntry(const std::string &str, std::string &entry);
 };
 
 #endif
