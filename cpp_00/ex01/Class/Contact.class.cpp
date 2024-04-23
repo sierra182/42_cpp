@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 14:07:45 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 15:02:34 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,28 @@ void	Contact::displayEntry(const std::string &entry) const
 	std::cout << col;
 }
 
-void	Contact::search(int index)
-{	
+#include <sstream>
+std::string intToString(int value)
+{
+    std::ostringstream oss;
+    oss << value;
+    return oss.str();
+}
 
-	(void) index;
-	
-	//line += (static_cast<char>(index + 48));
+void	Contact::search(int index) const
+{
+	this->displayEntry(intToString(index));
 	this->displayEntry(this->_firstname);
 	this->displayEntry(this->_lastname);
 	this->displayEntry(this->_nickname);
 	std::cout << std::endl;
+}
+
+void	Contact::displayItem(void) const
+{
+	std::cout << this->_firstname << std::endl;
+	std::cout << this->_lastname << std::endl;
+	std::cout << this->_nickname << std::endl;
+	std::cout << this->_phoneNumber << std::endl;
+	std::cout << this->_darkestSecret << std::endl;	
 }

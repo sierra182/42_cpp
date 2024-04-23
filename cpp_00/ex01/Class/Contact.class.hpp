@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:12:02 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 14:02:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 15:01:27 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ class Contact
         virtual ~Contact(void);
 		
         void    add(void);
-		void    search(int index);
+		void    search(int index) const;
+		void	displayItem(void) const;
 		
     private:
 
 		static const int	WIDTH_COL = 10;
+		
         std::string			_firstname;
         std::string			_lastname;
         std::string			_nickname;
@@ -37,7 +39,7 @@ class Contact
         std::string			_darkestSecret;
 		
 		void	getEntry(const std::string &str, std::string &entry);
-		void	displayEntry(const std::string &entry) const;
+		void	displayEntry(const std::string &entry) const;		
 };
 
 #endif

@@ -6,10 +6,12 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 14:16:44 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 15:05:59 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits>
+#include <iostream>
 #include "PhoneBook.class.hpp"
 
 PhoneBook::PhoneBook(void) : _nContact(-1)
@@ -39,7 +41,6 @@ void	PhoneBook::add()
 {  
 	this->_nContact = (this->_nContact + 1) % (this->N_MAX - 1);
 	this->_contact[_nContact].add();
-	this->_nContact++;
 }
 
 void    PhoneBook::search()
@@ -47,10 +48,14 @@ void    PhoneBook::search()
 	int	index;
 	
 	for (int i = 0; i < this->N_MAX; i++)
-    	this->_contact[i].search(4);
+    	this->_contact[i].search(i);
 	std::cout << "enter contact index:" << std::endl;
-	while (!(std::cin >> index))
+	while (!(std::cin >> index)) 
 	{
-		
-	}	
+        std::cin.clear();  
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid input. Please enter a valid number: " << std::endl;
+    }
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	this->_contact[index].displayItem();
 }
