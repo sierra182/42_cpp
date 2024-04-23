@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 18:25:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 22:14:10 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ void	PhoneBook::add()
 		this->_isFull = true;
 }
 
+#include <sstream>
+void	stoi(std::string )
+{		
+    std::istringstream iss(input);
+    int num;
+
+    iss >> num;
+    if (iss.fail() || !iss.eof()) {  // Vérifiez si la conversion a échoué ou si la chaîne n'a pas été complètement consommée
+        std::cout << "Erreur de conversion ou données en excès." << std::endl;
+    } else {
+        std::cout << "Nombre lu avec succès: " << num << std::endl;
+    }
+}
+
 void    PhoneBook::search() const
 {
 	unsigned int	index;	
@@ -63,7 +77,7 @@ void    PhoneBook::search() const
 		|| (!this->_isFull && index >= this->_nContact)
 		|| (this->_isFull && index >= this->N_MAX)) 
 	{
-        std::cin.clear();  
+        std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Invalid input! retry:" << std::endl;
     }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 17:08:17 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 22:11:40 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ void	PhoneBook::Contact::displayEntry(const std::string &entry) const
 }
 
 #include <sstream>
-std::string intToString(int value)
+std::string itos(int value)
 {
     std::ostringstream oss;
     oss << value;
-    return oss.str();
+    return (oss.str());
 }
 
 void	PhoneBook::Contact::search(int index) const
 {
-	this->displayEntry(intToString(index));
+	this->displayEntry(itos(index));
 	this->displayEntry(this->_firstname);
 	this->displayEntry(this->_lastname);
 	this->displayEntry(this->_nickname);
