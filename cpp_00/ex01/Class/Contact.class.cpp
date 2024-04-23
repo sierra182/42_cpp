@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 08:42:22 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 14:07:45 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Contact::Contact(Contact const &src)
 
 Contact &Contact::operator=(Contact const &rhs)
 {
-    (void) rhs;
+    this->_firstname = rhs._firstname;
     return (*this);
 }
 
@@ -60,14 +60,34 @@ void	Contact::add(void)
 	this->getEntry("enter darkest secret:", this->_darkestSecret);		
 }
 
+void	Contact::displayEntry(const std::string &entry) const
+{	
+	std::string	col;
+	int			padding;
+
+	col = entry;	
+	padding = 0;
+	if (entry.length() < this->WIDTH_COL)
+		padding = this->WIDTH_COL - entry.length();
+	else
+	{
+		col.resize(this->WIDTH_COL - 1);
+		col.push_back('.');
+	}
+	while (padding--)
+		col.insert(col.begin(), ' ');
+	col.push_back('|');
+	std::cout << col;
+}
+
 void	Contact::search(int index)
 {	
-	std::string line = "         ";
-	line = line + (static_cast<char>(index + 48)) + "|";
-	line += _firstname;
-	line += '|';
-	line += _lastname;
-	line += '|';
-	line += _nickname;
-	std::cout << line << std::endl;
+
+	(void) index;
+	
+	//line += (static_cast<char>(index + 48));
+	this->displayEntry(this->_firstname);
+	this->displayEntry(this->_lastname);
+	this->displayEntry(this->_nickname);
+	std::cout << std::endl;
 }

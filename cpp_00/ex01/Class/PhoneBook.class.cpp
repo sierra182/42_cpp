@@ -6,13 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 08:29:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 14:16:44 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.class.hpp"
 
-PhoneBook::PhoneBook(void) : _nContact(0)
+PhoneBook::PhoneBook(void) : _nContact(-1)
 {
     return ;
 }
@@ -37,12 +37,20 @@ PhoneBook::~PhoneBook(void)
 
 void	PhoneBook::add()
 {  
-	this->_nContact = (this->_nContact + 1) % (N_CT - 1);
+	this->_nContact = (this->_nContact + 1) % (this->N_MAX - 1);
 	this->_contact[_nContact].add();
 	this->_nContact++;
 }
 
 void    PhoneBook::search()
 {
-    this->_contact[0].search(4);
+	int	index;
+	
+	for (int i = 0; i < this->N_MAX; i++)
+    	this->_contact[i].search(4);
+	std::cout << "enter contact index:" << std::endl;
+	while (!(std::cin >> index))
+	{
+		
+	}	
 }
