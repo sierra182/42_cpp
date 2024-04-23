@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 22:30:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 08:29:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	PhoneBook::add()
 
 void    PhoneBook::search()
 {
-    
+    this->_contact[0].search(4);
 }

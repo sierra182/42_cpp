@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 18:44:02 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 08:43:08 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void)
 {
     std::string buffer;  
     PhoneBook   book;
-    
+
     while (true)
     {        
         std::cin >> buffer;

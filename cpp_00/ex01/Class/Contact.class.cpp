@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 22:08:40 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 08:42:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,16 @@ void	Contact::add(void)
     }
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	this->getEntry("enter darkest secret:", this->_darkestSecret);		
+}
+
+void	Contact::search(int index)
+{	
+	std::string line = "         ";
+	line = line + (static_cast<char>(index + 48)) + "|";
+	line += _firstname;
+	line += '|';
+	line += _lastname;
+	line += '|';
+	line += _nickname;
+	std::cout << line << std::endl;
 }

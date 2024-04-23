@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:12:02 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/22 22:05:03 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 08:08:27 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class Contact
         virtual ~Contact(void);
 		
         void    add(void);
-
+		void    search(int index);
+		
     private:
 
         std::string _firstname;
