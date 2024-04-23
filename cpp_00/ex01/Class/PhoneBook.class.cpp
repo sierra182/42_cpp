@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 22:14:10 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 22:44:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,15 @@ void	PhoneBook::add()
 }
 
 #include <sstream>
-void	stoi(std::string )
+unsigned int	stoui(const std::string &str )
 {		
-    std::istringstream iss(input);
-    int num;
+    std::istringstream iss(str);
+    unsigned int num;
 
     iss >> num;
-    if (iss.fail() || !iss.eof()) {  // Vérifiez si la conversion a échoué ou si la chaîne n'a pas été complètement consommée
-        std::cout << "Erreur de conversion ou données en excès." << std::endl;
-    } else {
-        std::cout << "Nombre lu avec succès: " << num << std::endl;
-    }
+    if (iss.fail() || !iss.eof())   // Vérifiez si la conversion a échoué ou si la chaîne n'a pas été complètement consommée    	
+		throw (std::invalid_argument("Erreur de conversion ou données en excès."));
+	return (num)
 }
 
 void    PhoneBook::search() const
