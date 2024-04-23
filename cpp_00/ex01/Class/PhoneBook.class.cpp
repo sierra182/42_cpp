@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 15:05:59 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:25:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include "PhoneBook.class.hpp"
 
-PhoneBook::PhoneBook(void) : _nContact(-1)
+PhoneBook::PhoneBook(void) : _nContact(0), _isFull(false)
 {
     return ;
 }
@@ -39,22 +39,33 @@ PhoneBook::~PhoneBook(void)
 
 void	PhoneBook::add()
 {  
-	this->_nContact = (this->_nContact + 1) % (this->N_MAX - 1);
 	this->_contact[_nContact].add();
+	this->_nContact = (this->_nContact + 1) % (this->N_MAX);
+	if (!this->_nContact)
+		this->_isFull = true;
 }
 
-void    PhoneBook::search()
+void    PhoneBook::search() const
 {
-	int	index;
+	unsigned int	index;	
+	int				max_contact;
 	
-	for (int i = 0; i < this->N_MAX; i++)
+	if (!this->_nContact && !this->_isFull)
+	{
+		std::cout << "no friends :(" << std::endl;
+		return ;
+	}
+	max_contact = this->_isFull ? this->N_MAX : this->_nContact;
+	for (int i = 0; i < max_contact; i++)
     	this->_contact[i].search(i);
 	std::cout << "enter contact index:" << std::endl;
-	while (!(std::cin >> index)) 
+	while (!(std::cin >> index)
+		|| (!this->_isFull && index >= this->_nContact)
+		|| (this->_isFull && index >= this->N_MAX)) 
 	{
         std::cin.clear();  
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Invalid input. Please enter a valid number: " << std::endl;
+        std::cout << "Invalid input! retry:" << std::endl;
     }
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	this->_contact[index].displayItem();

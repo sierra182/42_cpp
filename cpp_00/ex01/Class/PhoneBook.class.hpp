@@ -6,15 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 12:50:38 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 18:01:16 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_CLASS_HPP
 # define PHONEBOOK_CLASS_HPP
 
-
-# include "Contact.class.hpp"
+# include <iostream>
 
 class PhoneBook
 {
@@ -26,13 +25,41 @@ class PhoneBook
         virtual ~PhoneBook(void);
 
         void    add(void);
-        void    search(void);
+        void    search(void) const;
 
     private: 
 		
-		static const int	N_MAX = 8;
-        Contact 			_contact[N_MAX]; 
-		int					_nContact;            
+		class Contact
+		{
+			public:
+				
+				Contact(void);
+				Contact(Contact const &src);
+				Contact &operator=(Contact const &rhs);
+				virtual ~Contact(void);
+				
+				void    add(void);
+				void    search(int index) const;
+				void	displayItem(void) const;
+				
+			private:
+
+				static const int	WIDTH_COL = 10;
+				
+				std::string			_firstname;
+				std::string			_lastname;
+				std::string			_nickname;
+				int					_phoneNumber;
+				std::string			_darkestSecret;
+				
+				void	getEntry(const std::string &str, std::string &entry);
+				void	displayEntry(const std::string &entry) const;		
+		}; 
+		 
+		static const unsigned int	N_MAX = 2;
+		unsigned int				_nContact;
+		bool						_isFull;
+        Contact 					_contact[N_MAX]; 
 };
 
 #endif

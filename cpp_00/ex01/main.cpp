@@ -6,13 +6,11 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 08:43:08 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 17:03:38 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.class.hpp"
-#include <iostream>
-
 
 int main(void)
 {

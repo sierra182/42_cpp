@@ -6,36 +6,36 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 15:02:34 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/23 17:08:17 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.class.hpp"
+#include "PhoneBook.class.hpp"
 #include <limits>
 
-Contact::Contact(void)
+PhoneBook::Contact::Contact(void) : _phoneNumber(0)
 {
     return ;
 }
 
-Contact::Contact(Contact const &src)
+PhoneBook::Contact::Contact(PhoneBook::Contact const &src)
 {
     *this = src;
     return ;
 }
 
-Contact &Contact::operator=(Contact const &rhs)
+PhoneBook::Contact &PhoneBook::Contact::operator=(PhoneBook::Contact const &rhs)
 {
     this->_firstname = rhs._firstname;
     return (*this);
 }
 
-Contact::~Contact(void)
+PhoneBook::Contact::~Contact(void)
 {
     return ;
 }
 
-void	Contact::getEntry(const std::string &str, std::string &entry)
+void	PhoneBook::Contact::getEntry(const std::string &str, std::string &entry)
 {
 	std::cout << str << std::endl;
     std::getline(std::cin, entry);
@@ -43,7 +43,7 @@ void	Contact::getEntry(const std::string &str, std::string &entry)
 		this->getEntry(str, entry);
 }
 
-void	Contact::add(void)
+void	PhoneBook::Contact::add(void)
 {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	this->getEntry("enter firstname:", this->_firstname);
@@ -60,7 +60,7 @@ void	Contact::add(void)
 	this->getEntry("enter darkest secret:", this->_darkestSecret);		
 }
 
-void	Contact::displayEntry(const std::string &entry) const
+void	PhoneBook::Contact::displayEntry(const std::string &entry) const
 {	
 	std::string	col;
 	int			padding;
@@ -88,7 +88,7 @@ std::string intToString(int value)
     return oss.str();
 }
 
-void	Contact::search(int index) const
+void	PhoneBook::Contact::search(int index) const
 {
 	this->displayEntry(intToString(index));
 	this->displayEntry(this->_firstname);
@@ -97,7 +97,7 @@ void	Contact::search(int index) const
 	std::cout << std::endl;
 }
 
-void	Contact::displayItem(void) const
+void	PhoneBook::Contact::displayItem(void) const
 {
 	std::cout << this->_firstname << std::endl;
 	std::cout << this->_lastname << std::endl;

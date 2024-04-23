@@ -10,7 +10,6 @@ LDFLAGS =
 HDRFLAGS = -I$(SRC_DIR)/Class
 HDR = \
 	$(SRC_DIR)/Class/PhoneBook.class.hpp \
-	$(SRC_DIR)/Class/Contact.class.hpp \
 
 SRC = \
 	$(SRC_DIR)/main.cpp \
