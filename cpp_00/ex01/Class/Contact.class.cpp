@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 10:02:00 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/24 11:00:21 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,22 @@ void	PhoneBook::Contact::getEntry(const std::string &str, std::string &entry)
 {
 	std::cout << str << std::endl;
     std::getline(std::cin, entry);
-	if (entry.empty())
+	if (std::cin.eof())
+	{
+		std::cout << "HOOOOOOOO" << std::endl;
+		//std::cin.clear();
+		// if (std::cin.eof())
+		// {
+		// 	std::cout << "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY" << std::endl;
+		// }
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore le reste de la ligne
+
+	}
+	if (entry.empty() && !std::cin.eof())
+	{
+		
 		this->getEntry(str, entry);
+	}
 }
 
 void	PhoneBook::Contact::add(void)
@@ -51,12 +65,12 @@ void	PhoneBook::Contact::add(void)
 	this->getEntry(" Enter lastname:", this->_lastname);
 	this->getEntry(" Enter nickname:", this->_nickname);  
 	std::cout << " Enter phone number:" << std::endl;
-	while (!(std::cin >> this->_phoneNumber)) 
-	{
-        std::cin.clear();  
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << " ❌ Invalid input. Please enter a valid number: " << std::endl;
-    }
+	// while (!(std::cin >> this->_phoneNumber) || this->_phoneNumber < 0) 
+	// {
+    //     std::cin.clear();  
+    //     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    //     std::cout << " ❌ Invalid input. Please enter a valid number: " << std::endl;
+    // }
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	this->getEntry(" Enter darkest secret:", this->_darkestSecret);
 	 std::cout  << std::endl << "✔️ New friend Added with Succes!" << std::endl;		
