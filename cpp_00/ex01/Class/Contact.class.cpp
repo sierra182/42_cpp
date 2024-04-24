@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 09:50:48 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/24 10:02:00 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,5 @@ void	PhoneBook::Contact::displayItem(void) const
 	std::cout << this->_lastname << std::endl;
 	std::cout << this->_nickname << std::endl;
 	std::cout << this->_phoneNumber << std::endl;
-	std::cout << this->_darkestSecret << std::endl << std::endl;;	
+	std::cout << this->_darkestSecret << std::endl;	
 }

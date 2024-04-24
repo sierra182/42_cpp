@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 09:56:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/24 10:03:08 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void    PhoneBook::search() const
 	max_contact = this->_isFull ? this->N_MAX : this->_nContact;
 	for (int i = 0; i < max_contact; i++)
     	this->_contact[i].search(i);
-	std::cout  << std::endl << "\033[35mEnter contact Index:\033[0m " << std::endl;
+	std::cout  << std::endl << "\033[36m Enter contact Index:\033[0m " << std::endl;
 	while (!(std::cin >> index)
 		|| (!this->_isFull && index >= this->_nContact)
 		|| (this->_isFull && index >= this->N_MAX)) 
