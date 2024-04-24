@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 14:23:39 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/24 17:55:16 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	PhoneBook::Contact::displayEntry(const std::string &entry) const
 
 	col = entry;	
 	padding = 0;
-	if (entry.length() < this->WIDTH_COL)
+	if (entry.length() <= this->WIDTH_COL)
 		padding = this->WIDTH_COL - entry.length();
 	else
 	{

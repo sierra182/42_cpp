@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 13:15:37 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/24 17:57:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int main(void)
         {   
             std::cout << "Enter ADD, SEARCH or EXIT:" << std::endl << std::endl;    
             std::cin >> buffer;
+			if (std::cin.eof())
+				throw std::exception();
             if (!buffer.compare("ADD"))
                 book.add();
             else if (!buffer.compare("SEARCH"))
