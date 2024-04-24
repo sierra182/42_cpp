@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 22:44:49 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/24 09:56:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,62 @@ void	PhoneBook::add()
 	if (!this->_nContact)
 		this->_isFull = true;
 }
+// int	ft_isoverflow(char *str)
+// {
+// 	long	nbr;
+// 	int		isneg;
 
-#include <sstream>
-unsigned int	stoui(const std::string &str )
-{		
-    std::istringstream iss(str);
-    unsigned int num;
+// 	nbr = 0;
+// 	isneg = 0;
+// 	if (*str == '-' && ++isneg)
+// 		str++;
+// 	else if (*str == '+')
+// 		str++;
+// 	while (*str)
+// 	{
+// 		nbr = nbr * 10 + *str++ - 48;
+// 		if (nbr - isneg > INT_MAX)
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
-    iss >> num;
-    if (iss.fail() || !iss.eof())   // Vérifiez si la conversion a échoué ou si la chaîne n'a pas été complètement consommée    	
-		throw (std::invalid_argument("Erreur de conversion ou données en excès."));
-	return (num)
+// int	ft_isoverflow(const std::string &str)
+// {
+// 	long	nbr;
+// 	int		isneg;
+
+// 	nbr = 0;
+// 	isneg = 0;
+// 	if (*str == '-' && ++isneg)
+// 		str++;
+// 	else if (*str == '+')
+// 		str++;
+// 	while (*str)
+// 	{
+// 		nbr = nbr * 10 + *str++ - 48;
+// 		if (nbr - isneg > INT_MAX)
+// 			return (1);
+// 	}
+// 	return (0);
+// }
+
+// #include <sstream>
+// unsigned int	stoui(const std::string &str )
+// {		
+//     std::istringstream iss(str);
+//     unsigned int num;
+
+//     iss >> num;
+//     if (iss.fail() || !iss.eof())   // Vérifiez si la conversion a échoué ou si la chaîne n'a pas été complètement consommée    	
+// 		throw (std::invalid_argument("Erreur de conversion ou données en excès."));
+// 	return (num)
+// }
+
+void	parse_int()
+{
+	
 }
-
 void    PhoneBook::search() const
 {
 	unsigned int	index;	
@@ -64,20 +107,20 @@ void    PhoneBook::search() const
 	
 	if (!this->_nContact && !this->_isFull)
 	{
-		std::cout << "no friends :(" << std::endl;
+		std::cout << std::endl << " No friends! 😭, choose ADD..." << std::endl;
 		return ;
 	}
 	max_contact = this->_isFull ? this->N_MAX : this->_nContact;
 	for (int i = 0; i < max_contact; i++)
     	this->_contact[i].search(i);
-	std::cout << "enter contact index:" << std::endl;
+	std::cout  << std::endl << "\033[35mEnter contact Index:\033[0m " << std::endl;
 	while (!(std::cin >> index)
 		|| (!this->_isFull && index >= this->_nContact)
 		|| (this->_isFull && index >= this->N_MAX)) 
 	{
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Invalid input! retry:" << std::endl;
+        std::cout << " ❌ \033[31mInvalid input! retry:\033[0m" << std::endl;
     }
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	this->_contact[index].displayItem();

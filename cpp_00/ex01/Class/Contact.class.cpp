@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/23 22:11:40 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/24 09:50:48 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,21 @@ void	PhoneBook::Contact::getEntry(const std::string &str, std::string &entry)
 
 void	PhoneBook::Contact::add(void)
 {
+	std::cout << std::endl;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	this->getEntry("enter firstname:", this->_firstname);
-	this->getEntry("enter lastname:", this->_lastname);
-	this->getEntry("enter nickname:", this->_nickname);  
-	std::cout << "enter phone number:" << std::endl;
+	this->getEntry(" Enter firstname:", this->_firstname);
+	this->getEntry(" Enter lastname:", this->_lastname);
+	this->getEntry(" Enter nickname:", this->_nickname);  
+	std::cout << " Enter phone number:" << std::endl;
 	while (!(std::cin >> this->_phoneNumber)) 
 	{
         std::cin.clear();  
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Invalid input. Please enter a valid number: " << std::endl;
+        std::cout << " ❌ Invalid input. Please enter a valid number: " << std::endl;
     }
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	this->getEntry("enter darkest secret:", this->_darkestSecret);		
+	this->getEntry(" Enter darkest secret:", this->_darkestSecret);
+	 std::cout  << std::endl << "✔️ New friend Added with Succes!" << std::endl;		
 }
 
 void	PhoneBook::Contact::displayEntry(const std::string &entry) const
@@ -99,9 +101,10 @@ void	PhoneBook::Contact::search(int index) const
 
 void	PhoneBook::Contact::displayItem(void) const
 {
+	std::cout << std::endl;
 	std::cout << this->_firstname << std::endl;
 	std::cout << this->_lastname << std::endl;
 	std::cout << this->_nickname << std::endl;
 	std::cout << this->_phoneNumber << std::endl;
-	std::cout << this->_darkestSecret << std::endl;	
+	std::cout << this->_darkestSecret << std::endl << std::endl;;	
 }
