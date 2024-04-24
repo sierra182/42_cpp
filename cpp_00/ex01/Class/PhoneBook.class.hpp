@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 13:54:15 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/24 14:20:50 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class PhoneBook
         PhoneBook &operator=(PhoneBook const &rhs);
         virtual ~PhoneBook(void);
 
-        void    add(void);
-        void    search(void) const;
+        void	add(void);
+        void	search(void) const;
 
     private: 
 		

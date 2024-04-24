@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:14 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 13:41:27 by svidot           ###   ########.fr       */
+/*   Updated: 2024/04/24 14:23:39 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,20 @@ void	PhoneBook::Contact::add(void)
 	this->getEntry(" Enter lastname:", this->_lastname);
 	this->getEntry(" Enter nickname:", this->_nickname);  
 	std::cout << " Enter phone number:" << std::endl;
-	while (!(std::cin >> this->_phoneNumber) || std::cin.peek() != '\n' || this->_phoneNumber < 0) 
+	while (!(std::cin >> this->_phoneNumber) || std::cin.peek() != '\n'
+			|| this->_phoneNumber < 0) 
 	{
 		if (std::cin.eof())
 			throw std::exception();
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << " ❌ Invalid input. Please enter a valid number: " << std::endl;
+        std::cout << " ❌ Invalid input. Please enter a valid number: "
+			<< std::endl;
     }	
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	this->getEntry(" Enter darkest secret:", this->_darkestSecret);
-	 std::cout  << std::endl << " ✅ New friend Added with Succes!" << std::endl;		
+	 std::cout  << std::endl << " ✅ New friend Added with Succes!"
+	 	<< std::endl;		
 }
 
 void	PhoneBook::Contact::displayEntry(const std::string &entry) const
