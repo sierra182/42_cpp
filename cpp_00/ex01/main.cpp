@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 09:31:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/24 13:15:37 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,22 @@ int main(void)
     PhoneBook   book;
 		
 	std::cout << std::endl << " 🦄 Welcome! ";
-    while (true)
-    {   
-		std::cout << "Enter ADD, SEARCH or EXIT:" << std::endl << std::endl;    
-        std::cin >> buffer;
-        if (!buffer.compare("ADD"))
-            book.add();
-        else if (!buffer.compare("SEARCH"))
-            book.search();           
-        else if (!buffer.compare("EXIT"))
-            break ;
-		std::cout << std::endl << " 💎 ";
+    try
+    {
+        while (true)
+        {   
+            std::cout << "Enter ADD, SEARCH or EXIT:" << std::endl << std::endl;    
+            std::cin >> buffer;
+            if (!buffer.compare("ADD"))
+                book.add();
+            else if (!buffer.compare("SEARCH"))
+                book.search();           
+            else if (!buffer.compare("EXIT"))
+                break ;
+            std::cout << std::endl << " 💎 ";
+        }
+        
     }
+    catch(const std::exception& e) {return (1);}
     return (0);    
 }

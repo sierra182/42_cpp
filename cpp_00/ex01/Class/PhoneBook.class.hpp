@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 10:20:45 by seblin           ###   ########.fr       */
+/*   Updated: 2024/04/24 13:54:15 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ class PhoneBook
 				void	displayEntry(const std::string &entry) const;		
 		}; 
 		 
-		static const unsigned int	N_MAX = 2;
+		static const unsigned int	N_MAX = 8;
 		unsigned int				_nContact;
 		bool						_isFull;
         Contact 					_contact[N_MAX]; 
