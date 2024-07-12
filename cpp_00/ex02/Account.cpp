@@ -23,6 +23,7 @@ Account::Account(int initial_deposit)
 
 Account::~Account(void)
 {
+    _displayTimestamp();
     std::cout << "closed" << std::endl;
 }
 
@@ -54,10 +55,10 @@ void Account::displayAccountsInfos(void)
 void	Account::_displayTimestamp(void)
 {
     char buffer[100];
-
     std::time_t now = std::time(NULL);
     std::tm* localTime = std::localtime(&now);
-    std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", localTime);
+    
+    std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S] ", localTime);
     std::cout << buffer;
 }
 
