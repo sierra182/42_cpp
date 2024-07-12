@@ -12,11 +12,13 @@
 
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
 
 Account::Account(int initial_deposit)
 {
     (void) initial_deposit;
-     std::cout << "created" << std::endl;
+    _displayTimestamp();
+    std::cout << "created" << std::endl;
 }
 
 Account::~Account(void)
@@ -49,19 +51,28 @@ void Account::displayAccountsInfos(void)
  
 }
 
+void	Account::_displayTimestamp(void)
+{
+    char buffer[100];
+
+    std::time_t now = std::time(NULL);
+    std::tm* localTime = std::localtime(&now);
+    std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", localTime);
+    std::cout << buffer;
+}
 
 void	Account::makeDeposit(int deposit)
 {
     (void) deposit;
 }
 
-bool	Account::makeWithdrawal( int withdrawal )
+bool	Account::makeWithdrawal(int withdrawal)
 {
     (void) withdrawal;
     return (true);
 }
 
-void	Account::displayStatus( void ) const
+void	Account::displayStatus(void) const
 {
 
 }

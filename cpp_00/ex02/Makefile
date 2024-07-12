@@ -4,7 +4,7 @@ CXX = c++
 HDR_DIR = .
 SRC_DIR = .
 
-CFLAGS = $(HDRFLAGS)  -g -Wall -Wextra -Werror -std=c++98
+CFLAGS = $(HDRFLAGS) -g -Wall -Wextra -Werror -std=c++98
 LDFLAGS = 
 
 HDRFLAGS = -I$(SRC_DIR)/Class
