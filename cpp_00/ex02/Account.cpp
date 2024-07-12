@@ -10,3 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Account.hpp"
+
+Account::Account(int initial_deposit)
+{
+
+}
+
+Account::~Account(void)
+{
+
+}
+
+int Account::getNbAccounts(void)
+{
+    return (1);
+}
+
+int Account::getTotalAmount(void)
+{
+    return (1);
+}
+
+int Account::getNbDeposits(void)
+{
+    return (1);
+}
+
+int Account::getNbWithdrawals(void)
+{
+    return (1);
+}
+
+void Account::displayAccountsInfos(void)
+{
+ 
+}
+
