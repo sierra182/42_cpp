@@ -16,6 +16,7 @@
 Account::Account(int initial_deposit)
 {
     (void) initial_deposit;
+     std::cout << "created" << std::endl;
 }
 
 Account::~Account(void)
