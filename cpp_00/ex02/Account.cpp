@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:49:53 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 14:49:54 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/12 22:28:27 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ Account::~Account(void)
 
 int Account::getNbAccounts(void)
 {
-    return (1);
+    return (_nbAccounts);
 }
 
 int Account::getTotalAmount(void)
 {
-    return (1);
+    return (_totalAmount);
 }
 
 int Account::getNbDeposits(void)
 {
-    return (1);
+    return (_totalNbDeposits);
 }
 
 int Account::getNbWithdrawals(void)
 {
-    return (1);
+    return (_totalNbWithdrawals);
 }
 
 void Account::displayAccountsInfos(void)
 {
- 
+	
 }
 
 void	Account::_displayTimestamp(void)
