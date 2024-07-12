@@ -1,4 +1,4 @@
-NAME = myPhoneBook
+NAME = Account
 CXX = c++
 
 HDR_DIR = .
@@ -13,6 +13,7 @@ HDR = \
 
 SRC = \
 	$(SRC_DIR)/tests.cpp \
+	$(SRC_DIR)/Account.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

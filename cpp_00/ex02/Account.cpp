@@ -11,15 +11,16 @@
 /* ************************************************************************** */
 
 #include "Account.hpp"
+#include <iostream>
 
 Account::Account(int initial_deposit)
 {
-
+    (void) initial_deposit;
 }
 
 Account::~Account(void)
 {
-
+    std::cout << "closed" << std::endl;
 }
 
 int Account::getNbAccounts(void)
@@ -47,3 +48,19 @@ void Account::displayAccountsInfos(void)
  
 }
 
+
+void	Account::makeDeposit(int deposit)
+{
+    (void) deposit;
+}
+
+bool	Account::makeWithdrawal( int withdrawal )
+{
+    (void) withdrawal;
+    return (true);
+}
+
+void	Account::displayStatus( void ) const
+{
+
+}
