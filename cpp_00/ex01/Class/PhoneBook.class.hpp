@@ -23,7 +23,7 @@ class PhoneBook
         PhoneBook(void);
         PhoneBook(PhoneBook const &src);
         PhoneBook &operator=(PhoneBook const &rhs);
-        virtual ~PhoneBook(void);
+        ~PhoneBook(void);
 
         void	add(void);
         void	search(void) const;
