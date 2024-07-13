@@ -21,12 +21,11 @@ int Account::_totalNbWithdrawals;
 
 Account::Account(int initial_deposit)
     : _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0)
-{
-    (void) initial_deposit;
+{    
     this->_amount += initial_deposit;
     _totalAmount += initial_deposit; 
+    _accountIndex =_nbAccounts++; 
     _displayTimestamp();
-    _accountIndex =_nbAccounts++;
     std::cout << "index:" << _accountIndex << ';';
     std::cout << "amount:" << _amount << ';';    
     std::cout << "created" << std::endl;
@@ -71,6 +70,7 @@ void Account::displayAccountsInfos(void)
 
 void	Account::_displayTimestamp(void)
 {
+    // std::cout << "[19920104_091532] ";
     char buffer[100];
     std::time_t now = std::time(NULL);
     std::tm* localTime = std::localtime(&now);
@@ -90,22 +90,28 @@ void	Account::makeDeposit(int deposit)
     this->_amount += deposit;
     _totalAmount += deposit;
     std::cout << "amount:" << _amount << ';';
-    std::cout << "nb_deposit:" << _nbDeposits << std::endl;
+    std::cout << "nb_deposits:" << _nbDeposits << std::endl;
 }
 
 int		Account::checkAmount( void ) const
 {
-    return (this->_amount >= 0);
+    return (this->_amount);
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
 {
+    _displayTimestamp();
     std::cout << "index:" << _accountIndex << ';';
+    std::cout << "p_amount:" << _amount << ';';
+    if (checkAmount() - withdrawal < 0)
+        return (std::cout << "withdrawal:" << "refused" << std::endl, false);
+    std::cout << "withdrawal:" << withdrawal << ';';
     _totalAmount -= withdrawal;
-    _totalNbDeposits++;
     this->_amount -= withdrawal;
+    _totalNbWithdrawals++;
     this->_nbWithdrawals++;
-
+    std::cout << "amount:" << _amount << ';';
+    std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
     return (true);
 }
 
@@ -114,6 +120,6 @@ void	Account::displayStatus(void) const
     _displayTimestamp();
     std::cout << "index:" << _accountIndex << ';';
     std::cout << "amount:" << _amount << ';';
-    std::cout << "deposit:" << _nbDeposits << ';';
+    std::cout << "deposits:" << _nbDeposits << ';';
     std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
 }
