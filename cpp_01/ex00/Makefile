@@ -16,26 +16,48 @@ OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 all: intro $(NAME) 
 
-l: emoticon $(NAME) 
+l: design emoticon $(NAME) 
+
+TOG = 0
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR) $(X_HDR)
+	@if [ $(TOG) -eq 0 ]; then \
+		echo "\033[0;32m compiling...        🚀 "; \
+	fi;	
+	$(eval TOG=1)
 	@mkdir -p $(dir $@)
-	@echo "\033[0;32m compiling $(NAME) object $<...\033[0m" 🚀
 	@$(CXX) $(CFLAGS) $< -c -o $@
 
+# @mkdir -p $(dir $@)
+# @echo "\033[0;32m compiling $(NAME) object $<...\033[0m" 🚀
+# @$(CXX) $(CFLAGS) $< -c -o $@
+
 $(NAME) : $(OBJ)
-	@echo "\n\033[0;32m linking $(NAME) objects...\033[0m 🚀\n\n 💗 💎 💎 💗\n"
+	@echo -n "\033[?25l"
+	@$(MAKE) -s backline
+	@echo "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b compiled            ✅\033[0m"	
+	@sleep .2
+	@echo "\033[0;36m linking...          🚀 "
+	@sleep .2
+	@$(MAKE) -s backline
 	@$(CXX) $(OBJ) $(LDFLAGS) -o $@
+	@echo "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b linked              ☑️\n\033[0m"
+	@echo -n "\033[?25h"
 
 emoticon:
 	@echo "\n 💗 😀 😃 😍\n"
 	@mkdir -p $(OBJ_DIR)
-	
+
 newline: 
 	@echo ""
 
 backline: 
 	@echo "\033[A\033[A"
+
+design:
+	@echo "\033[0;32m"
+	@cat mfile_design
+	@echo "\033[0m"
 
 intro:
 	@echo -e "\033[?25l"
@@ -58,22 +80,23 @@ intro:
 		sleep .4; \
 	done
 	@sleep .4
-	@cat mfile_design
+	@$(MAKE) -s design
 	@$(MAKE) -s emoticon
 	@echo "\033[?25h"
 	@$(MAKE) -s backline
 
 clean:
-	@echo "\n cleanning $(NAME) objects 🧻"
+	@echo "\n ▫️  cleanning $(NAME) objects 🧻"
 #	@rm -f $(OBJ)
 	@rm -rf $(OBJ_DIR) 
 	@$(MAKE) -s newline	
 
-fclean: clean
+fclean: clean backline
 #@echo "\n cleanning $(NAME) objects 🧻"
 # @rm -f $(OBJ)
-	@echo " cleanning $(NAME) 🚽" 
+	@echo " ▫️  cleanning $(NAME) 🚽" 
 	@rm -f $(NAME)	
-# @$(MAKE) -s newline	
+	@$(MAKE) -s newline
+	@$(MAKE) -s backline	
 
 re: fclean backline l
