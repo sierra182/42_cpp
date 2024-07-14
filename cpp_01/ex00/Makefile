@@ -3,17 +3,14 @@ CXX = c++
 
 HDR_DIR = .
 SRC_DIR = .
-
-CFLAGS = $(HDRFLAGS) -g -Wall -Wextra -Werror -std=c++98
+OBJ_DIR = objects
+CFLAGS = $(HDRFLAGS) -g #-Wall -Wextra -Werror -std=c++98
 LDFLAGS = 
 
-HDRFLAGS = -I$(SRC_DIR)/Class
-HDR =
-	
-
-SRC = $(wildcard $(SRC_DIR)/*.cpp)
-	
-OBJ = $(SRC:.cpp=.o)
+HDRFLAGS = #-I$(SRC_DIR)/dir1
+HDR = $(shell find . -name "*.hpp")
+SRC = $(shell find . -name "*.cpp" | sed 's|^\./||')
+OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 .PHONY: all clean fclean re intro l newline backline emoticon 
 
@@ -21,11 +18,12 @@ all: intro $(NAME)
 
 l: emoticon $(NAME) 
 
-$(SRC_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR) $(X_HDR)
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR) $(X_HDR)
+	@mkdir -p $(dir $@)
 	@echo "\033[0;32m compiling $(NAME) object $<...\033[0m" 🚀
 	@$(CXX) $(CFLAGS) $< -c -o $@
 
-$(NAME) : $(OBJ) 
+$(NAME) : $(OBJ)
 	@echo "\n\033[0;32m linking $(NAME) objects...\033[0m 🚀\n\n 💗 💎 💎 💗\n"
 	@$(CXX) $(OBJ) $(LDFLAGS) -o $@
 
@@ -66,14 +64,15 @@ intro:
 
 clean:
 	@echo "\n cleanning $(NAME) objects 🧻"
-	@rm -f $(OBJ)
+#	@rm -f $(OBJ)
+	@rm -rf $(OBJ_DIR)/* 
 	@$(MAKE) -s newline	
 
-fclean:
-	@echo "\n cleanning $(NAME) objects 🧻"
-	@rm -f $(OBJ)
+fclean: clean
+#@echo "\n cleanning $(NAME) objects 🧻"
+# @rm -f $(OBJ)
 	@echo " cleanning $(NAME) 🚽" 
 	@rm -f $(NAME)	
-	@$(MAKE) -s newline	
+# @$(MAKE) -s newline	
 
 re: fclean backline l

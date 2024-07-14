@@ -1,6 +1,7 @@
-struct te
+int quoi ();
+class te
 {
-    // public:
+    public:
     int myint;
     // te(int truc);
     // te(int truc)
@@ -14,6 +15,8 @@ struct te
 
 int main()
 {
+    quoi();
     te t;
     std::cout << t.myint << std::endl ;
+    std::cout << "and now ..." << std::endl;
 }
