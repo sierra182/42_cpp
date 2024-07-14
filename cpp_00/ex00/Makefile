@@ -13,7 +13,7 @@ HDR =
 OBJ = $(SRC:.cpp=.o)
 
 SRC = \
-	$(SRC_DIR)/main.cpp \
+	$(SRC_DIR)/megaphone.cpp \
 
 .PHONY: all clean fclean re intro l newline backline emoticon 
 

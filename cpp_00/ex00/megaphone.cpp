@@ -23,9 +23,7 @@ int main(int argc, char *argv[])
 	{
 		std::string str = *argv; 
 		for (std::string::iterator it = str.begin(); it != str.end(); it++)
-			std::cout << static_cast<char>(std::toupper(*it));
-		if (*(argv + 1))
-			std::cout << " ";
+			std::cout << static_cast<char>(std::toupper(*it));	
 	}
 	std::cout << std::endl;
 	return (0);
