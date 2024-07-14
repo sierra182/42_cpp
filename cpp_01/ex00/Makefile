@@ -29,7 +29,8 @@ $(NAME) : $(OBJ)
 
 emoticon:
 	@echo "\n 💗 😀 😃 😍\n"
-
+	@mkdir -p $(OBJ_DIR)
+	
 newline: 
 	@echo ""
 
@@ -65,7 +66,7 @@ intro:
 clean:
 	@echo "\n cleanning $(NAME) objects 🧻"
 #	@rm -f $(OBJ)
-	@rm -rf $(OBJ_DIR)/* 
+	@rm -rf $(OBJ_DIR) 
 	@$(MAKE) -s newline	
 
 fclean: clean
