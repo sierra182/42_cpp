@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:48:36 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/15 15:59:06 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/15 16:44:40 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 Zombie::Zombie( void )
 {
-  
+    return ;
 }
 
 Zombie::Zombie( std::string name ) : _name(name)
 {
-    //  std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-     Zombie::announce();
+    return ;
 }
 
 Zombie::~Zombie( void )
