@@ -1,4 +1,4 @@
-NAME = Account
+NAME = Brainz
 CXX = c++
 
 HDR_DIR = .
@@ -97,6 +97,6 @@ fclean: clean backline
 	@echo " ▫️  cleanning $(NAME) 🚽" 
 	@rm -f $(NAME)	
 	@$(MAKE) -s newline
-	@$(MAKE) -s backline	
+# @$(MAKE) -s backline	
 
 re: fclean backline l
