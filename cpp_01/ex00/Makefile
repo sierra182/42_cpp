@@ -7,7 +7,7 @@ OBJ_DIR = objects
 CFLAGS = $(HDRFLAGS) -g -Wall -Wextra -Werror -std=c++98
 LDFLAGS = 
 
-HDRFLAGS = #-I$(SRC_DIR)/dir1
+HDRFLAGS = 
 HDR = $(shell find . -name "*.hpp")
 SRC = $(shell find . -name "*.cpp" | sed 's|^\./||')
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
@@ -27,10 +27,6 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR) $(X_HDR)
 	$(eval TOG=1)
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CFLAGS) $< -c -o $@
-
-# @mkdir -p $(dir $@)
-# @echo "\033[0;32m compiling $(NAME) object $<...\033[0m" 🚀
-# @$(CXX) $(CFLAGS) $< -c -o $@
 
 $(NAME) : $(OBJ)
 	@echo -n "\033[?25l"
@@ -87,16 +83,12 @@ intro:
 
 clean:
 	@echo "\n ▫️  cleanning $(NAME) objects 🧻"
-#	@rm -f $(OBJ)
 	@rm -rf $(OBJ_DIR) 
 	@$(MAKE) -s newline	
 
-fclean: clean backline
-#@echo "\n cleanning $(NAME) objects 🧻"
-# @rm -f $(OBJ)
-	@echo " ▫️  cleanning $(NAME) 🚽" 
+fclean:
+	@echo "\n ▫️  cleanning $(NAME) 🚽" 
 	@rm -f $(NAME)	
-	@$(MAKE) -s newline
-# @$(MAKE) -s backline	
+	@$(MAKE) -s clean	
 
 re: fclean backline l
