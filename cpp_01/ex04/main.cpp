@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:20:12 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/16 16:19:13 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/16 16:34:02 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 	{
 		std::cout << line << std::endl;
 		size_t finded;
-		if ((finded = line.find(s1)) != std::string::npos)
+		while ((finded = line.find(s1)) != std::string::npos)
 		{
 			line.erase(finded, s1.length());
 			line.insert(finded, s2);
