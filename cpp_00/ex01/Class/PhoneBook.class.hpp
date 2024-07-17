@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:23:21 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 14:20:50 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/17 14:06:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class PhoneBook
         PhoneBook(void);
         PhoneBook(PhoneBook const &src);
         PhoneBook &operator=(PhoneBook const &rhs);
-        ~PhoneBook(void);
+        virtual ~PhoneBook(void);
 
         void	add(void);
         void	search(void) const;
