@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:36 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/17 17:07:44 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/17 23:00:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 #include <iostream>
 
 int	main ( void )
-{
-	Fixed fixed;
-	fixed.setRawBits(9);
-	std::cout << "1: " << fixed.getRawBits() << std::endl;
-	Fixed fixed_cpy(fixed);
-	std::cout << "2: " << fixed_cpy.getRawBits() << std::endl;
-	Fixed fixed_ass;
-	fixed_ass = fixed_cpy;	
-	std::cout << fixed_ass.getRawBits() << std::endl;
-	Fixed fixed_ass_ch;
-	fixed_ass_ch = fixed_cpy = fixed;
-	std::cout << fixed_ass_ch.getRawBits() << std::endl;
+{	
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+	
+	c = b;
+	
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	
 	return (0);
 }

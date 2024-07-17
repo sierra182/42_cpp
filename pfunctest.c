@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 07:04:26 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/17 09:18:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/17 20:01:38 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,18 @@ void test(int (*f) (char *, int))
 	f("yo", 17);
 }
 
+#include <unistd.h>
 int main (void)
 {
-	func("c", 42);
-	test(func);
-	int (*arr[2]) (char *, int);
-	mi mis[2];
-	arr[0] = &func;
-	arr[1] = func;
-	mis[0] = func, mis[1] = func; 
-	mis[1]("mis", 12), (*arr[1])("arr", 15);
+	write (1, "test\n", 5);
+	write(1, "\n", 1);
+	// func("c", 42);
+	// test(func);
+	// int (*arr[2]) (char *, int);
+	// mi mis[2];
+	// arr[0] = &func;
+	// arr[1] = func;
+	// mis[0] = func, mis[1] = func; 
+	// mis[1]("mis", 12), (*arr[1])("arr", 15);
 	return (0);
 }
