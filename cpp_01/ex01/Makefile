@@ -1,4 +1,4 @@
-NAME = Moar_Brainz
+NAME = moarBrainz
 CXX = c++
 
 HDR_DIR = .

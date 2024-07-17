@@ -1,4 +1,4 @@
-NAME = Brainz
+NAME = brainz
 CXX = c++
 
 HDR_DIR = .

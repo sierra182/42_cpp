@@ -1,4 +1,4 @@
-NAME = unnecessaryViolence
+NAME = harlFilter
 CXX = c++
 
 HDR_DIR = .

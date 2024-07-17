@@ -1,4 +1,4 @@
-NAME = Hi_this_is_brain
+NAME = hiThisIsBrain
 CXX = c++
 
 HDR_DIR = .

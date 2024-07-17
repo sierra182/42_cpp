@@ -1,4 +1,4 @@
-NAME = Harl_2.0
+NAME = harl2.0
 CXX = c++
 
 HDR_DIR = .
