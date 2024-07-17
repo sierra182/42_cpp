@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:39 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/17 15:29:24 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/17 17:13:15 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ class Fixed
 	public:
 	
 		Fixed( void );
-		~Fixed( void );
+		virtual ~Fixed( void );
 		
 		Fixed( Fixed const & src );
-		// Fixed operator=( Fixed const & rhs );
-		
-		
+		Fixed& operator=( Fixed const & rhs );
+				
 		int		getRawBits ( void ) const;
 		void	setRawBits ( int const raw );
 		
