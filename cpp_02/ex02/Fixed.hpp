@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:39 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 20:11:03 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 20:16:08 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,18 @@ class Fixed
 		Fixed 	operator++( int );
 		Fixed &	operator--( void );
 		Fixed 	operator--( int );
+		
 		Fixed 	operator>( int );
 		Fixed 	operator<( int );
 		Fixed 	operator>=( int );
 		Fixed 	operator<=( int );
+		
 		Fixed 	operator==( int );
 		Fixed 	operator!=( int );
+		
+		Fixed 	operator+( int );
+		Fixed 	operator-( int );
+		Fixed 	operator/( int );
 		
 		static Fixed const & max( const Fixed & a, const Fixed & b);
 	
