@@ -6,11 +6,12 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:39 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 08:28:35 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 09:06:14 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <ostream>
 
 class Fixed
 {
@@ -36,4 +37,4 @@ class Fixed
 		static const int	_bit = 8;		
 };
 
-//!
+std::ostream & operator<<( std::ostream & os, Fixed const & rhs );

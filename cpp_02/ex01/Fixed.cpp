@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:43 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 08:40:04 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 09:07:59 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,10 @@ int		Fixed::toInt( void ) const
 {
 
 	return (0);
+}
+
+std::ostream & operator<<( std::ostream & os, Fixed const & rhs )
+{
+	os << rhs.getRawBits();
+	return (os);
 }
