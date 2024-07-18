@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:39 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 09:06:14 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 14:01:24 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ class Fixed
 		Fixed( float const nbr);
 		Fixed& operator=( Fixed const & rhs );
 				
-		int		getRawBits ( void ) const;
-		void	setRawBits ( int const raw );
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 		
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
-		
+				
 	private:
 	
 		int					_value;
