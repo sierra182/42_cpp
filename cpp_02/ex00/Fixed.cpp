@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:43 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/17 22:54:42 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/17 23:03:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ Fixed::Fixed( Fixed const & src )
 Fixed&	Fixed::operator=( Fixed const & rhs )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this->getRawBits() != rhs._value)
-		this->_value = rhs._value;
+	if (this->getRawBits() != rhs._value)		
+		this->_value = rhs._value;	
 	return (*this);
 }
 
