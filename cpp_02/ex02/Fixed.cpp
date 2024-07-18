@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:43 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 19:58:14 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 21:34:59 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,6 @@ std::ostream & operator<<( std::ostream & os, Fixed const & rhs )
 	return (os);
 }
 
-Fixed	Fixed::operator*(Fixed const & rhs) const
-{
-	return (Fixed(this->toFloat() * rhs.toFloat()));
-}
-
 Fixed &	Fixed::operator++( void )
 {
 	this->_value++;
@@ -109,7 +104,72 @@ Fixed 	Fixed::operator--( int )
 	return (fixed);
 }
 
-Fixed const & Fixed::max( Fixed const & a, Fixed const & b)
+Fixed const & Fixed::max( Fixed const & a, Fixed const & b )
 {
 	return ( a._value > b._value ? a : b );
+}
+
+Fixed & Fixed::max( Fixed & a, Fixed & b )
+{
+	return ( a._value > b._value ? a : b );
+}
+
+Fixed const & Fixed::min( Fixed const & a, Fixed const & b )
+{
+	return ( a._value < b._value ? a : b );
+}
+
+Fixed & Fixed::min( Fixed & a, Fixed & b)
+{
+	return ( a._value < b._value ? a : b );
+}
+
+int	Fixed::operator>( Fixed const & rhs ) const
+{
+	return (this->_value > rhs._value);
+}
+
+int	Fixed::operator<( Fixed const & rhs ) const
+{
+	return (this->_value < rhs._value);
+}
+
+int	Fixed::operator>=( Fixed const & rhs ) const
+{
+	return (this->_value >= rhs._value);
+}
+
+int	Fixed::operator<=( Fixed const & rhs ) const
+{
+	return (this->_value <= rhs._value);
+}	
+	
+int	Fixed::operator==( Fixed const & rhs ) const
+{
+	return (this->_value == rhs._value);
+}
+
+int	Fixed::operator!=( Fixed const & rhs ) const
+{
+	return (this->_value != rhs._value);
+}
+
+Fixed 	Fixed::operator+( Fixed const & rhs ) const
+{
+	return (Fixed(this->toFloat() + rhs.toFloat()));
+}
+
+Fixed 	Fixed::operator-( Fixed const & rhs ) const
+{
+	return (Fixed(this->toFloat() - rhs.toFloat()));
+}
+
+Fixed	Fixed::operator*(Fixed const & rhs) const
+{
+	return (Fixed(this->toFloat() * rhs.toFloat()));
+}
+
+Fixed 	Fixed::operator/( Fixed const & rhs ) const
+{
+	return (Fixed(this->toFloat() / rhs.toFloat()));
 }

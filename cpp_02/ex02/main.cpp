@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 08:30:00 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 20:08:08 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 21:39:23 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ int main( void )
 	std::cout << b << std::endl;
 	
 	std::cout << Fixed::max( a, b ) << std::endl;
-	//! min ??
 	
-	std::cout << --a << std::endl;
-	std::cout << a-- << std::endl;
+	// std::cout << --a << std::endl;
+	// std::cout << a-- << std::endl;
+
+	//!test
+	//!parsing 24 bits
+	//!division par zero	
 	return 0;
 }

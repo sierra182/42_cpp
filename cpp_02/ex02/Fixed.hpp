@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:39 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 20:16:08 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 21:35:16 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,28 @@ class Fixed
 	
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
-
-		Fixed	operator*(Fixed const & rhs) const;
+		
 		Fixed &	operator++( void );
 		Fixed 	operator++( int );
 		Fixed &	operator--( void );
 		Fixed 	operator--( int );
+	
+		int	operator>( Fixed const & rhs ) const;
+		int	operator<( Fixed const & rhs ) const;
+		int	operator>=( Fixed const & rhs ) const;
+		int	operator<=( Fixed const & rhs ) const;		
+		int	operator==( Fixed const & rhs ) const;
+		int	operator!=( Fixed const & rhs ) const;
 		
-		Fixed 	operator>( int );
-		Fixed 	operator<( int );
-		Fixed 	operator>=( int );
-		Fixed 	operator<=( int );
+		Fixed 	operator+( Fixed const & rhs ) const;
+		Fixed 	operator-( Fixed const & rhs ) const;
+		Fixed	operator*( Fixed const & rhs ) const;
+		Fixed 	operator/( Fixed const & rhs ) const;
 		
-		Fixed 	operator==( int );
-		Fixed 	operator!=( int );
-		
-		Fixed 	operator+( int );
-		Fixed 	operator-( int );
-		Fixed 	operator/( int );
-		
-		static Fixed const & max( const Fixed & a, const Fixed & b);
+		static Fixed const & max( const Fixed & a, const Fixed & b );
+		static Fixed & max( Fixed & a, Fixed & b );
+		static Fixed const & min( const Fixed & a, const Fixed & b );
+		static Fixed & min( Fixed & a, Fixed & b );
 	
 	private:
 	

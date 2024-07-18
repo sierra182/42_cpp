@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:39 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/17 17:13:15 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 21:40:41 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ class Fixed
 	private:
 	
 		int					_value;
-		static const int	_bit = 8;
+		static const int	_bit = 8;		
 		
 };
