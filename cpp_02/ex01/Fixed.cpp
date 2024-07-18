@@ -6,12 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:43 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 15:24:07 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/18 17:25:26 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <cmath>
 
 Fixed::Fixed()
 {
@@ -37,15 +38,11 @@ Fixed::Fixed( int const nbr )
 Fixed::Fixed( float const nbr )
 {
 	std::cout << "Float constructor called" << std::endl;
-
 	int n_int = static_cast<int> (nbr);
 	int dec = n_int << 8;	
-	int frac = (256 * (nbr - n_int)); //!roundf ????
-	std::cout << "FRAC" << frac << std::endl;	
-	std::cout << "FRAC" << frac << std::endl;
-	int masq = frac & 0xFF;
-	int res = masq + dec;
-	this->setRawBits(res);
+	float frac = 256 * (nbr - n_int);
+	frac = roundf(frac);
+	this->setRawBits(static_cast<int>(frac) + dec);	
 }
 Fixed&	Fixed::operator=( Fixed const & rhs )
 {
@@ -67,13 +64,13 @@ int Fixed::getRawBits( void ) const
 
 void Fixed::setRawBits( int const raw )
 {
-	this->_value = raw;
+	this->_value = raw;	
 }
 
 float	Fixed::toFloat( void ) const
 {
-	
-	return (0.0);
+	return ((static_cast<float>((this->getRawBits() & 0xFF) / 256.0f))
+		+ this->toInt());	
 }
 
 int		Fixed::toInt( void ) const
@@ -83,6 +80,6 @@ int		Fixed::toInt( void ) const
 
 std::ostream & operator<<( std::ostream & os, Fixed const & rhs )
 {
-	os << rhs.getRawBits();
+	os << rhs.toFloat();
 	return (os);
 }
