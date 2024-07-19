@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 07:32:07 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/19 17:07:04 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/19 17:10:47 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 
 bool are_same_sign(Fixed a, Fixed b, Fixed c)
 {
-	if (a < Fixed(0) && b < Fixed(0) && c < Fixed(0))
-		return true;
-	else if (a > Fixed(0) && b > Fixed(0) && c > Fixed(0))
-		return true;
-	return false;
-
+	return ((a < Fixed(0) && b < Fixed(0) && c < Fixed(0))
+		|| (a > Fixed(0) && b > Fixed(0) && c > Fixed(0)) ?
+		true : false);
 }
 
 bool	bsp( Point const a, Point const b, Point const c, Point const point )
@@ -37,7 +34,5 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point )
 	Point CP_vect = point - c;
 	Fixed C_cross_p = CA_vect * CP_vect;
 	
-	if (are_same_sign(A_cross_p, B_cross_p, C_cross_p)) 
-		return (true);
-	return (false);
+	return (are_same_sign(A_cross_p, B_cross_p, C_cross_p));	
 }
