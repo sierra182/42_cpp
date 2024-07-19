@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:39 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/19 09:47:07 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/19 12:42:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class Fixed
 		static Fixed & max( Fixed & a, Fixed & b );
 		static Fixed const & min( const Fixed & a, const Fixed & b );
 		static Fixed & min( Fixed & a, Fixed & b );
-	
+
 	private:
 	
 		int					_value;
