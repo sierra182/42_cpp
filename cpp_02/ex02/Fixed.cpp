@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:43 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/18 21:34:59 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/19 07:03:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,7 @@ Fixed	Fixed::operator*(Fixed const & rhs) const
 
 Fixed 	Fixed::operator/( Fixed const & rhs ) const
 {
-	return (Fixed(this->toFloat() / rhs.toFloat()));
+	if (rhs.toFloat())
+		return (Fixed(this->toFloat() / rhs.toFloat()));
+	else return (std::cout << "zero division detected" << std::endl,Fixed(0));
 }
