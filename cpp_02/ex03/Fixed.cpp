@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 12:44:43 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/19 07:03:49 by seblin           ###   ########.fr       */
+/*   Created: 2024/07/19 09:52:48 by seblin            #+#    #+#             */
+/*   Updated: 2024/07/19 09:52:59 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,32 +124,32 @@ Fixed & Fixed::min( Fixed & a, Fixed & b)
 	return ( a._value < b._value ? a : b );
 }
 
-int	Fixed::operator>( Fixed const & rhs ) const
+bool	Fixed::operator>( Fixed const & rhs ) const
 {
 	return (this->_value > rhs._value);
 }
 
-int	Fixed::operator<( Fixed const & rhs ) const
+bool	Fixed::operator<( Fixed const & rhs ) const
 {
 	return (this->_value < rhs._value);
 }
 
-int	Fixed::operator>=( Fixed const & rhs ) const
+bool	Fixed::operator>=( Fixed const & rhs ) const
 {
 	return (this->_value >= rhs._value);
 }
 
-int	Fixed::operator<=( Fixed const & rhs ) const
+bool	Fixed::operator<=( Fixed const & rhs ) const
 {
 	return (this->_value <= rhs._value);
 }	
 	
-int	Fixed::operator==( Fixed const & rhs ) const
+bool	Fixed::operator==( Fixed const & rhs ) const
 {
 	return (this->_value == rhs._value);
 }
 
-int	Fixed::operator!=( Fixed const & rhs ) const
+bool	Fixed::operator!=( Fixed const & rhs ) const
 {
 	return (this->_value != rhs._value);
 }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 07:32:18 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/19 09:42:46 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/19 09:48:36 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,4 @@ Point & Point::operator=( const Point & rhs )
 {
 	(void) rhs;
 	return (*this);
-}
-
-bool bsp( Point const a, Point const b, Point const c, Point const point)
-{
-	
 }
