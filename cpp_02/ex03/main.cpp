@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 08:30:00 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/19 22:43:30 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/19 22:47:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int main( void )
 	
 	std::cout << "a= " << a << std::endl;
 	std::cout << "b= " << b << std::endl;
-	std::cout << "c= " << c << std::endl << std::endl;	
+	std::cout << "c= " << c << std::endl
+		<< std::endl;
+		
 	{		
 		Point point(5, 2.5);
 		fire(a, b, c, point);
