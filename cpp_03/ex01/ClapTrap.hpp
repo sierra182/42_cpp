@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:55 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 15:49:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/20 18:04:00 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ class ClapTrap
 		void	takeDamage( unsigned int amount );
 		void	beRepaired( unsigned int amount );
 
+		const std::string	name;
+		int					hitPoint;
+		int					energyPoint;
+		int					attackDamage;
+		
 	private:
 		ClapTrap( void );
 		
-		std::string	_name;
-		int			_hitPoint;
-		int			_energyPoint;
-		int			_attackDamage;
 };

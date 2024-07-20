@@ -6,14 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:42 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 15:50:04 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/20 18:18:48 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #pragma once
 
-class ScavTrap : public ClapTrap
+class ScavTrap : ClapTrap
 {
 	public:
 		
@@ -26,5 +26,6 @@ class ScavTrap : public ClapTrap
 		
 	private:
 		
-		ScavTrap( void );		
+		ScavTrap( void );
+		void guardGate( void ) const;	
 };
