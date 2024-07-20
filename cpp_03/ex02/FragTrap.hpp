@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 07:35:37 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 18:53:22 by seblin           ###   ########.fr       */
+/*   Created: 2024/07/20 10:19:42 by seblin            #+#    #+#             */
+/*   Updated: 2024/07/20 19:02:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#pragma once
 
-int	main (void )
+class FragTrap : public ClapTrap
 {
-	ClapTrap trap("seb");
-	trap.attack("scavtrap");
-	trap.beRepaired(10);
-	trap.takeDamage(10);
+	public:
 		
-	ScavTrap scavtrap = ScavTrap("crapaud");
-	scavtrap.attack("trap");
-	scavtrap.beRepaired(10);
-	scavtrap.takeDamage(10);
-	
-	return (0);
-}
+		FragTrap( const std::string & name );
+		virtual ~FragTrap( void );
+		FragTrap( const FragTrap & src );
+		FragTrap & operator=( const FragTrap & rhs);
+				
+	private:
+		
+		FragTrap( void );
+		void highFivesGuy( void ) const;	
+};
