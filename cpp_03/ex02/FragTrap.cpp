@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 19:03:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/20 19:37:09 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ FragTrap::~FragTrap( void )
 	return ;
 }
 
-FragTrap::FragTrap( const std::string & name ) : ClapTrap(name)
+FragTrap::FragTrap( const std::string & _name ) : ClapTrap(_name)
 {	
 	std::cout << "FragTrap constructor called" << std::endl;
 	

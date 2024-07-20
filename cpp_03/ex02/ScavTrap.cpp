@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 18:59:42 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/20 19:36:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ScavTrap::~ScavTrap( void )
 	return ;
 }
 
-ScavTrap::ScavTrap( const std::string & name ) : ClapTrap(name)
+ScavTrap::ScavTrap( const std::string & _name ) : ClapTrap(_name)
 {	
 	std::cout << "ScavTrap constructor called" << std::endl;
 	
