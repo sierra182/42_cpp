@@ -1,4 +1,4 @@
-NAME = andOpen 
+NAME = andOpen
 CXX = c++
 
 HDR_DIR = .

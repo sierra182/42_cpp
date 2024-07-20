@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 08:54:59 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/20 10:02:09 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap( const std::string & name ) : _name(name)
 	
 	this->_hitPoint = 10;
 	this->_energyPoint = 10;
-	this->_attackDamage = 10;
+	this->_attackDamage = 0;
 }
 
 ClapTrap::~ClapTrap( void )
@@ -54,16 +54,21 @@ void ClapTrap::attack( const std::string & target )
 	std::cout << "ClapTrap " << this->_name << " attacks " << target
 		<< " causing " << this->_attackDamage << " points of damage!"
 		<< std::endl;
+	--this->_energyPoint;
+	//! find the other and take him damage of attack damage...
 }
 
 void	ClapTrap::takeDamage( unsigned int amount )
 {
 	std::cout << "ClapTrap " << this->_name << " takes damage"
 		<< " causing " << amount << " points of damage!" << std::endl;
+	this->_hitPoint -= amount;
 }
 void	ClapTrap::beRepaired( unsigned int amount )
 {
 	std::cout << "ClapTrap " << this->_name << " be repaired"
 		<< " causing " << amount << " points of reparation!"
 		<< std::endl;
+	this->_hitPoint += amount;
+	--this->_energyPoint;
 }
