@@ -6,31 +6,32 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 08:00:29 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 10:38:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 12:45:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 #include <iostream>
 
-DiamondTrap::DiamondTrap( void ): ClapTrap(name), FragTrap(name), ScavTrap(name)
+DiamondTrap::DiamondTrap( void ): ClapTrap(name),  ScavTrap(name), FragTrap(name)	
 {
 	return ;
 }
 
 DiamondTrap::DiamondTrap( const std::string & _name )
-	: ClapTrap(_name + "_clap_name"), FragTrap(_name), ScavTrap(_name),
+	: ClapTrap(_name + "_clap_name"), ScavTrap(_name), FragTrap(_name), 
 	name(_name)
 {
 	std::cout << "DiamondTrap constructor called" << std::endl;
-	
+	this->initEnergyPoint();
 	this->whoAmI();
 	return ;
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap & src )
-	: ClapTrap(src.name + "_clap_name"), FragTrap(src.name), ScavTrap(src.name)
-{
+	: ClapTrap(src.name + "_clap_name"), ScavTrap(src.name), FragTrap(src.name),
+	name(src.name)
+{	
 	*this = src;
 	return;
 }
@@ -55,5 +56,5 @@ DiamondTrap::~DiamondTrap( void )
 void	DiamondTrap::whoAmI( void ) const
 {
 	std::cout << "whoAmi? DiamondTrap name: " << this->name
-		<< " ClapTrap name: " << ClapTrap::name << std::endl;
+		<< " ClapTrap name: " << ClapTrap::name << ' ' << this->energyPoint << ' ' << this->attackDamage <<  ' ' << this->hitPoint << std::endl;
 }

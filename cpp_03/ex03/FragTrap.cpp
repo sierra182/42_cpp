@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 19:37:09 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 11:49:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ FragTrap & FragTrap::operator=( const FragTrap & rhs )
 		this->hitPoint = rhs.hitPoint;
 	return (*this);
 }
-
 
 void FragTrap::highFivesGuy( void ) const
 {

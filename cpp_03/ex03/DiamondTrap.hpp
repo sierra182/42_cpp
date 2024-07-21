@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 08:00:15 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 10:36:10 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 12:13:35 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap :  public ScavTrap, public FragTrap
 {
 	public:	
 
