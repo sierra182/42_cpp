@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 19:37:38 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 08:22:56 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ ClapTrap::ClapTrap( const std::string & _name ) : name(_name)
 ClapTrap::~ClapTrap( void )
 {
 	std::cout << "ClapTrap destructor called" << std::endl;
+	return ;
 }
 
 ClapTrap::ClapTrap( const ClapTrap & src ) :name(src.name)
