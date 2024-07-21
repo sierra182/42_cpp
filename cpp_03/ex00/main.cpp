@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:35:37 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 08:54:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:54:09 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 
 int	main (void )
 {
-	ClapTrap trap("seb");
-	trap.attack("test");
-	trap.beRepaired(10);
-	trap.takeDamage(10);
+	std::cout << std::endl;
+	
+	ClapTrap clapTrap = ClapTrap("emma");	
+	clapTrap.attack("clara");
+	clapTrap.beRepaired(10);
+	clapTrap.takeDamage(10);	
+			
+	std::cout << std::endl;
 	return (0);
 }

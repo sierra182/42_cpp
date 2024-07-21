@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 08:23:15 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:50:28 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,28 @@ ClapTrap::ClapTrap( void )
 
 ClapTrap::ClapTrap( const std::string & name ) : _name(name)
 {
-	std::cout << "ClapTrap constructor called" << std::endl;
+	std::cout << CNS << "ClapTrap constructor called" << RST << std::endl;
 	
 	this->_hitPoint = 10;
 	this->_energyPoint = 10;
 	this->_attackDamage = 0;
+	this->displayStatus();
 }
 
 ClapTrap::~ClapTrap( void )
 {
-	std::cout << "ClapTrap destructor called" << std::endl;
+	std::cout << CNS << "ClapTrap destructor called" << RST << std::endl
+		<< std::endl;
+		
 	return ;
 }
 
 ClapTrap::ClapTrap( const ClapTrap & src ) :_name(src._name)
 {
-	std::cout << "ClapTrap copy constructor called" << std::endl;
+	std::cout << CNS << "ClapTrap copy constructor called" << RST << std::endl;
 
 	*this = src;
+	this->displayStatus();
 	return ;
 }
 ClapTrap & ClapTrap::operator=( const ClapTrap & rhs )
@@ -56,7 +60,6 @@ void ClapTrap::attack( const std::string & target )
 		<< " causing " << this->_attackDamage << " points of damage!"
 		<< std::endl;
 	--this->_energyPoint;
-	//! find the other and take him damage of attack damage...
 }
 
 void	ClapTrap::takeDamage( unsigned int amount )
@@ -72,4 +75,13 @@ void	ClapTrap::beRepaired( unsigned int amount )
 		<< std::endl;
 	this->_hitPoint += amount;
 	--this->_energyPoint;
+}
+
+void ClapTrap::displayStatus( void ) const
+{
+	std::cout << "   ***** "
+		<< this->_name << " > hit: " << this->_hitPoint 
+		<< " | nrj: " << this->_energyPoint
+		<< " | damage: " << this->_attackDamage
+		<< " *****" << std::endl << std::endl;
 }
