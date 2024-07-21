@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 13:00:41 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 16:41:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ ScavTrap::ScavTrap( void ) : ClapTrap(name)
 
 ScavTrap::~ScavTrap( void )
 {
-	std::cout << "ScavTrap Destructor called" << std::endl;
+	std::cout << CNS << "ScavTrap Destructor called" << RST << std::endl;
 	
 	return ;
 }
 
 ScavTrap::ScavTrap( const std::string & _name ) : ClapTrap(_name)
 {	
-	std::cout << "ScavTrap constructor called" << std::endl;
+	std::cout << CNS << "ScavTrap constructor called" << RST << std::endl;
 	
 	this->hitPoint = 100;
 	this->energyPoint = 50;
@@ -38,7 +38,8 @@ ScavTrap::ScavTrap( const std::string & _name ) : ClapTrap(_name)
 
 ScavTrap::ScavTrap( const ScavTrap & src ) : ClapTrap(src.name)
 {
-	std::cout << "ScavTrap copy constructor called" << std::endl;
+	std::cout << CNS << "ScavTrap copy constructor called"
+		<< RST << std::endl;
 	
 	*this = src;
 	this->guardGate();
@@ -59,7 +60,7 @@ ScavTrap & ScavTrap::operator=( const ScavTrap & rhs )
 
 void	ScavTrap::attack( const std::string & target )
 {	
-	std::cout << "ScavTrap Attack! " << this->name << " attacks " << target
+	std::cout << "ScavTrap " << this->name << " attacks " << target
 		<< " causing " << this->attackDamage << " points of damage!"
 		<< std::endl;
 	--this->energyPoint;
@@ -67,7 +68,8 @@ void	ScavTrap::attack( const std::string & target )
 
 void ScavTrap::guardGate( void ) const
 {
-	std::cout << "ScavTrap is in Gate keeper mode" << std::endl;
+	std::cout << "Special ScavTrap - guardGate - " << this->name
+		<<  " is in Gate keeper mode" << std::endl;
 }
 
 void ScavTrap::initEnergyPoint( int nrj )

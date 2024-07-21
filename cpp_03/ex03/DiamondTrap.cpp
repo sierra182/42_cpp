@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 08:00:29 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 12:45:22 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 16:47:34 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,30 @@ DiamondTrap::DiamondTrap( void ): ClapTrap(name),  ScavTrap(name), FragTrap(name
 	return ;
 }
 
+DiamondTrap::~DiamondTrap( void )
+{
+	std::cout << CNS << "DiamondTrap destructor called" << RST << std::endl;
+	return ;
+}
 DiamondTrap::DiamondTrap( const std::string & _name )
 	: ClapTrap(_name + "_clap_name"), ScavTrap(_name), FragTrap(_name), 
 	name(_name)
 {
-	std::cout << "DiamondTrap constructor called" << std::endl;
+	std::cout << CNS << "DiamondTrap constructor called" << RST << std::endl;
+	
 	this->initEnergyPoint();
 	this->whoAmI();
+	this->highFivesGuy();
+	this->guardGate();
 	return ;
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap & src )
 	: ClapTrap(src.name + "_clap_name"), ScavTrap(src.name), FragTrap(src.name),
 	name(src.name)
-{	
+{
+	std::cout << CNS << "DiamondTrap copy constructor called" << RST << std::endl;
+	
 	*this = src;
 	return;
 }
@@ -47,14 +57,8 @@ DiamondTrap & DiamondTrap::operator=( const DiamondTrap & rhs )
 	return (*this);
 }
 
-DiamondTrap::~DiamondTrap( void )
-{
-	std::cout << "DiamondTrap destructor called" << std::endl;
-	return ;
-}
-
 void	DiamondTrap::whoAmI( void ) const
 {
-	std::cout << "whoAmi? DiamondTrap name: " << this->name
-		<< " ClapTrap name: " << ClapTrap::name << ' ' << this->energyPoint << ' ' << this->attackDamage <<  ' ' << this->hitPoint << std::endl;
+	std::cout << "Special Diamond - whoAmi? - DiamondTrap name: " << this->name
+		<< " | ClapTrap name: " << ClapTrap::name << ' ' << std::endl;
 }

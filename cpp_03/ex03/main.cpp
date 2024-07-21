@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:35:37 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 14:28:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 16:56:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,14 @@
 
 int	main (void )
 {
-	ClapTrap trap("seb");
-	trap.attack("scavtrap");
-	trap.beRepaired(10);
-	trap.takeDamage(10);
-	
-	// std::cout << std::endl;
-	
-	// ScavTrap scavtrap = ScavTrap("crapaud");
-	// scavtrap.attack("trap");
-	// scavtrap.beRepaired(10);
-	// scavtrap.takeDamage(10);
-
-	// std::cout << std::endl;
-
-	// FragTrap fragtrap = FragTrap("froggy");
-	// fragtrap.attack("crapaud");
-	// fragtrap.beRepaired(10);
-	// fragtrap.takeDamage(10);
-
 	std::cout << std::endl;
-
-	// DiamondTrap diamondTrap = DiamondTrap("froggy");
-	// diamondTrap.attack("seb");
-	// diamondTrap.beRepaired(10);
-	// diamondTrap.takeDamage(10);
+	DiamondTrap diamondTrap = DiamondTrap("clara");
+	
+	std::cout << std::endl;
+	diamondTrap.attack("katsuni");
+	diamondTrap.beRepaired(10);
+	diamondTrap.takeDamage(10);
+	std::cout << std::endl;
 	
 	return (0);
 }
