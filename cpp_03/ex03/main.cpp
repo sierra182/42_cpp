@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:35:37 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 10:27:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 14:28:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 int	main (void )
 {
-	// ClapTrap trap("seb");
-	// trap.attack("scavtrap");
-	// trap.beRepaired(10);
-	// trap.takeDamage(10);
+	ClapTrap trap("seb");
+	trap.attack("scavtrap");
+	trap.beRepaired(10);
+	trap.takeDamage(10);
 	
 	// std::cout << std::endl;
 	
@@ -39,10 +39,10 @@ int	main (void )
 
 	std::cout << std::endl;
 
-	DiamondTrap diamondTrap = DiamondTrap("froggy");
-	diamondTrap.attack("seb");
-	diamondTrap.beRepaired(10);
-	diamondTrap.takeDamage(10);
+	// DiamondTrap diamondTrap = DiamondTrap("froggy");
+	// diamondTrap.attack("seb");
+	// diamondTrap.beRepaired(10);
+	// diamondTrap.takeDamage(10);
 	
 	return (0);
 }
