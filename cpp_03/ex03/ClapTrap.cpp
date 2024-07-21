@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 17:03:25 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:23:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ ClapTrap::ClapTrap( const std::string & _name ) : name(_name)
 	this->hitPoint = 10;
 	this->energyPoint = 10;
 	this->attackDamage = 0;
+	this->displayStatus();
 }
 
 ClapTrap::~ClapTrap( void )
@@ -39,6 +40,7 @@ ClapTrap::ClapTrap( const ClapTrap & src ) :name(src.name)
 	std::cout << CNS << "ClapTrap copy constructor called" << RST << std::endl;
 
 	*this = src;
+	this->displayStatus();
 	return ;
 }
 ClapTrap & ClapTrap::operator=( const ClapTrap & rhs )
@@ -78,9 +80,9 @@ void	ClapTrap::beRepaired( unsigned int amount )
 
 void ClapTrap::displayStatus( void ) const
 {
-	std::cout << "\033[38m"
-	<< this->name << " hit: " << this->hitPoint
-	<< this->name << " nrj: " << this->energyPoint
-	<< this->name << " damage: " << this->attackDamage
-	<< RST << std::endl;
+	std::cout << "  ***** "
+	<< this->name << " > hit: " << this->hitPoint 
+	<< " | nrj: " << this->energyPoint
+	<< " | damage: " << this->attackDamage
+	<< " *****" << std::endl << std::endl;
 }

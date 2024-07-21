@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 16:41:32 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:21:24 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ ScavTrap::ScavTrap( const std::string & _name ) : ClapTrap(_name)
 	
 	this->hitPoint = 100;
 	this->energyPoint = 50;
-	this->attackDamage = 20;
-	this->guardGate();
+	this->attackDamage = 20;	
 	this->initEnergyPoint(this->energyPoint);
+	this->displayStatus();
 	return ;
 }
 
