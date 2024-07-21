@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 17:26:56 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:34:17 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	ClapTrap::beRepaired( unsigned int amount )
 void ClapTrap::displayStatus( void ) const
 {
 	std::cout << "   ***** "
-	<< this->name << " > hit: " << this->hitPoint 
-	<< " | nrj: " << this->energyPoint
-	<< " | damage: " << this->attackDamage
-	<< " *****" << std::endl << std::endl;
+		<< this->name << " > hit: " << this->hitPoint 
+		<< " | nrj: " << this->energyPoint
+		<< " | damage: " << this->attackDamage
+		<< " *****" << std::endl << std::endl;
 }

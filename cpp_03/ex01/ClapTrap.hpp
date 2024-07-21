@@ -6,12 +6,15 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:55 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 07:47:32 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:26:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+
+#define CNS "\033[32m"
+#define RST "\033[0m"
 
 class ClapTrap
 {
@@ -27,6 +30,8 @@ class ClapTrap
 		void	takeDamage( unsigned int amount );
 		void	beRepaired( unsigned int amount );
 	
+		void	displayStatus( void ) const;
+		
 	protected:
 	
 		const std::string	name;
@@ -35,6 +40,6 @@ class ClapTrap
 		int					attackDamage;
 		
 	private:
-		ClapTrap( void );
-		
+	
+		ClapTrap( void );		
 };

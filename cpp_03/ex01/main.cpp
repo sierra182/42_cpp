@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:35:37 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 18:53:22 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:31:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 #include "ScavTrap.hpp"
 
 int	main (void )
-{
-	ClapTrap trap("seb");
-	trap.attack("scavtrap");
-	trap.beRepaired(10);
-	trap.takeDamage(10);
-		
-	ScavTrap scavtrap = ScavTrap("crapaud");
-	scavtrap.attack("trap");
-	scavtrap.beRepaired(10);
-	scavtrap.takeDamage(10);
+{	
+	std::cout << std::endl;
 	
+	ScavTrap scavTrap = ScavTrap("mia");	
+	scavTrap.attack("clara");
+	scavTrap.beRepaired(10);
+	scavTrap.takeDamage(10);
+	std::cout << std::endl;	
+	scavTrap.guardGate();
+			
+	std::cout << std::endl;	
 	return (0);
 }

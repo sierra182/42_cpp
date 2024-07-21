@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 12:42:11 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:08:51 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,29 @@ ScavTrap::ScavTrap( void ) : ClapTrap(name)
 
 ScavTrap::~ScavTrap( void )
 {
-	std::cout << "ScavTrap Destructor called" << std::endl;
+	std::cout << CNS << "ScavTrap destructor called" << RST << std::endl;
 	
 	return ;
 }
 
 ScavTrap::ScavTrap( const std::string & _name ) : ClapTrap(_name)
 {	
-	std::cout << "ScavTrap constructor called" << std::endl;
+	std::cout << CNS << "ScavTrap constructor called" << RST << std::endl;
 	
 	this->hitPoint = 100;
 	this->energyPoint = 50;
 	this->attackDamage = 20;
-	this->guardGate();
+	this->displayStatus();
 	return ;
 }
 
 ScavTrap::ScavTrap( const ScavTrap & src ) : ClapTrap(src.name)
 {
-	std::cout << "ScavTrap copy constructor called" << std::endl;
+	std::cout << CNS << "ScavTrap copy constructor called"
+		<< RST << std::endl;
 	
 	*this = src;
-	this->guardGate();
+	this->displayStatus();
 	return ;
 }
 
@@ -57,7 +58,7 @@ ScavTrap & ScavTrap::operator=( const ScavTrap & rhs )
 
 void	ScavTrap::attack( const std::string & target )
 {	
-	std::cout << "ScavTrap Attack! " << this->name << " attacks " << target
+	std::cout << "ScavTrap " << this->name << " attacks " << target
 		<< " causing " << this->attackDamage << " points of damage!"
 		<< std::endl;
 	--this->energyPoint;
@@ -65,5 +66,6 @@ void	ScavTrap::attack( const std::string & target )
 
 void ScavTrap::guardGate( void ) const
 {
-	std::cout << "ScavTrap is in Gate keeper mode" << std::endl;
+	std::cout << "Special ScavTrap - guardGate - " << this->name
+		<<  " is in Gate keeper mode" << std::endl;
 }

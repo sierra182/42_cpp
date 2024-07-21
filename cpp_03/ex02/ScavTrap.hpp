@@ -6,12 +6,15 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:42 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/20 18:52:04 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:01:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #pragma once
+
+#undef CNS
+#define CNS "\033[36m"
 
 class ScavTrap : public ClapTrap
 {
@@ -23,9 +26,9 @@ class ScavTrap : public ClapTrap
 		ScavTrap & operator=( const ScavTrap & rhs);
 		
 		void	attack( const std::string & target );
+		void	guardGate( void ) const;
 		
 	private:
 		
 		ScavTrap( void );
-		void guardGate( void ) const;	
 };
