@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 08:00:29 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 16:47:34 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:26:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ DiamondTrap::DiamondTrap( const std::string & _name )
 	std::cout << CNS << "DiamondTrap constructor called" << RST << std::endl;
 	
 	this->initEnergyPoint();
-	this->whoAmI();
-	this->highFivesGuy();
-	this->guardGate();
+	this->displayStatus();
 	return ;
 }
 
@@ -43,6 +41,7 @@ DiamondTrap::DiamondTrap( const DiamondTrap & src )
 	std::cout << CNS << "DiamondTrap copy constructor called" << RST << std::endl;
 	
 	*this = src;
+	this->displayStatus();
 	return;
 }
 

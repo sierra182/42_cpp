@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 08:00:15 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 16:26:16 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:32:08 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ class DiamondTrap :  public ScavTrap, public FragTrap
 		virtual ~DiamondTrap( void );
 		
 		using ScavTrap::attack;
+		void whoAmI( void ) const;
 		
 	private:
 	
 		const std::string name;
 		
 		DiamondTrap( void );
-		void whoAmI( void ) const;
 };

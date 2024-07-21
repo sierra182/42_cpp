@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 17:20:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:28:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ FragTrap::FragTrap( void ) : ClapTrap(name)
 
 FragTrap::~FragTrap( void )
 {
-	std::cout << CNS << "FragTrap Destructor called" << RST << std::endl;
+	std::cout << CNS << "FragTrap destructor called" << RST << std::endl;
 	
 	return ;
 }
@@ -40,7 +40,7 @@ FragTrap::FragTrap( const FragTrap & src ) : ClapTrap(src.name)
 	std::cout << CNS << "FragTrap copy constructor called" << RST << std::endl;
 	
 	*this = src;
-	this->highFivesGuy();
+	this->displayStatus();
 	return ;
 }
 

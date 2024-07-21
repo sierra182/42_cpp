@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 17:21:24 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:28:10 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ScavTrap::ScavTrap( void ) : ClapTrap(name)
 
 ScavTrap::~ScavTrap( void )
 {
-	std::cout << CNS << "ScavTrap Destructor called" << RST << std::endl;
+	std::cout << CNS << "ScavTrap destructor called" << RST << std::endl;
 	
 	return ;
 }
@@ -42,8 +42,8 @@ ScavTrap::ScavTrap( const ScavTrap & src ) : ClapTrap(src.name)
 		<< RST << std::endl;
 	
 	*this = src;
-	this->guardGate();
 	this->initEnergyPoint(this->energyPoint);
+	this->displayStatus();
 	return ;
 }
 

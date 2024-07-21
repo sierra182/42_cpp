@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:42 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 16:25:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:32:40 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ class FragTrap : virtual public ClapTrap
 		FragTrap( const FragTrap & src );
 		FragTrap & operator=( const FragTrap & rhs);
 
-	protected:
-	
 		void highFivesGuy( void ) const;	
-			
+				
 	private:
 		
 		FragTrap( void );

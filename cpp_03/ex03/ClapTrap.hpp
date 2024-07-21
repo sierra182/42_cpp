@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:55 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 17:00:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:32:54 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ class ClapTrap
 		
 	private:
 	
-		ClapTrap( void );
-		
+		ClapTrap( void );		
 };
