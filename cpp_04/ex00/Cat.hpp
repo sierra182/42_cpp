@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:49:30 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 15:26:12 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 16:08:21 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ class Cat : public Animal
         Cat( const Cat & src );
         Cat & operator=( const Cat & rhs );
 
-        void makeSound ( void ) const;
+        virtual void makeSound ( void ) const;
 };

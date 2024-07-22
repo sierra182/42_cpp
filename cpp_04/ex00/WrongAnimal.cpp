@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 15:36:07 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 16:21:20 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 WrongAnimal::WrongAnimal( void )
 { 
-    std::cout << std::endl << CNS << "WrongAnimal constructor called"
+    std::cout << std::endl << CNS << " WrongAnimal constructor called"
         << RST << std::endl; 
       
     return ;
@@ -22,7 +22,7 @@ WrongAnimal::WrongAnimal( void )
 
 WrongAnimal::~WrongAnimal( void )
 {
-    std::cout << CNS << "WrongAnimal destructor called" << RST << std::endl
+    std::cout << CNS << " WrongAnimal destructor called" << RST << std::endl
         << std::endl;
      
     return ;
@@ -30,7 +30,7 @@ WrongAnimal::~WrongAnimal( void )
 
 WrongAnimal::WrongAnimal( const WrongAnimal & src )
 {
-    std::cout << CNS << "WrongAnimal copy constructor called" << RST
+    std::cout << CNS << " WrongAnimal copy constructor called" << RST
         << std::endl;
     
     *this = src;
@@ -51,5 +51,5 @@ WrongAnimal & WrongAnimal::operator=( const WrongAnimal & rhs )
 
  void   WrongAnimal::makeSound( void ) const
  {
-    std::cout << "i'm the wrong animal" << std::endl;    
+    std::cout << " I'm the wrong animal" << std::endl;    
  }

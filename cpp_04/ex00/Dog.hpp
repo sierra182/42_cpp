@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 15:25:58 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 16:08:28 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ class Dog : public Animal
         Dog( const Dog & src );
         Dog & operator=( const Dog & rhs );
 
-        void makeSound ( void ) const; 
+        virtual void makeSound ( void ) const; 
 };

@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 15:36:24 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 16:10:09 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Animal::Animal( void )
 { 
-    std::cout << std::endl << CNS << "Animal constructor called"
+    std::cout << std::endl << CNS << " Animal constructor called"
         << RST << std::endl;   
    
     return ;
@@ -22,14 +22,14 @@ Animal::Animal( void )
 
 Animal::~Animal( void )
 {
-    std::cout << CNS << "Animal destructor called" << RST << std::endl 
+    std::cout << CNS << " Animal destructor called" << RST << std::endl 
         << std::endl;
     return ;
 }
 
 Animal::Animal( const Animal & src )
 {
-    std::cout << CNS << "Animal copy constructor called" << RST << std::endl; 
+    std::cout << CNS << " Animal copy constructor called" << RST << std::endl; 
      
     *this = src;
     return ;
@@ -49,5 +49,5 @@ Animal & Animal::operator=( const Animal & rhs )
 
  void   Animal::makeSound( void ) const
  {
-    std::cout << "i'm an animal" << std::endl;    
+    std::cout << " I'm an animal" << std::endl;    
  }
