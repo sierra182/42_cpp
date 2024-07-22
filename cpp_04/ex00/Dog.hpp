@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:03:34 by svidot           ###   ########.fr       */
+/*   Created: 2024/07/22 12:52:57 by svidot            #+#    #+#             */
+/*   Updated: 2024/07/22 12:59:52 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#pragma once
 #include "Animal.hpp"
 
-int main( void )
+class Dog : Animal
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
-    return (0);
-}
+    public:
+        
+        Dog( void );
+        virtual ~Dog( void );
+        Dog( const Dog & src );
+        Dog & operator=( const Dog & rhs );
+
+    private:
+};
