@@ -6,14 +6,14 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:49:30 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 12:59:43 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 13:46:28 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Animal.hpp"
 
-class Cat : Animal
+class Cat : public Animal
 {
     public:
         
@@ -21,4 +21,6 @@ class Cat : Animal
         virtual ~Cat ( void );
         Cat( const Cat & src );
         Cat & operator=( const Cat & rhs );
+
+        void makeSound ( void ) const;
 };

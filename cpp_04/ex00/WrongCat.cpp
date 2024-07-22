@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:43:34 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 14:03:51 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat( void )
+WrongCat::WrongCat( void )
 {
-    this->type = "cat";
+    this->type = "wrongcat";
     return ;
 }
 
-Cat::~Cat( void )
+WrongCat::~WrongCat( void )
 {
     return ;
 }
 
-Cat::Cat( const Cat & src )
+WrongCat::WrongCat( const WrongCat & src )
 {
     *this = src;
     return ;
 }
 
-Cat & Cat::operator=( const Cat & rhs )
+WrongCat & WrongCat::operator=( const WrongCat & rhs )
 {
     if (this->type != rhs.type)
         this->type = rhs.type;    
     return (*this);
 }
 
-void   Cat::makeSound( void ) const
+void   WrongCat::makeSound( void ) const
  {
     std::cout << "miaow" << std::endl;    
  }

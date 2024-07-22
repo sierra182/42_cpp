@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:43:34 by svidot           ###   ########.fr       */
+/*   Created: 2024/07/22 12:49:30 by svidot            #+#    #+#             */
+/*   Updated: 2024/07/22 14:04:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#pragma once
+#include "WrongAnimal.hpp"
 
-Cat::Cat( void )
+class WrongCat : public WrongAnimal
 {
-    this->type = "cat";
-    return ;
-}
+    public:
+        
+        WrongCat( void );
+        virtual ~WrongCat ( void );
+        WrongCat( const WrongCat & src );
+        WrongCat & operator=( const WrongCat & rhs );
 
-Cat::~Cat( void )
-{
-    return ;
-}
-
-Cat::Cat( const Cat & src )
-{
-    *this = src;
-    return ;
-}
-
-Cat & Cat::operator=( const Cat & rhs )
-{
-    if (this->type != rhs.type)
-        this->type = rhs.type;    
-    return (*this);
-}
-
-void   Cat::makeSound( void ) const
- {
-    std::cout << "miaow" << std::endl;    
- }
+        void makeSound ( void ) const;
+};

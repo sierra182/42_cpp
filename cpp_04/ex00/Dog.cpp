@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:20:00 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 13:44:01 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Dog::Dog ( void )
 {
+    this->type = "dog";
     return ;
 }
 
@@ -34,3 +35,8 @@ Dog & Dog::operator=( const Dog & rhs )
         this->type = rhs.type;
     return (*this);   
 }
+
+void   Dog::makeSound( void ) const
+ {
+    std::cout << "woaf" << std::endl;    
+ }
