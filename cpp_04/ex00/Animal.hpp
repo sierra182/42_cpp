@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:42:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:01:40 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 13:11:34 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Animal
         Animal( const Animal & src );
         Animal & operator=( const Animal & rhs );   
         
-        void    makeSound ( void );
+        void    makeSound ( void ) const;
         
     protected:
         
