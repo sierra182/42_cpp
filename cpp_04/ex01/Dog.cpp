@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 16:21:58 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 18:54:34 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog ( void )
+Dog::Dog ( void ) : Animal()
 {
     std::cout << CNS << " Dog constructor called" << RST << std::endl;
     
@@ -27,7 +27,7 @@ Dog::~Dog( void )
     return ;
 }
 
-Dog::Dog ( const Dog & src )
+Dog::Dog ( const Dog & src ) : Animal()
 {
     std::cout << CNS << " Dog copy constructor called" << RST << std::endl;
     

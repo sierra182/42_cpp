@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 17:02:45 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 18:50:30 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main( void )
         delete i, delete meta;
     }
     
-  std::cout << "   ///////////////-VAR TEST-///////////////" << std::endl;
+	std::cout << "   ///////////////-VAR TEST-///////////////" << std::endl;
     
     {
         const Animal meta = Animal();
@@ -72,7 +72,7 @@ int main( void )
         }
     }
 
-  std::cout << "   ///////////////-PTR TEST-///////////////" << std::endl;
+  	std::cout << "   ///////////////-PTR TEST-///////////////" << std::endl;
     
     {
         Animal meta = Animal();

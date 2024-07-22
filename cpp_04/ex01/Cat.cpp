@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 16:54:07 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 18:54:56 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat( void )
+Cat::Cat( void ) : Animal()
 {
     std::cout << CNS << " Cat constructor called" << RST << std::endl;
     
