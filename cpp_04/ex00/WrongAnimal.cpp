@@ -6,24 +6,33 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 14:27:19 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 15:36:07 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal( void )
-{    
+{ 
+    std::cout << std::endl << CNS << "WrongAnimal constructor called"
+        << RST << std::endl; 
+      
     return ;
 }
 
 WrongAnimal::~WrongAnimal( void )
 {
+    std::cout << CNS << "WrongAnimal destructor called" << RST << std::endl
+        << std::endl;
+     
     return ;
 }
 
 WrongAnimal::WrongAnimal( const WrongAnimal & src )
 {
+    std::cout << CNS << "WrongAnimal copy constructor called" << RST
+        << std::endl;
+    
     *this = src;
     return ;
 }

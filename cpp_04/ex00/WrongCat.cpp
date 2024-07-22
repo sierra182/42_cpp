@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 14:03:51 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 15:31:56 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,24 @@
 
 WrongCat::WrongCat( void )
 {
+    std::cout << CNS << "WrongCat constructor called" << RST << std::endl;
+
     this->type = "wrongcat";
     return ;
 }
 
 WrongCat::~WrongCat( void )
 {
+    std::cout << CNS << "WrongCat destructor called" << RST << std::endl;
+
     return ;
 }
 
 WrongCat::WrongCat( const WrongCat & src )
 {
+    std::cout << CNS << "WrongCat copy constructor called" << RST
+        << std::endl;
+
     *this = src;
     return ;
 }

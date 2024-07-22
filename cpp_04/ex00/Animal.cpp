@@ -6,24 +6,31 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:43:09 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 15:36:24 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
 Animal::Animal( void )
-{    
+{ 
+    std::cout << std::endl << CNS << "Animal constructor called"
+        << RST << std::endl;   
+   
     return ;
 }
 
 Animal::~Animal( void )
 {
+    std::cout << CNS << "Animal destructor called" << RST << std::endl 
+        << std::endl;
     return ;
 }
 
 Animal::Animal( const Animal & src )
 {
+    std::cout << CNS << "Animal copy constructor called" << RST << std::endl; 
+     
     *this = src;
     return ;
 }

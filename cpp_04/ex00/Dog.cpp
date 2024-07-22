@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:44:01 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 15:33:20 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 
 Dog::Dog ( void )
 {
+    std::cout << CNS << "Dog constructor called" << RST << std::endl;
+    
     this->type = "dog";
     return ;
 }
 
 Dog::~Dog( void )
 {
+    std::cout << CNS << "Dog destructor called" << RST << std::endl;
+    
     return ;
 }
 
 Dog::Dog ( const Dog & src )
 {
+    std::cout << CNS << "Dog copy constructor called" << RST << std::endl;
+    
     *this = src;
     return ;
 }

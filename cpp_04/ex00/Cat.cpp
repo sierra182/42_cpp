@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:43:34 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 15:27:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 
 Cat::Cat( void )
 {
+    std::cout << CNS << "Cat constructor called" << RST << std::endl;
+    
     this->type = "cat";
     return ;
 }
 
 Cat::~Cat( void )
 {
+    std::cout << CNS << "Cat desconstructor called" << RST << std::endl;
+    
     return ;
 }
 
 Cat::Cat( const Cat & src )
 {
+    std::cout << CNS << "Cat copy constructor called" << RST << std::endl;
+    
     *this = src;
     return ;
 }

@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 14:28:54 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 16:02:38 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,21 @@ int main( void )
     
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
+    std::cout << "\e[5m", i->makeSound(), std::cout << "\e[0m"; 
+    std::cout << "\e[5m", j->makeSound(), std::cout << "\e[0m";  
     meta->makeSound();
     
-    delete meta, delete j, delete i;
+    delete j, delete i, delete meta;
     
-    {
-        std::cout << std::endl;
+    {    
         const WrongAnimal* meta = new WrongAnimal();
         const WrongAnimal* i = new WrongCat();
             
-        std::cout << i->getType() << " " << std::endl;
-        i->makeSound(); //will output the cat sound!   
+        std::cout << i->getType() << " " << std::endl;           
+        std::cout << "\e[5m", i->makeSound(), std::cout << "\e[0m";
         meta->makeSound();
-    
         delete meta, delete i;
     }   
-    //! Ajouter les messages const dest
+    //! Ajouter les messages const dest et more test!
     return (0);
 }

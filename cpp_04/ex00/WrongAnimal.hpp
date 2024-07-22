@@ -6,12 +6,16 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:42:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 14:11:05 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 15:50:50 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+
+#undef CNS
+#define CNS "\033[36m"
+#define RST "\033[0m"
 
 class WrongAnimal
 {

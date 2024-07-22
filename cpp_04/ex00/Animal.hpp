@@ -6,12 +6,15 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:42:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 13:53:22 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 15:23:59 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+
+#define CNS "\033[32m"
+#define RST "\033[0m"
 
 class Animal
 {
