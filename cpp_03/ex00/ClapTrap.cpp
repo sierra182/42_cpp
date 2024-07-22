@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 07:34:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/22 10:49:58 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/22 11:15:58 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ ClapTrap::ClapTrap( const ClapTrap & src ) :_name(src._name)
 	this->displayStatus();
 	return ;
 }
+
 ClapTrap & ClapTrap::operator=( const ClapTrap & rhs )
 {	
 	if (this->_attackDamage != rhs._attackDamage)
@@ -54,7 +55,6 @@ ClapTrap & ClapTrap::operator=( const ClapTrap & rhs )
 		this->_hitPoint = rhs._hitPoint;
 	return (*this);
 }
-
 
 void ClapTrap::attack( const std::string & target )
 {

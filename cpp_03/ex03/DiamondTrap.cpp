@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 08:00:29 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 17:26:22 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/22 11:14:17 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 #include <iostream>
 
-DiamondTrap::DiamondTrap( void ): ClapTrap(name),  ScavTrap(name), FragTrap(name)	
+DiamondTrap::DiamondTrap( void ): ClapTrap("name"),  ScavTrap("name"), 
+	FragTrap("name")	
 {
 	return ;
 }
@@ -23,6 +24,7 @@ DiamondTrap::~DiamondTrap( void )
 	std::cout << CNS << "DiamondTrap destructor called" << RST << std::endl;
 	return ;
 }
+
 DiamondTrap::DiamondTrap( const std::string & _name )
 	: ClapTrap(_name + "_clap_name"), ScavTrap(_name), FragTrap(_name), 
 	name(_name)

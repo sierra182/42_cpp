@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:19:34 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/21 18:06:15 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/22 11:15:25 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap( void ) : ClapTrap(name)
+FragTrap::FragTrap( void ) : ClapTrap("name")
 {
 	return ;
 }
@@ -54,7 +54,6 @@ FragTrap & FragTrap::operator=( const FragTrap & rhs )
 		this->hitPoint = rhs.hitPoint;
 	return (*this);
 }
-
 
 void FragTrap::highFivesGuy( void ) const
 {
