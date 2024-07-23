@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:49:30 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 16:08:21 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/23 17:34:28 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 #undef CNS
 #define CNS "\033[35m"
 
 class Cat : public Animal
 {
+	Brain * brain = new Brain();
+	
     public:
         
         Cat( void );
@@ -25,5 +28,5 @@ class Cat : public Animal
         Cat( const Cat & src );
         Cat & operator=( const Cat & rhs );
 
-        virtual void makeSound ( void ) const;
+        virtual void makeSound ( void ) const;		
 };

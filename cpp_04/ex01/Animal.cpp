@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 16:10:09 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/23 12:58:54 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ Animal & Animal::operator=( const Animal & rhs )
     return (*this);
 }
 
- std::string Animal::getType( void ) const
- {
-    return (this->type);
- }
+std::string Animal::getType( void ) const
+{
+	return (this->type);
+}
 
- void   Animal::makeSound( void ) const
- {
-    std::cout << " I'm an animal" << std::endl;    
- }
+void   Animal::makeSound( void ) const
+{
+	std::cout << " I'm an animal" << std::endl;    
+}

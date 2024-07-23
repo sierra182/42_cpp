@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 18:57:53 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/23 12:58:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ WrongAnimal & WrongAnimal::operator=( const WrongAnimal & rhs )
     return (*this);
 }
 
- std::string WrongAnimal::getType( void ) const
- {
-    return (this->type);
- }
+std::string WrongAnimal::getType( void ) const
+{
+	return (this->type);
+}
 
- void   WrongAnimal::makeSound( void ) const
- {
+void   WrongAnimal::makeSound( void ) const
+{
     std::cout << " I'm the wrong animal" << std::endl;    
- }
+}

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 18:55:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/23 12:57:03 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Dog::~Dog( void )
     return ;
 }
 
-Dog::Dog ( const Dog & src ) : Animal()
+Dog::Dog ( const Dog & src ) : Animal(src)
 {
     std::cout << CNS << " Dog copy constructor called" << RST << std::endl;
     
@@ -43,6 +43,6 @@ Dog & Dog::operator=( const Dog & rhs )
 }
 
 void   Dog::makeSound( void ) const
- {
+{
     std::cout << " woaf" << std::endl;    
- }
+}

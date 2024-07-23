@@ -4,11 +4,11 @@ CXX = c++
 HDR_DIR = .
 SRC_DIR = .
 OBJ_DIR = objects
-CFLAGS = $(HDRFLAGS) -g -Wall -Wextra -Werror -std=c++98
+CFLAGS = $(HDRFLAGS) -g -Wall -Wextra -Werror #-std=c++98
 LDFLAGS = 
 
 HDRFLAGS = 
-HDR = $(shell find . -name "*.hpp")
+HDR = $(shell find . \( -name "*.hpp" -o -name "*.h" \))
 SRC = $(shell find . -name "*.cpp" | sed 's|^\./||')
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

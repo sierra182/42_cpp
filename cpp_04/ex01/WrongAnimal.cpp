@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 16:21:20 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/23 12:59:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ WrongAnimal & WrongAnimal::operator=( const WrongAnimal & rhs )
     return (*this);
 }
 
- std::string WrongAnimal::getType( void ) const
- {
+std::string WrongAnimal::getType( void ) const
+{
     return (this->type);
- }
+}
 
- void   WrongAnimal::makeSound( void ) const
- {
+void   WrongAnimal::makeSound( void ) const
+{
     std::cout << " I'm the wrong animal" << std::endl;    
- }
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:42:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 15:23:59 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/23 11:46:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal
     public:
         
         Animal( void );
-        virtual ~Animal( void );
+       	virtual ~Animal( void );
         Animal( const Animal & src );
         Animal & operator=( const Animal & rhs );   
         

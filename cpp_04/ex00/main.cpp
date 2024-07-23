@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 18:59:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/22 19:08:16 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int main( void )
         std::cout << "\e[5m", j.makeSound(), std::cout << "\e[0m";  
         meta.makeSound();
         std::cout << std::endl;
-        
-        
+                
         std::cout << "   ******************************" << std::endl;
         
         {    
@@ -89,8 +88,7 @@ int main( void )
         std::cout << "\e[5m", j->makeSound(), std::cout << "\e[0m";  
         meta.makeSound();
         std::cout << std::endl;
-        
-        
+                
         std::cout << "   ******************************" << std::endl;
         
         {    

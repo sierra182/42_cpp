@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 18:57:13 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/23 12:57:11 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ WrongCat::~WrongCat( void )
     return ;
 }
 
-WrongCat::WrongCat( const WrongCat & src ) : WrongAnimal()
+WrongCat::WrongCat( const WrongCat & src ) : WrongAnimal(src)
 {
     std::cout << CNS << " WrongCat copy constructor called" << RST
         << std::endl;
@@ -44,6 +44,6 @@ WrongCat & WrongCat::operator=( const WrongCat & rhs )
 }
 
 void   WrongCat::makeSound( void ) const
- {
+{
     std::cout << " miaow" << std::endl;    
- }
+}

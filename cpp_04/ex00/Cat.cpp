@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 18:55:56 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/23 12:58:10 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Cat::~Cat( void )
     return ;
 }
 
-Cat::Cat( const Cat & src ) : Animal()
+Cat::Cat( const Cat & src ) : Animal(src)
 {
     std::cout << CNS << " Cat copy constructor called" << RST << std::endl;
     
@@ -43,6 +43,6 @@ Cat & Cat::operator=( const Cat & rhs )
 }
 
 void   Cat::makeSound( void ) const
- {
-    std::cout << " miaow" << std::endl;    
- }
+{
+	std::cout << " miaow" << std::endl;    
+}

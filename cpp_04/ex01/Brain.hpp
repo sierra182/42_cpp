@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 12:42:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/23 17:29:54 by seblin           ###   ########.fr       */
+/*   Created: 2024/07/23 11:01:45 by seblin            #+#    #+#             */
+/*   Updated: 2024/07/23 17:35:03 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,17 @@
 #include <iostream>
 
 #undef CNS
-#define CNS "\033[36m"
+#define CNS "\033[34m"
 #define RST "\033[0m"
 
-class WrongAnimal
+class Brain
 {
-    public:
-        
-        WrongAnimal( void );
-        virtual ~WrongAnimal( void );
-        WrongAnimal( const WrongAnimal & src );
-        WrongAnimal & operator=( const WrongAnimal & rhs );   
-        
-        void    makeSound ( void ) const;
-        std::string     getType( void ) const;
-        
-    protected:
-        
-        std::string type;
+	public:
+		
+		Brain( void );
+		virtual ~Brain( void );
+		Brain( const Brain & src );
+		Brain & operator=( const Brain & rhs );				
+	
+		std::string ideas[100];
 };

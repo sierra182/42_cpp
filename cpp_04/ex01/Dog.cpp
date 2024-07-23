@@ -6,13 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/22 18:54:34 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/23 17:15:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog ( void ) : Animal()
+Dog::Dog ( void )
 {
     std::cout << CNS << " Dog constructor called" << RST << std::endl;
     
@@ -27,7 +27,7 @@ Dog::~Dog( void )
     return ;
 }
 
-Dog::Dog ( const Dog & src ) : Animal()
+Dog::Dog ( const Dog & src ) : Animal(src)
 {
     std::cout << CNS << " Dog copy constructor called" << RST << std::endl;
     
@@ -37,12 +37,13 @@ Dog::Dog ( const Dog & src ) : Animal()
 
 Dog & Dog::operator=( const Dog & rhs )
 {
+	 std::cout << CNS << " Dog operator= called" << RST << std::endl;
     if (this->type != rhs.type)
         this->type = rhs.type;
     return (*this);   
 }
 
 void   Dog::makeSound( void ) const
- {
+{
     std::cout << " woaf" << std::endl;    
- }
+}
