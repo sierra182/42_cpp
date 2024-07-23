@@ -6,13 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/23 12:57:11 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/23 22:37:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat( void ) : WrongAnimal()
+WrongCat::WrongCat( void )
 {
     std::cout << CNS << " WrongCat constructor called" << RST << std::endl;
 

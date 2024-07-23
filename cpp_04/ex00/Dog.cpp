@@ -6,13 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/23 12:57:03 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/23 22:38:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog ( void ) : Animal()
+Dog::Dog ( void )
 {
     std::cout << CNS << " Dog constructor called" << RST << std::endl;
     
