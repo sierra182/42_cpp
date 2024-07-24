@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:08:32 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/23 23:45:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 07:47:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 
 Brain::Brain( void )
 {
-	std::cout << std::endl << CNS << " Brain constructor called"
-        << RST << std::endl;
+	std::cout << CNS << " Brain constructor called" << RST << std::endl;
 
 	return ;
 }
 
 Brain::~Brain( void )
 {
-	std::cout << CNS << " Brain destructor called" << RST << std::endl 
-        << std::endl;
-		
+	std::cout << CNS << " Brain destructor called" << RST << std::endl;
+   		
     return ;
 }
 
@@ -40,8 +38,7 @@ Brain::Brain( const Brain & src )
 
 Brain & Brain::operator=( const Brain & rhs )
 {
-	std::cout << CNS << " VOILA****************" << RST << std::endl ;
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < BR; i++)
 		this->ideas[i] = rhs.ideas[i];
 	return (*this);
 }

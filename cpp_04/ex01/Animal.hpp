@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:42:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/23 11:46:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 07:38:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class Animal
         
         virtual void    makeSound ( void ) const;
         std::string     getType( void ) const;
-        
+        void		    setType( std::string );
+		
     protected:
         
         std::string type;

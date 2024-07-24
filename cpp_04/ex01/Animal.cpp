@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:04:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/23 12:58:54 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 07:39:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ Animal & Animal::operator=( const Animal & rhs )
 std::string Animal::getType( void ) const
 {
 	return (this->type);
+}
+
+void Animal::setType( std::string _type ) 
+{
+	this->type = _type;
 }
 
 void   Animal::makeSound( void ) const

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/23 23:48:10 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 07:35:36 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Dog::Dog ( const Dog & src ) : Animal(src), brain(new Brain())
 Dog & Dog::operator=( const Dog & rhs )
 {
 	Animal::operator=( rhs );  
-	 	std::cout << CNS << " DOG VOILU" << RST << std::endl ;
+	
 	if (this->brain != rhs.brain)
 		*this->brain = *rhs.brain;
     return (*this);   
