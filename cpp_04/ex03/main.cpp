@@ -6,13 +6,14 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/24 16:08:05 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/24 17:02:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "Character.hpp"
 
 int	main( void )
 {
@@ -30,6 +31,8 @@ int	main( void )
 	std::cout << "type: " << ice4->getType() << std::endl;
 	(void) ice3;
 	(void) ice2;
+
+	// Character chara;
 	//   AMateria * am = new Ice();
 	return (0);
 }
