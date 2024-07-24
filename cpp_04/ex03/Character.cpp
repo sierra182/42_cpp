@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 17:07:48 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/24 17:44:07 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,27 @@ Character & Character::operator=( const Character & rhs )
     return (*this);
 }
 
-std::string const & Character::getName() const
+std::string const & Character::getName( void ) const
 {
+  static const std::string str("truc");
     //! to complete
-    return ("truc");
+    return (str);
 }
     
 void Character::equip(AMateria* m)
 {
+    (void) m;
     //! to complete
 }
 
 void Character::unequip(int idx)
 {
+    (void) idx;
     //! to complete
 }
 
 void Character::use(int idx, ICharacter& target)
 {
+    (void) idx, (void) target;
     //! to complete
 }

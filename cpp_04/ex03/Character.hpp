@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:22:58 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 17:07:54 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/24 17:38:35 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Character : public ICharacter
         
     private: //?
         
-        virtual std::string const & getName() const;
+        virtual std::string const & getName( void ) const;
         virtual void                equip(AMateria* m);
         virtual void                unequip(int idx);
         virtual void                use(int idx, ICharacter& target);        
