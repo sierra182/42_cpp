@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 09:26:23 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 09:31:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 int main( void )
 {
-
 	{
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
@@ -27,7 +26,9 @@ int main( void )
 		delete j;//should not create a leak
 		delete i;
 	}
+	
 	std::cout << "**********start tests**********" << std::endl;
+	
 	size_t const len = 10;
 	Animal ** animal = new Animal*[10];
 	
