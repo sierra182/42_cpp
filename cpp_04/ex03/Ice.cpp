@@ -6,18 +6,27 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:23:11 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 14:03:35 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/24 16:03:11 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include <iostream>
-// #include "AMateria.hpp"
+#include "AMateria.hpp"
 
-// AMateria * Ice::clone( void ) const
-// {
-//     return new AMateria(); 
-// }
+AMateria * Ice::clone( void ) const
+{
+    
+    return new Ice(); //?
+}
+
+Ice::Ice(std::string const & _type) : AMateria(_type)
+{  
+    std::cout << CNS << " Ice param constructor called" << RST
+        << std::endl;
+        
+    return ;
+}
 
 Ice::Ice( void )
 {
@@ -48,3 +57,4 @@ Ice & Ice::operator=( const Ice & rhs )
     (void) rhs;     
     //! to complete
 }
+
