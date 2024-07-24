@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 09:31:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 10:02:45 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main( void )
 		delete animal[i];
 
 	delete[] animal;	
+	
 	{
 		std::cout << "**********other tests**********" << std::endl;
 				

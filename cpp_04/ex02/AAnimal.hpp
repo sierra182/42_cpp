@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:42:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 07:38:32 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 09:42:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #define CNS "\033[32m"
 #define RST "\033[0m"
 
-class Animal
+class AAnimal
 {
     public:
         
-        Animal( void );
-       	virtual ~Animal( void );
-        Animal( const Animal & src );
-        Animal & operator=( const Animal & rhs );   
+        AAnimal( void );
+       	virtual ~AAnimal( void );
+        AAnimal( const AAnimal & src );
+        AAnimal & operator=( const AAnimal & rhs );   
         
-        virtual void    makeSound ( void ) const;
+        virtual void    makeSound ( void ) const = 0;
         std::string     getType( void ) const;
         void		    setType( std::string );
 		

@@ -6,18 +6,18 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:49:30 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/23 22:54:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/24 09:43:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 #undef CNS
 #define CNS "\033[35m"
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 	Brain * brain;
 	
