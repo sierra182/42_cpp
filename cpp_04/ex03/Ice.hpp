@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Amateria.hpp                                       :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 12:03:33 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 12:03:49 by svidot           ###   ########.fr       */
+/*   Created: 2024/07/24 13:16:30 by svidot            #+#    #+#             */
+/*   Updated: 2024/07/24 14:38:42 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include "AMateria.hpp"
 
-class AMateria
+#undef CNS
+#define CNS "\033[31m"
+
+class Ice : public AMateria
 {
-    protected:
-    [...]
-    
     public:
-    
-    AMateria(std::string const & type);
-    [...]
-    std::string const & getType() const; //Returns the materia type
-    virtual AMateria* clone() const = 0;
-    virtual void use(ICharacter& target);
+        Ice( void );
+        virtual ~Ice( void );
+        Ice( const Ice & src );
+        Ice & operator=( const Ice & rhs);
+      
+        virtual AMateria* clone( void ) const;
 };
