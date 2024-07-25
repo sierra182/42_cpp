@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:20:20 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 13:49:21 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:35:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ class IMateriaSource
     public:
     
         virtual ~IMateriaSource() {}
-        virtual void learnMateria(AMateria*) = 0;
-        virtual AMateria* createMateria(std::string const & type) = 0;
+        virtual void learnMateria( AMateria* ) = 0;
+        virtual AMateria* createMateria( std::string const & type ) = 0;
 };

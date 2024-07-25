@@ -6,16 +6,25 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 17:10:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:55:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include <iostream>
 
-Character::Character( void )
+Character::Character( const std::string & _name ) : name(_name)
+{
+	for (int i = 0; i < INV; i++)
+		this->inventory[i] = NULL;
+
+	return ;
+}
+
+Character::Character( void ) : name("name")
 {
     std::cout << CNS << " Character constructor called" << RST << std::endl;
+	
     for (int i = 0; i < INV; i++)
 		this->inventory[i] = NULL;
     return ;
@@ -54,7 +63,10 @@ void Character::equip( AMateria * m )
 {
 	for (int i = 0; i < INV; i++ )
    		if (!this->inventory[i])
+		{
 			this->inventory[i] = m;
+			break;
+		}
 	
     //! to complete
 }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 13:50:07 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 18:05:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 MateriaSource::MateriaSource( void )
 {
     std::cout << CNS << " MateriaSource constructor called" << RST << std::endl;
-    
+   
+    for (int i = 0; i < INV; i++)
+		this->inventory[i] = NULL;
     return ;
 }
 
@@ -45,15 +47,23 @@ MateriaSource & MateriaSource::operator=( const MateriaSource & rhs )
     return (*this);
 }
 
-void MateriaSource::learnMateria( AMateria* what )//?
+void MateriaSource::learnMateria( AMateria* mat )//?
 {
-    (void) what;
+    for (int i = 0; i < INV; i++ )
+   		if (!this->inventory[i])
+		{
+			this->inventory[i] = mat;
+			break;
+		}
     //! to complete
 }
 
 AMateria*  MateriaSource::createMateria( std::string const & type )
 {
+	for (int i = 0; i < INV; i++ )
+   		if (this->inventory[i]->getType() == type)		
+			return (this->inventory[i]->clone());
+			
+    return (NULL);   
 	//! to complete
-    (void) type;
-    return new Cure();   
 }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:22:58 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 17:14:30 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:24:52 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Character : public ICharacter
         Character( void );
         virtual ~Character( void );
         Character( const Character & src );
+		Character( const std::string & name );
         Character & operator=( const Character & rhs );
         
         
@@ -35,5 +36,5 @@ class Character : public ICharacter
     private: 
 		
 		AMateria * inventory[INV];
-		std::string name;	
+		const std::string name;	
 }; 
