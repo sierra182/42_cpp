@@ -30,7 +30,9 @@ int main()
 	// 	base->funct();
 	// 	std::cout << std::endl;
 	// }
-	std::cout << std::endl;
+	int a,  b = 2, c;
+	// b = 1
+	std::cout << b <<  std::endl;
 	// {
 	// 	std::cout << std::endl;	
 	// 	Interm *inter = new Interm();	
