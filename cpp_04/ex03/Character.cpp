@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 17:44:07 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/25 15:14:00 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ Character & Character::operator=( const Character & rhs )
 }
 
 std::string const & Character::getName( void ) const
-{
-  static const std::string str("truc");
-    //! to complete
-    return (str);
+{    
+    return (this->name);
 }
     
 void Character::equip(AMateria* m)
@@ -65,6 +63,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-    (void) idx, (void) target;
+	this->inventory[idx]->use(target);
+    
     //! to complete
 }

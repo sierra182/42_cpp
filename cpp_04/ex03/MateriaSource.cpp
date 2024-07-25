@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 17:50:29 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/25 13:50:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ void MateriaSource::learnMateria( AMateria* what )//?
     //! to complete
 }
 
-AMateria* createMateria( std::string const & type )
+AMateria*  MateriaSource::createMateria( std::string const & type )
 {
+	//! to complete
     (void) type;
     return new Cure();   
 }

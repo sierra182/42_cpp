@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/24 17:57:34 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/25 15:01:13 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "Character.hpp"
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
 #include "ICharacter.hpp"
 
 int	main( void )
@@ -37,22 +38,23 @@ int	main( void )
 
 	// Character chara;
 	//   AMateria * am = new Ice();
-
+	
 	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
-	delete bob;
-	delete me;
-	delete src;
-	return 0;
+	
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
+	// ICharacter* me = new Character("me");
+	// AMateria* tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
+	// ICharacter* bob = new Character("bob");
+	// me->use(0, *bob);
+	// me->use(1, *bob);
+	// delete bob;
+	// delete me;
+	// delete src;
+	// return 0;
 
 }

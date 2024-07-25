@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:20:15 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 16:04:01 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/25 15:18:59 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 #include <iostream>
 #include "AMateria.hpp"
 
-AMateria * Cure::clone( void ) const
+void Cure::use(ICharacter& target)
 {
-    
-    return new Cure(); //?
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+}
+
+AMateria * Cure::clone( void ) const
+{   
+    return (new Cure(this->type)); //?
 }
 
 Cure::Cure(std::string const & _type) : AMateria(_type)
 {  
     std::cout << CNS << " Cure param constructor called" << RST
         << std::endl;
-        
+       
     return ;
 }
 
-Cure::Cure( void )
+Cure::Cure( void ) : AMateria("cure")
 {
     std::cout << CNS << " Cure constructor called" << RST << std::endl;
-
+	
     return ;
 }
 
