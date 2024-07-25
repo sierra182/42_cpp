@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:03:33 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 15:20:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:14:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ class AMateria
    		std::string const & getType() const; // Returns the materia type
 
     	virtual AMateria* clone( void ) const = 0;    
-    	virtual void use( ICharacter& target ) {};//? {}
+    	virtual void use( ICharacter & ) {};//? {}
 };

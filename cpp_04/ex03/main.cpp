@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/25 15:01:13 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:22:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 int	main( void )
 {
 	// Ice ice;
-	
+
 	// std::cout<< std::endl;
 	// Ice* ice2 = new Ice();
 
@@ -38,8 +38,9 @@ int	main( void )
 
 	// Character chara;
 	//   AMateria * am = new Ice();
-	
-	IMateriaSource* src = new MateriaSource();
+
+
+	// IMateriaSource* src = new MateriaSource();
 	
 	// src->learnMateria(new Ice());
 	// src->learnMateria(new Cure());

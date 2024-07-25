@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 15:14:00 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:10:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 Character::Character( void )
 {
     std::cout << CNS << " Character constructor called" << RST << std::endl;
-    
+    for (int i = 0; i < INV; i++)
+		this->inventory[i] = NULL;
     return ;
 }
 
@@ -49,21 +50,27 @@ std::string const & Character::getName( void ) const
     return (this->name);
 }
     
-void Character::equip(AMateria* m)
+void Character::equip( AMateria * m )
 {
-    (void) m;
+	for (int i = 0; i < INV; i++ )
+   		if (!this->inventory[i])
+			this->inventory[i] = m;
+	
     //! to complete
 }
 
-void Character::unequip(int idx)
+void Character::unequip( int idx )
 {
-    (void) idx;
+   	if (this->inventory[idx])
+		this->inventory[idx] = NULL;
+
     //! to complete
 }
 
-void Character::use(int idx, ICharacter& target)
+void Character::use( int idx, ICharacter& target )
 {
-	this->inventory[idx]->use(target);
-    
+	if (this->inventory[idx])
+		this->inventory[idx]->use(target);
+
     //! to complete
 }

@@ -6,13 +6,12 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:20:15 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 15:18:59 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:15:26 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 #include <iostream>
-#include "AMateria.hpp"
 
 void Cure::use(ICharacter& target)
 {

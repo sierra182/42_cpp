@@ -6,13 +6,12 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:23:11 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 15:19:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:15:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include <iostream>
-#include "AMateria.hpp"
 
 void Ice::use(ICharacter& target)
 {
