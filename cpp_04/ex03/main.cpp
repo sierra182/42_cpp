@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/25 18:14:25 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 09:26:28 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main( void )
 
 	// Character chara;
 	//   AMateria * am = new Ice();
-
 
 	IMateriaSource* src = new MateriaSource();	
 	src->learnMateria(new Ice());

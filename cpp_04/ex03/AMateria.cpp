@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:58:31 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 15:31:02 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/26 09:50:01 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ AMateria::AMateria( void )
 AMateria::~AMateria( void )
 {
     std::cout << CNS << " AMateria destructor called" << RST << std::endl;
-
+		
     return ; 
 }
 

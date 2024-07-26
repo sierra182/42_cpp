@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 18:05:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 09:46:13 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ MateriaSource::~MateriaSource( void )
 {
     std::cout << CNS << " MateriaSource destructor called" << RST << std::endl;
     
+	for (int i = 0; i < INV; i++)
+		delete this->inventory[i];
     return ;
 }
 
