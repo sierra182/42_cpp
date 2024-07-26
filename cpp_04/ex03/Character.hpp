@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:22:58 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 17:24:52 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 11:38:42 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ class Character : public ICharacter
     private: 
 		
 		AMateria * inventory[INV];
-		const std::string name;	
+		std::string name;	
 }; 

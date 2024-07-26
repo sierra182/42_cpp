@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:23:11 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/26 09:18:40 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 10:25:26 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void Ice::use(ICharacter& target)
 
 AMateria * Ice::clone( void ) const
 {   
+	std::cout << " Ice clone called" << std::endl;
+
     return (new Ice(*this)); //?
 }
 

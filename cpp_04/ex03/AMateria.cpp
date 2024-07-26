@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:58:31 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/26 09:50:01 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 11:17:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ AMateria::AMateria( const AMateria & src )
 AMateria & AMateria::operator=( const AMateria & rhs )
 {
     std::cout << CNS << " AMateria operator= called" << RST << std::endl;
+	
     return (*this); //! to complete
     (void) rhs; 
 }

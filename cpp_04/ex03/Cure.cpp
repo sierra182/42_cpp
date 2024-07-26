@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:20:15 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 17:15:26 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 10:25:03 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void Cure::use(ICharacter& target)
 
 AMateria * Cure::clone( void ) const
 {   
-    return (new Cure(this->type)); //?
+	std::cout << " Cure clone called" << std::endl;
+
+    return (new Cure(*this));
 }
 
 Cure::Cure(std::string const & _type) : AMateria(_type)
@@ -56,7 +58,8 @@ Cure::Cure( const Cure & src ) : AMateria(src)
 Cure & Cure::operator=( const Cure & rhs )
 {
     std::cout << CNS << " Cure operator= called" << RST << std::endl;
-    return (*this);
-    (void) rhs;     
+    
+	return (*this);
+	(void) rhs;
     //! to complete
 }

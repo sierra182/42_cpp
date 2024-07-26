@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/26 09:26:28 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 11:11:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,23 @@ int	main( void )
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
+	
+	std::cout << std::endl;
 	AMateria* tmp;
+	std::cout << "bef create ice" << std::endl;
+
 	tmp = src->createMateria("ice");
+	
+	std::cout << "bef create cure" << std::endl;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	
+	std::cout << std::endl;
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	 
 	delete bob;
 	delete me;
 	delete src;
