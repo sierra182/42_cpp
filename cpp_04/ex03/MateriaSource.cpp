@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/26 09:46:13 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 17:36:25 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ MateriaSource::~MateriaSource( void )
 {
     std::cout << CNS << " MateriaSource destructor called" << RST << std::endl;
     
-	for (int i = 0; i < INV; i++)
+	for (int i = 0; i < INV; i++)		
 		delete this->inventory[i];
     return ;
 }
@@ -63,7 +63,7 @@ void MateriaSource::learnMateria( AMateria* mat )//?
 AMateria*  MateriaSource::createMateria( std::string const & type )
 {
 	for (int i = 0; i < INV; i++ )
-   		if (this->inventory[i]->getType() == type)		
+   		if (this->inventory[i] && this->inventory[i]->getType() == type)		
 			return (this->inventory[i]->clone());
 			
     return (NULL);   

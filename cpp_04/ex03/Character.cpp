@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/26 11:39:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 17:12:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ Character::~Character( void )
     
 	for (int i = 0; i < INV; i++)
 		delete this->inventory[i];
+		
     return ;
 }
 
@@ -54,10 +55,23 @@ Character::Character( const Character & src )
 Character & Character::operator=( const Character & rhs )
 {
     std::cout << CNS << " Character operator= called" << RST << std::endl;
-    
-	if (this->name != rhs.name)
-		this->name = rhs.name;
-		
+    // if (this != &rhs)
+	// 	if (this->ideas != rhs.ideas)
+	// 		for (int i = 0; i < BR; i++)
+	// 			if (this->ideas[i] != rhs.ideas[i])
+	// 				this->ideas[i] = rhs.ideas[i];
+	if (this != &rhs)
+	{		
+		if (this->name != rhs.name)
+			this->name = rhs.name;
+		if (this->inventory != rhs.inventory)
+			for (int i = 0; i < INV; i++)				
+			{				 
+				delete this->inventory[i];
+				this->inventory[i] = rhs.inventory[i]->clone();
+			}
+	}
+				
     //! to complete
     return (*this);
 }

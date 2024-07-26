@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/26 11:11:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/26 17:29:19 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ int	main( void )
 	
 	std::cout << "bef create cure" << std::endl;
 	me->equip(tmp);
+	AMateria * save = tmp;//!
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	
+	me->unequip(0);//!
+	delete save;
 	std::cout << std::endl;
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
