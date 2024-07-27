@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:58:31 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 12:22:04 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/27 18:35:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ AMateria::~AMateria( void )
     return ; 
 }
 
-AMateria::AMateria( const AMateria & src )
+AMateria::AMateria( const AMateria & src ) : type(src.type)
 {
     // std::cout << CNS << " AMateria copy constructor called" << RST
     //     << std::endl;
-    
-    *this = src;
+  
+   	*this = src;
     return ;
 }
 

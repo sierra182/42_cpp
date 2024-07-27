@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 12:26:04 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/27 18:35:12 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ Character::~Character( void )
     // std::cout << CNS << " Character destructor called" << RST << std::endl;
     
 	for (int i = 0; i < INV; i++)
+	{
 		delete this->inventory[i];
-		
+		this->inventory[i] = NULL;
+	}		
     return ;
 }
 

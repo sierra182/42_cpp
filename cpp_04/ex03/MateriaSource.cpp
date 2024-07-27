@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 12:25:35 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/27 17:44:39 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ MateriaSource::~MateriaSource( void )
     // std::cout << CNS << " MateriaSource destructor called" << RST
         // << std::endl;
     
-	for (int i = 0; i < INV; i++)		
+	for (int i = 0; i < INV; i++)
+	{
 		delete this->inventory[i];
+		this->inventory[i] = NULL;
+	}		
     return ;
 }
 
@@ -45,8 +48,8 @@ MateriaSource::MateriaSource( const MateriaSource & src )
 
 MateriaSource & MateriaSource::operator=( const MateriaSource & rhs )
 {
-    // std::cout << CNS << " MateriaSource operator= called" << RST 
-        // << std::endl;
+    std::cout << CNS << " MateriaSource operator= called" << RST 
+        << std::endl;
         
     (void) rhs;
     //! to complete

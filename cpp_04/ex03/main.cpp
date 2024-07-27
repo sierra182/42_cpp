@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/27 12:27:59 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/27 18:37:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,21 @@ int	main( void )
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");		
 	AMateria* tmp;
-	tmp = src->createMateria("ice");		
+	tmp = src->createMateria("ice");
+	//std::cout << "tmp type: " << tmp->getType() << "!" << std::endl;
+		//! other test	
 	me->equip(tmp);
 	// AMateria * save = tmp;//! other test
 	tmp = src->createMateria("cure");
+	// std::cout << "tmp type: " << tmp->getType() << "!" << std::endl;	
+		//! other test
 	me->equip(tmp);
 	// me->unequip(0);//! other test
 	// delete save;//! ! other test
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
-		 
+
 	delete bob;
 	delete me;
 	delete src;
@@ -44,62 +48,69 @@ int	main( void )
 	std::cout << std::endl;
 	std::cout << "***************other tests***************" << std::endl;
 		
-	Character playerOne("morpheus");	
-	Character playerTwo("trinity");
+	Character* playerOne = new Character("morpheus");	
+	Character* playerTwo = new Character("trinity");
+		
+	std::cout << std::endl;	
+	std::cout << "player one: " <<  playerOne->getName()
+		<< " equip with five Ice" << std::endl << std::endl;
+		
+	playerOne->equip(new Ice());
+	playerOne->equip(new Ice());
+	playerOne->equip(new Ice());
+	playerOne->equip(new Ice());	
+	Ice iceExcess;
+	playerOne->equip(&iceExcess);
+	
+	std::cout << playerOne->getName() << std::endl;
+	for (int i = 0; i < INV + 1; i++)
+		playerOne->use(i, *playerTwo);
 		
 	std::cout << std::endl;
+	std::cout << "player two: " << playerTwo->getName()
+		<< " equip with five Cure" << std::endl << std::endl;
 	
-	std::cout << playerOne.getName() <<  " equip with five Ice" << std::endl;
-	
-	playerOne.equip(new Ice());
-	playerOne.equip(new Ice());
-	playerOne.equip(new Ice());
-	playerOne.equip(new Ice());
-	
-	Ice iceExcess;
-	playerOne.equip(&iceExcess);
-	
-	std::cout << playerOne.getName() << std::endl;
-	for (int i = 0; i < INV + 1; i++)
-		playerOne.use(i, playerTwo);
-	
-	std::cout << playerTwo.getName() << " equip with five Cure" << std::endl;
-	
-	playerTwo.equip(new Cure());
-	playerTwo.equip(new Cure());
-	playerTwo.equip(new Cure());
-	playerTwo.equip(new Cure());
+	playerTwo->equip(new Cure());
+	playerTwo->equip(new Cure());
+	playerTwo->equip(new Cure());
+	playerTwo->equip(new Cure());
 	Cure cureExcess;
-	playerTwo.equip(&cureExcess);
+	playerTwo->equip(&cureExcess);
 	
-	std::cout << playerTwo.getName() << std::endl;
+	std::cout << playerTwo->getName() << std::endl;
 	for (int i = 0; i < INV + 1; i++)
-		playerTwo.use(i, playerOne);
+		playerTwo->use(i, *playerOne);
 	std::cout << std::endl;
 
-	std::cout << playerOne.getName() << " assign = with "
-		<< playerTwo.getName() << std::endl;
-	playerOne = playerTwo;
+	std::cout << playerOne->getName() << " = " << playerTwo->getName()
+		<< std::endl;
+	*playerOne = *playerTwo;
 	
-	std::cout << playerOne.getName() << std::endl;
+	std::cout << std::endl;
+	std::cout << "delete player two: " << playerTwo->getName() << std::endl
+		<< std::endl;
+	delete playerTwo;
+	
+	std::cout << "player one: " << playerOne->getName() << std::endl;
+		std::cout << std::endl;
 	for (int i = 0; i < INV + 1; i++)
-		playerOne.use(i, playerTwo);
+		playerOne->use(i, *playerOne);
 		
-	// Character playerThree("hy");
-	std::cout << "unequip" << std::endl;
-	Character playerThree(playerOne);
+	std::cout << std::endl;
+	std::cout << "create player three: copy of player one" << std::endl;
+	Character playerThree(*playerOne);
+	std::cout << std::endl;
+
+	delete playerOne;
+	std::cout << "delete player one" << std::endl;
+	std::cout << std::endl;
 	
-	for (int i = 0; i < INV + 1; i++)
-		playerOne.unequip(i);
-	for (int i = 0; i < INV + 1; i++)
-		playerOne.use(i, playerThree);
-	std::cout << "after use" << std::endl;	
+	std::cout << "player three: " << playerThree.getName() << std::endl;
+	std::cout << std::endl;	
 	std::cout << playerThree.getName() << std::endl;
 	for (int i = 0; i < INV + 1; i++)
 		playerThree.use(i, playerThree);
-	// delete playerOne;
-	// delete playerTwo;
-	
+			
+	std::cout << std::endl;
 	return 0;
-
 }
