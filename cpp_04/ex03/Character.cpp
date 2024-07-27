@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/26 17:12:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/27 10:37:46 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Character::Character( const std::string & _name ) : name(_name)
 	return ;
 }
 
-Character::Character( void )
+Character::Character( void ) 
 {
     std::cout << CNS << " Character constructor called" << RST << std::endl;
 	
@@ -47,7 +47,9 @@ Character::Character( const Character & src )
 {
     std::cout << CNS << " Character copy constructor called" << RST
         << std::endl;
-        
+		
+    for (int i = 0; i < INV; i++)
+		this->inventory[i] = NULL;   
     *this = src;
     return ;
 }
@@ -55,11 +57,7 @@ Character::Character( const Character & src )
 Character & Character::operator=( const Character & rhs )
 {
     std::cout << CNS << " Character operator= called" << RST << std::endl;
-    // if (this != &rhs)
-	// 	if (this->ideas != rhs.ideas)
-	// 		for (int i = 0; i < BR; i++)
-	// 			if (this->ideas[i] != rhs.ideas[i])
-	// 				this->ideas[i] = rhs.ideas[i];
+  
 	if (this != &rhs)
 	{		
 		if (this->name != rhs.name)
@@ -95,7 +93,7 @@ void Character::equip( AMateria * m )
 
 void Character::unequip( int idx )
 {
-   	if (this->inventory[idx])
+   	if (idx < INV && this->inventory[idx])
 		this->inventory[idx] = NULL;
 
     //! to complete
@@ -103,7 +101,7 @@ void Character::unequip( int idx )
 
 void Character::use( int idx, ICharacter& target )
 {
-	if (this->inventory[idx])
+	if (idx < INV && this->inventory[idx])
 		this->inventory[idx]->use(target);
 
     //! to complete
