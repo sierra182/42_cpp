@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:08:32 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/26 12:56:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:11:56 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,9 @@ Brain::Brain( const Brain & src )
 
 Brain & Brain::operator=( const Brain & rhs )
 {
-	if (this != &rhs)
-		if (this->ideas != rhs.ideas)
-			for (int i = 0; i < BR; i++)
-				if (this->ideas[i] != rhs.ideas[i])
-					this->ideas[i] = rhs.ideas[i];
+	if (this != &rhs)		
+		for (int i = 0; i < BR; i++)
+			if (this->ideas[i] != rhs.ideas[i])
+				this->ideas[i] = rhs.ideas[i];
 	return (*this);
 }

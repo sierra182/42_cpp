@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:58:31 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/26 11:17:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:22:04 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,30 @@
 
 AMateria::AMateria(std::string const & _type) : type(_type)
 {
-    std::cout << CNS << " AMateria param constructor called" << RST
-        << std::endl;
+    // std::cout << CNS << " AMateria param constructor called" << RST
+    //     << std::endl;
 
     return ; 
 }
 
 AMateria::AMateria( void )
 {
-    std::cout << CNS << " AMateria constructor called" << RST << std::endl;
+    // std::cout << CNS << " AMateria constructor called" << RST << std::endl;
 
     return ;
 }
 
 AMateria::~AMateria( void )
 {
-    std::cout << CNS << " AMateria destructor called" << RST << std::endl;
+    // std::cout << CNS << " AMateria destructor called" << RST << std::endl;
 		
     return ; 
 }
 
 AMateria::AMateria( const AMateria & src )
 {
-    std::cout << CNS << " AMateria copy constructor called" << RST << std::endl;
+    // std::cout << CNS << " AMateria copy constructor called" << RST
+    //     << std::endl;
     
     *this = src;
     return ;
@@ -45,7 +46,7 @@ AMateria::AMateria( const AMateria & src )
 
 AMateria & AMateria::operator=( const AMateria & rhs )
 {
-    std::cout << CNS << " AMateria operator= called" << RST << std::endl;
+    // std::cout << CNS << " AMateria operator= called" << RST << std::endl;
 	
     return (*this); //! to complete
     (void) rhs; 

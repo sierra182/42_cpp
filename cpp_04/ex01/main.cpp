@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 10:02:45 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:11:08 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main( void )
 		
 		std::cout << std::endl;
 		dog.makeSound();
-		std::cout << "\e[1m" << ' ' << dog.getType() << RST << std::endl;
+		std::cout << ' ' << dog.getType() << std::endl;
 		std::cout << "\e[1m" <<  dog.getBrain().ideas[0] << RST << std::endl;
 		std::cout << "\e[1m" << dog.getBrain().ideas[1] << RST << std::endl;
 		std::cout << "\e[1m" << dog.getBrain().ideas[2] << RST << std::endl;
@@ -89,7 +89,36 @@ int main( void )
 		std::cout << std::endl;
 		std::cout << " copy of dog to newdog:" << std::endl;
 		dog2 = dog;
+		
 		std::cout << std::endl;
+		std::cout << " newdog:" << std::endl;
+		std::cout << std::endl;
+		
+		dog2.makeSound();
+		std::cout << ' ' << dog2.getType() << std::endl;	
+		std::cout << "\e[1m" <<  dog2.getBrain().ideas[0] << RST << std::endl;
+		std::cout << "\e[1m" << dog2.getBrain().ideas[1] << RST << std::endl;
+		std::cout << "\e[1m" << dog2.getBrain().ideas[2] << RST << std::endl;
+		
+		std::cout << std::endl;
+		std::cout << " dog modified:" << std::endl;
+		std::cout << std::endl;
+				
+		dog.setType("bird");
+		dog.getBrain().ideas[0] = "i could fly";
+		dog.getBrain().ideas[1] = "i could shit on people";
+		dog.getBrain().ideas[2] = "i could shit on another people";
+		
+		dog.makeSound();
+		std::cout << ' ' << dog.getType() << std::endl;	
+		std::cout << "\e[1m" <<  dog.getBrain().ideas[0] << RST << std::endl;
+		std::cout << "\e[1m" << dog.getBrain().ideas[1] << RST << std::endl;
+		std::cout << "\e[1m" << dog.getBrain().ideas[2] << RST << std::endl;
+		
+		std::cout << std::endl;
+		std::cout << " newdog:" << std::endl;
+		std::cout << std::endl;
+		
 		dog2.makeSound();
 		std::cout << ' ' << dog2.getType() << std::endl;	
 		std::cout << "\e[1m" <<  dog2.getBrain().ideas[0] << RST << std::endl;
@@ -134,5 +163,5 @@ int main( void )
 			std::cout << std::endl;
 		}
 	}		
-    return (0);
+    return (0);	
 }

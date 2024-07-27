@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/27 10:40:55 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:27:59 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,15 @@ int	main( void )
 	IMateriaSource* src = new MateriaSource();	
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	
-	std::cout << std::endl;
+	ICharacter* me = new Character("me");		
 	AMateria* tmp;
-	std::cout << "bef create ice" << std::endl;
-
-	tmp = src->createMateria("ice");
-	
-	std::cout << "bef create cure" << std::endl;
+	tmp = src->createMateria("ice");		
 	me->equip(tmp);
 	// AMateria * save = tmp;//! other test
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	// me->unequip(0);//! other test
 	// delete save;//! ! other test
-	std::cout << std::endl;
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
@@ -50,8 +43,7 @@ int	main( void )
 
 	std::cout << std::endl;
 	std::cout << "***************other tests***************" << std::endl;
-	std::cout << std::endl;
-	
+		
 	Character playerOne("morpheus");	
 	Character playerTwo("trinity");
 		
