@@ -10,12 +10,12 @@ int main()
 	std::cout << std::endl;
 	// Interm *inter = new Interm();
 	// Final *final = new Final();
-	Base base;
-	base.funct();
+	// Base base;
+	// base.funct();
 	Interm *inter = new Interm();
 	// inter->funct();
 	Base * b2 = inter;
-	b2->funct();
+	// b2->funct();
 	// Base * base = fin;
 	// base->
 	// Base * base = new Final();

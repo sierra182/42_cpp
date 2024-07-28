@@ -1,13 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: seblin <seblin@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/07/28 13:41:27 by seblin            #+#    #+#              #
+#    Updated: 2024/07/28 13:44:00 by seblin           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = interfaceAndRecap
 CXX = c++
 
-HDR_DIR = .
+HDRDIRS := $(shell find . \( -name '*.h' -o -name '*.hpp' \) -exec dirname {} \
+	\; | sort -u)
 SRC_DIR = .
 OBJ_DIR = objects
 CFLAGS = $(HDRFLAGS) -g -W -Wall -Wextra -Werror -std=c++98
 LDFLAGS = 
 
-HDRFLAGS = 
+HDRFLAGS := $(foreach dir, $(HDRDIRS), -I$(dir))
 HDR = $(shell find . \( -name "*.hpp" -o -name "*.h" \))
 SRC = $(shell find . -name "*.cpp" | sed 's|^\./||')
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
@@ -20,7 +33,7 @@ l: design emoticon $(NAME)
 
 TOG = 0
 
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR) $(X_HDR)
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR)
 	@if [ $(TOG) -eq 0 ]; then \
 		echo "\033[0;32m compiling...        🚀 "; \
 	fi;	

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/28 12:08:25 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/28 13:57:23 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main( void )
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");		
 	AMateria* tmp;
+	tmp = src->createMateria("mouche");//! other test
 	tmp = src->createMateria("ice");
 	//std::cout << "tmp type: " << tmp->getType() << "!" << std::endl;
 		//! other test	
@@ -91,12 +92,12 @@ int	main( void )
 		<< std::endl;
 	delete playerTwo;
 	
-	std::cout << "player one: " << playerOne->getName() << std::endl;
+	std::cout << "player one: " << "\e[1m" << playerOne->getName() << std::endl;
 		std::cout << std::endl;
 	for (int i = 0; i < INV + 1; i++)
 		playerOne->use(i, *playerOne);
 		
-	std::cout << std::endl;
+	std::cout << RST << std::endl;
 	std::cout << "create player three: copy of player one" << std::endl;
 	Character playerThree(*playerOne);
 	std::cout << std::endl;
@@ -107,10 +108,10 @@ int	main( void )
 	
 	std::cout << "player three: " << playerThree.getName() << std::endl;
 	std::cout << std::endl;	
-	std::cout << playerThree.getName() << std::endl;
+	std::cout << "\e[1m" << playerThree.getName() << std::endl;
 	for (int i = 0; i < INV + 1; i++)
 		playerThree.use(i, playerThree);
 			
-	std::cout << std::endl;
+	std::cout << RST << std::endl;
 	return 0;
 }
