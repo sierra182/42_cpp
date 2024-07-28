@@ -6,14 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:20:15 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 18:35:19 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/28 11:59:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 #include <iostream>
 
-void Cure::use(ICharacter& target)
+void Cure::use(ICharacter& target) const
 {
 	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
@@ -61,5 +61,4 @@ Cure & Cure::operator=( const Cure & rhs )
     
 	return (*this);
 	(void) rhs;
-    //! to complete
 }

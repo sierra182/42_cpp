@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 18:35:12 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/28 10:56:39 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ Character::Character( const std::string & _name ) : name(_name)
 
 	for (int i = 0; i < INV; i++)
 		this->inventory[i] = NULL;
-
 	return ;
 }
 
@@ -70,8 +69,6 @@ Character & Character::operator=( const Character & rhs )
 			this->inventory[i] = rhs.inventory[i]->clone();
 		}
 	}
-				
-    //! to complete
     return (*this);
 }
 
@@ -88,22 +85,16 @@ void Character::equip( AMateria * m )
 			this->inventory[i] = m;
 			break;
 		}
-	
-    //! to complete
 }
 
 void Character::unequip( int idx )
 {
    	if (idx < INV && this->inventory[idx])
 		this->inventory[idx] = NULL;
-
-    //! to complete
 }
 
 void Character::use( int idx, ICharacter& target )
 {
 	if (idx < INV && this->inventory[idx])
 		this->inventory[idx]->use(target);
-
-    //! to complete
 }

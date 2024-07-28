@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:03:33 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 10:07:50 by svidot           ###   ########.fr       */
+/*   Updated: 2024/07/28 12:08:45 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,19 @@
 
 class AMateria
 {
-    protected:
-    // [...] //? type
+    protected:  
     	AMateria( void );
     	const std::string type;
     
     public:
     
-        AMateria( std::string const & type );// pub?
-        // [...] //? cano
+        AMateria( std::string const & type );
         virtual ~AMateria( void );
         AMateria( const AMateria & );
         AMateria & operator=( const AMateria & rhs );
         
-   		std::string const & getType() const; // Returns the materia type
+   		std::string const & getType() const;
 
     	virtual AMateria* clone( void ) const = 0;    
-    	virtual void use( ICharacter & ) {};//? {}
+    	virtual void use( ICharacter & ) const {};
 };

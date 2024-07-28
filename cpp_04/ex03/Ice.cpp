@@ -6,14 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:23:11 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 18:35:25 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/28 12:01:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include <iostream>
 
-void Ice::use(ICharacter& target)
+void Ice::use(ICharacter& target) const
 {
 	std::cout << "* shoots an ice bolt at " << target.getName()
 		<< " *" << std::endl;
@@ -23,7 +23,7 @@ AMateria * Ice::clone( void ) const
 {   
 	// std::cout << " Ice clone called" << std::endl;
 
-    return (new Ice(*this)); //?
+    return (new Ice(*this));
 }
 
 Ice::Ice(std::string const & _type) : AMateria(_type)
@@ -59,8 +59,8 @@ Ice::Ice( const Ice & src ) : AMateria(src)
 Ice & Ice::operator=( const Ice & rhs )
 {
     // std::cout << CNS << " Ice operator= called" << RST << std::endl;
+	
     return (*this);
-    (void) rhs;     
-    //! to complete
+    (void) rhs;
 }
 
