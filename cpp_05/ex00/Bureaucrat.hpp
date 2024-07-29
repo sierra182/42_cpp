@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:30 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/28 18:42:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/29 11:53:19 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Bureaucrat
 	const std::string	_name;
 	int 				_grade;
 	
+	void isGradeAccept( int grade ) const;
+	
 	public:
 		
 		virtual ~Bureaucrat( void );
@@ -30,4 +32,15 @@ class Bureaucrat
 		int  				getGrade( void ) const;
 		void				incrementGrade( void );
 		void				decrementGrade( void );
+
+		class GradeTooHighException : public std::exception
+		{
+			public:
+			virtual const char * what( void ) const throw();		
+		};		
+		class GradeTooLowException : public std::exception
+		{
+			public:
+			virtual const char * what( void ) const throw();		
+		};
 };
