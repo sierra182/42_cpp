@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 11:55:07 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/29 15:24:48 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,56 @@
 #include <iostream>
 
 int main (void )
-{
+{	
+	std::cout << std::endl;
 	try	
 	{
-		Bureaucrat bur("jean", 42);
-		Bureaucrat bur2("jeanne", -42);
-
-
-			
-	}
-	catch (Bureaucrat::GradeTooLowException & e)
-	{		
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException & e)
-	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat bur("marguerite", 0);
 	}
 	catch (std::exception & e)
 	{
-		std::cout << "gen " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
+	
+	std::cout << std::endl;
+	try	
+	{
+		Bureaucrat bur("marguerite", 151);
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
+	std::cout << std::endl;
+	try
+	{
+		Bureaucrat bur("marguerite", 1);
+		bur.decrementGrade();
+		bur.decrementGrade();
+		bur.incrementGrade();	
+		bur.incrementGrade();	
+		bur.incrementGrade();	
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	std::cout << std::endl;
+	try
+	{
+		Bureaucrat bur("marguerite", 150);
+		bur.incrementGrade();	
+		bur.incrementGrade();	
+		bur.decrementGrade();	
+		bur.decrementGrade();
+		bur.decrementGrade();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}	
+	std::cout << std::endl;
 	return (0);
 }
