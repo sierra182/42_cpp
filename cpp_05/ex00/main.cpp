@@ -6,12 +6,11 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 15:24:48 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/29 16:03:15 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-// #include <stdexcept>
 #include <iostream>
 
 int main (void )
