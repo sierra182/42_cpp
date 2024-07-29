@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 15:37:09 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/29 20:18:19 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,13 @@ std::ostream & operator<<( std::ostream & lhs, const Bureaucrat & rhs )
 	lhs << ' ' << rhs.getName() << ", bureaucrat grade " << rhs.getGrade()
 		<< '.';
 	return (lhs);
+}
+
+void Bureaucrat::signForm( const Form & form ) const
+{
+	if (form.getIsSigned())
+		std::cout << ' ' << this->_name << " signed " << form.getName();
+	else
+		std::cout << ' ' << this->_name << " couldn’t sign " << form.getName()
+		<< " because " << " ?reason? " << std::endl;
 }
