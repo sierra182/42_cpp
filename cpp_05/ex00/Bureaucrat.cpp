@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 15:37:09 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 12:00:51 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ Bureaucrat::Bureaucrat( std::string const name, int const grade ) :
 	_name(name)
 {
 	this->_grade = grade;
-	Bureaucrat::isGradeAccept(this->_grade);
+	this->isGradeAccept(this->_grade);
 	std::cout << *this << " Created with succes." << std::endl;
 	
 	return ;
@@ -90,14 +90,14 @@ int					Bureaucrat::getGrade( void ) const
 void				Bureaucrat::incrementGrade( void )
 {
 	std::cout << *this << " Try increment grade..." << std::endl;
-	Bureaucrat::isGradeAccept(this->_grade - 1);
+	this->isGradeAccept(this->_grade - 1);
 	this->_grade--;
 	std::cout << *this << " Incremented." << std::endl;
 }
 void				Bureaucrat::decrementGrade( void )
 {
 	std::cout << *this << " Try decrement grade..." << std::endl;
-	Bureaucrat::isGradeAccept(this->_grade + 1);	
+	this->isGradeAccept(this->_grade + 1);	
 	this->_grade++;
 	std::cout << *this << " Decremented." << std::endl;
 }
