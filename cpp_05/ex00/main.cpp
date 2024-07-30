@@ -6,14 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 10:11:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 22:10:36 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-int main (void )
+int main ( void )
 {	
 	std::cout << std::endl;
 	try	

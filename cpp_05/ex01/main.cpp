@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 13:02:59 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 22:10:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include "Form.hpp"
 
-int main (void )
+int main ( void )
 {
 	std::cout << std::endl;
 	try 
