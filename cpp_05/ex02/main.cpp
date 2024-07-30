@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 17:17:14 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 22:12:09 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-int main (void )
+int main ( void )
 {
-	std::cout << std::endl;
+	std::cout << "truc" << std::endl;
 	PresidentialPardonForm form("jhon");
 	RobotomyRequestForm rob("zorg");
 	RobotomyRequestForm rob2("zoé");
 	RobotomyRequestForm rob3("zara");
 	RobotomyRequestForm rob4("zirk");
+	ShrubberyCreationForm shrub("boumbo");
 	// Bureaucrat bur("marguerite", 16);
 	// bur.signForm(form);
 	// std::cout << form << std::endl;

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:06 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 18:27:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 22:06:10 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm( void )
 ShrubberyCreationForm::ShrubberyCreationForm( const std::string target )
 : Form("Shrubbery", 145, 137)
 {
-	std::ofstream ofs(target +"_shrubbery");
+	std::ofstream ofs((target + "_shrubbery").c_str());
 	if (!ofs)
-		
-	std::cout << "\e[1m " << target <<
-		" has been pardoned by Zaphod Beeblebrox.\e[0m" << std::endl;
-	
+		std::cerr << "Error file out" << std::endl;	
+	ofs << " * \n   ** \n  **** \n ****** \n   ||" << std::endl;
+	ofs.close();
 	return ;
 }
 
