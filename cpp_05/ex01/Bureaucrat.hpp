@@ -6,14 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:30 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 20:20:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 10:48:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include<ostream>
-#include "Form.hpp"
 
+class Form;
 class Bureaucrat
 {
 	Bureaucrat( void );
@@ -21,7 +21,6 @@ class Bureaucrat
 	int 				_grade;
 	
 	void isGradeAccept( int grade ) const;
-	void signForm( const Form & form ) const;
 	
 	public:
 		
@@ -34,6 +33,7 @@ class Bureaucrat
 		int  				getGrade( void ) const;
 		void				incrementGrade( void );
 		void				decrementGrade( void );
+		void 				signForm( Form & form ) const;
 
 		class GradeTooHighException : public std::exception
 		{

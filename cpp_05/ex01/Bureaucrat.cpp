@@ -6,12 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 20:18:19 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 11:34:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat( void )
 {	
@@ -67,6 +68,8 @@ Bureaucrat::Bureaucrat( std::string const name, int const grade ) :
 Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src._name)
 {
 	*this = src;
+
+	std::cout << *this << " Created with succes." << std::endl;
 	return ;
 }
 Bureaucrat & 		Bureaucrat::operator=( const Bureaucrat & rhs )
@@ -109,11 +112,17 @@ std::ostream & operator<<( std::ostream & lhs, const Bureaucrat & rhs )
 	return (lhs);
 }
 
-void Bureaucrat::signForm( const Form & form ) const
-{
-	if (form.getIsSigned())
-		std::cout << ' ' << this->_name << " signed " << form.getName();
-	else
-		std::cout << ' ' << this->_name << " couldn’t sign " << form.getName()
-		<< " because " << " ?reason? " << std::endl;
+void Bureaucrat::signForm( Form & form ) const
+{	
+	try 
+	{
+		form.beSigned(*this);		
+		std::cout << ' ' << this->_name << " signed " << form.getName();	
+	}
+	catch (const std::exception & e)
+	{
+		std::cerr << ' ' << this->_name << " couldn’t sign " << form.getName()
+		<< " because " << e.what() << std::endl;
+		throw;	
+	}		
 }

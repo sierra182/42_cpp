@@ -6,11 +6,12 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 20:06:28 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 10:47:03 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 Form::Form( void ) : _name("_name"),  _gradeForSign(0), _gradeForExec(0)
@@ -30,6 +31,7 @@ Form::Form( const std::string name, const int gradeForSign, const int gradeForEx
 {
 	this->_isSigned = false;
 	
+	std::cout << *this << " Created with succes." << std::endl;
 	return ;
 }
 
@@ -38,6 +40,8 @@ Form::Form( const Form & src) : _name(src._name),
 	_gradeForExec(Form::isGradeAccept(src._gradeForExec))
 {
 	*this = src;
+
+	std::cout << *this << " Created with succes." << std::endl;
 	return ;
 }
 
@@ -71,18 +75,19 @@ int 	 			Form::getGradeForExec( void ) const
 
 std::ostream & operator<<( std::ostream & lhs, const Form & rhs )
 {
-	lhs << rhs.getName() << rhs.getGradeForSign() << rhs.getGradeForExec() << rhs.getIsSigned() << std::endl;
+	lhs << rhs.getName() << ", grade for sign: " << rhs.getGradeForSign()
+		<< ", grade for exec: " << rhs.getGradeForExec()  << ", is signed: " << rhs.getIsSigned() << std::endl;
 	return (lhs);
 }
 
-Form::GradeTooHighException::GradeTooHighException( const Form & form )
-	: _form(form)
+Form::GradeTooHighException::GradeTooHighException
+	( const Form & form, const int grade ) : _form(form), _grade(grade)
 {	
 	return ;
 }
 
-Form::GradeTooLowException::GradeTooLowException( const Form & form )
-	: _form(form)
+Form::GradeTooLowException::GradeTooLowException
+	( const Form & form, const int grade ) : _form(form), _grade(grade)
 {
 	return ;
 }
@@ -90,6 +95,7 @@ Form::GradeTooLowException::GradeTooLowException( const Form & form )
 const char * Form::GradeTooHighException::what( void ) const throw()
 {
 	std::cout << this->_form;
+	std::cout << " trying: (" << this->_grade << "): ";
 	
 	return " \e[1mException: Grade is too high!\e[0m";
 }
@@ -97,16 +103,17 @@ const char * Form::GradeTooHighException::what( void ) const throw()
 const char * Form::GradeTooLowException::what( void ) const throw()
 {
 	std::cout << this->_form;
+	std::cout << " trying: (" << this->_grade << "): ";
 	
 	return " \e[1mException: Grade is too low!\e[0m";
 }
 
-int Form::isGradeAccept( int grade ) const
-{
+int Form::isGradeAccept( const int grade ) const
+{	
 	if (grade < 1)
-		throw Form::GradeTooHighException(*this);
+		throw Form::GradeTooHighException(*this, grade);
 	else if (grade > 150)
-		throw Form::GradeTooLowException(*this);
+		throw Form::GradeTooLowException(*this, grade);
 	return (grade);
 }
 
@@ -115,5 +122,5 @@ void Form::beSigned( const Bureaucrat & bur )
 	if (bur.getGrade() <= this->getGradeForSign())
 		this->_isSigned = true;
 	else
-		throw Form::GradeTooLowException(*this);	
+		throw Form::GradeTooLowException(*this, bur.getGrade());	
 }

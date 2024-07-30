@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 16:03:15 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 10:11:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main (void )
 	{
 		Bureaucrat bur("marguerite", 0);
 	}
-	catch (std::exception & e)
+	catch (const std::exception & e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
@@ -30,7 +30,7 @@ int main (void )
 	{
 		Bureaucrat bur("marguerite", 151);
 	}
-	catch (std::exception & e)
+	catch (const std::exception & e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

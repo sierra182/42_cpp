@@ -6,20 +6,19 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/29 20:21:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 10:25:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <ostream>
-// #include "Bureaucrat.hpp"
 
 class Bureaucrat;
+
 class Form
 {	
 	Form( void );
 	int isGradeAccept( int grade ) const;
-	void beSigned( const Bureaucrat & bur );
 	
 	const std::string	_name;
 	bool				_isSigned;
@@ -39,21 +38,27 @@ class Form
 		int					getGradeForSign( void ) const;
 		int 	 			getGradeForExec( void ) const;
 		
+		void beSigned( const Bureaucrat & bur );
+
 		class GradeTooHighException	: public std::exception
 		{
-			const Form & _form;
+			const Form &	_form;
+			const int		_grade;
+			
 			public :
 			
-			GradeTooHighException( const Form & form );
+			GradeTooHighException( const Form & form, const int grade );
 			virtual const char * what( void ) const throw();
 		};
 		
 		class GradeTooLowException	: public std::exception
 		{
 			const Form & _form;
+			const int	 _grade;
+			
 			public:
 			
-			GradeTooLowException( const Form & form );
+			GradeTooLowException( const Form & form, const int grade );
 			virtual const char * what( void ) const throw();
 		};
 };
