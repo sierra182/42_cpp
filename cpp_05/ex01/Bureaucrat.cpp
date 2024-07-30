@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 12:29:13 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 13:02:25 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void Bureaucrat::signForm( Form & form ) const
 	{
 		form.beSigned(*this);		
 		std::cout << ' ' << this->_name << " signed " << form.getName()
-			<< std::endl;	
+			<< '.' << std::endl;	
 	}
 	catch (const std::exception & e)
 	{

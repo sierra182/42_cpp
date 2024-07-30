@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 12:12:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 13:00:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,12 @@ int Form::isGradeAccept( const int grade ) const
 {	
 	if (grade < 1)
 	{		
-		std::cout << *this;
+		std::cout << this->_name << std::endl;
 		throw Form::GradeTooHighException(*this, grade);
 	}
 	else if (grade > 150)
 	{
-		std::cout << *this;
+		std::cout << this->_name << std::endl;
 		throw Form::GradeTooLowException(*this, grade);
 	}
 	return (grade);
