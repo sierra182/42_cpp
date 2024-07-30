@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 10:47:03 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/30 12:12:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int 	 			Form::getGradeForExec( void ) const
 std::ostream & operator<<( std::ostream & lhs, const Form & rhs )
 {
 	lhs << rhs.getName() << ", grade for sign: " << rhs.getGradeForSign()
-		<< ", grade for exec: " << rhs.getGradeForExec()  << ", is signed: " << rhs.getIsSigned() << std::endl;
+		<< ", grade for exec: " << rhs.getGradeForExec()  << ", is signed: "
+		<< rhs.getIsSigned() << std::endl;
+		
 	return (lhs);
 }
 
@@ -93,17 +95,15 @@ Form::GradeTooLowException::GradeTooLowException
 }
 
 const char * Form::GradeTooHighException::what( void ) const throw()
-{
-	std::cout << this->_form;
+{	
 	std::cout << " trying: (" << this->_grade << "): ";
 	
 	return " \e[1mException: Grade is too high!\e[0m";
 }
 
 const char * Form::GradeTooLowException::what( void ) const throw()
-{
-	std::cout << this->_form;
-	std::cout << " trying: (" << this->_grade << "): ";
+{	
+	std::cout << " trying: (" << this->_grade << "):";
 	
 	return " \e[1mException: Grade is too low!\e[0m";
 }
@@ -111,9 +111,15 @@ const char * Form::GradeTooLowException::what( void ) const throw()
 int Form::isGradeAccept( const int grade ) const
 {	
 	if (grade < 1)
+	{		
+		std::cout << *this;
 		throw Form::GradeTooHighException(*this, grade);
+	}
 	else if (grade > 150)
+	{
+		std::cout << *this;
 		throw Form::GradeTooLowException(*this, grade);
+	}
 	return (grade);
 }
 
