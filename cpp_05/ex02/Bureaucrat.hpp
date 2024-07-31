@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:30 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 12:41:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 14:14:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Bureaucrat
 		void				decrementGrade( void );
 		
 		void 				signForm( AForm & form ) const;
-		void				executeForm(AForm const & form) const;
+		void				executeForm( AForm const & form ) const;
 		
 		class GradeTooHighException : public std::exception
 		{

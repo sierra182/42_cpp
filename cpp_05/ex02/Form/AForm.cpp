@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:33:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 14:10:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,11 @@ void AForm::beSigned( const Bureaucrat & bur )
 		throw AForm::GradeTooLowException(*this, bur.getGrade());	
 }
 
-void AForm::execute(Bureaucrat const & executor) const
+void AForm::execute( Bureaucrat const & executor ) const
 {
-	
+	if (!this->_isSigned)
+		;//throw
+	else if (executor.getGrade() > this->getGradeForExec())
+		;//throw
+	action();	
 }

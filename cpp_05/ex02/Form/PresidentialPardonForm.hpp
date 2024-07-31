@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:25:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 14:08:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 class PresidentialPardonForm : public AForm
 {
 	PresidentialPardonForm( void );
-	void Action( const std::string target ) const;//?virtual
-	
+	void action( void ) const;//?virtual
+		
+	const std::string _target;
+
 	public:
 	
 		PresidentialPardonForm( const std::string target );
