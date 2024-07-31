@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:13 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 17:14:51 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:07:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ RobotomyRequestForm::~RobotomyRequestForm( void )
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const std::string target )
-: Form("Robotomy", 72, 45)
+: AForm("Robotomy", 72, 45)
 {
 	usleep(500000);
 	std::cout << "\a\e[1m" << "***drillingggg!***" << std::endl << std::endl;
@@ -44,7 +44,7 @@ RobotomyRequestForm::RobotomyRequestForm( const std::string target )
 }
 
 RobotomyRequestForm::RobotomyRequestForm
-	( const RobotomyRequestForm & src ) : Form(src)
+	( const RobotomyRequestForm & src ) : AForm(src)
 {
 	*this = src;
 	return ;
@@ -53,7 +53,7 @@ RobotomyRequestForm::RobotomyRequestForm
 RobotomyRequestForm & RobotomyRequestForm::operator=
 	( const RobotomyRequestForm & rhs )
 {
-	Form::operator=(rhs);
+	AForm::operator=(rhs);
 	
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 12:42:36 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:03:47 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ PresidentialPardonForm::PresidentialPardonForm( const std::string target )
 }
 
 PresidentialPardonForm::PresidentialPardonForm
-	( const PresidentialPardonForm & src ) : Form(src)
+	( const PresidentialPardonForm & src ) : AForm(src)
 {
 	*this = src;
 	return ;
@@ -42,7 +42,7 @@ PresidentialPardonForm::PresidentialPardonForm
 PresidentialPardonForm & PresidentialPardonForm::operator=
 	( const PresidentialPardonForm & rhs )
 {
-	Form::operator=(rhs);
+	AForm::operator=(rhs);
 	
 	return (*this);
 }

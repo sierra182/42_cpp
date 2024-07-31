@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 12:26:04 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:05:23 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ class Bureaucrat;
 
 class AForm
 {	
-	AForm( void );
 	int isGradeAccept( int grade ) const;
 	
 	const std::string	_name;
@@ -25,6 +24,9 @@ class AForm
 	const int			_gradeForSign;
 	const int			_gradeForExec;
 	
+	protected:
+		AForm( void );
+		
 	public:
 		
 		AForm( const std::string name, const int gradeForSign,
