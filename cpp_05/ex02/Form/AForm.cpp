@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 14:10:07 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 16:47:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,20 @@ void AForm::beSigned( const Bureaucrat & bur )
 void AForm::execute( Bureaucrat const & executor ) const
 {
 	if (!this->_isSigned)
-		;//throw
+		throw AForm::UnsignedException(this->_name);
 	else if (executor.getGrade() > this->getGradeForExec())
-		;//throw
+		throw AForm::GradeTooLowException(*this, executor.getGrade());
 	action();	
+}
+
+AForm::UnsignedException::UnsignedException( const std::string & name ) :
+	_name(name)
+{
+	return ;
+}
+
+const char * AForm::UnsignedException::what( void ) const throw()
+{
+	this->_message = this->_name + " form is unsigned!";
+	return (this->_message.c_str());
 }

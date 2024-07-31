@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 14:09:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 16:47:26 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,31 @@ class AForm
 		class GradeTooHighException	: public std::exception
 		{
 			const AForm &	_form;
-			const int		_grade;
-			
+			const int		_grade;			
 			public :
 			
-			GradeTooHighException( const AForm & form, const int grade );
-			virtual const char * what( void ) const throw();
+				GradeTooHighException( const AForm & form, const int grade );
+				virtual const char * what( void ) const throw();
 		};
 		
 		class GradeTooLowException	: public std::exception
 		{
 			const AForm & _form;
-			const int	 _grade;
-			
+			const int	 _grade;			
 			public:
 			
-			GradeTooLowException( const AForm & form, const int grade );
-			virtual const char * what( void ) const throw();
+				GradeTooLowException( const AForm & form, const int grade );
+				virtual const char * what( void ) const throw();
+		};
+
+		class UnsignedException : public std::exception
+		{
+			const std::string & _name;
+			mutable std::string _message;
+			public:
+				UnsignedException( const std::string & name );
+				virtual ~UnsignedException( void ) throw() {};
+				virtual const char * what( void ) const throw();		
 		};
 };
 

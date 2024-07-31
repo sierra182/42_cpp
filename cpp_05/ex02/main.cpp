@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 22:12:09 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 16:36:38 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,25 @@
 #include "ShrubberyCreationForm.hpp"
 
 int main ( void )
-{
-	std::cout << "truc" << std::endl;
+{	
+	
 	PresidentialPardonForm form("jhon");
 	RobotomyRequestForm rob("zorg");
 	RobotomyRequestForm rob2("zoé");
 	RobotomyRequestForm rob3("zara");
 	RobotomyRequestForm rob4("zirk");
 	ShrubberyCreationForm shrub("boumbo");
+	
+	Bureaucrat bur("marguerite", 16);
+	try{
+		
+	shrub.execute(bur);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
 	// Bureaucrat bur("marguerite", 16);
 	// bur.signForm(form);
 	// std::cout << form << std::endl;

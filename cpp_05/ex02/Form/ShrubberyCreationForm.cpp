@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:06 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 14:08:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 15:34:42 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ ShrubberyCreationForm::~ShrubberyCreationForm( void )
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const std::string target )
-: AForm("Shrubbery", 145, 137)
+: AForm("Shrubbery", 145, 137), _target(target)
 {	
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm
-	( const ShrubberyCreationForm & src ) : AForm(src)
+	( const ShrubberyCreationForm & src ) : AForm(src), _target(src._target)
 {
 	*this = src;
 	return ;

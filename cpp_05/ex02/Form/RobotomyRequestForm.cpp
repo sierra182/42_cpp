@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:13 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 14:08:38 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 15:34:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ RobotomyRequestForm::~RobotomyRequestForm( void )
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const std::string target )
-: AForm("Robotomy", 72, 45)
+: AForm("Robotomy", 72, 45), _target(target)
 {			
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm
-	( const RobotomyRequestForm & src ) : AForm(src)
+	( const RobotomyRequestForm & src ) : AForm(src), _target(src._target)
 {
 	*this = src;
 	return ;
