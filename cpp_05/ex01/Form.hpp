@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 10:25:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 11:28:02 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class Form
 		int					getGradeForSign( void ) const;
 		int 	 			getGradeForExec( void ) const;
 		
-		void beSigned( const Bureaucrat & bur );
+		void beSigned( const Bureaucrat & signator );
 
 		class GradeTooHighException	: public std::exception
 		{

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 13:00:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 12:32:38 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-Form::Form( void ) : _name("_name"),  _gradeForSign(0), _gradeForExec(0)
+Form::Form( void ) : _gradeForSign(0), _gradeForExec(0)
 {
 	this->_isSigned = false;
 	
@@ -123,10 +123,10 @@ int Form::isGradeAccept( const int grade ) const
 	return (grade);
 }
 
-void Form::beSigned( const Bureaucrat & bur )
+void Form::beSigned( const Bureaucrat & signator )
 {
-	if (bur.getGrade() <= this->getGradeForSign())
+	if (signator.getGrade() <= this->getGradeForSign())
 		this->_isSigned = true;
 	else
-		throw Form::GradeTooLowException(*this, bur.getGrade());	
+		throw Form::GradeTooLowException(*this, signator.getGrade());	
 }

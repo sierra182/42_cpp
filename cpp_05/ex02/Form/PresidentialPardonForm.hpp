@@ -6,14 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 15:38:23 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 12:59:28 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 	PresidentialPardonForm( void );
 	

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 15:31:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 12:41:58 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ std::ostream & operator<<( std::ostream & lhs, const Bureaucrat & rhs )
 	return (lhs);
 }
 
-void Bureaucrat::signForm( Form & form ) const
+void Bureaucrat::signForm( AForm & form ) const
 {	
 	try 
 	{
@@ -127,3 +127,5 @@ void Bureaucrat::signForm( Form & form ) const
 		throw;	
 	}		
 }
+
+void				executeForm(AForm const & form) const;

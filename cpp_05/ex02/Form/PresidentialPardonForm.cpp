@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/30 16:59:09 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 12:42:36 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PresidentialPardonForm::~PresidentialPardonForm( void )
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const std::string target )
-: Form("Zaphod Beeblebrox", 25, 5)
+: AForm("Zaphod Beeblebrox", 25, 5)
 {
 	std::cout << "\e[1m " << target <<
 		" has been pardoned by Zaphod Beeblebrox.\e[0m" << std::endl;
