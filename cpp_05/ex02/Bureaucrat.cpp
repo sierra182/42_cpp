@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 12:41:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:36:39 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src._name)
 	std::cout << *this << " Created with succes." << std::endl;
 	return ;
 }
-Bureaucrat & 		Bureaucrat::operator=( const Bureaucrat & rhs )
+Bureaucrat & Bureaucrat::operator=( const Bureaucrat & rhs )
 {
 	if (this != &rhs)		
 		if (this->_grade != rhs._grade)
@@ -85,19 +85,19 @@ const std::string &	Bureaucrat::getName( void ) const
 	return (this->_name);
 }
 
-int					Bureaucrat::getGrade( void ) const
+int	Bureaucrat::getGrade( void ) const
 {
 	return (this->_grade);
 }
 	
-void				Bureaucrat::incrementGrade( void )
+void Bureaucrat::incrementGrade( void )
 {
 	std::cout << *this << " Try increment grade..." << std::endl;
 	this->isGradeAccept(this->_grade - 1);
 	this->_grade--;
 	std::cout << *this << " Incremented." << std::endl;
 }
-void				Bureaucrat::decrementGrade( void )
+void Bureaucrat::decrementGrade( void )
 {
 	std::cout << *this << " Try decrement grade..." << std::endl;
 	this->isGradeAccept(this->_grade + 1);	
@@ -128,4 +128,4 @@ void Bureaucrat::signForm( AForm & form ) const
 	}		
 }
 
-void				executeForm(AForm const & form) const;
+void executeForm(AForm const & form) const;

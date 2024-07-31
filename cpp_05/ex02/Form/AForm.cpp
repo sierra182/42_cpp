@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:11:22 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:33:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ const std::string &	AForm::getName( void ) const
 	return (this->_name);
 }
 
-bool				AForm::getIsSigned( void ) const
+bool AForm::getIsSigned( void ) const
 {
 	return (this->_isSigned);
 }
 
-int					AForm::getGradeForSign( void ) const
+int	AForm::getGradeForSign( void ) const
 {
 	return (this->_gradeForSign);
 }
 
-int 	 			AForm::getGradeForExec( void ) const
+int AForm::getGradeForExec( void ) const
 {
 	return (this->_gradeForExec);
 }
