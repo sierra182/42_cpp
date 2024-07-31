@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:02 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 14:08:17 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 20:18:24 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class ShrubberyCreationForm : public AForm
 {
 	ShrubberyCreationForm( void );
-	void action( void ) const;//?virtual
+	virtual void action( void ) const;
 	
 	const std::string _target;
 	

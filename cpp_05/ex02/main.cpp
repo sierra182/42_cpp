@@ -6,12 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 16:36:38 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 20:27:28 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include <cstdlib>
 #include <iostream>
+#include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -19,111 +20,40 @@
 
 int main ( void )
 {	
-	
-	PresidentialPardonForm form("jhon");
-	RobotomyRequestForm rob("zorg");
-	RobotomyRequestForm rob2("zoé");
-	RobotomyRequestForm rob3("zara");
-	RobotomyRequestForm rob4("zirk");
-	ShrubberyCreationForm shrub("boumbo");
-	
-	Bureaucrat bur("marguerite", 16);
-	try{
+	std::cout << std::endl;
+	std::string shrubName = "christmasTree";
+	try
+	{		
+		PresidentialPardonForm pres("cypher");
+		RobotomyRequestForm rob("zorg");
+		ShrubberyCreationForm shrub(shrubName);
 		
-	shrub.execute(bur);
+		Bureaucrat bur("marguerite", 73);
+		Bureaucrat bur2("marge", 46);
+	
+		bur.executeForm(rob);	
+		bur2.signForm(rob);	
+		bur2.executeForm(rob);		
+		std::cout <<std::endl;
+		bur2.incrementGrade();
+		std::cout <<std::endl;		
+		bur2.executeForm(rob);
+		bur.executeForm(pres);
+		bur.signForm(pres);
+		Bureaucrat homer_bur("homer", 1);
+		homer_bur.signForm(pres);
+		bur.executeForm(pres);
+		std::cout <<std::endl;
+		homer_bur.executeForm(pres);
+		homer_bur.executeForm(shrub);
+		bur.signForm(shrub);
+		bur.executeForm(shrub);	
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;		
 	}
-	
-	// Bureaucrat bur("marguerite", 16);
-	// bur.signForm(form);
-	// std::cout << form << std::endl;
-	// PresidentialPardonForm form2("24target");
-	// std::cout << form2 << std::endl;
-	// form2 = form;
-	// std::cout << form2 << std::endl;
-
-
-	// try 
-	// {
-	// 	Form form("formidable", -42, 12);		
-	// }
-	// catch (const std::exception & e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-	// std::cout << std::endl;
-	// try 
-	// {
-	// 	Form form("formidable", 420, 12);		
-	// }
-	// catch (const std::exception & e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-	// std::cout << std::endl;
-	// try 
-	// {
-	// 	Form form("formidable", 42, 0);		
-	// }
-	// catch (const std::exception & e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-	// std::cout << std::endl;
-	// try 
-	// {
-	// 	Form form("formidable", 42, 151);		
-	// }
-	// catch (const std::exception & e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-	// std::cout << std::endl;
-	// try 
-	// {
-	// 	Form form("formidable", 15, 20);	
-	// 	std::cout << std::endl;
-	// 	Bureaucrat bur("marguerite", 16);	
-	// 	std::cout << std::endl;		
-	// 	try
-	// 	{
-	// 		bur.signForm(form);		
-	// 	}
-	// 	catch (const std::exception & e)
-	// 	{
-	// 		std::cout << std::endl;				
-	// 		bur.incrementGrade();
-	// 		std::cout << std::endl;	
-			
-	// 		try
-	// 		{
-	// 			bur.signForm(form);
-	// 			std::cout << std::endl;
-	// 			std::cout << form;
-	// 			std::cout << std::endl;		
-	// 			Form form2("formol", 1, 1);
-	// 			std::cout << std::endl;
-	// 			std::cout << " *copy formidable to formol*" << std::endl;
-	// 			form2 = form;
-	// 			std::cout << std::endl;
-	// 			std::cout << form2;	
-	// 		}
-	// 		catch (const std::exception & e)
-	// 		{
-	// 			std::cout << std::endl;	
-	// 			std::cerr << e.what() << std::endl;
-	// 			bur.incrementGrade();				
-	// 		}
-	// 	}
-	// }
-	// catch (const std::exception & e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-
-	std::cout << std::endl;
+	system(("cat " +  shrubName + "_shrubbery").c_str());
+	std::cout <<std::endl;
 	return (0);
 }

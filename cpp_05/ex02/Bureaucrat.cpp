@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 14:17:28 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 20:20:45 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ Bureaucrat::Bureaucrat( std::string const name, int const grade ) :
 {
 	this->_grade = grade;
 	this->isGradeAccept(this->_grade);
-	std::cout << *this << " Created with succes." << std::endl;
+	std::cout << *this << " Created with succes." << std::endl << std::endl;
 	
 	return ;
 }
@@ -69,7 +69,7 @@ Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src._name)
 {
 	*this = src;
 
-	std::cout << *this << " Created with succes." << std::endl;
+	std::cout << *this << " Created with succes." << std::endl << std::endl;
 	return ;
 }
 Bureaucrat & Bureaucrat::operator=( const Bureaucrat & rhs )
@@ -97,6 +97,7 @@ void Bureaucrat::incrementGrade( void )
 	this->_grade--;
 	std::cout << *this << " Incremented." << std::endl;
 }
+
 void Bureaucrat::decrementGrade( void )
 {
 	std::cout << *this << " Try decrement grade..." << std::endl;
@@ -117,14 +118,13 @@ void Bureaucrat::signForm( AForm & form ) const
 	try 
 	{
 		form.beSigned(*this);		
-		std::cout << ' ' << this->_name << " signed " << form.getName()
-			<< '.' << std::endl;	
+		std::cout << "\e[1;32m - " << this->_name << " signed "
+			<< form.getName() << ".\e[0m" << std::endl << std::endl;	
 	}
 	catch (const std::exception & e)
 	{
 		std::cerr << ' ' << this->_name << " couldn’t sign " << form.getName()
-		<< " because:" << e.what() << std::endl;
-		throw;	//?
+		<< " because: " << e.what() << std::endl << std::endl;		
 	}		
 }
 
@@ -133,13 +133,12 @@ void Bureaucrat::executeForm( AForm const & form ) const
 	try 
 	{
 		form.execute(*this);			
-		std::cout << ' ' << this->_name << " executed " << form.getName()
-			<< '.' << std::endl;	
+		std::cout << "\e[1;32m - " << this->_name << " executed "
+			<< form.getName() << ".\e[0m" << std::endl << std::endl;	
 	}
 	catch (const std::exception & e)
 	{
-		// std::cerr << ' ' << this->_name << " couldn’t sign " << form.getName()
-		// << " because:" << e.what() << std::endl;
-		// throw;	
+		std::cerr << "\e[1;34m - " << this->_name << " couldn’t execute " <<
+			form.getName() << " because: " << e.what() << "\e[0m" << std::endl;						
 	}	
 }
