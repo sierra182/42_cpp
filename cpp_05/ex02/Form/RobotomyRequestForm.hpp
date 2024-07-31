@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:10 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:06:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:26:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 class RobotomyRequestForm : public AForm
 {
 	RobotomyRequestForm( void );
+	void Action( const std::string target ) const;//?virtual
+
 	static bool _robotog;
 	
 	public:

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:06 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:07:30 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:28:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm( void )
 {
 	return ;
 }
+
 ShrubberyCreationForm::ShrubberyCreationForm( const std::string target )
 : AForm("Shrubbery", 145, 137)
-{
-	std::ofstream ofs((target + "_shrubbery").c_str());
-	if (!ofs)
-		std::cerr << "Error file out" << std::endl;	
-	ofs << "   ° \n   ** \n  **** \n ****** \n   ||" << std::endl;
-	ofs.close();
+{	
 	return ;
 }
 
@@ -47,4 +43,15 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=
 	AForm::operator=(rhs);
 	
 	return (*this);
+}
+
+void ShrubberyCreationForm::Action( const std::string target ) const
+{
+	std::ofstream ofs((target + "_shrubbery").c_str());
+	if (!ofs)
+		std::cerr << "Error file out" << std::endl;	
+	ofs << "   ° \n   ** \n  **** \n ****** \n   ||" << std::endl;
+	ofs.close();
+	
+	return ;
 }

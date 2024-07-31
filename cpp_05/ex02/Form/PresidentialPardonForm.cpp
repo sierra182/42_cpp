@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:03:47 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:19:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ PresidentialPardonForm::~PresidentialPardonForm( void )
 
 PresidentialPardonForm::PresidentialPardonForm( const std::string target )
 : AForm("Zaphod Beeblebrox", 25, 5)
-{
-	std::cout << "\e[1m " << target <<
-		" has been pardoned by Zaphod Beeblebrox.\e[0m" << std::endl;
-	
+{	
 	return ;
 }
 
@@ -45,4 +42,12 @@ PresidentialPardonForm & PresidentialPardonForm::operator=
 	AForm::operator=(rhs);
 	
 	return (*this);
+}
+
+void PresidentialPardonForm::Action( const std::string target ) const
+{
+	std::cout << "\e[1m " << target <<
+		" has been pardoned by Zaphod Beeblebrox.\e[0m" << std::endl;
+	
+	return ;
 }
