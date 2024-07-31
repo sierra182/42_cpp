@@ -6,15 +6,18 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:33:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 20:39:34 by seblin           ###   ########.fr       */
+/*   Updated: 2024/07/31 21:11:00 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <ostream>
+#include "AForm.hpp"
 
 class Intern
 {
-	Aform * makeForm( std::string , std::string );
+	AForm * makeForm( const std::string name, const std::string target ) const;
+	
 	public:
 
 		Intern( void );
