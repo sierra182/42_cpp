@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:33:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 22:02:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/01 11:06:16 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@
 
 class Intern
 {
-	void (Intern::*forms[FRM]) ( const std::string ) const;
+	static const std::string mapping[FRM];
+	AForm * (Intern::*forms[FRM]) ( const std::string & target ) const;
+
+	AForm * makePresidentialForm( const std::string & target ) const;	
+	AForm * makeRobotomyForm( const std::string & target ) const;	
+	AForm * makeShubberyForm( const std::string & target ) const;
 	
 	public:
 
@@ -29,4 +34,9 @@ class Intern
 		
 		AForm * makeForm( const std::string name, const std::string target )
 			const;
+		
+		class FormNoExist : public std::exception
+		{			
+			virtual const char * what( void ) const throw();
+		};
 };
