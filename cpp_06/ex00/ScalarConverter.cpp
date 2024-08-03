@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:51:19 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/02 17:01:16 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/03 11:12:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <sstream>
 #include <cctype>
+#include <string>
 
 ScalarConverter::ScalarConverter( void )
 {
@@ -37,6 +38,7 @@ ScalarConverter & ScalarConverter::operator=( const ScalarConverter & rhs )
 	return (*this);
 }
 
+
 void ScalarConverter::convert( std::string const & entry )
 {	
 	char 	ent_char;
@@ -52,13 +54,16 @@ void ScalarConverter::convert( std::string const & entry )
 		ss.seekg(0, std::ios::beg);
 		ss >> ent_float;
 		if (ss)
-		{	std::cout << "[FLOAT] :" <<std::endl;
+		{	std::cout << "[FLOAT] :" << ent_float <<std::endl;
 			std::cout << " char : '" << static_cast<char> (ent_float) << '\'' << std::endl;
 			std::cout << " int: " << static_cast<int> (ent_float) << std::endl;
-			std::cout << " float: " << static_cast<float> (ent_float) << ".0f" 
+			std::string suff = ".0";		
+			if (ent_float - static_cast<int>(ent_float)) 
+				suff = "";
+			std::cout << " float: " << static_cast<float> (ent_float) << suff + 'f'
 				<< std::endl;
-			std::cout << " double: " << static_cast<double> (ent_float) << ".0"
-				<< std::endl;
+			std::cout << " double: " << static_cast<double> (ent_float) << suff
+				<< std::endl;		
 			return;
 		}
 
@@ -70,10 +75,13 @@ void ScalarConverter::convert( std::string const & entry )
 	if (ss && entry.find_first_of('.') != std::string::npos)
 	{	std::cout << "[DOUBL] :" <<std::endl;
 		std::cout << " char : '" << static_cast<char> (ent_double) << '\'' << std::endl;
-		std::cout << " int: " << static_cast<int> (ent_double) << std::endl;
-		std::cout << " float: " << static_cast<float> (ent_double) << ".0f" 
+		std::cout << " int: " << static_cast<int> (ent_double) << std::endl;	
+		std::string suff = ".0";
+		if (ent_double - static_cast<int>(ent_double)) 
+			suff = "";
+		std::cout << " float: " << static_cast<float> (ent_double) << suff + 'f'
 			<< std::endl;
-		std::cout << " double: " << static_cast<double> (ent_double) << ".0"
+		std::cout << " double: " << static_cast<double> (ent_double) << suff
 			<< std::endl;
 		return;
 	}
@@ -105,7 +113,7 @@ void ScalarConverter::convert( std::string const & entry )
 			std::cout << " char : '" << static_cast<char>(ent_int) << '\'' << std::endl;
 		else
 			std::cout << " char: Non displayable" << std::endl;
-		std::cout << " int: " << static_cast<int> (ent_int) << std::endl;
+		std::cout << " int: " << static_cast<int> (ent_int) << std::endl;	
 		std::cout << " float: " << static_cast<float> (ent_int) << ".0f" 
 			<< std::endl;
 		std::cout << " double: " << static_cast<double> (ent_int) << ".0"
