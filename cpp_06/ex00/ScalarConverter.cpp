@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:51:19 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/03 11:40:17 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/03 15:06:02 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ ScalarConverter & ScalarConverter::operator=( const ScalarConverter & rhs )
 	return (*this);
 }
 
-
-void ScalarConverter::convert( std::string const & entry )
+#include <cstdlib>
+#include <limits>
+#include <string>
+void ScalarConverter::convert( std::string       & entry )
 {	
 	char 	ent_char;
 	int		ent_int;
@@ -47,7 +49,32 @@ void ScalarConverter::convert( std::string const & entry )
 	double	ent_double;
 
 	std::stringstream ss(entry);
-	// std::cout << entry <<std::endl;
+
+	if (entry == "inf" || entry == "inff")
+	{
+		std::cout << " char : impossible" << std::endl;
+		std::cout << " int : impossible" << std::endl;
+		std::cout << " float : inff" << std::endl;
+		std::cout << " double : inf" << std::endl;
+		return ;
+	}
+	if (entry == "-inff" || entry == "-inf")
+	{
+		std::cout << " char : impossible" << std::endl;
+		std::cout << " int : impossible" << std::endl;
+		std::cout << " float : -inff" << std::endl;
+		std::cout << " double : -inf" << std::endl;
+		return ;
+	}
+	if (entry == "nan" || entry == "nanf")
+	{
+		std::cout << " char : impossible" << std::endl;
+		std::cout << " int : impossible" << std::endl;
+		std::cout << " float : nanf" << std::endl;
+		std::cout << " double : nan" << std::endl;
+		return ;
+	}
+
 	if (entry.find_first_of('.') != std::string::npos && *--entry.end() == 'f')
 	{
 		ss.clear();
@@ -60,16 +87,20 @@ void ScalarConverter::convert( std::string const & entry )
 			std::string suff = ".0";		
 			if (ent_float - static_cast<int>(ent_float)) 
 				suff = "";
+
+				
 			std::cout << " float: " << static_cast<float> (ent_float) << suff + 'f'
 				<< std::endl;
 			std::cout << " double: " << static_cast<double> (ent_float) << suff
 				<< std::endl;		
 			return;
 		}
+		if(std::isnan(ent_float))
+			std::cout << "NAAAAAAN" <<std::endl;
 		std::cout << " char : impossible" << std::endl;
 		std::cout << " int : impossible" << std::endl;
 		std::cout << " float : nanf" << std::endl;
-		std::cout << " int : nan" << std::endl;
+		std::cout << " double : nan" << std::endl;
 		return ;	
 	}
 	if (entry.find_first_of('.') != std::string::npos)
@@ -93,7 +124,7 @@ void ScalarConverter::convert( std::string const & entry )
 		std::cout << " char : impossible" << std::endl;
 		std::cout << " int : impossible" << std::endl;
 		std::cout << " float : nanf" << std::endl;
-		std::cout << " int : nan" << std::endl;
+		std::cout << " double : nan" << std::endl;
 		return ;
 	}
 	
@@ -120,7 +151,7 @@ void ScalarConverter::convert( std::string const & entry )
 		std::cout << " char : impossible" << std::endl;
 		std::cout << " int : impossible" << std::endl;
 		std::cout << " float : nanf" << std::endl;
-		std::cout << " int : nan" << std::endl;
+		std::cout << " double : nan" << std::endl;
 		return ;
 	}
 	
