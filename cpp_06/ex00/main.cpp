@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/03 16:48:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/03 18:05:50 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main( int argc, char * argv[] )
 	if (entry.empty())
 		return (std::cerr << "\e[31mthe string is empty...\e[0m"
 			<< std::endl, 1);
+	std::cout << std::endl;
 	ScalarConverter::convert(entry);
+	std::cout << std::endl;
 	return (0);
 }
