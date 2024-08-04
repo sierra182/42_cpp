@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 12:22:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 14:15:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,11 @@ void ScalarConverter::floatCase( std::string entry )
 	// std::cout << "je suis la " << ent_float << std::endl;
 		std::string suff;
 			std::cout << " enfloat" <<  std::fabs(ent_float) << std::endl;	
-		std::cout << " enfloat fllorr" <<  std::floor(std::fabs(ent_float)) << std::endl;
+		std::cout << " enfloat floor " <<  std::floor(std::fabs(ent_float)) << std::endl;
+		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)))
+			std::cout << "ZERO" << std::endl;
+		else
+			std::cout << "PAS ZERO" << std::endl;
 		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)) && ent_float >= 1e-4 && ent_float < 1e+6)
 			suff = ".0";
 		std::cout << " float: " << static_cast<float> (ent_float)
