@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 14:15:22 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 16:17:30 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void ScalarConverter::floatCase( std::string entry )
 	ss >> ent_float;
  
 	if (ss)
-	{	
+	{	std::cout <<  ent_float << std::endl;
 		std::cout << "\e[1;32m you entered an float \e[0;35m" << std::endl
 			<<std::endl;	
 		if (ent_float >= 0 && ent_float <= 127)
@@ -86,15 +86,15 @@ void ScalarConverter::floatCase( std::string entry )
 		else
 			std::cout << " int: impossible " << std::endl;
 		
-	// std::cout << "je suis la " << ent_float << std::endl;
+	
 		std::string suff;
-			std::cout << " enfloat" <<  std::fabs(ent_float) << std::endl;	
+			std::cout << std::setprecision(8) <<" enfloat " <<  std::fabs(ent_float) << std::endl;	
 		std::cout << " enfloat floor " <<  std::floor(std::fabs(ent_float)) << std::endl;
 		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)))
 			std::cout << "ZERO" << std::endl;
 		else
 			std::cout << "PAS ZERO" << std::endl;
-		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)) && ent_float >= 1e-4 && ent_float < 1e+6)
+		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)) && std::fabs(ent_float) >= 1e-6 && std::fabs(ent_float) < 1e+8)
 			suff = ".0";
 		std::cout << " float: " << static_cast<float> (ent_float)
 			<< suff + 'f' << std::endl;
