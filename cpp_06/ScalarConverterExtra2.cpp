@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 12:22:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/03 19:13:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <cmath>
 #include <cstdlib>
 #include <limits>
-#include <iostream>
-#include <iomanip>
 
 bool ScalarConverter::isSpecialCase( std::string entry )
 {
@@ -64,40 +62,25 @@ void ScalarConverter::floatCase( std::string entry )
 	float				ent_float;
 	
 	ss >> ent_float;
- 
 	if (ss)
 	{	
-		std::cout << "\e[1;32m you entered an float \e[0;35m" << std::endl
-			<<std::endl;	
-		if (ent_float >= 0 && ent_float <= 127)
-		{
-			if (std::isprint(ent_float))			
-				std::cout << " char : '" << static_cast<char> (ent_float)
-					<< '\'' << std::endl;
-			else
-				std::cout << " char : Non displayable" << std::endl;			
-		}
-		else			
-			std::cout << " char : impossible" << std::endl;
+		// std::cout << "\e[1;32m you entered an float \e[0;35m" << std::endl
+		// 	<<std::endl;	
 			
 		if (ent_float <= std::numeric_limits<int>::max()
 			&& ent_float >=  std::numeric_limits<int>::min())
 			std::cout << " int: " << static_cast<int> (ent_float) << std::endl;
 		else
 			std::cout << " int: impossible " << std::endl;
-		
-	// std::cout << "je suis la " << ent_float << std::endl;
-		std::string suff;
-			std::cout << " enfloat" <<  std::fabs(ent_float) << std::endl;	
-		std::cout << " enfloat fllorr" <<  std::floor(std::fabs(ent_float)) << std::endl;
-		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)) && ent_float >= 1e-4 && ent_float < 1e+6)
-			suff = ".0";
-		std::cout << " float: " << static_cast<float> (ent_float)
-			<< suff + 'f' << std::endl;
-		std::cout << " double: " << static_cast<double> (ent_float) << suff
-			<< std::endl;		
+			
+		std::string suff = ".0";		
+		if (ent_float - static_cast<int>(ent_float)) 
+			suff = "";			
+		std::cout << " float: " << static_cast<float> (ent_float) << suff + 'f'
+			<< std::endl;			
 	}	
-	else displayAllImpossible();
+	else 
+		std::cout << " float: impossible " << std::endl;
 }	
 
 void ScalarConverter::doubleCase( std::string entry )
@@ -108,34 +91,19 @@ void ScalarConverter::doubleCase( std::string entry )
 	ss >> ent_double;
 	if (ss)
 	{	
-		std::cout << "\e[1;32m you entered a double \e[0;34m" << std::endl
-			<<std::endl;	
-		if (ent_double >= 0 && ent_double <= 127)
-		{
-			if (std::isprint(ent_double))			
-				std::cout << " char : '" << static_cast<char> (ent_double)
-					<< '\'' << std::endl;
-			else
-				std::cout << " char : Non displayable" << std::endl;
-		}
-		else			
-			std::cout << " char : impossible" << std::endl;
-			
-		if (ent_double <= std::numeric_limits<int>::max()
-			&& ent_double >=  std::numeric_limits<int>::min())
-			std::cout << " int: " << static_cast<int> (ent_double)
-				<< std::endl;
-		else
-			std::cout << " int: impossible " << std::endl;	
+		// std::cout << "\e[1;32m you entered a double \e[0;34m" << std::endl
+		// 	<<std::endl;	
+		
 		std::string suff = ".0";
 		if (ent_double - static_cast<int>(ent_double)) 
 			suff = "";
-		std::cout << " float: " << static_cast<float> (ent_double)
-			<< suff + 'f' << std::endl;
+		// std::cout << " float: " << static_cast<float> (ent_double)
+		// 	<< suff + 'f' << std::endl;
 		std::cout << " double: " << static_cast<double> (ent_double) << suff
 			<< std::endl;	
 	}
-	else displayAllImpossible();	
+	else 
+		std::cout << " double : impossible" << std::endl;	
 }
 
 void ScalarConverter::charCase( std::string entry )
@@ -153,14 +121,9 @@ void ScalarConverter::charCase( std::string entry )
 			'\'' << std::endl;
 		else
 			std::cout << " char : Non displayable" << std::endl;	
-		
-		std::cout << " int: " << static_cast<int> (ent_char) << std::endl;
-		std::cout << " float: " << static_cast<float> (ent_char) << ".0f" 
-			<< std::endl;
-		std::cout << " double: " << static_cast<double> (ent_char) << ".0"
-			<< std::endl;		
 	}
-	else displayAllImpossible();
+	else 
+		std::cout << " char : impossible" << std::endl;	
 }
 
 void ScalarConverter::intCase( std::string entry )
@@ -171,44 +134,29 @@ void ScalarConverter::intCase( std::string entry )
 	ss >> ent_int;
 	if (ss)
 	{	
-		std::cout << "\e[1;32m you entered an int \e[0;31m" << std::endl
-			<<std::endl;
-		if (ent_int >= 0 && ent_int <= 127)
-		{
-			if (std::isprint(ent_int))			
-				std::cout << " char : '" << static_cast<char> (ent_int) <<
-					'\'' << std::endl;
-			else
-				std::cout << " char : Non displayable" << std::endl;
-		}
-		else			
-			std::cout << " char : impossible" << std::endl;
-			
+		// std::cout << "\e[1;32m you entered an int \e[0;31m" << std::endl
+		// 	<<std::endl;			
 		if (ent_int <= std::numeric_limits<int>::max()
 			&& ent_int >= std::numeric_limits<int>::min())
 				std::cout << " int: " << static_cast<int> (ent_int)
 					<< std::endl;
 			else
-				std::cout << " int: impossible " << std::endl;
-				
-		std::cout << " float: " << static_cast<float> (ent_int) << ".0f" 
-			<< std::endl;
-		std::cout << " double: " << static_cast<double> (ent_int) << ".0"
-			<< std::endl;
+				std::cout << " int: impossible " << std::endl;		
 	}	
-	else displayAllImpossible(); 
+	else	
+		std::cout << " int : impossible" << std::endl;	
 }
 
 void ScalarConverter::convert( std::string const & entry )
 {
 	if (isSpecialCase(entry))	
 		return specialCase(entry);	
-	if (entry.find_first_of('.') != std::string::npos && *--entry.end() == 'f')
+	//if (entry.find_first_of('.') != std::string::npos && *--entry.end() == 'f')
 		floatCase(entry);		
-	else if (entry.find_first_of('.') != std::string::npos)
+	//else if (entry.find_first_of('.') != std::string::npos)
 		doubleCase(entry);	
-	else if (entry.length() == 1 && !std::isdigit(*entry.c_str()))			
+	//else if (entry.length() == 1 && !std::isdigit(*entry.c_str()))			
 		charCase(entry);
-	else	
+	//else	
 		intCase(entry);	
 }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/03 18:55:09 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 07:40:47 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,13 +190,7 @@ void ScalarConverter::intCase( std::string entry )
 		std::cout << " double: " << static_cast<double> (ent_int) << ".0"
 			<< std::endl;
 	}	
-	else
-	{		
-		std::cout << " char : impossible" << std::endl;
-		std::cout << " int : impossible" << std::endl;
-		std::cout << " float : impossible" << std::endl;
-		std::cout << " double : impossible" << std::endl;
-	} 
+	else displayAllImpossible(); 
 }
 
 void ScalarConverter::convert( std::string const & entry )

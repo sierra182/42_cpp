@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 12:22:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 10:20:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <cstdlib>
 #include <limits>
 #include <iostream>
-#include <iomanip>
 
 bool ScalarConverter::isSpecialCase( std::string entry )
 {
@@ -57,14 +56,13 @@ void ScalarConverter::displayAllImpossible( void )
 	std::cout << " float : impossible" << std::endl;
 	std::cout << " double : impossible" << std::endl;
 }
-
+#include <iomanip>
 void ScalarConverter::floatCase( std::string entry )
 {
 	std::stringstream	ss(entry);
 	float				ent_float;
 	
 	ss >> ent_float;
- 
 	if (ss)
 	{	
 		std::cout << "\e[1;32m you entered an float \e[0;35m" << std::endl
@@ -85,17 +83,23 @@ void ScalarConverter::floatCase( std::string entry )
 			std::cout << " int: " << static_cast<int> (ent_float) << std::endl;
 		else
 			std::cout << " int: impossible " << std::endl;
-		
-	// std::cout << "je suis la " << ent_float << std::endl;
-		std::string suff;
-			std::cout << " enfloat" <<  std::fabs(ent_float) << std::endl;	
-		std::cout << " enfloat fllorr" <<  std::floor(std::fabs(ent_float)) << std::endl;
-		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)) && ent_float >= 1e-4 && ent_float < 1e+6)
-			suff = ".0";
-		std::cout << " float: " << static_cast<float> (ent_float)
-			<< suff + 'f' << std::endl;
-		std::cout << " double: " << static_cast<double> (ent_float) << suff
-			<< std::endl;		
+			
+		// std::string suff = ".0";		
+		if (ent_float == std::floor(ent_float))
+			{
+				// std::cout << "is dec" << std::endl;
+				std::cout << std::fixed << std::setprecision(1) << " float: " << static_cast<float> (ent_float) <<  'f'
+			<< std::endl;
+		std::cout << std::fixed << std::setprecision(1) << " double: " << static_cast<double> (ent_float) << std::endl;
+			}
+			else {
+
+		std::cout << std::fixed << " float: " << static_cast<float> (ent_float) << 'f'
+			<< std::endl;
+		std::cout << std::fixed << " double: " << static_cast<double> (ent_float) <<  std::endl;			
+				
+			}
+			// suff = "";			
 	}	
 	else displayAllImpossible();
 }	
@@ -128,12 +132,21 @@ void ScalarConverter::doubleCase( std::string entry )
 		else
 			std::cout << " int: impossible " << std::endl;	
 		std::string suff = ".0";
-		if (ent_double - static_cast<int>(ent_double)) 
-			suff = "";
-		std::cout << " float: " << static_cast<float> (ent_double)
-			<< suff + 'f' << std::endl;
-		std::cout << " double: " << static_cast<double> (ent_double) << suff
-			<< std::endl;	
+		
+		if (ent_double == std::floor(ent_double))
+			{
+				// std::cout << "is dec" << std::endl;
+				std::cout << std::fixed << std::setprecision(1) << " float: " << static_cast<float> (ent_double) <<  'f'
+			<< std::endl;
+		std::cout << std::fixed << std::setprecision(1) << " double: " << static_cast<double> (ent_double) << std::endl;
+			}
+			else {
+
+		std::cout << std::fixed << " float: " << static_cast<float> (ent_double) << 'f'
+			<< std::endl;
+		std::cout << std::fixed << " double: " << static_cast<double> (ent_double) <<  std::endl;			
+				
+			}	
 	}
 	else displayAllImpossible();	
 }
@@ -196,7 +209,59 @@ void ScalarConverter::intCase( std::string entry )
 		std::cout << " double: " << static_cast<double> (ent_int) << ".0"
 			<< std::endl;
 	}	
-	else displayAllImpossible(); 
+	else 
+	{
+			std::cout << " char: impossible " << std::endl;
+			std::cout << " int: impossible " << std::endl;
+			float ent_float;
+			ss.clear();
+			ss.seekg(0, std::ios::beg);
+			ss >> ent_float ;
+			if (ss)
+			{
+				
+				if (ent_float == std::floor(ent_float))
+				{
+					// std::cout << "is dec" << std::endl;
+					std::cout << std::fixed << std::setprecision(1) << " float: " << static_cast<float> (ent_float) <<  'f'
+				<< std::endl;
+			std::cout << std::fixed << std::setprecision(1) << " double: " << static_cast<double> (ent_float) << std::endl;
+				}
+				else {
+
+			std::cout << std::fixed << " float: " << static_cast<float> (ent_float) << 'f'
+				<< std::endl;
+			std::cout << std::fixed << " double: " << static_cast<double> (ent_float) <<  std::endl;			
+					
+				}
+			}
+			else
+			{
+				std::cout << " float: impossible " << std::endl;
+				double ent_double;
+				ss.clear();
+				ss.seekg(0, std::ios::beg);
+				ss >> ent_double;
+				if (ss)
+				{
+					if (ent_double == std::floor(ent_double))
+					{					
+						std::cout << std::fixed << std::setprecision(1) << " double: " << static_cast<double> (ent_double) << std::endl;
+						// std::cout << ent_double << std::endl;	
+					}
+					else {
+
+				
+				std::cout << std::fixed << " double: " << static_cast<double> (ent_double) <<  std::endl;			
+					// std::cout << ent_double << std::endl;	
+					}
+				}
+				else
+					std::cout << " double: impossible " << std::endl;
+			}
+				
+			
+	} 
 }
 
 void ScalarConverter::convert( std::string const & entry )
