@@ -6,12 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 17:10:30 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 18:09:56 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "ScalarConverter.hpp"
+
 int	main( int argc, char * argv[] )
 {
 	if (argc != 2)
