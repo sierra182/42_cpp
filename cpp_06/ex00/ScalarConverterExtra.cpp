@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 17:53:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 19:09:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void ScalarConverter::floatCase( std::string entry )
 			<< ent_float << std::endl <<std::endl;	
 		if (ent_float >= 0 && ent_float <= 127)
 		{
-			if (std::isprint(ent_float))			
+			if (std::isprint(static_cast<int>(ent_float)))			
 				std::cout << " char : '" << static_cast<char> (ent_float)
 					<< '\'' << std::endl;
 			else
@@ -85,8 +85,8 @@ void ScalarConverter::floatCase( std::string entry )
 		else			
 			std::cout << " char : impossible" << std::endl;
 			
-		if (ent_float <= std::numeric_limits<int>::max()
-			&& ent_float >=  std::numeric_limits<int>::min())
+		if (ent_float <= static_cast<float>(std::numeric_limits<int>::max())
+			&& ent_float >= static_cast<float>(std::numeric_limits<int>::min()))
 			std::cout << " int: " << static_cast<int> (ent_float) << std::endl;
 		else
 			std::cout << " int: impossible " << std::endl;
@@ -117,7 +117,7 @@ void ScalarConverter::doubleCase( std::string entry )
 			<< ent_double << std::endl << std::endl;	
 		if (ent_double >= 0 && ent_double <= 127)
 		{
-			if (std::isprint(ent_double))			
+			if (std::isprint(static_cast<int>(ent_double)))			
 				std::cout << " char : '" << static_cast<char> (ent_double)
 					<< '\'' << std::endl;
 			else
@@ -126,8 +126,8 @@ void ScalarConverter::doubleCase( std::string entry )
 		else			
 			std::cout << " char : impossible" << std::endl;
 			
-		if (ent_double <= std::numeric_limits<int>::max()
-			&& ent_double >=  std::numeric_limits<int>::min())
+		if (ent_double <= static_cast<double>(std::numeric_limits<int>::max())
+			&& ent_double >= std::numeric_limits<int>::min())
 			std::cout << " int: " << static_cast<int> (ent_double)
 				<< std::endl;
 		else
