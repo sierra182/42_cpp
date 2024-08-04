@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 17:43:12 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 17:53:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ bool ScalarConverter::isSpecialCase( std::string entry )
 void ScalarConverter::specialCase( std::string const & entry )
 {
 	std::cout << "\e[1m 👽...you entered a special case...👻 \e[0m" 
-		<< std::endl << std::endl;	
+		<< std::endl << std::endl;
+			
 	std::cout << " char : impossible" << std::endl;
 	std::cout << " int : impossible" << std::endl;	
 	if (entry == "inf" || entry == "inff"
@@ -56,6 +57,7 @@ void ScalarConverter::displayAllImpossible( void )
 {
 	std::cout << "\e[1m 🥶...you entered an invalid input...🤯 \e[0m" 
 		<< std::endl << std::endl;
+		
 	std::cout << " char : impossible" << std::endl;
 	std::cout << " int : impossible" << std::endl;
 	std::cout << " float : impossible" << std::endl;
