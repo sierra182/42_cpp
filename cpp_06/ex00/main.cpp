@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 07:30:24 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 17:10:30 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	main( int argc, char * argv[] )
 {
 	if (argc != 2)
-		return (std::cerr << "\e[31mwe need one argument please...\e[0m"
-			<< std::endl, 1);
+		return (std::cerr << std::endl
+			<< "\e[31m 🤬 we need one argument please...\e[0m"
+				<< std::endl << std::endl, 1);
 	std::string entry(*++argv);
 	if (entry.empty())
-		return (std::cerr << "\e[31mthe string is empty...\e[0m"
-			<< std::endl, 1);
-	std::cout << std::endl;
+		return (std::cerr << std::endl
+			<< "\e[31m 🤬 the string is empty...\e[0m"
+				<< std::endl << std::endl, 1);	
 	ScalarConverter::convert(entry);
 	std::cout << std::endl;
 	return (0);

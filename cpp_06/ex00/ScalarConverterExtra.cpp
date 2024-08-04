@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 16:17:30 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/04 17:43:12 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ bool ScalarConverter::isSpecialCase( std::string entry )
 }
 
 void ScalarConverter::specialCase( std::string const & entry )
-{		
+{
+	std::cout << "\e[1m 👽...you entered a special case...👻 \e[0m" 
+		<< std::endl << std::endl;	
 	std::cout << " char : impossible" << std::endl;
 	std::cout << " int : impossible" << std::endl;	
 	if (entry == "inf" || entry == "inff"
@@ -52,6 +54,8 @@ void ScalarConverter::specialCase( std::string const & entry )
 
 void ScalarConverter::displayAllImpossible( void ) 
 {
+	std::cout << "\e[1m 🥶...you entered an invalid input...🤯 \e[0m" 
+		<< std::endl << std::endl;
 	std::cout << " char : impossible" << std::endl;
 	std::cout << " int : impossible" << std::endl;
 	std::cout << " float : impossible" << std::endl;
@@ -63,12 +67,11 @@ void ScalarConverter::floatCase( std::string entry )
 	std::stringstream	ss(entry);
 	float				ent_float;
 	
-	ss >> ent_float;
- 
+	ss >> ent_float; 
 	if (ss)
-	{	std::cout <<  ent_float << std::endl;
-		std::cout << "\e[1;32m you entered an float \e[0;35m" << std::endl
-			<<std::endl;	
+	{
+		std::cout << "\e[1;32m you entered a float \e[0;35m"
+			<< ent_float << std::endl <<std::endl;	
 		if (ent_float >= 0 && ent_float <= 127)
 		{
 			if (std::isprint(ent_float))			
@@ -85,23 +88,19 @@ void ScalarConverter::floatCase( std::string entry )
 			std::cout << " int: " << static_cast<int> (ent_float) << std::endl;
 		else
 			std::cout << " int: impossible " << std::endl;
-		
-	
-		std::string suff;
-			std::cout << std::setprecision(8) <<" enfloat " <<  std::fabs(ent_float) << std::endl;	
-		std::cout << " enfloat floor " <<  std::floor(std::fabs(ent_float)) << std::endl;
-		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)))
-			std::cout << "ZERO" << std::endl;
-		else
-			std::cout << "PAS ZERO" << std::endl;
-		if (std::fabs(ent_float) == std::floor(std::fabs(ent_float)) && std::fabs(ent_float) >= 1e-6 && std::fabs(ent_float) < 1e+8)
+			
+		std::string suff;		
+		if ((std::fabs(ent_float) == std::floor(std::fabs(ent_float))
+			&& std::fabs(ent_float) >= 1e-6 && std::fabs(ent_float) < 1e+8)
+			|| !ent_float)
 			suff = ".0";
 		std::cout << " float: " << static_cast<float> (ent_float)
 			<< suff + 'f' << std::endl;
 		std::cout << " double: " << static_cast<double> (ent_float) << suff
 			<< std::endl;		
 	}	
-	else displayAllImpossible();
+	else 		
+		displayAllImpossible(); 	
 }	
 
 void ScalarConverter::doubleCase( std::string entry )
@@ -112,8 +111,8 @@ void ScalarConverter::doubleCase( std::string entry )
 	ss >> ent_double;
 	if (ss)
 	{	
-		std::cout << "\e[1;32m you entered a double \e[0;34m" << std::endl
-			<<std::endl;	
+		std::cout << "\e[1;32m you entered a double \e[0;34m" 
+			<< ent_double << std::endl << std::endl;	
 		if (ent_double >= 0 && ent_double <= 127)
 		{
 			if (std::isprint(ent_double))			
@@ -131,15 +130,19 @@ void ScalarConverter::doubleCase( std::string entry )
 				<< std::endl;
 		else
 			std::cout << " int: impossible " << std::endl;	
-		std::string suff = ".0";
-		if (ent_double - static_cast<int>(ent_double)) 
-			suff = "";
+
+		std::string suff;		
+		if ((std::fabs(ent_double) == std::floor(std::fabs(ent_double))
+			&& std::fabs(ent_double) >= 1e-6 && std::fabs(ent_double) < 1e+8)
+			|| !ent_double)
+			suff = ".0";
 		std::cout << " float: " << static_cast<float> (ent_double)
 			<< suff + 'f' << std::endl;
 		std::cout << " double: " << static_cast<double> (ent_double) << suff
 			<< std::endl;	
 	}
-	else displayAllImpossible();	
+	else 		
+		displayAllImpossible();	
 }
 
 void ScalarConverter::charCase( std::string entry )
@@ -150,8 +153,8 @@ void ScalarConverter::charCase( std::string entry )
 	ss >> ent_char;
 	if (ss)
 	{	
-		std::cout << "\e[1;32m you entered a char \e[0;33m" << std::endl
-			<<std::endl;		
+		std::cout << "\e[1;32m you entered a char \e[0;33m"
+			<< ent_char << std::endl <<std::endl;		
 		if (std::isprint(ent_char))			
 			std::cout << " char : '" << static_cast<char> (ent_char) <<
 			'\'' << std::endl;
@@ -164,7 +167,8 @@ void ScalarConverter::charCase( std::string entry )
 		std::cout << " double: " << static_cast<double> (ent_char) << ".0"
 			<< std::endl;		
 	}
-	else displayAllImpossible();
+	else 		
+		displayAllImpossible();
 }
 
 void ScalarConverter::intCase( std::string entry )
@@ -175,8 +179,8 @@ void ScalarConverter::intCase( std::string entry )
 	ss >> ent_int;
 	if (ss)
 	{	
-		std::cout << "\e[1;32m you entered an int \e[0;31m" << std::endl
-			<<std::endl;
+		std::cout << "\e[1;32m you entered an int \e[0;31m" 
+			<< ent_int << std::endl << std::endl;
 		if (ent_int >= 0 && ent_int <= 127)
 		{
 			if (std::isprint(ent_int))			
@@ -195,16 +199,22 @@ void ScalarConverter::intCase( std::string entry )
 			else
 				std::cout << " int: impossible " << std::endl;
 				
-		std::cout << " float: " << static_cast<float> (ent_int) << ".0f" 
-			<< std::endl;
-		std::cout << " double: " << static_cast<double> (ent_int) << ".0"
+		std::string suff;		
+		if ((std::fabs(ent_int) >= 1e-6 && std::fabs(ent_int) < 1e+8)
+			|| !ent_int)
+			suff = ".0";
+		std::cout << " float: " << static_cast<float> (ent_int)
+			<< suff + 'f' << std::endl;
+		std::cout << " double: " << static_cast<double> (ent_int) << suff
 			<< std::endl;
 	}	
-	else displayAllImpossible(); 
+	else 		
+		displayAllImpossible();
 }
 
 void ScalarConverter::convert( std::string const & entry )
 {
+	std::cout << std::setprecision(8) <<std::endl;
 	if (isSpecialCase(entry))	
 		return specialCase(entry);	
 	if (entry.find_first_of('.') != std::string::npos && *--entry.end() == 'f')
