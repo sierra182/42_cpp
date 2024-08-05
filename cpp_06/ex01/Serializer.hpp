@@ -6,11 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 18:12:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 18:30:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/05 13:39:16 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <stdint.h>
+#include "Data.hpp"
 
 class Serializer
 {
