@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 18:26:15 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/04 18:32:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/05 09:55:25 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 Data::Data( void )
 {
+	this->myShInt = 30000;
+	this->myInt = 35000;
+	this->myDouble = 42.2;
+	this->myFloat = 42.1f;
+	this->myChar = 'z';
+	this->myCString = "bravo";
+	this->myString = "houlala";
 	return ;
 }
 
@@ -30,7 +37,21 @@ Data::Data( const Data & src )
 
 Data & Data::operator=( const Data & rhs )
 {
-	//!
-	// if (this != &rhs)
-	// 	if (this->   != rhs.   )
+	if (this != &rhs)
+	{		
+		if (this->myShInt != rhs.myShInt)
+			this->myShInt = rhs.myShInt;
+		if (this->myInt != rhs.myInt)
+			this->myInt = rhs.myInt;
+		if (this->myDouble != rhs.myDouble)
+			this->myDouble = rhs.myDouble;			
+		if (this->myFloat != rhs.myFloat)
+			this->myFloat = rhs.myFloat	;		
+		if (this->myChar != rhs.myChar)
+			this->myChar = rhs.myChar;			
+		if (this->myCString != rhs.myCString)
+			this->myCString = rhs.myCString;			
+		if (this->myString != rhs.myString)
+			this->myString = rhs.myString;
+	}
 }
