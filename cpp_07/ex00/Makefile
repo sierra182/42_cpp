@@ -6,7 +6,7 @@
 #    By: seblin <seblin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 13:41:27 by seblin            #+#    #+#              #
-#    Updated: 2024/08/05 21:18:26 by seblin           ###   ########.fr        #
+#    Updated: 2024/08/06 15:41:27 by seblin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ HDRDIRS := $(shell find . \( -name '*.h' -o -name '*.hpp' \) -exec dirname {} \
 	\; | sort -u)
 SRC_DIR = .
 OBJ_DIR = objects
-CFLAGS = $(HDRFLAGS) -g -std=c++98 #-Wall -Wextra -Werror # -Wconversion
+CFLAGS = $(HDRFLAGS) -g -Wall -Wextra -Werror -Wconversion -std=c++98
 LDFLAGS = 
 
 HDRFLAGS := $(foreach dir, $(HDRDIRS), -I$(dir))
