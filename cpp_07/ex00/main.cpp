@@ -6,12 +6,12 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 16:01:55 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/06 16:48:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/06 17:05:16 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Whatever.hpp"
+#include "whatever.hpp"
 
 int main( void )
 {
