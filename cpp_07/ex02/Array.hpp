@@ -6,7 +6,11 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:55 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/07 12:30:56 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/07 13:12:35 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
+template <typename T>
+class Array

@@ -6,7 +6,7 @@
 #    By: seblin <seblin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 13:41:27 by seblin            #+#    #+#              #
-#    Updated: 2024/08/06 15:41:27 by seblin           ###   ########.fr        #
+#    Updated: 2024/08/07 13:11:19 by seblin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,9 @@ OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 all: intro $(NAME) 
 
 l: design emoticon $(NAME) 
+
+nof:
+	$(eval CFLAGS = $(HDRFLAGS))
 
 TOG = 0
 
