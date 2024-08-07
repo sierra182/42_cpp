@@ -5,7 +5,7 @@
 
 int main(int, char**)
 {
-	Array<int> arr;
+
 
     // Array<int> numbers(MAX_VAL);
     // int* mirror = new int[MAX_VAL];
