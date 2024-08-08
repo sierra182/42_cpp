@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:55 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 14:03:45 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 15:36:48 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ template <typename T>
 class Array
 {
 	T * _array;
-	// T & _array_ref;
 	 
 	public:
 	
