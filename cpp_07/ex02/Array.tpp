@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:58 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 17:16:28 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 23:56:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Array<T> & Array<T>::operator=( const Array & rhs )
 	//! ?policicy if the size is different ? need implement operator[]
 	if (this != &rhs)
 	{
-		for (int i = 0; i < this->_len && i < rhs.size(); i++)			
+		for (size_t i = 0; i < this->_len && i < rhs.size(); i++)			
 			if (this->_array[i] != rhs[i])
 				this->_array[i] = rhs[i];
 	}
@@ -84,11 +84,13 @@ size_t Array<T>::size( void ) const
 	member function takes no parameter and musn’t modify the current instance.*/
 	return (this->_len);
 }
-
+#include <stdexcept>
 template <typename T>
-Array<T> & Array<T>::operator[]( const size_t i ) const
+T & Array<T>::operator[]( const int i ) const
 {
-	
+	if (i < 0 || static_cast<size_t>(i) >= this->_len)
+		throw std::out_of_range("bad index");
+	return (_array[i]);
 
 
 	

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Array.hpp>
-
-#define MAX_VAL 750
+#include <cstdlib>
+#define MAX_VAL 7//!750
 
 int main(int, char**)
 {
@@ -35,13 +35,14 @@ int main(int, char**)
 	// 	std::cout << _array[1] << std::endl;
 		
 	// }
-int n = 420;
-	Array<int> * truc = new Array<int>(n);
-	std::cout << truc->size() << std::endl;
-	// Array<int> turc;
-	// std::cout << turc.size() << std::endl;
+// int n = 42;
+// 	Array<int> * truc = new Array<int>(n);
+// 	(*truc)[1] = 1664;
+// 	std::cout << "value: " << (*truc)[1] << std::endl;
+// 	// Array<int> turc;
+// 	// std::cout << turc.size() << std::endl;
 
-	delete truc; truc = NULL;
+// 	delete truc; truc = NULL;
 
 			// int n = 4200;
 			// Array<int> * truc = new Array<int>[n]();
@@ -59,51 +60,77 @@ int n = 420;
 
 			// 		std::cout <<std::endl;
 			// delete[] truc; truc = NULL;
+	Array<float> * nu = new Array<float>(3);
+	// (*nu)[0] = 6.2f;
+	std::cout << "nu: " << (*nu)[2] << std::endl;
+delete nu;
 
-    // Array<int> numbers(MAX_VAL);
-    // int* mirror = new int[MAX_VAL];
-    // srand(time(NULL));
-    // for (int i = 0; i < MAX_VAL; i++)
-    // {
-    //     const int value = rand();
-    //     numbers[i] = value;
-    //     mirror[i] = value;
-    // }
-    // //SCOPE
-    // {
-    //     Array<int> tmp = numbers;
-    //     Array<int> test(tmp);
-    // }
+// int e[] = {1, 2};
+// std::cout << e[1] << std::endl;
 
-    // for (int i = 0; i < MAX_VAL; i++)
-    // {
-    //     if (mirror[i] != numbers[i])
-    //     {
-    //         std::cerr << "didn't save the same value!!" << std::endl;
-    //         return 1;
-    //     }
-    // }
-    // try
-    // {
-    //     numbers[-2] = 0;
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
-    // try
-    // {
-    //     numbers[MAX_VAL] = 0;
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
+// int * f = new int[4]();
+// std::cout << f[1] << std::endl;
+// return 0;
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+		std::cout << "value0 : " << value << std::endl;//!
+		std::cout << "value1 : " << numbers[i] << std::endl;//!
+		std::cout << "value2 : " << mirror[i] << std::endl;//!		
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
 
-    // for (int i = 0; i < MAX_VAL; i++)
-    // {
-    //     numbers[i] = rand();
-    // }
-    // delete [] mirror;//
-    // return 0;
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+
+	bool shal = false;
+	   for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] == numbers[i])
+        {
+			shal = true;
+            std::cerr << "you've made a shallow copy bitch!!" << std::endl;
+            return 1;
+        }
+    }
+	if (!shal)
+		 std::cerr << "you've made a deep copy darling!!" << std::endl;
+    delete [] mirror;//
+    return 0;
 }
