@@ -6,21 +6,24 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:58 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 15:43:03 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 17:16:28 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array( void ) : _array(new T[0])
+Array<T>::Array( void ) : _len(0), _array(new T[0])
 {
+	//TODO OK
+
 	//create an empty array
 	return ;
 }	
 
 template <typename T>	
-Array<T>::Array( const Array & src )
+Array<T>::Array( const Array & src ) :
+	_len(src._len), _array(new T[src._len]())
 {
 	/*In both cases, modifying either the
 	original array or its copy after copying musn’t affect the other array.*/
@@ -34,20 +37,38 @@ Array<T> & Array<T>::operator=( const Array & rhs )
 {
 	/*In both cases, modifying either the
 	original array or its copy after copying musn’t affect the other array.*/
-	//!
+	//! ?policicy if the size is different ? need implement operator[]
+	if (this != &rhs)
+	{
+		for (int i = 0; i < this->_len && i < rhs.size(); i++)			
+			if (this->_array[i] != rhs[i])
+				this->_array[i] = rhs[i];
+	}
 	return *this;
 }
 
 template <typename T>
 Array<T>::~Array( void )
 {
-	// delete _array;
+	//TODO OK
+	delete[] _array;
 	return ;
 }
 
 template <typename T>
-Array<T>::Array( const unsigned int n )//? const 
+Array<T>::Array( const unsigned int n ) : _len(n), _array(new T[n]())//? const 
 {
+	// std::cout <<"NOOOOOOOOOOOOOOOOOOOOOOOOO"<< std::endl;
+	// int *test = new int[n];
+	// for (size_t i = 0; i < this->_len; i++)
+	// 	std::cout << test[i];
+		
+	// std::cout << "STOP" << std::endl;
+	// std::cout << std::endl;
+	// for (size_t i = 0; i < this->_len; i++)
+	// 	std::cout << _array[i];
+	
+	//TODO OK
 	/*Creates an array of n elements
 	initialized by default.
 	Tip: Try to compile int * a = new int(); then display *a*/
@@ -57,14 +78,20 @@ Array<T>::Array( const unsigned int n )//? const
 template <typename T>
 size_t Array<T>::size( void ) const
 {
+	//TODO OK
+	
 	/*A member function size() that returns the number of elements in the array. This
 	member function takes no parameter and musn’t modify the current instance.*/
-	return 2;
+	return (this->_len);
 }
 
 template <typename T>
 Array<T> & Array<T>::operator[]( const size_t i ) const
 {
+	
+
+
+	
 	/*You MUST use the operator new[] to allocate memory. Preventive allocation (al-
 	locating memory in advance) is forbidden. Your program must never access non-
 	allocated memory.

@@ -35,8 +35,31 @@ int main(int, char**)
 	// 	std::cout << _array[1] << std::endl;
 		
 	// }
+int n = 420;
+	Array<int> * truc = new Array<int>(n);
+	std::cout << truc->size() << std::endl;
+	// Array<int> turc;
+	// std::cout << turc.size() << std::endl;
 
-	new Array<int>;
+	delete truc; truc = NULL;
+
+			// int n = 4200;
+			// Array<int> * truc = new Array<int>[n]();
+
+			// // Array<int> turc;
+
+			// for (int i = 0; i < n; i++)
+			// 	std::cout << truc->test;
+
+			// std::cout <<std::endl;
+			// std::cout <<std::endl;
+
+			// // for (int i = 0; i < n; i++)
+			// 	// std::cout << turc.test;
+
+			// 		std::cout <<std::endl;
+			// delete[] truc; truc = NULL;
+
     // Array<int> numbers(MAX_VAL);
     // int* mirror = new int[MAX_VAL];
     // srand(time(NULL));
