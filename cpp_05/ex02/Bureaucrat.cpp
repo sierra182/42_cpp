@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 20:20:45 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 14:41:02 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,7 @@ std::ostream & operator<<( std::ostream & lhs, const Bureaucrat & rhs )
 
 void Bureaucrat::signForm( AForm & form ) const
 {	
-	try 
-	{
+	try {
 		form.beSigned(*this);		
 		std::cout << "\e[1;32m - " << this->_name << " signed "
 			<< form.getName() << ".\e[0m" << std::endl << std::endl;	
@@ -130,8 +129,7 @@ void Bureaucrat::signForm( AForm & form ) const
 
 void Bureaucrat::executeForm( AForm const & form ) const
 {
-	try 
-	{
+	try {
 		form.execute(*this);			
 		std::cout << "\e[1;32m - " << this->_name << " executed "
 			<< form.getName() << ".\e[0m" << std::endl << std::endl;	

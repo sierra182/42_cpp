@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/01 11:14:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 14:44:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 
 int main ( void )
 {	
-	try
-	{	
+	try {	
 		std::cout << std::endl;
 		Intern someRandomIntern;
 		AForm* rrf; //? Form *
@@ -46,8 +45,6 @@ int main ( void )
 		rrf = someRandomIntern.makeForm("don't exist", shrubName);		
 	}
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{	std::cerr << e.what() << std::endl;	  }
 	return (0);
 }

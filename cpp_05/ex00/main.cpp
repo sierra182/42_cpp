@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 19:51:52 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 14:39:58 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,19 @@
 int main ( void )
 {	
 	std::cout << std::endl;
-	try	
-	{
-		Bureaucrat bur("marguerite", 0);
-	}
+	try	{ 
+		Bureaucrat bur("marguerite", 0); }
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{ std::cerr << e.what() << std::endl; }
 	
 	std::cout << std::endl;
-	try	
-	{
-		Bureaucrat bur("marguerite", 151);
-	}
+	try	{ 
+		Bureaucrat bur("marguerite", 151); }
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{ std::cerr << e.what() << std::endl; }
 	
 	std::cout << std::endl;
-	try
-	{
+	try	{
 		Bureaucrat bur("marguerite", 1);
 		bur.decrementGrade();
 		bur.decrementGrade();
@@ -45,14 +36,11 @@ int main ( void )
 		bur.incrementGrade();	
 		bur.incrementGrade();	
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	catch (const std::exception& e)
+		{ std::cerr << e.what() << '\n'; }
 	
 	std::cout << std::endl;
-	try
-	{
+	try	{
 		Bureaucrat bur("marguerite", 150);
 		bur.incrementGrade();	
 		bur.incrementGrade();	
@@ -60,10 +48,9 @@ int main ( void )
 		bur.decrementGrade();
 		bur.decrementGrade();
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}	
+	catch (const std::exception& e)
+		{ std::cerr << e.what() << '\n'; }
+		
 	std::cout << std::endl;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:34:27 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:33:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 14:41:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,7 @@ std::ostream & operator<<( std::ostream & lhs, const Bureaucrat & rhs )
 
 void Bureaucrat::signForm( Form & form ) const
 {	
-	try 
-	{
+	try {
 		form.beSigned(*this);		
 		std::cout << ' ' << this->_name << " signed " << form.getName()
 			<< '.' << std::endl;	

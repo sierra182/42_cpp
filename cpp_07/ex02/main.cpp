@@ -5,8 +5,24 @@
 
 int main(int, char**)
 {
+	// int _array[] = {15, 16};
+	// _array;
+	{
+		int * _array = new int[2];//{42, 43};
+		_array[0] = 1;
+		_array[1] = 2;
+		int *& _array_ref = _array;
+		std::cout << _array_ref[1] << std::endl;
+	}
 
+{
 
+	int _array[] = {15, 16};
+	std::cout << _array[1] << std::endl;
+	int 
+}
+
+	new Array<int>;
     // Array<int> numbers(MAX_VAL);
     // int* mirror = new int[MAX_VAL];
     // srand(time(NULL));

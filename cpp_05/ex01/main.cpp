@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 19:51:46 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 14:38:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,60 +17,45 @@
 int main ( void )
 {
 	std::cout << std::endl;
-	try 
-	{
-		Form form("formidable", -42, 12);		
-	}
+	try {
+		Form form("formidable", -42, 12); }
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{ std::cerr << e.what() << std::endl; }
+		
 	std::cout << std::endl;
-	try 
-	{
-		Form form("formidable", 420, 12);		
-	}
+	try	{
+		Form form("formidable", 420, 12);	}
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{ std::cerr << e.what() << std::endl; }
+		
 	std::cout << std::endl;
-	try 
-	{
-		Form form("formidable", 42, 0);		
-	}
+	try {
+		Form form("formidable", 42, 0);	}
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{ std::cerr << e.what() << std::endl; }
+		
 	std::cout << std::endl;
-	try 
-	{
-		Form form("formidable", 42, 151);		
-	}
+	try {
+		Form form("formidable", 42, 151); }
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{ std::cerr << e.what() << std::endl; }
+		
 	std::cout << std::endl;
-	try 
-	{
+	try {
 		Form form("formidable", 15, 20);	
 		std::cout << std::endl;
 		Bureaucrat bur("marguerite", 16);	
-		std::cout << std::endl;		
-		try
-		{
-			bur.signForm(form);		
-		}
+		std::cout << std::endl;
+			
+		try	{
+			bur.signForm(form); }
 		catch (const std::exception & e)
 		{
 			std::cout << std::endl;				
 			bur.incrementGrade();
 			std::cout << std::endl;	
 			
-			try
-			{
+			try	{				
 				bur.signForm(form);
 				std::cout << std::endl;
 				std::cout << form;
@@ -91,9 +76,7 @@ int main ( void )
 		}
 	}
 	catch (const std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		{ std::cerr << e.what() << std::endl; }
 
 	std::cout << std::endl;
 	return (0);

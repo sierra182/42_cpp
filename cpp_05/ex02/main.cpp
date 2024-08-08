@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 20:27:28 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 14:43:27 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int main ( void )
 {	
 	std::cout << std::endl;
 	std::string shrubName = "christmasTree";
-	try
-	{		
+	try {		
 		PresidentialPardonForm pres("cypher");
 		RobotomyRequestForm rob("zorg");
 		ShrubberyCreationForm shrub(shrubName);
@@ -50,9 +49,8 @@ int main ( void )
 		bur.executeForm(shrub);	
 	}
 	catch (const std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;		
-	}
+		{ std::cerr << e.what() << std::endl; }
+		
 	system(("cat " +  shrubName + "_shrubbery").c_str());
 	std::cout <<std::endl;
 	return (0);

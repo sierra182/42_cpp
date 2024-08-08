@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/04/24 17:57:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/08 14:46:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int main(void)
         }
         
     }
-    catch(const std::exception& e) {return (1);}
+    catch (const std::exception& e) {return (1);}
     return (0);    
 }
