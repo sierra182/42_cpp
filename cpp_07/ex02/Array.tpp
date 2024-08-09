@@ -6,49 +6,36 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:58 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/09 11:23:04 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/09 16:19:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
+#include <stdexcept>
 
 template <typename T>
 Array<T>::Array( void ) : _len(0), _array(new T[0])
 {
-	//TODO OK
-
-	//create an empty array
 	return ;
 }	
 
 template <typename T>	
-Array<T>::Array( const Array & src ) :
-	_len(src._len), _array(new T[src._len]())
+Array<T>::Array( const Array & src ) : _array(NULL)
 {
-	/*In both cases, modifying either the
-	original array or its copy after copying musn’t affect the other array.*/
-	//!
-
 	*this = src;
 	return ;
 }
 
 template <typename T>
 Array<T> & Array<T>::operator=( const Array & rhs )
-{
-	/*In both cases, modifying either the
-	original array or its copy after copying musn’t affect the other array.*/
-	//! ?policicy if the size is different ? need implement operator[]
+{	
 	if (this != &rhs)
-	{	
-				// std::cout << "i: " << "rhs size: " << rhs.size() << "thislen: " << this->size() << std::endl; 
-		
-		for (size_t i = 0; i < this->_len && i < rhs.size(); i++)
-		{
-			// std::cout << "i: " << i << std::endl; 
-			if (this->_array[i] != rhs[i])
-				this->_array[i] = rhs[i];
-		}			
+	{
+		delete [] this->_array;
+		this->_array = new T[rhs._len]();	
+		this->_len = rhs._len;		
+		for (unsigned int i = 0; i < this->_len; i++)	
+			this->_array[i] = rhs[i];					
 	}
 	return *this;
 }
@@ -56,56 +43,28 @@ Array<T> & Array<T>::operator=( const Array & rhs )
 template <typename T>
 Array<T>::~Array( void )
 {
-	//TODO OK
 	delete[] _array;
 	return ;
 }
 
 template <typename T>
-Array<T>::Array( const unsigned int n ) : _len(n), _array(new T[n]())//? const 
+Array<T>::Array( const unsigned int n ) : _len(n), _array(new T[n]()) 
 {
-	// std::cout <<"NOOOOOOOOOOOOOOOOOOOOOOOOO"<< std::endl;
-	// int *test = new int[n];
-	// for (size_t i = 0; i < this->_len; i++)
-	// 	std::cout << test[i];
-		
-	// std::cout << "STOP" << std::endl;
-	// std::cout << std::endl;
-	// for (size_t i = 0; i < this->_len; i++)
-	
-	 	std::cout << "BRAAARARARA " << this->_len << std::endl;
-	
-	//TODO OK
-	/*Creates an array of n elements
-	initialized by default.
-	Tip: Try to compile int * a = new int(); then display *a*/
-	
+	return ;	
 }
 
 template <typename T>
 size_t Array<T>::size( void ) const
-{
-	//TODO OK
-	
-	/*A member function size() that returns the number of elements in the array. This
-	member function takes no parameter and musn’t modify the current instance.*/
+{	
 	return (this->_len);
 }
-#include <stdexcept>
+
 template <typename T>
 T & Array<T>::operator[]( const int i ) const
 {
-	if (i < 0 || static_cast<size_t>(i) >= this->_len)
-		throw std::out_of_range("index is out of bounds");
+	if (i < 0 || i >= static_cast<int> (this->_len))
+		throw std::out_of_range(" Exception: \e[1;31mindex is out \
+of bounds!\e[0m");
 	return (_array[i]);
-
-
-	
-	/*You MUST use the operator new[] to allocate memory. Preventive allocation (al-
-	locating memory in advance) is forbidden. Your program must never access non-
-	allocated memory.
-	•Elements can be accessed through the subscript operator: [ ].
-	•When accessing an element with the [ ] operator, if its index is out of bounds, an
-	std::exception is thrown*/
 }
  

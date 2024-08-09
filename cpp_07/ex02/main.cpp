@@ -1,82 +1,58 @@
 #include <iostream>
 #include <Array.hpp>
 #include <cstdlib>
-#define MAX_VAL 27//!750
+
+#define MAX_VAL 750
+
+void other_tests()
+{
+	std::cout << std::endl;
+	std::cout << " *****others tests*****" << std::endl
+		<< std::endl;
+	std::cout << " create empty array" << std::endl;
+	Array<int> str1(0);
+	try {
+		std::cout << " try acces to empty array" << std::endl;
+		str1[0];
+	}
+	catch (const std::exception & e)
+		{ std::cerr << e.what() << std::endl; }
+	Array<Array<int> > inception(MAX_VAL);
+	std::cout << std::endl;
+	std::cout << " test create n element default initialized" << std::endl
+		<< " ";
+	Array<const int> definit(42);
+	for (int i = 0; i < 42; i++)
+			std::cout << definit[i] << " ";
+
+	std::cout << std::endl << std::endl;
+	std::cout << " test copy array with different sizes - str1(maxVal) - \
+str2(42)" << std::endl;
+	Array<std::string> str(MAX_VAL);
+	Array<std::string> str2(42);
+	std::cout << " str1 = str2 " << std::endl << " str2[2] = \"haha\""
+		<< std::endl << std::endl;
+	str = str2;
+	str2[2] = "haha ";
+	std::cout << " str2 :" << std::endl << " ";
+	for (int i = 0; i < 42; i++)
+		std::cout << str2[i] << i << " ";
+	std::cout << std::endl << " str1 :" << std::endl << " ";
+	try {
+		for (int i = 0; i < MAX_VAL; i++)
+			std::cout << str[i] << i << " ";
+	}
+	catch (const std::exception & e)
+		{ std::cerr << std::endl << e.what() << std::endl; }
+	std::cout << std::endl;
+
+	Array<int> t;
+	Array<int> t2(26);
+	t = t2;
+}
 
 int main(int, char**)
 {
-	// int _array[] = {15, 16};
-	// _array;
-	// {
-	// 	int * _array = new int[2];//{42, 43};
-	// 	_array[0] = 1;
-	// 	_array[1] = 2;
-	// 	int *& _array_ref = _array;
-	// 	std::cout << _array_ref[1] << std::endl;
-	// }
-	// {
-	// 	int _array[2];
-	// 	_array[0] = 1;
-	// 	_array[1] = 2;
-	// 	int *_arr_ptr =  (int *){_array};
-	// 	int *& _array_ref = _arr_ptr;
-	// 	std::cout << _array_ref[1] << std::endl;
-	// }
-	// {
-	// 	int _array[2];//{42, 43};
-	// 	_array[0] = 1;
-	// 	_array[1] = 2;
-	// 	int (&_array_ref)[2] = _array;
-	// 	std::cout << _array_ref[1] << std::endl;
-	// }
-	// {
-
-	// 	int _array[] = {15, 16};
-	// 	std::cout << _array[1] << std::endl;
-		
-	// }
-// int n = 42;
-// 	Array<int> * truc = new Array<int>(n);
-// 	(*truc)[1] = 1664;
-// 	std::cout << "value: " << (*truc)[1] << std::endl;
-// 	// Array<int> turc;
-// 	// std::cout << turc.size() << std::endl;
-
-// 	delete truc; truc = NULL;
-
-			// int n = 4200;
-			// Array<int> * truc = new Array<int>[n]();
-
-			// // Array<int> turc;
-
-			// for (int i = 0; i < n; i++)
-			// 	std::cout << truc->test;
-
-			// std::cout <<std::endl;
-			// std::cout <<std::endl;
-
-			// // for (int i = 0; i < n; i++)
-			// 	// std::cout << turc.test;
-
-			// 		std::cout <<std::endl;
-			// delete[] truc; truc = NULL;
-		
-	Array<float> * nu = new Array<float>(3);
-
-	// (*nu)[0] = 6.2f;
-	std::cout << "nu: " << (*nu)[2] << std::endl;
-// delete nu;
-Array<float> nu3(42);
-*nu = nu3;
-nu3 = *nu;
-std::cout << "problem?: " << std::endl;
-return 0;
-// int e[] = {1, 2};
-// std::cout << e[1] << std::endl;
-
-// int * f = new int[4]();
-// std::cout << f[1] << std::endl;
-// return 0;
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
@@ -85,28 +61,12 @@ return 0;
         const int value = rand();
         numbers[i] = value;
         mirror[i] = value;
-		std::cout << "value0 : " << value << std::endl;//!
-		std::cout << "value1 : " << numbers[i] << std::endl;//!
-		std::cout << "value2 : " << mirror[i] << std::endl;//!		
     }
     //SCOPE
     {
-	
         Array<int> tmp = numbers;
-	
         Array<int> test(tmp);
-
-		std::cout << "tmp size : " << tmp.size() << std::endl;//!
-		std::cout << "test size : " << test.size() << std::endl;//!
-		for (int i = 0; i < MAX_VAL; i++)
-		{
-			std::cout << "tmp : " << tmp[i] << std::endl;//!
-			std::cout << "test : " << test[i] << std::endl;//!		
-		}
-std::cout << "plantage before" << std::endl;
     }
-std::cout << "plantage after" << std::endl;
-
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -133,19 +93,12 @@ std::cout << "plantage after" << std::endl;
         std::cerr << e.what() << '\n';
     }
 
-
-	bool shal = false;
-	   for (int i = 0; i < MAX_VAL; i++)
+    for (int i = 0; i < MAX_VAL; i++)
     {
-        if (mirror[i] == numbers[i])
-        {
-			shal = true;
-            std::cerr << "you've made a shallow copy bitch!!" << std::endl;
-            return 1;
-        }
+        numbers[i] = rand();
     }
-	if (!shal)
-		 std::cerr << "you've made a deep copy darling!!" << std::endl;
     delete [] mirror;//
+
+	other_tests();
     return 0;
 }
