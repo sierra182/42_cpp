@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Array.hpp>
 #include <cstdlib>
-#define MAX_VAL 7//!750
+#define MAX_VAL 27//!750
 
 int main(int, char**)
 {
@@ -60,11 +60,17 @@ int main(int, char**)
 
 			// 		std::cout <<std::endl;
 			// delete[] truc; truc = NULL;
+		
 	Array<float> * nu = new Array<float>(3);
+
 	// (*nu)[0] = 6.2f;
 	std::cout << "nu: " << (*nu)[2] << std::endl;
-delete nu;
-
+// delete nu;
+Array<float> nu3(42);
+*nu = nu3;
+nu3 = *nu;
+std::cout << "problem?: " << std::endl;
+return 0;
 // int e[] = {1, 2};
 // std::cout << e[1] << std::endl;
 
@@ -85,9 +91,22 @@ delete nu;
     }
     //SCOPE
     {
+	
         Array<int> tmp = numbers;
+	
         Array<int> test(tmp);
+
+		std::cout << "tmp size : " << tmp.size() << std::endl;//!
+		std::cout << "test size : " << test.size() << std::endl;//!
+		for (int i = 0; i < MAX_VAL; i++)
+		{
+			std::cout << "tmp : " << tmp[i] << std::endl;//!
+			std::cout << "test : " << test[i] << std::endl;//!		
+		}
+std::cout << "plantage before" << std::endl;
     }
+std::cout << "plantage after" << std::endl;
+
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -114,10 +133,6 @@ delete nu;
         std::cerr << e.what() << '\n';
     }
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
 
 	bool shal = false;
 	   for (int i = 0; i < MAX_VAL; i++)

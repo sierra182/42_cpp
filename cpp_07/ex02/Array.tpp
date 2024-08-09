@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:58 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 23:56:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/09 11:23:04 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Array<T>::Array( const Array & src ) :
 	/*In both cases, modifying either the
 	original array or its copy after copying musn’t affect the other array.*/
 	//!
+
 	*this = src;
 	return ;
 }
@@ -39,10 +40,15 @@ Array<T> & Array<T>::operator=( const Array & rhs )
 	original array or its copy after copying musn’t affect the other array.*/
 	//! ?policicy if the size is different ? need implement operator[]
 	if (this != &rhs)
-	{
-		for (size_t i = 0; i < this->_len && i < rhs.size(); i++)			
+	{	
+				// std::cout << "i: " << "rhs size: " << rhs.size() << "thislen: " << this->size() << std::endl; 
+		
+		for (size_t i = 0; i < this->_len && i < rhs.size(); i++)
+		{
+			// std::cout << "i: " << i << std::endl; 
 			if (this->_array[i] != rhs[i])
 				this->_array[i] = rhs[i];
+		}			
 	}
 	return *this;
 }
@@ -66,7 +72,8 @@ Array<T>::Array( const unsigned int n ) : _len(n), _array(new T[n]())//? const
 	// std::cout << "STOP" << std::endl;
 	// std::cout << std::endl;
 	// for (size_t i = 0; i < this->_len; i++)
-	// 	std::cout << _array[i];
+	
+	 	std::cout << "BRAAARARARA " << this->_len << std::endl;
 	
 	//TODO OK
 	/*Creates an array of n elements
@@ -89,7 +96,7 @@ template <typename T>
 T & Array<T>::operator[]( const int i ) const
 {
 	if (i < 0 || static_cast<size_t>(i) >= this->_len)
-		throw std::out_of_range("bad index");
+		throw std::out_of_range("index is out of bounds");
 	return (_array[i]);
 
 
