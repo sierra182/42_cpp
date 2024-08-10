@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:26:24 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/10 17:36:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/10 19:01:23 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main( void )
 {
-	frin<int> fr; (void) fr;
+	easyfind(42, 42);
 	// frin<int, int> fr2; (void) fr2;
 	// find(2);
 	// easyfind(42, f);
