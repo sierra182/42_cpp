@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:22:27 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/08 14:46:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/12 10:45:01 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int main(void)
             else if (!buffer.compare("EXIT"))
                 break ;
             std::cout << std::endl << " 💎 ";
-        }
-        
+        }        
     }
     catch (const std::exception& e) {return (1);}
     return (0);    

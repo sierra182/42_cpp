@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:26:21 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/11 23:19:41 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/12 09:53:01 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ void easyfind(T t, int nbr)
 }
 
 template <>
-void easyfind(std::vector<int> t, int nbr)
+void easyfind(std::vector<int> cont, int nbr)
 {
-	std::vector<int>::iterator it;
-	it = t.begin();
-	std::find(t.begin(), t.end(), nbr);
+
+	std::find(cont.begin(), cont.end(), nbr);
 	for (it = t.begin(); it != t.end(); it++)
 		if (nbr == *it)
 			break;
