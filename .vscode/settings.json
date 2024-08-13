@@ -49,6 +49,8 @@
 		"fstream": "cpp",
 		"sstream": "cpp",
 		"iomanip": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"list": "cpp",
+		"set": "cpp"
 	}
 }

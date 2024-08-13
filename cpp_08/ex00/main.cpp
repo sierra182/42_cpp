@@ -6,33 +6,119 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:26:24 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/11 18:35:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/13 09:16:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "easyfind.hpp"
 #include <vector>
+#include <list>
+#include <deque>
+#include <stack>
+
+void printCont(int item)
+{
+	std::cout << "\e[32m " << item << "\e[0m" << std::endl;
+}
 
 int main( void )
 {
-	const int  e [4] = {2};
-	// e[0] =1;
-	(void) e;
-	// easyfind(42, 42);
-	int re[4] = {1, 2, 3, 4};
-	std::vector<int> vect(re, re + 4);
-	// std::vector<int> vect(2, 2);
-	easyfind(vect, -1);
-	// frin<int, int> fr2; (void) fr2;
-	// find(2);
-	// easyfind(42, f);
-	// easyfind(42, 42.f);
-	// easyfind(42, 42);
-	// // easyfind(42, 42.0);
-	// find(f);
-	// find(42.f);
-	// find(42);
-	// find(42.0);
+	std::cout << std::endl;
+	{	
+		int arr[] = {1, 2, 3, 4};
+		std::vector<int> cont(arr, arr + 4);
+		std::cout << "\e[32m" << "print\e[31m vector:" << "\e[0m" << std::endl;
+		std::for_each(cont.begin(), cont.end(), printCont);
+		std::cout << std::endl;
+		{		
+			int toFind = 4;
+			std::cout << "\e[35m looking for: " << toFind << "\e[0m"
+				<< std::endl;
+			if (easyfind(cont, toFind))
+				std::cout << "\e[32m we find your stuff!: " << toFind <<
+					"\e[0m" << std::endl;
+		else 	
+				std::cout << "\e[1;31m we don't find your stuff! " << "(" <<
+					toFind << ")\e[0m" << std::endl;
+			std::cout << std::endl;
+		}		
+		{		
+			int toFind = -4;
+			std::cout << "\e[35m looking for: " << toFind << "\e[0m"
+				<< std::endl;
+			if (easyfind(cont, toFind))
+				std::cout << "\e[32m we find your stuff!: " << toFind <<
+					"\e[0m" << std::endl;
+			else 	
+				std::cout << "\e[1;31m we don't find your stuff! " << "(" <<
+					toFind << ")\e[0m" << std::endl;
+			std::cout << std::endl;
+		}
+	}	
+	std::cout << " ***************" << std::endl << std::endl;
+	{	
+		int arr[] = {0, 22, 33, 44, 46};
+		std::list<int> cont(arr, arr + 5);
+		std::cout << "\e[32m" << "print\e[31m list:" << "\e[0m" << std::endl;
+		std::for_each(cont.begin(), cont.end(), printCont);
+		std::cout << std::endl;
+		{		
+			int toFind = 44;
+			std::cout << "\e[35m looking for: " << toFind << "\e[0m"
+				<< std::endl;
+			if (easyfind(cont, toFind))
+				std::cout << "\e[32m we find your stuff!: " << toFind <<
+					"\e[0m" << std::endl;
+			else 	
+				std::cout << "\e[1;31m we don't find your stuff! " << "(" <<
+					toFind << ")\e[0m" << std::endl;
+			std::cout << std::endl;
+		}		
+		{		
+			int toFind = 45;
+			std::cout << "\e[35m looking for: " << toFind << "\e[0m"
+				<< std::endl;
+			if (easyfind(cont, toFind))
+				std::cout << "\e[32m we find your stuff!: " << toFind <<
+					"\e[0m" << std::endl;
+			else 	
+				std::cout << "\e[1;31m we don't find your stuff! " << "(" <<
+					toFind << ")\e[0m" << std::endl;
+			std::cout << std::endl;
+		}
+	}
+	std::cout << " ***************" << std::endl << std::endl;
+	{	
+		int arr[] = {0, 22, 33, 44, 46, 54};
+		std::deque<int> cont(arr, arr + 6);
+		std::cout << "\e[32m" << "print\e[31m deque:" << "\e[0m" << std::endl;
+		std::for_each(cont.begin(), cont.end(), printCont);
+		std::cout << std::endl;
+		{		
+			int toFind = 0;
+			std::cout << "\e[35m looking for: " << toFind << "\e[0m"
+				<< std::endl;
+			if (easyfind(cont, toFind))
+				std::cout << "\e[32m we find your stuff!: " << toFind <<
+					"\e[0m" << std::endl;
+			else 	
+				std::cout << "\e[1;31m we don't find your stuff! " << "(" <<
+					toFind << ")\e[0m" << std::endl;
+			std::cout << std::endl;
+		}		
+		{		
+			int toFind = -1;
+			std::cout << "\e[35m looking for: " << toFind << "\e[0m"
+				<< std::endl;
+			if (easyfind(cont, toFind))
+				std::cout << "\e[32m we find your stuff!: " << toFind <<
+					"\e[0m" << std::endl;
+			else 	
+				std::cout << "\e[1;31m we don't find your stuff! " << "(" <<
+					toFind << ")\e[0m" << std::endl;
+			std::cout << std::endl;
+		}
+	}
 	return (0);
 }
