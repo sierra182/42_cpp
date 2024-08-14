@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 16:29:02 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:58:58 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,22 @@ Span & Span::operator=( const Span & rhs )
 	return (*this);
 }
 
+template <class T>
+const std::set<T> & Span::getSet( void ) const
+{
+	return (this->_set);
+}	
 
 template <class T>
-void	print(const T & item)
+void	print(const T & item, std::ostream & oss)
 {
 	std::cout << item << std::endl;	
 }
 #include <algorithm>
 std::ostream & operator<<( std::ostream & oss, const Span & rhs )
 {
-	std::for_each(rhs._set->begin(), rhs._set->end(), print<int>);
+	for (rhs.getSet<int>().begin())
+	
 	oss << "caca";
 	return (oss);
 }
@@ -60,7 +66,7 @@ void Span::addNumber( int nbr )
 {
 	if (this->_set && this->_set->size() < this->_N)
 	{
-		std::cout << "N" << this->_N << std::endl;	
+		// std::cout << "N" << this->_N << std::endl;	
 		_set->insert(nbr);
 	}
 	else

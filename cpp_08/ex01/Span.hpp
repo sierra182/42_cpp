@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:51:20 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 16:27:02 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:53:10 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <set>
 #include <stdexcept>
 #include <iostream>
+#include <set>
 
 class Span
 {
@@ -33,15 +34,16 @@ class Span
 	void addNumber( int nbr );
 	template <class Iter>
 	void addNumber( Iter start, Iter end );
-	
+	template <class T>
+	const std::set<T> & getSet( void ) const;	
 	virtual ~Span( void );
 	Span( unsigned int N );
 
 
-	friend std::ostream & operator<<( std::ostream & oss, const Span & rhs );//!!! frind
+	
 };
 
-// std::ostream & operator<<( std::ostream & oss, const Span & rhs );
+std::ostream & operator<<( std::ostream & oss, const Span & rhs );
 
 template <class Iter>
 void Span::addNumber( Iter start, Iter end )

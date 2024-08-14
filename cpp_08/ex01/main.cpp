@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 16:30:10 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:44:18 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main( void )
 	sp.addNumber(arr2, arr2 + 2);
 	sp.addNumber(42);
 
-	std::for_each(arr, arr+2, print<int>);
+	// std::for_each(arr, arr+2, print<int>);
 	
 	std::cout << sp;
 	return (0);
