@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 14:53:38 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:29:02 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ Span & Span::operator=( const Span & rhs )
 	if (this != &rhs)
 		*this->_set = *rhs._set; //! verif
 	return (*this);
+}
+
+
+template <class T>
+void	print(const T & item)
+{
+	std::cout << item << std::endl;	
+}
+#include <algorithm>
+std::ostream & operator<<( std::ostream & oss, const Span & rhs )
+{
+	std::for_each(rhs._set->begin(), rhs._set->end(), print<int>);
+	oss << "caca";
+	return (oss);
 }
 
 #include <iostream>//!

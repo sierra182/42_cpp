@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:51:20 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 14:57:00 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:27:02 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ class Span
 	template <class Iter>
 	void addNumber( Iter start, Iter end );
 	
-		virtual ~Span( void );
-		Span( unsigned int N );
+	virtual ~Span( void );
+	Span( unsigned int N );
+
+
+	friend std::ostream & operator<<( std::ostream & oss, const Span & rhs );//!!! frind
 };
 
-std::ostream & operator<<( const std::ostream & oss, const std::Span & rhs )
-{
-	
-}
+// std::ostream & operator<<( std::ostream & oss, const Span & rhs );
 
 template <class Iter>
 void Span::addNumber( Iter start, Iter end )
