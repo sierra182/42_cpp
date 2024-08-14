@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:51:20 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 08:35:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/14 14:57:00 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <set>
 #include <stdexcept>
+#include <iostream>
 
 class Span
 {
@@ -36,6 +37,11 @@ class Span
 		virtual ~Span( void );
 		Span( unsigned int N );
 };
+
+std::ostream & operator<<( const std::ostream & oss, const std::Span & rhs )
+{
+	
+}
 
 template <class Iter>
 void Span::addNumber( Iter start, Iter end )

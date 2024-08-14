@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 08:37:32 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/14 14:54:23 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <Span.hpp>
 
+void	print()
 int main( void )
 {
 	Span sp(5);
