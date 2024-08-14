@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:44:43 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/19 09:45:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/14 11:23:13 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ Fixed::Fixed( Fixed const & src )
 
 Fixed::Fixed( int const nbr )
 {
-	this->setRawBits( nbr << 8 );
+	this->setRawBits( nbr << this->_bit );
 }
 
 Fixed::Fixed( float const nbr )
 {
 	int n_int = static_cast<int> (nbr);
-	int dec = n_int << 8;	
+	int dec = n_int << this->_bit;	
 	float frac = 256 * (nbr - n_int);
 	frac = roundf(frac);
 	this->setRawBits(static_cast<int>(frac) + dec);	
@@ -69,7 +69,7 @@ float	Fixed::toFloat( void ) const
 
 int		Fixed::toInt( void ) const
 {
-	return (this->getRawBits() >> 8);
+	return (this->getRawBits() >> this->_bit);
 }
 
 std::ostream & operator<<( std::ostream & os, Fixed const & rhs )
