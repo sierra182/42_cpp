@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 08:30:00 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/19 07:09:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/14 12:09:51 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	other_test( void )
 	Fixed b(40);
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
+	
+	std::cout << std::endl;
 	if (a < b)
 		std::cout << "a is < b" << std::endl;
 	else
@@ -28,8 +30,12 @@ void	other_test( void )
 		std::cout << "a is > b" << std::endl;
 	else
 		std::cout << "a is < b" << std::endl;
+		
+	std::cout << std::endl;	
 	Fixed c = b;
 	std::cout << "c is " << c << std::endl;
+	
+	std::cout << std::endl;	
 	if (b <= c)
 		std::cout << "b is <= c" << std::endl;
 	if (b <= c)
@@ -38,11 +44,15 @@ void	other_test( void )
 		std::cout << "b is == c" << std::endl;
 	if (!(b != c))
 		std::cout << "b is not != c" << std::endl;
+		
+	std::cout << std::endl;	
 	std::cout << "b + c = " << b + c << std::endl;
 	std::cout << "b - c = " << b - c << std::endl;
 	std::cout << "b * c = " << b * c << std::endl;
 	std::cout << "b / c = " << b / c << std::endl;
 	std::cout << "b / 0 = " << b / 0 << std::endl;
+	
+	std::cout << std::endl;	
 	std::cout << a << std::endl;
 	std::cout << --a << std::endl;	
 	std::cout << a-- << std::endl;
