@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:51:20 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 16:53:10 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/14 21:01:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ class Span
 	void addNumber( int nbr );
 	template <class Iter>
 	void addNumber( Iter start, Iter end );
-	template <class T>
-	const std::set<T> & getSet( void ) const;	
+	const std::set<int> & getSet( void ) const;	
 	virtual ~Span( void );
 	Span( unsigned int N );
 
