@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:51:20 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/15 14:41:56 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/15 16:13:11 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,19 @@ class Span
 	Span( const Span & src );
 	Span & operator=( const Span & rhs );
 	
-	int longestSpan( void );
 	
 	const unsigned int _N;
-	std::set<int> * _set;
+	std::multiset<int> * _set;
 	
 	public:
 	void addNumber( int nbr );
-	std::ptrdiff_t shortestSpan( void );
+	unsigned int longestSpan( void );
+	unsigned int shortestSpan( void );
 	template <class Iter>
 	void addNumber( Iter start, Iter end );
-	const std::set<int> & getSet( void ) const;	
+	const std::multiset<int> & getSet( void ) const;	
 	virtual ~Span( void );
-	Span( unsigned int N );
-
-
-	
+	Span( unsigned int N );	
 };
 
 std::ostream & operator<<( std::ostream & oss, const Span & rhs );
