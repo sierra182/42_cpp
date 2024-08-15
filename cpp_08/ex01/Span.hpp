@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:51:20 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/15 16:13:11 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/15 17:26:23 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 class Span
 {
 	Span( void );
-	Span( const Span & src );
-	Span & operator=( const Span & rhs );
 	
 	
 	const unsigned int _N;
@@ -35,6 +33,8 @@ class Span
 	const std::multiset<int> & getSet( void ) const;	
 	virtual ~Span( void );
 	Span( unsigned int N );	
+	Span( const Span & src );
+	Span & operator=( const Span & rhs );
 };
 
 std::ostream & operator<<( std::ostream & oss, const Span & rhs );
