@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/15 17:35:49 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/15 20:10:46 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <cstring>
 #include <numeric>
 #include <vector>
 #include <algorithm>
@@ -24,7 +23,7 @@ Span::Span( void ): _N(0), _set(NULL)
 
 Span::Span( unsigned int N ): _N(N), _set(new std::multiset<int>)
 {
-	
+	return ;
 }
 
 Span::~Span( void )
@@ -32,46 +31,34 @@ Span::~Span( void )
 	return ;
 }
 
-Span::Span( const Span & src ): _N(src._N)
+Span::Span( const Span & src ): _set(new std::multiset<int>)
 {
 	*this = src; 
 	return ;
 }
 
-const std::multiset<int> & Span::getSet( void ) const
-{
-	return (*this->_set);
-}
-
 Span & Span::operator=( const Span & rhs )
 {
 	if (this != &rhs)
-		*this->_set = *rhs._set; //! verif
+	{
+		if (*this->_set != *rhs._set)
+			*this->_set = *rhs._set;
+	}		
 	return (*this);
-}
-
-std::ostream & operator<<( std::ostream & oss, const Span & rhs )
-{
-	for (std::multiset<int>::const_iterator it = rhs.getSet().begin();
-		it != rhs.getSet().end(); it++)
-		oss << *it << " ";
-	oss	<< std::endl;
-	return (oss);
 }
 
 void Span::addNumber( int nbr )
 {
-	if (this->_set && this->_set->size() < this->_N)
-	{
-		// std::cout << "N" << this->_N << std::endl;	
-		this->_set->insert(nbr);
-	}
+	if (this->_set->size() < this->_N)		
+		this->_set->insert(nbr);	
 	else
-		throw std::overflow_error("Max is reached"); //!
+		throw std::overflow_error("Max items is reached!"); 
 }
 
 unsigned int Span::shortestSpan( void )
 {
+	if (this->_set->size() <= 1)
+		throw std::underflow_error("Not enought items!");
 	std::vector<int> tmp_vect(this->_set->size());
 	std::multiset<unsigned int> tmp_set;
 	std::adjacent_difference(this->_set->begin(), this->_set->end(),
@@ -85,6 +72,22 @@ unsigned int Span::shortestSpan( void )
 
 unsigned int Span::longestSpan( void )
 {
+	if (this->_set->size() <= 1)
+		throw std::underflow_error("Not enought items!");
 	return (static_cast<unsigned int>(*this->_set->rbegin()
 		- *this->_set->begin()));
+}
+
+const std::multiset<int> & Span::getSet( void ) const
+{
+	return (*this->_set);
+}
+
+std::ostream & operator<<( std::ostream & oss, const Span & rhs )
+{
+	for (std::multiset<int>::const_iterator it = rhs.getSet().begin();
+		it != rhs.getSet().end(); it++)
+		oss << *it << " ";
+	oss	<< std::endl;
+	return (oss);
 }
