@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/15 16:37:42 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/15 16:59:57 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@ void Span::addNumber( int nbr )
 unsigned int Span::shortestSpan( void )
 {
 	std::vector<int> tmp_vect;
-	std::multiset<int> tmp_set;
+	std::multiset<unsigned int> tmp_set;
 	std::adjacent_difference(this->_set->begin(), this->_set->end(), tmp_vect.begin());
-	struct MakeAbs{	int makeAbs(int x) { return std::abs(x); }};
-	std::transform(tmp_vect.begin(), tmp_vect.end(), tmp_set.begin(), MakeAbs::makeAbs ); 
-	tmp_set.ass
-	return (tmp_set.begin());
+	// struct MakeAbs{	static int makeAbs(int x) { return std::abs(x); }};
+	// std::transform(tmp_vect.begin(), tmp_vect.end(), tmp_vect.begin(), MakeAbs::makeAbs); 
+	// tmp_set.insert(tmp_vect.begin(), tmp_vect.end());
+	// return (*tmp_set.begin());
+return 2;
 }
 
 unsigned int Span::longestSpan( void )
 {
-	return (*this->_set->rbegin() - *this->_set->begin());
+	return (static_cast<unsigned int>(*this->_set->rbegin() - *this->_set->begin()));
 }

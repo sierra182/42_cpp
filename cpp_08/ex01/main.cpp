@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/15 15:44:29 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/15 16:44:02 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int main( void )
 	sp.addNumber(list.begin(), list.end()); //verif distance work with list
 	std::cout << " set: " << sp << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
+	std::cout << sp.shortestSpan() << std::endl;
 	// sp.addNumber(42);
 	// std::cout << " set: " << sp << std::endl;
 	// sp.addNumber(43);
