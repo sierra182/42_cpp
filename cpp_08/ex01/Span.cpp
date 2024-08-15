@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 21:03:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/15 14:49:20 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ Span & Span::operator=( const Span & rhs )
 	return (*this);
 }
 
-	
-
 std::ostream & operator<<( std::ostream & oss, const Span & rhs )
 {
 	for (std::set<int>::const_iterator it = rhs.getSet().begin();
@@ -68,12 +66,14 @@ void Span::addNumber( int nbr )
 		throw std::overflow_error("Max is reached"); //!
 }
 
-void Span::shortestSpan( void )
+std::ptrdiff_t Span::shortestSpan( void )
 {
-	
+	return 0;
 }
 
-void Span::longestSpan( void )
+int Span::longestSpan( void )
 {
-	
+	return (*this->_set->rbegin() - *this->_set->begin());
+
+	// this->_set
 }

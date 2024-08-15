@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:51:20 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/14 21:01:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/15 14:41:56 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,15 @@ class Span
 	Span( void );
 	Span( const Span & src );
 	Span & operator=( const Span & rhs );
-
-
 	
-	void shortestSpan( void );
-	void longestSpan( void );
+	int longestSpan( void );
 	
 	const unsigned int _N;
 	std::set<int> * _set;
 	
 	public:
 	void addNumber( int nbr );
+	std::ptrdiff_t shortestSpan( void );
 	template <class Iter>
 	void addNumber( Iter start, Iter end );
 	const std::set<int> & getSet( void ) const;	
@@ -49,7 +47,7 @@ void Span::addNumber( Iter start, Iter end )
 {
   //! if end <= start error
 	
-	if (this->_set && this->_set->size() + std::distance(start, end) <= _N)
+	if (this->_set && this->_set->size() + static_cast<size_t>(std::distance(start, end)) <= _N)
 		_set->insert(start, end);
 	else
 		throw std::overflow_error("Max is reached"); //!
