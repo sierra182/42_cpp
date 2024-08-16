@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:18:05 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/25 18:08:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 16:43:45 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class MateriaSource : public IMateriaSource
         virtual void learnMateria( AMateria* );
         virtual AMateria* createMateria( std::string const & type );
 		
+        AMateria  * const * getInventory( void ) const;
+        
 	private:
 	
 		AMateria * inventory[INV];

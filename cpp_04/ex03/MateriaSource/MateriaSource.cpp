@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/16 16:16:30 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/16 16:43:37 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,9 @@ AMateria*  MateriaSource::createMateria( std::string const & type )
 			return (this->inventory[i]->clone());
             			
     return (NULL);  
+}
+
+AMateria  * const * MateriaSource::getInventory( void ) const
+{
+    return this->inventory;
 }
