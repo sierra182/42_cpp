@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:20:15 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/28 11:59:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 23:02:45 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ Cure & Cure::operator=( const Cure & rhs )
 {
     // std::cout << CNS << " Cure operator= called" << RST << std::endl;
     
-	return (*this);
-	(void) rhs;
+	return ((void) rhs, *this);
 }

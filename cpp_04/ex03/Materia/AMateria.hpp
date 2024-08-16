@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:03:33 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/28 12:08:45 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 23:04:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ class AMateria
     protected:  
     	AMateria( void );
     	const std::string type;
+        AMateria & operator=( const AMateria & rhs );
     
     public:
     
         AMateria( std::string const & type );
         virtual ~AMateria( void );
         AMateria( const AMateria & );
-        AMateria & operator=( const AMateria & rhs );
         
    		std::string const & getType() const;
 

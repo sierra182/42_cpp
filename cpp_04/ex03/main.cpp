@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/16 17:07:28 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/16 22:55:35 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,24 @@ int main( void )
 	printMateria(*src2);
 
 	MyStyl::addActionTest("src = src 2");
-	src = src2;
+	*src = *src2;
+	
+	MyStyl::addActionTest("delete src 2");
+	delete src2;
 		
 	std::cout << std::endl;
 	MyStyl::addActionTest("print src");
 	printMateria(*src);
-
-	MyStyl::addActionTest("src3(src)");
-	MateriaSource* src3(src);
 	
+	MyStyl::addActionTest("src3(src)");
+	MateriaSource src3(*src);
+	
+	MyStyl::addActionTest("delete src");
+	delete src;
 	std::cout << std::endl;
 	MyStyl::addActionTest("print src3");
-	printMateria(*src3);
+	printMateria(src3);
+	
 	return (0);
 }
 

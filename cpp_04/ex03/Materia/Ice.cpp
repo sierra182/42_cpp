@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:23:11 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/28 12:01:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 23:02:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ Ice & Ice::operator=( const Ice & rhs )
 {
     // std::cout << CNS << " Ice operator= called" << RST << std::endl;
 	
-    return (*this);
-    (void) rhs;
+    return ((void) rhs, *this);   
 }
 

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/28 10:56:39 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 23:19:23 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Character::~Character( void )
     
 	for (int i = 0; i < INV; i++)
 	{
-		delete this->inventory[i];
+		// delete this->inventory[i];//§
 		this->inventory[i] = NULL;
 	}		
     return ;
@@ -65,8 +65,8 @@ Character & Character::operator=( const Character & rhs )
 			this->name = rhs.name;		
 		for (int i = 0; i < INV; i++)				
 		{				 
-			delete this->inventory[i];
-			this->inventory[i] = rhs.inventory[i]->clone();
+			// delete this->inventory[i];//!
+			this->inventory[i] = rhs.inventory[i];
 		}
 	}
     return (*this);

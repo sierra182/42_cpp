@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/16 16:43:37 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/16 23:14:54 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ MateriaSource::MateriaSource( const MateriaSource & src )
 
 MateriaSource & MateriaSource::operator=( const MateriaSource & rhs )
 {
-    std::cout << CNS << " MateriaSource operator= called" << RST 
-        << std::endl;
+    // std::cout << CNS << " MateriaSource operator= called" << RST 
+    //     << std::endl;
         
     for (int i = 0; i < INV; i++)
 	{
 		delete this->inventory[i];
 		this->inventory[i] = NULL;
-	} 
-    for (int i = 0; i < INV; i++)  
-		this->inventory[i] = rhs.inventory[i];   
+		if (rhs.inventory[i]) 	
+			this->inventory[i] = rhs.inventory[i]->clone();			
+	}  	  		
     return (*this);
 }
 
