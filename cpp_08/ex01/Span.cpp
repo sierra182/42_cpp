@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/15 20:10:46 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 11:02:32 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ std::ostream & operator<<( std::ostream & oss, const Span & rhs )
 {
 	for (std::multiset<int>::const_iterator it = rhs.getSet().begin();
 		it != rhs.getSet().end(); it++)
-		oss << *it << " ";
-	oss	<< std::endl;
+		oss << "\e[1m" << *it << " ";
+	oss	<< "\e[0m" << std::endl;
 	return (oss);
 }
