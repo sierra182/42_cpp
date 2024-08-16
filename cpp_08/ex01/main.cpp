@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/16 11:11:00 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/16 11:15:41 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,33 @@ int main( void )
 		catch(const std::exception & e)
 			{ MyStyl::addWhatTest(e.what()); }
 	}
-		
+
+	std::cout << std::endl << std::endl;
+	
+	{
+		MyStyl::addTest("longest span");		
+		try	{			
+			MyStyl::addActionTest("create span with list plage");
+			Span * sp2 = new Span(7);
+			MyStyl::addActionTest("fill it");
+			{				
+				int arr[] = {2, 1, 99, -100, -200, 42, 24};
+				sp2->addNumber(arr, arr + 7);
+			}
+			std::cout << std::endl;		
+			MyStyl::addActionTest("display span 2");
+			std::cout << *sp2 << std::endl;
+			MyStyl::addActionTest("create span(span 2)");
+			Span sp(*sp2);
+			MyStyl::addActionTest("delete span 2");
+			delete sp2;
+			std::cout << std::endl;
+			MyStyl::addActionTest("display span");
+			std::cout << sp << std::endl;			
+		}
+		catch(const std::exception & e)
+			{ MyStyl::addWhatTest(e.what()); }
+	}
 	return (0);
 }
 
