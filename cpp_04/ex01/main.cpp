@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:25:23 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 12:11:08 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/16 12:11:34 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 
 int main( void )
 {
+	Dog basic;
+	{
+		Dog tmp = basic;
+	}
+	
 	{
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:11:54 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 09:44:07 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 15:03:27 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Cat::~Cat( void )
     return ;
 }
 
-Cat::Cat( const Cat & src ) : AAnimal(src), brain(new Brain())
+Cat::Cat( const Cat & src ) : AAnimal(src), brain(NULL)
 {
     std::cout << CNS << " Cat copy constructor called" << RST << std::endl;
     
@@ -42,9 +42,13 @@ Cat::Cat( const Cat & src ) : AAnimal(src), brain(new Brain())
 Cat & Cat::operator=( const Cat & rhs )
 {
     AAnimal::operator=( rhs );  
-	 
-	if (this->brain != rhs.brain)
-		this->brain = rhs.brain;
+  
+    if (this != &rhs)
+    {        
+        delete this->brain;
+        this->brain = new Brain();	
+        *this->brain = *rhs.brain;
+    }
     return (*this);
 }
 

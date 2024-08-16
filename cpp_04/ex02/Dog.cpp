@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:16:51 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/24 09:44:17 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 15:04:19 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Dog::~Dog( void )
     return ;
 }
 
-Dog::Dog ( const Dog & src ) : AAnimal(src), brain(new Brain())
+Dog::Dog ( const Dog & src ) : AAnimal(src), brain(NULL)
 {
     std::cout << CNS << " Dog copy constructor called" << RST << std::endl;
     
@@ -43,8 +43,12 @@ Dog & Dog::operator=( const Dog & rhs )
 {
 	AAnimal::operator=( rhs );  
 	
-	if (this->brain != rhs.brain)
-		*this->brain = *rhs.brain;
+	if (this != &rhs)
+    {        
+        delete this->brain;
+        this->brain = new Brain();	
+        *this->brain = *rhs.brain;
+    }
     return (*this);   
 }
 
