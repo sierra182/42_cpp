@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/28 13:57:23 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 16:17:21 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 
 int	main( void )
 {
+	
 	IMateriaSource* src = new MateriaSource();	
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");		
 	AMateria* tmp;
-	tmp = src->createMateria("mouche");//! other test
+	// tmp = src->createMateria("mouche");//! other test
 	tmp = src->createMateria("ice");
 	//std::cout << "tmp type: " << tmp->getType() << "!" << std::endl;
 		//! other test	

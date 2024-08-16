@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/07/27 17:44:39 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/16 16:16:30 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ MateriaSource::~MateriaSource( void )
 MateriaSource::MateriaSource( const MateriaSource & src )
 {
     // std::cout << CNS << " MateriaSource copy constructor called" << RST
-        // << std::endl;
-        
+        // << std::endl;       
+    for (int i = 0; i < INV; i++)
+		this->inventory[i] = NULL;  
     *this = src;
     return ;
 }
@@ -51,8 +52,13 @@ MateriaSource & MateriaSource::operator=( const MateriaSource & rhs )
     std::cout << CNS << " MateriaSource operator= called" << RST 
         << std::endl;
         
-    (void) rhs;
-    //! to complete
+    for (int i = 0; i < INV; i++)
+	{
+		delete this->inventory[i];
+		this->inventory[i] = NULL;
+	} 
+    for (int i = 0; i < INV; i++)  
+		this->inventory[i] = rhs.inventory[i];   
     return (*this);
 }
 
@@ -63,8 +69,7 @@ void MateriaSource::learnMateria( AMateria* mat )//?
 		{
 			this->inventory[i] = mat;
 			break;
-		}
-    //! to complete
+		}   
 }
 
 AMateria*  MateriaSource::createMateria( std::string const & type )
@@ -72,7 +77,6 @@ AMateria*  MateriaSource::createMateria( std::string const & type )
 	for (int i = 0; i < INV; i++ )
    		if (this->inventory[i] && this->inventory[i]->getType() == type)		
 			return (this->inventory[i]->clone());
-			
-    return (NULL);   
-	//! to complete
+            			
+    return (NULL);  
 }
