@@ -6,11 +6,11 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/16 10:01:27 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/16 10:37:30 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include <MyStyl.hpp>
 #include <Span.hpp>
 #include <algorithm>
 #include <list>
@@ -27,54 +27,51 @@ int getRandom()
 	return rand() - RAND_MAX / 2;
 }
 
+
+
+
+
 int main( void )
 {
 	std::cout << std::endl << std::endl << std::endl;
-	{
-		std::cout << " ~~~~~~~~~~~~~~~";
-		std::cout << "\e[1;3;90;103;9m ☣️  Test: exception N max ☣️  \e[0m"
-			<< std::endl << std::endl << std::endl;
 	
-	try	{
-		std::cout << "\e[3m * create span with N = 0 \e[0m" << std::endl;		
-		Span sp(0);
-		std::cout << "\e[3m * add a number \e[0m" << std::endl
-			<< std::endl;
-		sp.addNumber(1);
-	}
-	catch(const std::exception & e)
-		{ std::cerr << "\e[1;31m\t   Exception: " << e.what() << "\e[0m"
-			<< std::endl << std::endl; }
-	
-	try	{
-		std::cout << "\e[3m * create span with N = 4 \e[0m" << std::endl;
-		Span sp(4);
-		std::cout << "\e[3m * add a plage of 5 items \e[0m" << std::endl
-			<< std::endl;
-		int arr[] = {2, 1, 99, -100, -200};
-		sp.addNumber(arr, arr + 5);	
-	}
-	catch(const std::exception & e)
-		{ std::cerr << "\e[1;31m\t   Exception: " << e.what() << "\e[0m"
-			<< std::endl << std::endl; }	
-	}
-	std::cout << std::endl << std::endl;
 	{
-		std::cout << " ~~~~~~~~~~~~~~~";
-		std::cout << "\e[1;3;90;103;9m ☣️  Test: exception inversed \
-iterator ☣️  \e[0m"	<< std::endl << std::endl << std::endl;
+		MyStyl::addTest("exception N max");	
+		try	{
+			MyStyl::addActionTest("create span with N = 0");		
+			Span sp(0);
+			MyStyl::addActionTest("add a number");
+			sp.addNumber(1);
+		}
+		catch(const std::exception & e)
+			{ MyStyl::addWhatTest(e.what()); }
+
 		
 		try	{
-		std::cout << "\e[3m * create span with N = 4 \e[0m" << std::endl;
-		Span sp(4);
-		std::cout << "\e[3m * add an inversed plage of 5 items \e[0m" << std::endl
-			<< std::endl;
-		int arr[] = {2, 1, 99, -100, -200};
-		sp.addNumber(arr + 5, arr);	
+			MyStyl::addActionTest("create span with N = 4");
+
+			Span sp(4);
+			MyStyl::addActionTest("add a plage of 5 items");
+			int arr[] = {2, 1, 99, -100, -200};
+			sp.addNumber(arr, arr + 5);	
+		}
+		catch(const std::exception & e)
+			{ MyStyl::addWhatTest(e.what()); }	
 	}
-	catch(const std::exception & e)
-		{ std::cerr << "\e[1;31m\t   Exception: " << e.what() << "\e[0m"
-			<< std::endl << std::endl; }
+	
+	std::cout << std::endl << std::endl;
+	
+	{
+		MyStyl::addTest("exception inversed");		
+		try	{
+			MyStyl::addActionTest("create span with N = 4");
+			Span sp(4);
+			MyStyl::addActionTest("add an inversed plage of 5 items");
+			int arr[] = {2, 1, 99, -100, -200};
+			sp.addNumber(arr + 5, arr);	
+		}
+		catch(const std::exception & e)
+			{ MyStyl::addWhatTest(e.what()); }
 	}
 		
 	return (0);
