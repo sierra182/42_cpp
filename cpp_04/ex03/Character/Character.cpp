@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/17 08:43:26 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 09:24:43 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void Character::equip( AMateria * m )
 			this->inventory[i] = m;
 			return;
 		}
-	std::cout << " \e[5;31m" << "No more place in the inventory!\e[0m"
+	std::cout << " \e[5;1;31m" << "No more place in the inventory!\e[0m"
 		<< std::endl << std::endl;
 }
 
@@ -98,7 +98,7 @@ void Character::unequip( int idx )
 		this->inventory[idx] = NULL;
 		return;
 	}
-	std::cout << " \e[5;31m" << "Can't Unequip because, \
+	std::cout << " \e[5;1;31m" << "Can't Unequip because, \
 Don't find this materia in the inventory!\e[0m" << std::endl
 	<< std::endl;
 }
@@ -110,6 +110,6 @@ void Character::use( int idx, ICharacter& target )
 		this->inventory[idx]->use(target);
 		return;
 	}
-	std::cout << " \e[5;31m" << "Can't Use because, \
+	std::cout << " \e[5;1;31m" << "Can't Use because, \
 Don't find this materia in the inventory!\e[0m" << std::endl << std::endl;
 }

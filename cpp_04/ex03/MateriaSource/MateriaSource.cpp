@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:26:49 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/17 08:21:16 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 09:25:13 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void MateriaSource::learnMateria( AMateria* mat )
 			this->inventory[i] = mat;
 			return;
 		}
-	std::cout << " \e[5;31m" << "The inventory is full! \e[0m"
+	std::cout << " \e[5;1;31m" << "The inventory is full! \e[0m"
 	<< std::endl << std::endl;  
 }
 
@@ -79,7 +79,7 @@ AMateria*  MateriaSource::createMateria( std::string const & type )
 	for (int i = 0; i < INV; i++ )
    		if (this->inventory[i] && this->inventory[i]->getType() == type)		
 			return (this->inventory[i]->clone());
-    std::cout << " \e[5;31m" << "The inventory don't contain \
+    std::cout << " \e[5;1;31m" << "The inventory don't contain \
 this materia!\e[0m"	<< std::endl << std::endl;    			
     return (NULL);  
 }
