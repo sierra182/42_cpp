@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 17:26:31 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 17:34:34 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,8 @@ void exc( void )
 			{ MyStyl::addWhat(e.what()); }
 	}
 }
+
+void notenoughti
 
 int allTests( void )
 {
