@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 15:17:23 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 15:44:15 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,10 +258,13 @@ std::cout << "\033[s";
 		try	{
 			// std::cout << "\033[s";
 			// std::cout << "bala" << std::endl;
-			while (std::cin.get() != 32)
+			std::cout << "ready ? :y" << std::endl;
+			 
+			while (std::cin.get() == 'y')
 			{
-				myrand();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				myrand();
+				std::cout << "retry ? y / n" << std::endl;
 				// std::cin.ignore();
 				// if (!std::cin.eof())
 				// 	break;
