@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/16 22:11:44 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 10:23:01 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,25 @@ int main( void )
 	{
 		MyStyl::addTest("exception N max");	
 		try	{
-			MyStyl::addActionTest("create span with N = 0");		
+			MyStyl::addAction("create span with N = 0");		
 			Span sp(0);
-			MyStyl::addActionTest("add a number");
+			MyStyl::addAction("add a number");
 			sp.addNumber(1);
 		}
 		catch(const std::exception & e)
-			{ MyStyl::addWhatTest(e.what()); }
+			{ MyStyl::addWhat(e.what()); }
 
 		
 		try	{
-			MyStyl::addActionTest("create span with N = 4");
+			MyStyl::addAction("create span with N = 4");
 
 			Span sp(4);
-			MyStyl::addActionTest("add a plage of 5 items");
+			MyStyl::addAction("add a plage of 5 items");
 			int arr[] = {2, 1, 99, -100, -200};
 			sp.addNumber(arr, arr + 5);	
 		}
 		catch(const std::exception & e)
-			{ MyStyl::addWhatTest(e.what()); }	
+			{ MyStyl::addWhat(e.what()); }	
 	}
 	
 	std::cout << std::endl << std::endl;
@@ -64,14 +64,14 @@ int main( void )
 	{
 		MyStyl::addTest("exception inversed");		
 		try	{
-			MyStyl::addActionTest("create span with N = 4");
+			MyStyl::addAction("create span with N = 4");
 			Span sp(4);
-			MyStyl::addActionTest("add an inversed plage of 5 items");
+			MyStyl::addAction("add an inversed plage of 5 items");
 			int arr[] = {2, 1, 99, -100, -200};
 			sp.addNumber(arr + 5, arr);	
 		}
 		catch(const std::exception & e)
-			{ MyStyl::addWhatTest(e.what()); }
+			{ MyStyl::addWhat(e.what()); }
 	}
 
 	std::cout << std::endl << std::endl;
@@ -79,37 +79,37 @@ int main( void )
 	{
 		MyStyl::addTest("operator = ");		
 		try	{
-			MyStyl::addActionTest("create span with N = 4");
+			MyStyl::addAction("create span with N = 4");
 			Span sp(4);
 			
-			MyStyl::addActionTest("fill it");
+			MyStyl::addAction("fill it");
 			{
 				int arr[] = {1, 99, -100, -200};
 				sp.addNumber(arr, arr + 4);				
 			}			
 			
-			MyStyl::addActionTest("create span 2 with N = 7");
+			MyStyl::addAction("create span 2 with N = 7");
 			Span * sp2 = new Span(7);
-			MyStyl::addActionTest("fill it");
+			MyStyl::addAction("fill it");
 			{				
 				int arr[] = {2, 1, 99, -100, -200, 42, 24};
 				sp2->addNumber(arr, arr + 7);
 			}
 			std::cout << std::endl;
-			MyStyl::addActionTest("display span");
+			MyStyl::addAction("display span");
 			std::cout << sp << std::endl;
-			MyStyl::addActionTest("display span 2");
+			MyStyl::addAction("display span 2");
 			std::cout << *sp2 << std::endl;
-			MyStyl::addActionTest("span = span 2");
+			MyStyl::addAction("span = span 2");
 			sp = *sp2;
-			MyStyl::addActionTest("delete span 2");
+			MyStyl::addAction("delete span 2");
 			delete sp2;
 			std::cout << std::endl;
-			MyStyl::addActionTest("display span");
+			MyStyl::addAction("display span");
 			std::cout << sp << std::endl;			
 		}
 		catch(const std::exception & e)
-			{ MyStyl::addWhatTest(e.what()); }
+			{ MyStyl::addWhat(e.what()); }
 	}
 
 	std::cout << std::endl << std::endl;
@@ -117,54 +117,53 @@ int main( void )
 	{
 		MyStyl::addTest("const cpy");		
 		try	{			
-			MyStyl::addActionTest("create span 2 with N = 7");
+			MyStyl::addAction("create span 2 with N = 7");
 			Span * sp2 = new Span(7);
-			MyStyl::addActionTest("fill it");
+			MyStyl::addAction("fill it");
 			{				
 				int arr[] = {2, 1, 99, -100, -200, 42, 24};
 				sp2->addNumber(arr, arr + 7);
 			}
 			std::cout << std::endl;		
-			MyStyl::addActionTest("display span 2");
+			MyStyl::addAction("display span 2");
 			std::cout << *sp2 << std::endl;
-			MyStyl::addActionTest("create span(span 2)");
+			MyStyl::addAction("create span(span 2)");
 			Span sp(*sp2);
-			MyStyl::addActionTest("delete span 2");
+			MyStyl::addAction("delete span 2");
 			delete sp2;
 			std::cout << std::endl;
-			MyStyl::addActionTest("display span");
+			MyStyl::addAction("display span");
 			std::cout << sp << std::endl;			
 		}
 		catch(const std::exception & e)
-			{ MyStyl::addWhatTest(e.what()); }
+			{ MyStyl::addWhat(e.what()); }
 	}
 
 	std::cout << std::endl << std::endl;
 	
 	{
-		MyStyl::addTest("longest span");		
+		MyStyl::addTest("shortest and longest span");	
+		MyStyl::addSubTest("my sub test");
 		try	{			
-			MyStyl::addActionTest("create span with list plage");
-			Span * sp2 = new Span(7);
-			MyStyl::addActionTest("fill it");
+			MyStyl::addAction("create span with list plage");
+			Span * sp = new Span(7);
+			MyStyl::addAction("fill it");
 			{				
 				int arr[] = {2, 1, 99, -100, -200, 42, 24};
-				sp2->addNumber(arr, arr + 7);
+				sp->addNumber(arr, arr + 7);
 			}
 			std::cout << std::endl;		
-			MyStyl::addActionTest("display span 2");
-			std::cout << *sp2 << std::endl;
-			MyStyl::addActionTest("create span(span 2)");
-			Span sp(*sp2);
-			MyStyl::addActionTest("delete span 2");
-			delete sp2;
-			std::cout << std::endl;
-			MyStyl::addActionTest("display span");
-			std::cout << sp << std::endl;			
+			MyStyl::addAction("display span");
+			std::cout << *sp << std::endl;
+			MyStyl::addAction("longest span");
+			std::cout << sp->longestSpan() << std::endl;
+			MyStyl::addAction("shortest span");
+			std::cout << sp->shortestSpan() << std::endl;
+					
 		}
 		catch(const std::exception & e)
-			{ MyStyl::addWhatTest(e.what()); }
-	}
+			{ MyStyl::addWhat(e.what()); }
+	}	
 	return (0);
 }
 
