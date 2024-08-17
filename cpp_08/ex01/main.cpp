@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 15:58:51 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 16:48:08 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 #include <iostream>
 #include <cstdio>
 #include <limits>
-// template <class T>
-// void	print(const T & item)
-// {
-// 	std::cout << item << std::endl;	
-// }
 
 int getRandom()
 {
@@ -38,18 +33,22 @@ void myrand()
 		
 	MyStyl::addAction("fill it with random numbers");
 	std::generate(lst.begin(), lst.end(), getRandom);
+	
 	MyStyl::addAction("add list plage to span");
 	sp->addNumber(lst.begin(), lst.end());
+	
 	std::cout << std::endl;		
 	MyStyl::addAction("display span");
 	std::cout << *sp << std::endl;
+	
 	MyStyl::addAction("longest span");
 	std::cout << sp->longestSpan() << std::endl;
+	
 	MyStyl::addAction("shortest span");
 	std::cout << sp->shortestSpan() << std::endl;
 }
 
-int main( void )
+int allTests( void )
 {
 	std::cout << std::endl << std::endl << std::endl;
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
@@ -76,10 +75,8 @@ int main( void )
 		}
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }	
-	}
-	
-	std::cout << std::endl << std::endl;
-	
+	}	
+	std::cout << std::endl << std::endl;	
 	{
 		MyStyl::addTest("exception inversed");		
 		try	{
@@ -92,9 +89,7 @@ int main( void )
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
 	}
-
-	std::cout << std::endl << std::endl;
-	
+	std::cout << std::endl << std::endl;	
 	{
 		MyStyl::addTest("operator = ");		
 		try	{
@@ -130,9 +125,7 @@ int main( void )
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
 	}
-
-	std::cout << std::endl << std::endl;
-	
+	std::cout << std::endl << std::endl;	
 	{
 		MyStyl::addTest("const cpy");		
 		try	{			
@@ -157,9 +150,7 @@ int main( void )
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
 	}
-std::cout << "\033[s";
-	std::cout << std::endl << std::endl;
-	
+	std::cout << std::endl << std::endl;	
 	{
 		MyStyl::addTest("shortest and longest span");
 		{		
@@ -232,6 +223,7 @@ std::cout << "\033[s";
 		}
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
+			
 		std::cout << std::endl << std::endl;
 			try	{
 			MyStyl::addSubTest("normal way 2");			
@@ -255,54 +247,17 @@ std::cout << "\033[s";
 			{ MyStyl::addWhat(e.what()); }
 		std::cout << std::endl << std::endl;
 		MyStyl::addTest("more 10000");
-		try	{
-			// std::cout << "\033[s";
-			// std::cout << "bala" << std::endl;
-			std::cout << "ready ?" << std::endl;
-			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			//  int t = std::cin.get();
-			//  std::cout << t << std::endl;
-			while (std::cin.get() == '\n')
+		try	{			
+			std::cout << "ready ?" << std::endl;	
+			int t = std::cin.get();
+			while (t == '\n' || t == 'y')
 			{
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				myrand();
-				std::cout << "retry ? y / n" << std::endl;
-				// std::cin.ignore();
-				// if (!std::cin.eof())
-				// 	break;
-			}
-			// std::cout << "\033[6n";
-			// std::cout.flush();
-			// char buff[32];
-			// if(std::cin.get() == '\033')
-			// {
-			// 	if (std::cin.get() == '[')
-			// 		std::cin.getline(buff, sizeof(buff), 'R');
-			// }
-			// int row, col;
-			// if (sscanf(buff, "%d;%d", &row, &col) == 2)
-			// 	std::cout << "pos buff " << row << " : " << col << std::endl;
-			// else
-			// 	std::cerr << "err";	
-			// std::cout << "\033[u";
-			// std::cout << "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-			// std::cout << "\033[10A";
-			// std::cout << "\033[J";
-			// MyStyl::addAction("create span with list plage");
-			// Span * sp = new Span(10001);
-			// std::list<int> lst(10001, 0);
-			 
-			// MyStyl::addAction("fill it with random numbers");
-			// std::generate(lst.begin(), lst.end(), getRandom);
-			// MyStyl::addAction("add list plage to span");
-			// sp->addNumber(lst.begin(), lst.end());
-			// std::cout << std::endl;		
-			// MyStyl::addAction("display span");
-			// std::cout << *sp << std::endl;
-			// MyStyl::addAction("longest span");
-			// std::cout << sp->longestSpan() << std::endl;
-			// MyStyl::addAction("shortest span");
-			// std::cout << sp->shortestSpan() << std::endl;					
+				std::cout << "retry ? y / n" << std::endl;			
+				if (t != '\n')
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				t = std::cin.get();				
+			}							
 		}
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }		
@@ -310,67 +265,17 @@ std::cout << "\033[s";
 	return (0);
 }
 
-// int main( void )
-// {	
-// 	std::srand(static_cast<unsigned int>(std::time(NULL)));
-// 	Span sp(16000);
-// 	// int arr[] = {2, 1};
-// 	// int arr2[] = {4, 4};
-// 	// sp.addNumber(24);
-// 	// sp.addNumber(29);
-// 	// std::cout << " set: " << sp << std::endl;
-// 	// sp.addNumber(arr, arr + 2);
-// 	// std::cout << " set: " << sp << std::endl;
-// 	// sp.addNumber(arr2, arr2 + 2);
-// 	// std::cout << " set: " << sp << std::endl;
-// 	// std::list<int> list(4,5);
-// 	// sp.addNumber(list.begin(), list.end()); //verif distance work with list
-// 	// std::cout << " set: " << sp << std::endl;
-// 	// std::cout << " yolo" << std::endl;
-// 	// std::cout << sp.longestSpan() << std::endl;
-// 	// std::cout << " yolo2" << std::endl;
-// 	// std::cout << sp.shortestSpan() << std::endl;
+int main()
+{
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 
-// 	std::vector<int> big(15000);
-// 	std::generate(big.begin(), big.end(), getRandom);
-// 	sp.addNumber(big.begin(), big.end());
-// 	std::cout << sp.longestSpan() << std::endl;
-// 	std::cout << " yolo2" << std::endl;
-// 	std::cout << sp.shortestSpan() << std::endl;
-// 	std::cout << " set: " << sp << std::endl;
-	
-// 	// sp.addNumber(42);
-// 	// std::cout << " set: " << sp << std::endl;
-// 	// sp.addNumber(43);
-// 	// std::cout << " set: " << sp << std::endl;
-// 	// sp.addNumber(46);
-// 	// std::cout << " set: " << sp << std::endl;
-// 	// std::for_each(arr, arr+2, print<int>);	
-// 	// operator<< <int>(std::cout, sp );
-	
-// 	return (0);
-// }
-// int main()
-// {
-// Span sp = Span(5);
-// sp.addNumber(6);
-// sp.addNumber(3);
-// sp.addNumber(17);
-// sp.addNumber(9);
-// sp.addNumber(11);
-// std::cout << sp.shortestSpan() << std::endl;
-// std::cout << sp.longestSpan() << std::endl;
-// return 0;
-// }
-// int main()
-// {
-// Span sp = Span(5);
-// sp.addNumber(-24);
-// sp.addNumber(-22);
-// sp.addNumber(0);
-// sp.addNumber(10);
-// sp.addNumber(16);
-// std::cout << sp.shortestSpan() << std::endl;
-// std::cout << sp.longestSpan() << std::endl;
-// return 0;
-// }
+	allTests();
+	return 0;
+}
