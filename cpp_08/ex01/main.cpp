@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 16:48:08 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 17:26:31 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 #include <cstdio>
 #include <limits>
 
-int getRandom()
+int getRandom( void )
 {
 	return rand() - RAND_MAX / 2;
 }
 
-void myrand()
+void randexec( void )
 {
 	MyStyl::addAction("create span with list plage");
 	Span * sp = new Span(10001);
@@ -48,54 +48,36 @@ void myrand()
 	std::cout << sp->shortestSpan() << std::endl;
 }
 
-int allTests( void )
+
+void randtest( void )
 {
-	std::cout << std::endl << std::endl << std::endl;
-	std::srand(static_cast<unsigned int>(std::time(NULL)));
-	
-	{
-		MyStyl::addTest("exception N max");	
-		try	{
-			MyStyl::addAction("create span with N = 0");		
-			Span sp(0);
-			MyStyl::addAction("add a number");
-			sp.addNumber(1);
-		}
-		catch(const std::exception & e)
-			{ MyStyl::addWhat(e.what()); }
-
-		
-		try	{
-			MyStyl::addAction("create span with N = 4");
-
-			Span sp(4);
-			MyStyl::addAction("add a plage of 5 items");
-			int arr[] = {2, 1, 99, -100, -200};
-			sp.addNumber(arr, arr + 5);	
-		}
-		catch(const std::exception & e)
-			{ MyStyl::addWhat(e.what()); }	
-	}	
-	std::cout << std::endl << std::endl;	
-	{
-		MyStyl::addTest("exception inversed");		
-		try	{
-			MyStyl::addAction("create span with N = 4");
-			Span sp(4);
-			MyStyl::addAction("add an inversed plage of 5 items");
-			int arr[] = {2, 1, 99, -100, -200};
-			sp.addNumber(arr + 5, arr);	
-		}
-		catch(const std::exception & e)
-			{ MyStyl::addWhat(e.what()); }
+	std::cout << std::endl << std::endl;
+	MyStyl::addTest("more 10000");
+	try	{			
+		std::cout << "ready ?" << std::endl;	
+		int t = std::cin.get();
+		while (t == '\n' || t == 'y')
+		{
+			randexec();
+			std::cout << "retry ? y / n" << std::endl;			
+			if (t != '\n')
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			t = std::cin.get();				
+		}							
 	}
+	catch(const std::exception & e)
+		{ MyStyl::addWhat(e.what()); }		
+}
+
+void copy( void )
+{
 	std::cout << std::endl << std::endl;	
 	{
 		MyStyl::addTest("operator = ");		
+		
 		try	{
 			MyStyl::addAction("create span with N = 4");
-			Span sp(4);
-			
+			Span sp(4);			
 			MyStyl::addAction("fill it");
 			{
 				int arr[] = {1, 99, -100, -200};
@@ -109,11 +91,12 @@ int allTests( void )
 				int arr[] = {2, 1, 99, -100, -200, 42, 24};
 				sp2->addNumber(arr, arr + 7);
 			}
+			
 			std::cout << std::endl;
 			MyStyl::addAction("display span");
 			std::cout << sp << std::endl;
 			MyStyl::addAction("display span 2");
-			std::cout << *sp2 << std::endl;
+			std::cout << *sp2 << std::endl;			
 			MyStyl::addAction("span = span 2");
 			sp = *sp2;
 			MyStyl::addAction("delete span 2");
@@ -127,7 +110,8 @@ int allTests( void )
 	}
 	std::cout << std::endl << std::endl;	
 	{
-		MyStyl::addTest("const cpy");		
+		MyStyl::addTest("const cpy");
+				
 		try	{			
 			MyStyl::addAction("create span 2 with N = 7");
 			Span * sp2 = new Span(7);
@@ -136,6 +120,7 @@ int allTests( void )
 				int arr[] = {2, 1, 99, -100, -200, 42, 24};
 				sp2->addNumber(arr, arr + 7);
 			}
+			
 			std::cout << std::endl;		
 			MyStyl::addAction("display span 2");
 			std::cout << *sp2 << std::endl;
@@ -150,6 +135,56 @@ int allTests( void )
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
 	}
+}
+
+void exc( void )
+{	
+	MyStyl::addTest("exception N max");	
+		
+	try	{
+		MyStyl::addAction("create span with N = 0");		
+		Span sp(0);
+		MyStyl::addAction("add a number");
+		sp.addNumber(1);
+	}
+	catch(const std::exception & e)
+		{ MyStyl::addWhat(e.what()); }
+	
+	try	{
+		MyStyl::addAction("create span with N = 4");
+
+		Span sp(4);
+		MyStyl::addAction("add a plage of 5 items");
+		int arr[] = {2, 1, 99, -100, -200};
+		sp.addNumber(arr, arr + 5);	
+	}
+	catch(const std::exception & e)
+		{ MyStyl::addWhat(e.what()); }	
+			
+	std::cout << std::endl << std::endl;	
+	{
+		MyStyl::addTest("exception inversed");	
+			
+		try	{
+			MyStyl::addAction("create span with N = 4");
+			Span sp(4);
+			MyStyl::addAction("add an inversed plage of 5 items");
+			int arr[] = {2, 1, 99, -100, -200};
+			sp.addNumber(arr + 5, arr);	
+		}
+		catch(const std::exception & e)
+			{ MyStyl::addWhat(e.what()); }
+	}
+}
+
+int allTests( void )
+{
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
+	std::cout << std::endl << std::endl << std::endl;
+	
+	exc();
+	copy();
+	
 	std::cout << std::endl << std::endl;	
 	{
 		MyStyl::addTest("shortest and longest span");
@@ -245,22 +280,8 @@ int allTests( void )
 		}
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
-		std::cout << std::endl << std::endl;
-		MyStyl::addTest("more 10000");
-		try	{			
-			std::cout << "ready ?" << std::endl;	
-			int t = std::cin.get();
-			while (t == '\n' || t == 'y')
-			{
-				myrand();
-				std::cout << "retry ? y / n" << std::endl;			
-				if (t != '\n')
-					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				t = std::cin.get();				
-			}							
-		}
-		catch(const std::exception & e)
-			{ MyStyl::addWhat(e.what()); }		
+		
+		randtest();
 	}	
 	return (0);
 }
