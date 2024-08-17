@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 11:02:27 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 11:26:03 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,9 @@ int main( void )
 		}
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
+			
+		MyStyl::addTest("more 10000");
+		
 	}	
 	return (0);
 }
