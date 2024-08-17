@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 11:26:03 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 12:33:32 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <list>
 #include <vector>
 #include <ctime>
+#include <iostream>
 // template <class T>
 // void	print(const T & item)
 // {
@@ -27,13 +28,29 @@ int getRandom()
 	return rand() - RAND_MAX / 2;
 }
 
-
-
-
+void myrand()
+{
+	MyStyl::addAction("create span with list plage");
+	Span * sp = new Span(10001);
+	std::list<int> lst(10001, 0);
+		
+	MyStyl::addAction("fill it with random numbers");
+	std::generate(lst.begin(), lst.end(), getRandom);
+	MyStyl::addAction("add list plage to span");
+	sp->addNumber(lst.begin(), lst.end());
+	std::cout << std::endl;		
+	MyStyl::addAction("display span");
+	std::cout << *sp << std::endl;
+	MyStyl::addAction("longest span");
+	std::cout << sp->longestSpan() << std::endl;
+	MyStyl::addAction("shortest span");
+	std::cout << sp->shortestSpan() << std::endl;
+}
 
 int main( void )
 {
 	std::cout << std::endl << std::endl << std::endl;
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
 	
 	{
 		MyStyl::addTest("exception N max");	
@@ -194,7 +211,7 @@ int main( void )
 		}
 		
 		try	{			
-			MyStyl::addAction("create span with list plage");
+			MyStyl::addAction("create span with plage");
 			Span * sp = new Span(7);
 			MyStyl::addAction("fill it");
 			{				
@@ -214,7 +231,30 @@ int main( void )
 			{ MyStyl::addWhat(e.what()); }
 			
 		MyStyl::addTest("more 10000");
-		
+		try	{
+			std::cout << "\033[s" << std::endl;
+			myrand();
+			std::cin.get();
+			std::cout << "\033[u" << std::endl;
+			std::cout << "\033[j" << std::endl;
+			// MyStyl::addAction("create span with list plage");
+			// Span * sp = new Span(10001);
+			// std::list<int> lst(10001, 0);
+			 
+			// MyStyl::addAction("fill it with random numbers");
+			// std::generate(lst.begin(), lst.end(), getRandom);
+			// MyStyl::addAction("add list plage to span");
+			// sp->addNumber(lst.begin(), lst.end());
+			// std::cout << std::endl;		
+			// MyStyl::addAction("display span");
+			// std::cout << *sp << std::endl;
+			// MyStyl::addAction("longest span");
+			// std::cout << sp->longestSpan() << std::endl;
+			// MyStyl::addAction("shortest span");
+			// std::cout << sp->shortestSpan() << std::endl;					
+		}
+		catch(const std::exception & e)
+			{ MyStyl::addWhat(e.what()); }		
 	}	
 	return (0);
 }
