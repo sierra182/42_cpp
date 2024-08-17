@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:10:54 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 08:48:24 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 09:44:59 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void characterCopyTest( void )
 	Character* playerTwo = new Character("trinity");
 		
 	std::cout << std::endl;	
-	std::cout << "player one: " <<  playerOne->getName()
+	std::cout << "player one: " << "\e[1m" << playerOne->getName()
 		<< " equip with five Ice" << std::endl << std::endl;
 	
 	for (int i = 0; i < INV; i++)	
@@ -98,7 +98,7 @@ void characterCopyTest( void )
 	for (int i = 0; i < INV + 1; i++)
 		playerOne->use(i, *playerTwo);
 
-	std::cout << "player two: " << playerTwo->getName()
+	std::cout << "player two: " << "\e[1m" << playerTwo->getName()
 		<< " equip with five Cure" << std::endl << std::endl;
 	
 	for (int i = 0; i < INV; i++)	
@@ -108,35 +108,43 @@ void characterCopyTest( void )
 	
 	std::cout << playerTwo->getName() << std::endl;
 	for (int i = 0; i < INV + 1; i++)
-		playerTwo->use(i, *playerOne);
-	
-	std::cout << playerOne->getName() << " = " << playerTwo->getName()
-		<< std::endl;
+		playerTwo->use(i, *playerOne);	
+
+	MyStyl::addActionTest(playerOne->getName() + " = " + playerTwo->getName());
 	*playerOne = *playerTwo;
 	
 	std::cout << std::endl;
-	std::cout << "delete player two: " << playerTwo->getName() << std::endl
-		<< std::endl;
+
+	MyStyl::addActionTest("delete player two: " + playerTwo->getName());
+
 	delete playerTwo;
-	
-	std::cout << "player one: " << "\e[1m" << playerOne->getName() << std::endl;
-		std::cout << std::endl;
-	for (int i = 0; i < INV + 1; i++)
+	std::cout << std::endl;
+	std::cout << "player one: " << "\e[1m" << playerOne->getName()
+		<< std::endl;
+	std::cout << "\e[0m";
+	std::cout << std::endl;
+	for (int i = 0; i < INV; i++)
 		playerOne->use(i, *playerOne);
-		
+
+	std::cout << std::endl;		
 	MyStyl::addActionTest("create player three: playerThree(playerOne)");
 	Character playerThree(*playerOne);
 	std::cout << std::endl;
 
 	delete playerOne;
-	std::cout << "delete player one" << std::endl;
+	MyStyl::addActionTest("delete player one");
 	std::cout << std::endl;
 	
-	std::cout << "player three: " << playerThree.getName() << std::endl;
+	std::cout << "player three: " << "\e[1m" << playerThree.getName()
+		<< std::endl;
 	std::cout << std::endl;	
 	std::cout << "\e[1m" << playerThree.getName() << std::endl;
-	for (int i = 0; i < INV + 1; i++)
+	std::cout << "\e[0m";
+	for (int i = 0; i < INV; i++)
 		playerThree.use(i, playerThree);
+	
+	std::cout << std::endl;	
+	MyStyl::addActionTest("unequip unknown index");
 	playerThree.unequip(42);	
 }
 

@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:36:42 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/16 10:40:56 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 09:32:46 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ struct MyStyl
     template <typename T>
 	static void addActionTest(T action)
 	{
-		std::cout << "\e[3m * " << action << "\e[0m" << std::endl;
+		std::cout << "\e[1;3m * " << action << "\e[0m" << std::endl;
 	}
 
     template <typename T>
