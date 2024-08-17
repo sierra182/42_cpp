@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/16 11:02:32 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 14:45:22 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ unsigned int Span::shortestSpan( void )
 	std::vector<int> tmp_vect(this->_set->size());
 	std::multiset<unsigned int> tmp_set;
 	std::adjacent_difference(this->_set->begin(), this->_set->end(),
-		tmp_vect.begin());
-	struct MakeAbs{	static int makeAbs(int x) { return std::abs(x); }};
-	std::transform(tmp_vect.begin(), tmp_vect.end(), tmp_vect.begin(),
-		MakeAbs::makeAbs); 
+		tmp_vect.begin());	
 	tmp_set.insert(tmp_vect.begin(), tmp_vect.end());	
 	return (*tmp_set.begin());
 }

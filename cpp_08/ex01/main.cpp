@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 12:33:32 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 15:17:23 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <vector>
 #include <ctime>
 #include <iostream>
+#include <cstdio>
+#include <limits>
 // template <class T>
 // void	print(const T & item)
 // {
@@ -155,7 +157,7 @@ int main( void )
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
 	}
-
+std::cout << "\033[s";
 	std::cout << std::endl << std::endl;
 	
 	{
@@ -210,7 +212,8 @@ int main( void )
 				{ MyStyl::addWhat(e.what()); }
 		}
 		
-		try	{			
+		try	{
+			MyStyl::addSubTest("normal way 1");			
 			MyStyl::addAction("create span with plage");
 			Span * sp = new Span(7);
 			MyStyl::addAction("fill it");
@@ -229,29 +232,72 @@ int main( void )
 		}
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }
-			
+		std::cout << std::endl << std::endl;
+			try	{
+			MyStyl::addSubTest("normal way 2");			
+			MyStyl::addAction("create span with plage");
+			Span * sp = new Span(7);
+			MyStyl::addAction("fill it");
+			{				
+				int arr[] = {42, -3, 0, -100, 11, 520, 7, 0, 11};
+				sp->addNumber(arr, arr + 7);
+			}
+			std::cout << std::endl;		
+			MyStyl::addAction("display span");
+			std::cout << *sp << std::endl;
+			MyStyl::addAction("longest span");
+			std::cout << sp->longestSpan() << std::endl;
+			MyStyl::addAction("shortest span");
+			std::cout << sp->shortestSpan() << std::endl;
+					
+		}
+		catch(const std::exception & e)
+			{ MyStyl::addWhat(e.what()); }
+		std::cout << std::endl << std::endl;
 		MyStyl::addTest("more 10000");
 		try	{
-			std::cout << "\033[s" << std::endl;
-			myrand();
-			std::cin.get();
-			std::cout << "\033[u" << std::endl;
-			std::cout << "\033[j" << std::endl;
-			// MyStyl::addAction("create span with list plage");
-			// Span * sp = new Span(10001);
-			// std::list<int> lst(10001, 0);
+			// std::cout << "\033[s";
+			// std::cout << "bala" << std::endl;
+			while (std::cin.get() != 32)
+			{
+				myrand();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				// std::cin.ignore();
+				// if (!std::cin.eof())
+				// 	break;
+			}
+			// std::cout << "\033[6n";
+			// std::cout.flush();
+			// char buff[32];
+			// if(std::cin.get() == '\033')
+			// {
+			// 	if (std::cin.get() == '[')
+			// 		std::cin.getline(buff, sizeof(buff), 'R');
+			// }
+			// int row, col;
+			// if (sscanf(buff, "%d;%d", &row, &col) == 2)
+			// 	std::cout << "pos buff " << row << " : " << col << std::endl;
+			// else
+			// 	std::cerr << "err";	
+			// std::cout << "\033[u";
+			// std::cout << "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+			std::cout << "\033[10A";
+			std::cout << "\033[J";
+			MyStyl::addAction("create span with list plage");
+			Span * sp = new Span(10001);
+			std::list<int> lst(10001, 0);
 			 
-			// MyStyl::addAction("fill it with random numbers");
-			// std::generate(lst.begin(), lst.end(), getRandom);
-			// MyStyl::addAction("add list plage to span");
-			// sp->addNumber(lst.begin(), lst.end());
-			// std::cout << std::endl;		
-			// MyStyl::addAction("display span");
-			// std::cout << *sp << std::endl;
-			// MyStyl::addAction("longest span");
-			// std::cout << sp->longestSpan() << std::endl;
-			// MyStyl::addAction("shortest span");
-			// std::cout << sp->shortestSpan() << std::endl;					
+			MyStyl::addAction("fill it with random numbers");
+			std::generate(lst.begin(), lst.end(), getRandom);
+			MyStyl::addAction("add list plage to span");
+			sp->addNumber(lst.begin(), lst.end());
+			std::cout << std::endl;		
+			MyStyl::addAction("display span");
+			std::cout << *sp << std::endl;
+			MyStyl::addAction("longest span");
+			std::cout << sp->longestSpan() << std::endl;
+			MyStyl::addAction("shortest span");
+			std::cout << sp->shortestSpan() << std::endl;					
 		}
 		catch(const std::exception & e)
 			{ MyStyl::addWhat(e.what()); }		
