@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:23:11 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/16 23:02:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 08:50:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ AMateria * Ice::clone( void ) const
 	// std::cout << " Ice clone called" << std::endl;
 
     return (new Ice(*this));
-}
-
-Ice::Ice(std::string const & _type) : AMateria(_type)
-{  
-    // std::cout << CNS << " Ice param constructor called" << RST
-        // << std::endl;
-        
-    return ;
 }
 
 Ice::Ice( void ) : AMateria("ice")

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:52:57 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/16 23:19:23 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 08:43:26 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Character::~Character( void )
     
 	for (int i = 0; i < INV; i++)
 	{
-		// delete this->inventory[i];//§
+		delete this->inventory[i];
 		this->inventory[i] = NULL;
 	}		
     return ;
@@ -65,8 +65,10 @@ Character & Character::operator=( const Character & rhs )
 			this->name = rhs.name;		
 		for (int i = 0; i < INV; i++)				
 		{				 
-			// delete this->inventory[i];//!
-			this->inventory[i] = rhs.inventory[i];
+			delete this->inventory[i];
+			this->inventory[i] = NULL;
+			if (rhs.inventory[i]) 	
+				this->inventory[i] = rhs.inventory[i]->clone();	
 		}
 	}
     return (*this);
@@ -83,18 +85,31 @@ void Character::equip( AMateria * m )
    		if (!this->inventory[i])
 		{
 			this->inventory[i] = m;
-			break;
+			return;
 		}
+	std::cout << " \e[5;31m" << "No more place in the inventory!\e[0m"
+		<< std::endl << std::endl;
 }
 
 void Character::unequip( int idx )
 {
    	if (idx < INV && this->inventory[idx])
+	{
 		this->inventory[idx] = NULL;
+		return;
+	}
+	std::cout << " \e[5;31m" << "Can't Unequip because, \
+Don't find this materia in the inventory!\e[0m" << std::endl
+	<< std::endl;
 }
 
 void Character::use( int idx, ICharacter& target )
 {
 	if (idx < INV && this->inventory[idx])
+	{
 		this->inventory[idx]->use(target);
+		return;
+	}
+	std::cout << " \e[5;31m" << "Can't Use because, \
+Don't find this materia in the inventory!\e[0m" << std::endl << std::endl;
 }

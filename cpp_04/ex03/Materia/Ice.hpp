@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:16:30 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/16 23:00:36 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 08:50:17 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class Ice : public AMateria
     public:
     
         Ice( void );
-        Ice(std::string const & type);
         virtual ~Ice( void );
         Ice( const Ice & src );
       

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:20:15 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/16 23:02:45 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/17 08:49:34 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@ AMateria * Cure::clone( void ) const
 	// std::cout << " Cure clone called" << std::endl;
 
     return (new Cure(*this));
-}
-
-Cure::Cure(std::string const & _type) : AMateria(_type)
-{  
-    // std::cout << CNS << " Cure param constructor called" << RST
-        // << std::endl;
-       
-    return ;
 }
 
 Cure::Cure( void ) : AMateria("cure")
