@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 10:23:01 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/17 11:02:27 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,57 @@ int main( void )
 	std::cout << std::endl << std::endl;
 	
 	{
-		MyStyl::addTest("shortest and longest span");	
-		MyStyl::addSubTest("my sub test");
+		MyStyl::addTest("shortest and longest span");
+		{		
+			MyStyl::addSubTest("zero items");
+				
+			MyStyl::addAction("create span");
+			Span * sp = new Span(7);
+			MyStyl::addAction("not fill it");
+			std::cout << std::endl;		
+			MyStyl::addAction("display span");
+			std::cout << *sp << "🐁" << std::endl << std::endl;
+			try	{
+				MyStyl::addAction("longest span");
+				std::cout << sp->longestSpan() << std::endl;
+				MyStyl::addAction("shortest span");
+				std::cout << sp->shortestSpan() << std::endl;						
+			}
+			catch(const std::exception & e)
+				{ MyStyl::addWhat(e.what()); }
+			try	{	
+				MyStyl::addAction("shortest span");
+				std::cout << sp->shortestSpan() << std::endl;						
+			}
+			catch(const std::exception & e)
+				{ MyStyl::addWhat(e.what()); }
+		}
+		{		
+			MyStyl::addSubTest("one items");
+				
+			MyStyl::addAction("create span");
+			Span * sp = new Span(7);
+			MyStyl::addAction("fill it");
+			sp->addNumber(-42);
+			std::cout << std::endl;		
+			MyStyl::addAction("display span");
+			std::cout << *sp << std::endl;
+			try	{
+				MyStyl::addAction("longest span");
+				std::cout << sp->longestSpan() << std::endl;
+				MyStyl::addAction("shortest span");
+				std::cout << sp->shortestSpan() << std::endl;						
+			}
+			catch(const std::exception & e)
+				{ MyStyl::addWhat(e.what()); }
+			try	{	
+				MyStyl::addAction("shortest span");
+				std::cout << sp->shortestSpan() << std::endl;						
+			}
+			catch(const std::exception & e)
+				{ MyStyl::addWhat(e.what()); }
+		}
+		
 		try	{			
 			MyStyl::addAction("create span with list plage");
 			Span * sp = new Span(7);
