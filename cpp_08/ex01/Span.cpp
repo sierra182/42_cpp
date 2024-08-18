@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:53:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/17 14:45:22 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/18 09:18:54 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Span::Span( unsigned int N ): _N(N), _set(new std::multiset<int>)
 
 Span::~Span( void )
 {
+	delete this->_set;
 	return ;
 }
 

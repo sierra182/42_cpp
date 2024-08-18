@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/18 09:11:53 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/18 09:36:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int getRandom( void )
 void randexec( void )
 {
 	MyStyl::addAction("create span with list plage");
-	Span * sp = new Span(10001);
-	std::list<int> lst(10001, 0);
+	Span *sp = new Span(42000);
+	std::list<int> lst(42000, 0);
 		
 	MyStyl::addAction("fill it with random numbers");
 	std::generate(lst.begin(), lst.end(), getRandom);
@@ -46,8 +46,8 @@ void randexec( void )
 	
 	MyStyl::addAction("shortest span");
 	std::cout << sp->shortestSpan() << std::endl;
+	delete sp;
 }
-
 
 void randtest( void )
 {
@@ -203,22 +203,22 @@ void notenought( void )
 			MyStyl::addSubTest("zero items");
 				
 			MyStyl::addAction("create span");
-			Span * sp = new Span(7);
+			Span sp(7);
 			MyStyl::addAction("not fill it");
 			std::cout << std::endl;		
 			MyStyl::addAction("display span");
-			std::cout << *sp << "🐁" << std::endl << std::endl;
+			std::cout << sp << "🐁" << std::endl << std::endl;
 			try	{
 				MyStyl::addAction("longest span");
-				std::cout << sp->longestSpan() << std::endl;
+				std::cout << sp.longestSpan() << std::endl;
 				MyStyl::addAction("shortest span");
-				std::cout << sp->shortestSpan() << std::endl;						
+				std::cout << sp.shortestSpan() << std::endl;						
 			}
 			catch(const std::exception & e)
 				{ MyStyl::addWhat(e.what()); }
 			try	{	
 				MyStyl::addAction("shortest span");
-				std::cout << sp->shortestSpan() << std::endl;						
+				std::cout << sp.shortestSpan() << std::endl;						
 			}
 			catch(const std::exception & e)
 				{ MyStyl::addWhat(e.what()); }
@@ -227,23 +227,23 @@ void notenought( void )
 			MyStyl::addSubTest("one items");
 				
 			MyStyl::addAction("create span");
-			Span * sp = new Span(7);
+			Span sp(7);
 			MyStyl::addAction("fill it");
-			sp->addNumber(-42);
+			sp.addNumber(-42);
 			std::cout << std::endl;		
 			MyStyl::addAction("display span");
-			std::cout << *sp << std::endl;
+			std::cout << sp << std::endl;
 			try	{
 				MyStyl::addAction("longest span");
-				std::cout << sp->longestSpan() << std::endl;
+				std::cout << sp.longestSpan() << std::endl;
 				MyStyl::addAction("shortest span");
-				std::cout << sp->shortestSpan() << std::endl;						
+				std::cout << sp.shortestSpan() << std::endl;						
 			}
 			catch(const std::exception & e)
 				{ MyStyl::addWhat(e.what()); }
 			try	{	
 				MyStyl::addAction("shortest span");
-				std::cout << sp->shortestSpan() << std::endl;						
+				std::cout << sp.shortestSpan() << std::endl;						
 			}
 			catch(const std::exception & e)
 				{ MyStyl::addWhat(e.what()); }
@@ -252,18 +252,18 @@ void notenought( void )
 			MyStyl::addSubTest("two items");
 				
 			MyStyl::addAction("create span");
-			Span * sp = new Span(7);
+			Span sp(7);
 			MyStyl::addAction("fill it");
-			sp->addNumber(-42);
-			sp->addNumber(-42);
+			sp.addNumber(-42);
+			sp.addNumber(-42);
 			std::cout << std::endl;		
 			MyStyl::addAction("display span");
-			std::cout << *sp << std::endl;
+			std::cout << sp << std::endl;
 			try	{
 				MyStyl::addAction("longest span");
-				std::cout << sp->longestSpan() << std::endl;
+				std::cout << sp.longestSpan() << std::endl;
 				MyStyl::addAction("shortest span");
-				std::cout << sp->shortestSpan() << std::endl;						
+				std::cout << sp.shortestSpan() << std::endl;						
 			}
 			catch(const std::exception & e)
 				{ MyStyl::addWhat(e.what()); }	
@@ -277,41 +277,40 @@ void normal()
 		MyStyl::addSubTest("normal way 1");		
 			
 		MyStyl::addAction("create span with plage");
-		Span * sp = new Span(7);
+		Span sp(7);
 		MyStyl::addAction("fill it");
 		{				
 			int arr[] = {2, 1, 99, -100, -200, 42, 24};
-			sp->addNumber(arr, arr + 7);
+			sp.addNumber(arr, arr + 7);
 		}
 		std::cout << std::endl;		
 		MyStyl::addAction("display span");
-		std::cout << *sp << std::endl;
+		std::cout << sp << std::endl;
 		MyStyl::addAction("longest span");
-		std::cout << sp->longestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 		MyStyl::addAction("shortest span");
-		std::cout << sp->shortestSpan() << std::endl;			
+		std::cout << sp.shortestSpan() << std::endl;			
 	}
 	catch(const std::exception & e)
 		{ MyStyl::addWhat(e.what()); }
 		
-	std::cout << std::endl << std::endl;
 	try	{
 		MyStyl::addSubTest("normal way 2");		
 			
 		MyStyl::addAction("create span with plage");
-		Span * sp = new Span(7);
+		Span sp(7);
 		MyStyl::addAction("fill it");
 		{				
 			int arr[] = {42, -3, 0, -100, 11, 520, 7, 0, 11};
-			sp->addNumber(arr, arr + 7);
+			sp.addNumber(arr, arr + 7);
 		}
 		std::cout << std::endl;		
 		MyStyl::addAction("display span");
-		std::cout << *sp << std::endl;
+		std::cout << sp << std::endl;
 		MyStyl::addAction("longest span");
-		std::cout << sp->longestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 		MyStyl::addAction("shortest span");
-		std::cout << sp->shortestSpan() << std::endl;
+		std::cout << sp.shortestSpan() << std::endl;
 				
 	}
 	catch(const std::exception & e)

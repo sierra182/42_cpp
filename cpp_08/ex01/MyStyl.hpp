@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MyStyl.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:36:42 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/17 10:41:55 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/18 09:34:04 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ struct MyStyl
 	static void addSubTest(T test)
 	{
 		std::cout << std::endl;
-		std::cout << "\t\t\t\t\t\e[1;3;90;46;9m 🥶  Subtest: " << test << " 🥶  \e[0m";		
+		std::cout << "\t\t\t\t\t\e[1;3;90;46;9m 🥶  Subtest: " << test <<
+			" 🥶  \e[0m";		
 		std::cout << "~~~" << std::endl << std::endl;
 	}
 		
