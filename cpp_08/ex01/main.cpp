@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/18 08:51:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/18 09:11:53 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void randtest( void )
 			randexec();
 			std::cout << "retry ? y / n" << std::endl;			
 			if (t != '\n')
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
+					'\n');
 			t = std::cin.get();				
 		}							
 	}
