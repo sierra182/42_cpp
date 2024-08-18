@@ -6,14 +6,20 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:07:15 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/18 11:07:49 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/18 11:19:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include "stack"
 
-class MutantStack
+template <class T>
+class MutantStack : std::stack 
 {
-	
+	MutantStack( void );
+	MutantStack( const MutantStack & src );
+	MutantStack & operator=( const MutantStack & rhs );
+	virtual ~MutantStack( void );
 };
 
+#include "MutantStack.tpp"
