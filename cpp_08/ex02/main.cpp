@@ -6,14 +6,18 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:06:11 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/18 11:08:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/18 12:03:25 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 
+
+
 int main()
 {
+	MutantStack<int> st;
+	st.ass
 	// MutantStack<int> mstack;
 	// mstack.push(5);
 	// mstack.push(17);
