@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 15:48:00 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:47:02 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,20 @@ class Form
 		void beSigned( const Bureaucrat & signator );
 
 		class GradeTooHighException	: public std::exception
-		{
-			const Form &	_form;
+		{		
 			const int		_grade;			
 			public :
 			
-				GradeTooHighException( const Form & form, const int grade );
+				GradeTooHighException( const int grade );
 				virtual const char * what( void ) const throw();
 		};
 		
 		class GradeTooLowException	: public std::exception
-		{
-			const Form & _form;
+		{			
 			const int	 _grade;			
 			public:
 			
-				GradeTooLowException( const Form & form, const int grade );
+				GradeTooLowException( const int grade );
 				virtual const char * what( void ) const throw();
 		};
 };

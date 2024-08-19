@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 13:33:30 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:47:35 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ std::ostream & operator<<( std::ostream & lhs, const Form & rhs )
 }
 
 Form::GradeTooHighException::GradeTooHighException
-	( const Form & form, const int grade ) : _form(form), _grade(grade)
+	( const int grade ) : _grade(grade)
 {	
 	return ;
 }
 
 Form::GradeTooLowException::GradeTooLowException
-	( const Form & form, const int grade ) : _form(form), _grade(grade)
+	( const int grade ) : _grade(grade)
 {
 	return ;
 }
@@ -113,12 +113,12 @@ int Form::isGradeAccept( const int grade ) const
 	if (grade < 1)
 	{		
 		std::cout << this->_name << std::endl;
-		throw Form::GradeTooHighException(*this, grade);
+		throw Form::GradeTooHighException(grade);
 	}
 	else if (grade > 150)
 	{
 		std::cout << this->_name << std::endl;
-		throw Form::GradeTooLowException(*this, grade);
+		throw Form::GradeTooLowException(grade);
 	}
 	return (grade);
 }
@@ -128,5 +128,5 @@ void Form::beSigned( const Bureaucrat & signator )
 	if (signator.getGrade() <= this->getGradeForSign())
 		this->_isSigned = true;
 	else
-		throw Form::GradeTooLowException(*this, signator.getGrade());	
+		throw Form::GradeTooLowException(signator.getGrade());	
 }

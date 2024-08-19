@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:22 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 16:47:26 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:49:16 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,20 @@ class AForm
 		virtual void action( void ) const = 0;
 		
 		class GradeTooHighException	: public std::exception
-		{
-			const AForm &	_form;
+		{			
 			const int		_grade;			
 			public :
 			
-				GradeTooHighException( const AForm & form, const int grade );
+				GradeTooHighException( const int grade );
 				virtual const char * what( void ) const throw();
 		};
 		
 		class GradeTooLowException	: public std::exception
-		{
-			const AForm & _form;
+		{			
 			const int	 _grade;			
 			public:
 			
-				GradeTooLowException( const AForm & form, const int grade );
+				GradeTooLowException( const int grade );
 				virtual const char * what( void ) const throw();
 		};
 

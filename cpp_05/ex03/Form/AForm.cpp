@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:49:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 20:15:00 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:54:23 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ std::ostream & operator<<( std::ostream & lhs, const AForm & rhs )
 }
 
 AForm::GradeTooHighException::GradeTooHighException
-	( const AForm & form, const int grade ) : _form(form), _grade(grade)
+	( const int grade ) : _grade(grade)
 {	
 	return ;
 }
 
 AForm::GradeTooLowException::GradeTooLowException
-	( const AForm & form, const int grade ) : _form(form), _grade(grade)
+	( const int grade ) : _grade(grade)
 {
 	return ;
 }
@@ -117,12 +117,12 @@ int AForm::isGradeAccept( const int grade ) const
 	if (grade < 1)
 	{		
 		std::cout << this->_name << std::endl;
-		throw AForm::GradeTooHighException(*this, grade);
+		throw AForm::GradeTooHighException(grade);
 	}
 	else if (grade > 150)
 	{
 		std::cout << this->_name << std::endl;
-		throw AForm::GradeTooLowException(*this, grade);
+		throw AForm::GradeTooLowException(grade);
 	}
 	return (grade);
 }
@@ -132,7 +132,7 @@ void AForm::beSigned( const Bureaucrat & bur )
 	if (bur.getGrade() <= this->getGradeForSign())
 		this->_isSigned = true;
 	else
-		throw AForm::GradeTooLowException(*this, bur.getGrade());	
+		throw AForm::GradeTooLowException(bur.getGrade());	
 }
 
 void AForm::execute( Bureaucrat const & executor ) const
@@ -140,7 +140,7 @@ void AForm::execute( Bureaucrat const & executor ) const
 	if (!this->_isSigned)
 		throw AForm::UnsignedException(this->_name);
 	else if (executor.getGrade() > this->getGradeForExec())
-		throw AForm::GradeTooLowException(*this, executor.getGrade());
+		throw AForm::GradeTooLowException(executor.getGrade());
 	this->action();	
 }
 
