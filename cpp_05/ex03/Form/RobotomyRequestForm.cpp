@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:13 by seblin            #+#    #+#             */
-/*   Updated: 2024/07/31 20:18:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 16:18:42 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ RobotomyRequestForm & RobotomyRequestForm::operator=
 
 void RobotomyRequestForm::action( void ) const
 {
-	usleep(500000);
+	usleep(1000000);
 	
 	std::cout << "\a\e[1m" << "***drillingggg!***" << std::endl;	
 	if (!this->_robotog)	
@@ -60,7 +60,7 @@ void RobotomyRequestForm::action( void ) const
 		std::cout << ' ' << this->_target <<
 			" the robotomy failed!\e[0m" << std::endl << std::endl;
 	this->_robotog = !this->_robotog;	
-	usleep(500000);
+	usleep(1000000);
 	return ;
 }
 
