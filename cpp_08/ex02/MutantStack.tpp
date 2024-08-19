@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:07:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/19 10:24:00 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 11:15:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 template <class T, class U>
 MutantStack<T, U>::MutantStack( void )
 {
-
 	return ;
 }
 
@@ -27,15 +26,17 @@ MutantStack<T, U>::MutantStack( const U & cont ) : std::stack<T, U>(cont)
 }
 
 template <class T, class U>
-MutantStack<T, U>::MutantStack( const MutantStack & src ) //! to test
-{
-	*this = src;
+MutantStack<T, U>::MutantStack( const MutantStack<T, U> & src ):
+	std::stack<T, U>(src)
+{	
 	return ;
 }
 
 template <class T, class U>
-MutantStack<T, U> & MutantStack<T, U>::operator=( const MutantStack & rhs ) //! to complete
+MutantStack<T, U> & MutantStack<T, U>::operator=
+	( const MutantStack<T, U> & rhs )
 {
+	std::stack<T, U>::operator=(rhs);
 	return *this; 
 }
 

@@ -52,6 +52,7 @@
 		"*.tpp": "cpp",
 		"list": "cpp",
 		"set": "cpp",
-		"cstring": "cpp"
+		"cstring": "cpp",
+		"stack": "cpp"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:06:11 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/19 10:32:42 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 11:12:53 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,89 @@
 #include <list>
 #include "MyStyl.hpp"
 
-template <class T, class U>
-void printStack( MutantStack<T, U> & mstack )
+void copy( void )
 {	
-	typename MutantStack<T, U>::iterator it = mstack.begin();
-	typename MutantStack<T, U>::iterator ite = mstack.end();
-	while (it != ite)
-		std::cout << *it++ << std::endl;
+	MyStyl::addTest("deep copy");
+	
+	{
+		MyStyl::addSubTest("operator =");
+	
+		MyStyl::addAction("create empty mstack");
+		MutantStack<int, std::list<int> > mstack;
+		
+		std::cout << std::endl;
+		MyStyl::addAction("print mstack");
+		std::cout << mstack << "🐁" << std::endl;
+		std::cout << std::endl;	
+		{	
+			MyStyl::addAction("create new mstack 2, fill with 42, 18, -2, 0, 99");
+			int arr[] = {42, 18, -2, 0, 99}; 
+			std::list<int> list(arr, arr + 5);
+			MutantStack<int, std::list<int> > mstack2(list);
+			
+			std::cout << std::endl;
+			MyStyl::addAction("print mstack 2");
+			std::cout << mstack2 << std::endl;
+			
+			MyStyl::addAction("mstack = mstack2");
+			mstack = mstack2;
+			MyStyl::addAction("delete mstack2");
+		}		
+		std::cout << std::endl;
+		MyStyl::addAction("print mstack");
+		std::cout << mstack << std::endl;
+	}
+	{
+		MyStyl::addSubTest("copy constr");
+			
+		std::cout << std::endl;	
+		{	
+			MyStyl::addAction("create new mstack, fill with 42, 18, -2, 0, 99");
+			int arr[] = {42, 18, -2, 0, 99}; 
+			std::deque<int> deq(arr, arr + 5);
+			MutantStack<int> * mstack = new MutantStack<int>(deq);
+			
+			std::cout << std::endl;
+			MyStyl::addAction("print mstack");
+			std::cout << *mstack << std::endl;
+			
+			MyStyl::addAction("MutantStack<int> mstack2(mstack)");
+			MutantStack<int> mstack2(*mstack);			
+			MyStyl::addAction("delete mstack");
+			delete mstack;
+			std::cout << std::endl;
+			MyStyl::addAction("print mstack 2");
+			std::cout << mstack2 << std::endl;
+		}		
+	}
 }
-void changeDefCont( void )
-{
-	//overload <<
-	
-//test constr de copy // asignation
 
+void changeDefCont( void )
+{	
 	MyStyl::addTest("MutantStack with List as default Container");
-	MyStyl::addSubTest("MutantStack with default constructor");
 	
+	MyStyl::addSubTest("MutantStack with default constructor");	
 	
 	MyStyl::addAction("MutantStack<float, std::list<float> > mstack");
 	MutantStack<float, std::list<float> > mstack;
 	MyStyl::addAction("push 42");
 	mstack.push(42);
+	
 	std::cout << std::endl;
 	MyStyl::addAction("print mstack");
 	std::cout << mstack << std::endl;
+	
 	MyStyl::addSubTest("MutantStack with container constructor");
+
 	MyStyl::addAction("create list : 42, 18, -2, 0, 99");
-	float arr[] = {42, 18, -2, 0, 99}; 
+	float arr[] = {42.1f, 18.2f, -2.5f, 0, 99.6f}; 
 	std::list<float> list(arr, arr + 5);
 	MyStyl::addAction("MutantStack<float, std::list<float> > mstack2(list)");
-	// printStack<float, std::list<float> >(mstack);
 	MutantStack<float, std::list<float> > mstack2(list);
+
 	std::cout << std::endl;
 	MyStyl::addAction("print mstack 2");
 	std::cout << mstack2 << std::endl;
-	// printStack<float, std::list<float> >(mstack2);	
 }
 
 void changeWithList( void )
@@ -107,5 +154,6 @@ int main()
 
 	changeWithList();
 	changeDefCont();
+	copy();
 	return 0;
 }
