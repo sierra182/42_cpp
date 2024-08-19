@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:07:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/19 09:27:25 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/19 10:24:00 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,15 @@ template <class T, class U>
 typename MutantStack<T, U>::iterator MutantStack<T, U>::end( void )
 {
 	return this->c.end();
+}
+
+template <class T, class U>
+std::ostream & operator<<(std::ostream & oss,
+	MutantStack<T, U> & rhs)
+{
+	typename MutantStack<T, U>::const_iterator it = rhs.begin();
+	typename MutantStack<T, U>::const_iterator ite = rhs.end();
+	while (it != ite)
+		oss << *it++ << std::endl;
+	return (oss);
 }
