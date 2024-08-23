@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:56:06 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/19 15:57:55 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/23 16:28:48 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ void ShrubberyCreationForm::action( void ) const
 	std::ofstream ofs((this->_target + "_shrubbery").c_str());
 	if (!ofs)
 		std::cerr << "Error file out" << std::endl;	
+	ofs << "\e[32m";
 	ofs << "    /\\ \n   <**> \n  <****>     /\\ \n <******>   <**> \n\
     {}     <****> " << std::endl;
 	ofs << "    /\\    <******> \n   <**>      {}\n  <****> \n <******> \n\
-    {}" << std::endl;
+    {}" << "\e[0m" << std::endl;
 	ofs.close();
+	
 	
 	return ;
 }
