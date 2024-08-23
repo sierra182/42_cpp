@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 14:43:27 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/23 16:07:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int main ( void )
 		std::cout <<std::endl;
 		bur2.incrementGrade();
 		std::cout <<std::endl;		
+		bur2.executeForm(rob);
+		bur2.executeForm(rob);
+		bur2.executeForm(rob);
 		bur2.executeForm(rob);
 		bur.executeForm(pres);
 		bur.signForm(pres);
