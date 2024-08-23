@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:33:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/01 11:06:16 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/23 14:17:05 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ class Intern
 	static const std::string mapping[FRM];
 	AForm * (Intern::*forms[FRM]) ( const std::string & target ) const;
 
-	AForm * makePresidentialForm( const std::string & target ) const;	
-	AForm * makeRobotomyForm( const std::string & target ) const;	
-	AForm * makeShubberyForm( const std::string & target ) const;
-	
+	template <class T>
+	AForm * makeTForm( const std::string & target ) const
+		{return (new T(target));}
+
 	public:
 
 		Intern( void );
