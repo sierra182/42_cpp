@@ -3,19 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 14:39:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/23 17:21:25 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "MyStyl.hpp"
 
 int main ( void )
 {	
 	std::cout << std::endl;
+	
+	MyStyl::addTest("exception");
+	
 	try	{ 
 		Bureaucrat bur("marguerite", 0); }
 	catch (const std::exception & e)

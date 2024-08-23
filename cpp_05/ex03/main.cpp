@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 14:44:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/23 17:16:24 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Intern.hpp"
 #include <cstdlib>
+#include "MyStyl.hpp"
 
 int main ( void )
 {	
-	try {	
+	try {
 		std::cout << std::endl;
+		MyStyl::addTest("all");
+		
 		Intern someRandomIntern;
 		AForm* rrf; //? Form *
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
@@ -42,6 +45,8 @@ int main ( void )
 		system(("cat " +  shrubName + "_shrubbery").c_str());
 		std::cout <<std::endl;
 		delete rrf;
+		
+		MyStyl::addTest("form that no exist");
 		rrf = someRandomIntern.makeForm("don't exist", shrubName);		
 	}
 	catch (const std::exception & e)

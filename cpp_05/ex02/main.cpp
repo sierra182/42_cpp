@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/23 16:07:26 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/23 17:13:53 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "MyStyl.hpp"
 
 int main ( void )
 {	
 	std::cout << std::endl;
 	std::string shrubName = "christmasTree";
-	try {		
+	try {	
+		MyStyl::addTest("all");	
+		
 		PresidentialPardonForm pres("cypher");
 		RobotomyRequestForm rob("zorg");
 		ShrubberyCreationForm shrub(shrubName);

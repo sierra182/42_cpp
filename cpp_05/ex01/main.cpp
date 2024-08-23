@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/23 17:09:47 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/23 17:17:38 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int main ( void )
 {
+	std::cout << std::endl;
 	MyStyl::addTest("exception bad level", 0);
 	
 	MyStyl::addSubTest("bad level for sign");
