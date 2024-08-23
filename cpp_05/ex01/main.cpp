@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 14:38:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/23 17:09:47 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "MyStyl.hpp"
 
 int main ( void )
 {
+	MyStyl::addTest("exception bad level", 0);
+	
+	MyStyl::addSubTest("bad level for sign");
+	
 	std::cout << std::endl;
 	try {
 		Form form("formidable", -42, 12); }
@@ -27,6 +32,8 @@ int main ( void )
 		Form form("formidable", 420, 12);	}
 	catch (const std::exception & e)
 		{ std::cerr << e.what() << std::endl; }
+
+	MyStyl::addSubTest("bad level for execute");
 		
 	std::cout << std::endl;
 	try {
@@ -42,6 +49,8 @@ int main ( void )
 		
 	std::cout << std::endl;
 	try {
+		MyStyl::addTest("increment");
+		
 		Form form("formidable", 15, 20);	
 		std::cout << std::endl;
 		Bureaucrat bur("marguerite", 16);	
@@ -55,8 +64,11 @@ int main ( void )
 			bur.incrementGrade();
 			std::cout << std::endl;	
 			
-			try	{				
+			try	{
 				bur.signForm(form);
+								
+				MyStyl::addTest("copy");
+							
 				std::cout << std::endl;
 				std::cout << form;
 				std::cout << std::endl;		
