@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:39:38 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/23 17:17:38 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/24 15:31:46 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ int main ( void )
 			try	{
 				bur.signForm(form);
 								
-				MyStyl::addTest("copy");
-							
-				std::cout << std::endl;
+				MyStyl::addTest("copy");				
+				
 				std::cout << form;
 				std::cout << std::endl;		
 				Form form2("formol", 1, 1);
