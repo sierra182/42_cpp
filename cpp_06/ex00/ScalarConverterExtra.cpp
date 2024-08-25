@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 17:11:04 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/25 18:52:44 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void ScalarConverter::floatCase( std::string entry )
 			
 		std::string suff;		
 		if ((std::fabs(ent_float) == std::floor(std::fabs(ent_float))
-			&& std::fabs(ent_float) >= 1e-6 && std::fabs(ent_float) < 1e+8)
+			&& std::fabs(ent_float) >= 1e-4 && std::fabs(ent_float) <= 1e+6)
 			|| ent_float == 0.0f)
 			suff = ".0";
 		std::cout << " float: " << static_cast<float> (ent_float)
@@ -136,11 +136,22 @@ void ScalarConverter::doubleCase( std::string entry )
 				<< std::endl;
 		else
 			std::cout << " int: impossible " << std::endl;	
-
+std::cout << std::ceil(std::fabs(ent_double)) << std::endl;
+std::cout << std::fabs(ent_double) << std::endl;
 		std::string suff;		
-		if ((std::fabs(ent_double) == std::floor(std::fabs(ent_double))
-			&& std::fabs(ent_double) >= 1e-6 && std::fabs(ent_double) < 1e+8)
-			|| ent_double == 0.0)
+		if  (
+			 (
+			(
+				std::fabs(static_cast<float> (ent_double)) == std::floor(std::fabs(static_cast<float> (ent_double)))
+			|| 
+				std::fabs(ent_double) == std::ceil(std::fabs(ent_double))
+			)
+			
+			&& (std::fabs(ent_double) >= 1e-6 && std::fabs(ent_double) < 1e+8)
+			)
+			|| ent_double == 0.0
+			
+			)			
 			suff = ".0";
 		std::cout << " float: " << static_cast<float> (ent_double)
 			<< suff + 'f' << std::endl;
@@ -206,7 +217,7 @@ void ScalarConverter::intCase( std::string entry )
 				std::cout << " int: impossible " << std::endl;
 				
 		std::string suff;		
-		if ((std::fabs(ent_int) >= 1e-6 && std::fabs(ent_int) < 1e+8)
+		if ((std::fabs(ent_int) >= 1e-4 && std::fabs(ent_int) <= 1e+6)
 			|| !ent_int)
 			suff = ".0";
 		std::cout << " float: " << static_cast<float> (ent_int)
