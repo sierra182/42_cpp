@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 18:52:44 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/25 19:18:03 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,20 +143,27 @@ std::cout << std::fabs(ent_double) << std::endl;
 			 (
 			(
 				std::fabs(static_cast<float> (ent_double)) == std::floor(std::fabs(static_cast<float> (ent_double)))
-			|| 
-				std::fabs(ent_double) == std::ceil(std::fabs(ent_double))
+			// || 
+			// 	std::fabs(ent_double) == std::ceil(std::fabs(ent_double))
 			)
-			
-			&& (std::fabs(ent_double) >= 1e-6 && std::fabs(ent_double) < 1e+8)
 			)
-			|| ent_double == 0.0
+			|| ent_double == 0.0)
+			{
+					if ((std::fabs(ent_double) >= 1e-4 && std::fabs(ent_double) <= 1e+6))
+						suff = ".0";
+				
+			}
+		std::cout << " float: " << static_cast<float> (ent_double)	<< suff + 'f' << std::endl;
+			suff = "";
+			if ((std::fabs(static_cast<double> (ent_double)) == std::floor(std::fabs(static_cast<double> (ent_double))))
+			|| 	ent_double == 0.0)
+			{
+				if ((std::fabs(ent_double) >= 1e-4 && std::fabs(ent_double) <= 1e+6))
+					suff = ".0";
+			}
+		std::cout << " double: " << static_cast<double> (ent_double) << suff << std::endl;	
+					
 			
-			)			
-			suff = ".0";
-		std::cout << " float: " << static_cast<float> (ent_double)
-			<< suff + 'f' << std::endl;
-		std::cout << " double: " << static_cast<double> (ent_double) << suff
-			<< std::endl;	
 	}
 	else 		
 		displayAllImpossible();	
