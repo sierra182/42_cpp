@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 13:39:38 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/25 14:50:07 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,21 @@ void ScalarConverter::floatCase( std::string entry )
 {
 	std::stringstream	ss(entry);
 	float				ent_float;
-	
+	std::cout << "YOOOP " << entry << std::endl;
 	ss >> ent_float; 
+	std::cout << "YOOOP " << ent_float << std::endl;
+	// if (ss.get() == 'f' && ss.eof())
+	// 	std::cout << "end" <<std::endl;
+	// else
+	// 	std::cout << " noteend" <<std::endl;
+	std::string test;
+	ss >> test;
+	std::cout << "YOOOP " << test << std::endl;
+	if (test == "f")
+		std::cout << "OK";
+	else 
+		std::cout << "NOTOK";
+		
 	if (ss)
 	{
 		std::cout << "\e[1;32m you entered a float \e[0;35m"
