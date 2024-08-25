@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 13:46:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/08 14:45:17 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/25 13:48:17 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ void identify(Base& p)
 	std::cout << std::endl << "\e[1;34m & \e[0m identification with reference:"  << std::endl
 		<< std::endl;
 	try	{
-		dynamic_cast<A&>(p);
+		(void) dynamic_cast<A&>(p);		
 		std::cout << " the actual type is : A" << std::endl;
 	}
 	catch (const std::exception & e)
 	{
 		try	{
-			dynamic_cast<B&>(p);
+			(void) dynamic_cast<B&>(p);
 			std::cout << " the actual type is : B" << std::endl;
 		}
 		catch (const std::exception & e)
 		{
 			try	{
-				dynamic_cast<C&>(p);
+				(void) dynamic_cast<C&>(p);
 				std::cout << " the actual type is : C" << std::endl;
 			}
 			catch (const std::exception & e)
