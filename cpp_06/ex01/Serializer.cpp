@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 18:12:55 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/05 11:36:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/25 14:21:22 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,13 @@ Serializer::~Serializer( void )
 	return ;
 }
 
-Serializer::Serializer( const Serializer & src )
-{
-	*this = src;
+Serializer::Serializer( const Serializer & )
+{	
 	return ;
 }
 
-Serializer & Serializer::operator=( const Serializer & rhs )
-{
-	(void) rhs;
+Serializer & Serializer::operator=( const Serializer & )
+{	
 	return (*this);
 }
 
