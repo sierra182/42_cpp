@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 15:08:57 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/25 17:11:04 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void ScalarConverter::floatCase( std::string entry )
 	std::string sequel;
 	ss >> sequel;
 	
-	if (ss && sequel == "f")
+	if (ss && (sequel == "f" || sequel == ".f"))
 	{
 		std::cout << "\e[1;32m you entered a float \e[0;35m"
 			<< ent_float << std::endl <<std::endl;	

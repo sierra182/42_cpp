@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 16:33:54 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/25 16:53:28 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int	main( int argc, char * argv[])
 		std::cout << "\e[1;5;36m" << 
 			" 🥶 HARD_CORE TEST LAUNCHED - KEEP ARMS INSIDE THE RIDE 🥶"
 		<< "\e[0m" << std::endl;
-		sleep(4);
-	 	system("./hardcore_tests.sh");	 
-		
+		// sleep(4);
+	 	system("./hardcore_tests.sh");		
 	}	 
 	}
 	
