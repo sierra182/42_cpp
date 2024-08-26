@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/26 11:07:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/26 11:23:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void ScalarConverter::charHandle(T entry)
 template <class T>
 void ScalarConverter::intHandle(T entry)
 {
-	if (static_cast<int>(entry) <= std::numeric_limits<int>::max()
-		&& static_cast<int>(entry) >= std::numeric_limits<int>::min())
+	if (static_cast<long int>(entry) <= std::numeric_limits<int>::max()
+		&& static_cast<long int>(entry) >= std::numeric_limits<int>::min())
 		std::cout << " int: " << static_cast<int> (entry) << std::endl;
 	else
 		std::cout << " int: impossible " << std::endl;
