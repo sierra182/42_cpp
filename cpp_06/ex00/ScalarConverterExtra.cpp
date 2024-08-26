@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverterExtra.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 19:18:03 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/26 09:03:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,41 @@ void ScalarConverter::displayAllImpossible( void )
 	std::cout << " double : impossible" << std::endl;
 }
 
+template <class T>
+void addDFloatSuff(T entry)
+{
+	std::cout << " YE " << std::floor(std::fabs(static_cast<float> (entry))) << std::endl;
+	std::cout << " YO "<< std::fabs(static_cast<float> (entry)) << std::endl;
+	std::string suff;		
+	if  (		
+			(std::fabs(static_cast<float> (entry)) == std::floor(std::fabs(static_cast<float> (entry)))
+			&&
+			std::fabs(static_cast<float> (entry)) >= 1e-4 && std::fabs(static_cast<float> (entry)) < 1e+8)		
+		|| entry == 0.0)
+	{		
+			suff = ".0";				
+	}
+	std::cout << " float: " << static_cast<float> (entry)	<< suff + 'f' << std::endl;
+	suff = "";
+	
+	if  (		
+			(std::fabs(static_cast<double> (entry)) == std::floor(std::fabs(static_cast<double> (entry)))
+			&&
+			std::fabs(static_cast<double> (entry)) >= 1e-4 && std::fabs(static_cast<double> (entry)) < 1e+8)		
+		|| entry == 0.0)
+	{		
+			suff = ".0";				
+	}
+
+	// if ((std::fabs(static_cast<double> (entry)) == std::floor(std::fabs(static_cast<double> (entry))))
+	// || 	entry == 0.0)
+	// {
+	// 	if ((std::fabs(static_cast<double> (entry)) >= 1e-4 && std::fabs(static_cast<double> (entry)) <= 1e+8))
+	// 		suff = ".0";
+	// }
+	std::cout << " double: " << static_cast<double> (entry) << suff << std::endl;
+}
+
 void ScalarConverter::floatCase( std::string entry )
 {
 	std::stringstream	ss(entry);
@@ -93,20 +128,22 @@ void ScalarConverter::floatCase( std::string entry )
 			std::cout << " int: " << static_cast<int> (ent_float) << std::endl;
 		else
 			std::cout << " int: impossible " << std::endl;
-			
-		std::string suff;		
-		if ((std::fabs(ent_float) == std::floor(std::fabs(ent_float))
-			&& std::fabs(ent_float) >= 1e-4 && std::fabs(ent_float) <= 1e+6)
-			|| ent_float == 0.0f)
-			suff = ".0";
-		std::cout << " float: " << static_cast<float> (ent_float)
-			<< suff + 'f' << std::endl;
-		std::cout << " double: " << static_cast<double> (ent_float) << suff
-			<< std::endl;		
+		addDFloatSuff(ent_float);
+		// std::string suff;		
+		// if ((std::fabs(ent_float) == std::floor(std::fabs(ent_float))
+		// 	&& std::fabs(ent_float) >= 1e-4 && std::fabs(ent_float) <= 1e+6)
+		// 	|| ent_float == 0.0f)
+		// 	suff = ".0";
+		// std::cout << " float: " << static_cast<float> (ent_float)
+		// 	<< suff + 'f' << std::endl;
+		// std::cout << " double: " << static_cast<double> (ent_float) << suff
+		// 	<< std::endl;		
 	}	
 	else 		
 		displayAllImpossible(); 	
 }	
+
+
 
 void ScalarConverter::doubleCase( std::string entry )
 {
@@ -135,33 +172,35 @@ void ScalarConverter::doubleCase( std::string entry )
 			std::cout << " int: " << static_cast<int> (ent_double)
 				<< std::endl;
 		else
-			std::cout << " int: impossible " << std::endl;	
-std::cout << std::ceil(std::fabs(ent_double)) << std::endl;
-std::cout << std::fabs(ent_double) << std::endl;
-		std::string suff;		
-		if  (
-			 (
-			(
-				std::fabs(static_cast<float> (ent_double)) == std::floor(std::fabs(static_cast<float> (ent_double)))
-			// || 
-			// 	std::fabs(ent_double) == std::ceil(std::fabs(ent_double))
-			)
-			)
-			|| ent_double == 0.0)
-			{
-					if ((std::fabs(ent_double) >= 1e-4 && std::fabs(ent_double) <= 1e+6))
-						suff = ".0";
+			std::cout << " int: impossible " << std::endl;
+		addDFloatSuff(ent_double);
+// std::cout << std::ceil(std::fabs(ent_double)) << std::endl;
+// std::cout << std::fabs(ent_double) << std::endl;
+
+		// std::string suff;		
+		// if  (
+		// 	 (
+		// 	(
+		// 		std::fabs(static_cast<float> (ent_double)) == std::floor(std::fabs(static_cast<float> (ent_double)))
+		// 	// || 
+		// 	// 	std::fabs(ent_double) == std::ceil(std::fabs(ent_double))
+		// 	)
+		// 	)
+		// 	|| ent_double == 0.0)
+		// 	{
+		// 			if ((std::fabs(ent_double) >= 1e-4 && std::fabs(ent_double) <= 1e+6))
+		// 				suff = ".0";
 				
-			}
-		std::cout << " float: " << static_cast<float> (ent_double)	<< suff + 'f' << std::endl;
-			suff = "";
-			if ((std::fabs(static_cast<double> (ent_double)) == std::floor(std::fabs(static_cast<double> (ent_double))))
-			|| 	ent_double == 0.0)
-			{
-				if ((std::fabs(ent_double) >= 1e-4 && std::fabs(ent_double) <= 1e+6))
-					suff = ".0";
-			}
-		std::cout << " double: " << static_cast<double> (ent_double) << suff << std::endl;	
+		// 	}
+		// std::cout << " float: " << static_cast<float> (ent_double)	<< suff + 'f' << std::endl;
+		// 	suff = "";
+		// 	if ((std::fabs(static_cast<double> (ent_double)) == std::floor(std::fabs(static_cast<double> (ent_double))))
+		// 	|| 	ent_double == 0.0)
+		// 	{
+		// 		if ((std::fabs(ent_double) >= 1e-4 && std::fabs(ent_double) <= 1e+6))
+		// 			suff = ".0";
+		// 	}
+		// std::cout << " double: " << static_cast<double> (ent_double) << suff << std::endl;	
 					
 			
 	}
@@ -222,15 +261,15 @@ void ScalarConverter::intCase( std::string entry )
 					<< std::endl;
 			else
 				std::cout << " int: impossible " << std::endl;
-				
-		std::string suff;		
-		if ((std::fabs(ent_int) >= 1e-4 && std::fabs(ent_int) <= 1e+6)
-			|| !ent_int)
-			suff = ".0";
-		std::cout << " float: " << static_cast<float> (ent_int)
-			<< suff + 'f' << std::endl;
-		std::cout << " double: " << static_cast<double> (ent_int) << suff
-			<< std::endl;
+		addDFloatSuff(ent_int);		
+		// std::string suff;		
+		// if ((std::fabs(ent_int) >= 1e-4 && std::fabs(ent_int) <= 1e+6)
+		// 	|| !ent_int)
+		// 	suff = ".0";
+		// std::cout << " float: " << static_cast<float> (ent_int)
+		// 	<< suff + 'f' << std::endl;
+		// std::cout << " double: " << static_cast<double> (ent_int) << suff
+		// 	<< std::endl;
 	}	
 	else 		
 		displayAllImpossible();
