@@ -6,7 +6,7 @@
 #    By: seblin <seblin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 13:41:27 by seblin            #+#    #+#              #
-#    Updated: 2024/08/26 11:06:28 by seblin           ###   ########.fr        #
+#    Updated: 2024/08/26 12:03:21 by seblin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ HDR = $(shell find . \( -name "*.hpp" -o -name "*.h" -o -name "*.tpp" \))
 SRC = $(shell find . -name "*.cpp" | sed 's|^\./||')
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-.PHONY: all clean fclean re intro l newline backline emoticon nof
+.PHONY: all clean fclean re intro l newline backline emoticon
 
 all: intro $(NAME) 
 
