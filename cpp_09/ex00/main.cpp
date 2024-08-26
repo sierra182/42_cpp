@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/26 17:03:13 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:20:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ int main(int argc, char * argv[])
 	errno = 0;
 	std::ifstream inf(argv[1]);	
 	if (inf.fail())	
-		MyStyl::error(std::strerror(errno));		
-	//
+		MyStyl::error(std::strerror(errno));
+	std::string line;		
+	while (std::getline(inf, line))
+		std::cout << line;
 	
 	(void) argc, (void) argv;
 	return (0);
