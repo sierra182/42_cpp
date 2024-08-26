@@ -6,26 +6,26 @@
 #    By: seblin <seblin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 13:41:27 by seblin            #+#    #+#              #
-#    Updated: 2024/08/04 18:51:43 by seblin           ###   ########.fr        #
+#    Updated: 2024/08/26 11:06:28 by seblin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = conversionOfScalarTypes
 CXX = c++
 
-HDRDIRS := $(shell find . \( -name '*.h' -o -name '*.hpp' \) -exec dirname {} \
-	\; | sort -u)
+HDRDIRS := $(shell find . \( -name '*.h' -o -name '*.hpp' -o -name '*.tpp' \) \
+	-exec dirname {} \; | sort -u)
 SRC_DIR = .
 OBJ_DIR = objects
 CFLAGS = $(HDRFLAGS) -g -Wall -Wextra -Werror -Wconversion -std=c++98
 LDFLAGS = 
 
 HDRFLAGS := $(foreach dir, $(HDRDIRS), -I$(dir))
-HDR = $(shell find . \( -name "*.hpp" -o -name "*.h" \))
+HDR = $(shell find . \( -name "*.hpp" -o -name "*.h" -o -name "*.tpp" \))
 SRC = $(shell find . -name "*.cpp" | sed 's|^\./||')
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-.PHONY: all clean fclean re intro l newline backline emoticon 
+.PHONY: all clean fclean re intro l newline backline emoticon nof
 
 all: intro $(NAME) 
 

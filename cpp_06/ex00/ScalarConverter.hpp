@@ -6,13 +6,12 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:46:45 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/26 10:46:14 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/26 10:59:34 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
-
 
 class ScalarConverter
 {
@@ -30,10 +29,15 @@ class ScalarConverter
 	static void intCase( std::string entry );
 	
 	template <class T>
-	void intHandle(T entry);
+	static void intHandle(T entry);
+	template<class T, class U>
+	static void decimalHandle(T entry, std::string flt = "");
+	template <class T>
+	static void charHandle(T entry);
+	
 	public:
 
 		static void convert( std::string const & entry ); 
 };
 
-#include "ScalarConverter.cpp"
+#include "ScalarConverterExtra.tpp"

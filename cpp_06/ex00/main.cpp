@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 16:53:28 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/26 11:10:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 int	main( int argc, char * argv[])
 {	
-	if (argc != 2 && !(argc == 3 && std::string(argv[2]) == "gyWE78pxhzaph782qY"))
+	if (argc != 2 && !(argc == 3 && std::string(argv[2])
+		== "gyWE78pxhzaph782qY"))
 		return (std::cerr << std::endl
 			<< "\e[31m 🤬 we need one argument please...\e[0m"
 				<< std::endl << std::endl, 1);
@@ -33,15 +34,14 @@ int	main( int argc, char * argv[])
 	{
 	std::cout << "\e[0m---enter h for hardcore_tests" << std::endl;
 	if (std::cin.get() == 'h')
-	{
-		std::cout << std::endl;
-		std::cout << "\e[1;5;36m" << 
-			" 🥶 HARD_CORE TEST LAUNCHED - KEEP ARMS INSIDE THE RIDE 🥶"
-		<< "\e[0m" << std::endl;
-		// sleep(4);
-	 	system("./hardcore_tests.sh");		
-	}	 
-	}
-	
+		{
+			std::cout << std::endl;
+			std::cout << "\e[1;5;36m" << 
+				" 🥶 HARD_CORE TEST LAUNCHED - KEEP ARMS INSIDE THE RIDE 🥶"
+			<< "\e[0m" << std::endl;
+			// sleep(4);
+			system("./hardcore_tests.sh");		
+		}	 
+	}	
 	return (0);
 }
