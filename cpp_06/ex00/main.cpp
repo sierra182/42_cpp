@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/26 11:32:03 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/26 11:38:41 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main( int argc, char * argv[])
 	if (!(argc == 3 && std::string(argv[1]) == "gyWE78pxhzaph782qY"))
 	{
 	std::cout << "\e[0m---enter h for hardcore_tests" << std::endl;
-	if (std::cin.get() == 'h')
+	if (std::cin.get() == 'h' && std::cin.get() == '\n')
 		{
 			std::cout << std::endl;
 			std::cout << "\e[1;5;36m" << 
