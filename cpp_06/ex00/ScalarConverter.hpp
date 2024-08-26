@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:46:45 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 14:54:08 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/26 10:46:14 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ class ScalarConverter
 	static void charCase( std::string entry );
 	static void intCase( std::string entry );
 	
+	template <class T>
+	void intHandle(T entry);
 	public:
 
 		static void convert( std::string const & entry ); 
 };
+
+#include "ScalarConverter.cpp"
