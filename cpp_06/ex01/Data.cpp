@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 18:26:15 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/27 14:54:14 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/27 14:57:59 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ std::ostream & operator<<(std::ostream & lhs, const Data & rhs)
 	lhs << " double: \t" << rhs.myDouble << std::endl;
 	lhs << " string: \t" << rhs.myString << std::endl;
 	lhs << " char*: \t" << rhs.myCString << std::endl;
-	lhs << " float: \t" << rhs.myFloat << std::endl;
+	lhs << " float: \t" << rhs.myFloat << std::endl;	
 	return (lhs);
 }	
