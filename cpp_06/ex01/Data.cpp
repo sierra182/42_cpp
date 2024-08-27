@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 18:26:15 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 14:12:50 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/27 14:54:14 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 Data::Data( void )
 {
+	this->myShInt = 30000;
+	this->myInt = 35000;
+	this->myDouble = 42.2;
+	this->myFloat = 42.1f;
+	this->myChar = 'z';
+	this->myCString = "bravo";
+	this->myString = "houlala";
 	return ;
 }
 
@@ -49,3 +56,16 @@ Data & Data::operator=( const Data & rhs )
 	}
 	return (*this);
 }
+
+std::ostream & operator<<(std::ostream & lhs, const Data & rhs)
+{
+	std::cout <<std::endl;
+	lhs << " char: \t\t" << rhs.myChar << std::endl;
+	lhs << " short int: \t" << rhs.myShInt << std::endl;
+	lhs << " int: \t\t" << rhs.myInt << std::endl;
+	lhs << " double: \t" << rhs.myDouble << std::endl;
+	lhs << " string: \t" << rhs.myString << std::endl;
+	lhs << " char*: \t" << rhs.myCString << std::endl;
+	lhs << " float: \t" << rhs.myFloat << std::endl;
+	return (lhs);
+}	
