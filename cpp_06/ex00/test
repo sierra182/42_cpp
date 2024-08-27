@@ -1,0 +1,453 @@
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+[0m---enter h for hardcore_tests
+
+[1;5;36m 🥶 HARD_CORE TEST LAUNCHED - KEEP ARMS INSIDE THE RIDE 🥶[0m
+
+[1;31m testing value:  nan [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : nanf
+ double : nan
+
+
+[1;31m testing value:  -inf [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : -inff
+ double : -inf
+
+
+[1;31m testing value:  +inf [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : inff
+ double : inf
+
+
+[1;31m testing value:  -inff [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : -inff
+ double : -inf
+
+
+[1;31m testing value:  +inff [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : inff
+ double : inf
+
+
+[1;31m testing value:  inf [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : inff
+ double : inf
+
+
+[1;31m testing value:  inff [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : inff
+ double : inf
+
+
+[1;31m testing value:  nanf [0m
+
+[1m 👽...you entered a special case...👻 [0m
+
+ char : impossible
+ int : impossible
+ float : nanf
+ double : nan
+
+
+[1;31m testing value:  nan42h [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  42nan [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  lonan [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  huinf [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  infg [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  ++inf [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  a [0m
+
+[1;32m you entered a char [0;33ma
+
+ char : 'a'
+ int: 97
+ float: 97.0f
+ double: 97.0
+
+
+[1;31m testing value:  z [0m
+
+[1;32m you entered a char [0;33mz
+
+ char : 'z'
+ int: 122
+ float: 122.0f
+ double: 122.0
+
+
+[1;31m testing value:  ! [0m
+
+[1;32m you entered a char [0;33m!
+
+ char : '!'
+ int: 33
+ float: 33.0f
+ double: 33.0
+
+
+[1;31m testing value:  ? [0m
+
+[1;32m you entered a char [0;33m?
+
+ char : '?'
+ int: 63
+ float: 63.0f
+ double: 63.0
+
+
+[1;31m testing value:  ; [0m
+
+[1;32m you entered a char [0;33m;
+
+ char : ';'
+ int: 59
+ float: 59.0f
+ double: 59.0
+
+
+[1;31m testing value:  0 [0m
+
+[1;32m you entered an int [0;31m0
+
+ char : Non displayable
+ int: 0
+ float: 0.0f
+ double: 0.0
+
+
+[1;31m testing value:  2 [0m
+
+[1;32m you entered an int [0;31m2
+
+ char : Non displayable
+ int: 2
+ float: 2.0f
+ double: 2.0
+
+
+[1;31m testing value:  -2 [0m
+
+[1;32m you entered an int [0;31m-2
+
+ char : impossible
+ int: -2
+ float: -2.0f
+ double: -2.0
+
+
+[1;31m testing value:  hfd2 [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  2khfgdgf [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  hfg2fhjfh [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  -2147483648 [0m
+
+[1;32m you entered an int [0;31m-2147483648
+
+ char : impossible
+ int: -2147483648
+ float: -2.1474836e+09f
+ double: -2.1474836e+09
+
+
+[1;31m testing value:  -2147483649 [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  2147483647 [0m
+
+[1;32m you entered an int [0;31m2147483647
+
+ char : impossible
+ int: 2147483647
+ float: 2.1474836e+09f
+ double: 2.1474836e+09
+
+
+[1;31m testing value:  2147483648 [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  0.0f [0m
+
+[1;32m you entered a float [0;35m0
+
+ char : Non displayable
+ int: 0
+ float: 0.0f
+ double: 0.0
+
+
+[1;31m testing value:  0.f [0m
+
+[1;32m you entered a float [0;35m0
+
+ char : Non displayable
+ int: 0
+ float: 0.0f
+ double: 0.0
+
+
+[1;31m testing value:  0f [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  khsf [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  42.0f [0m
+
+[1;32m you entered a float [0;35m42
+
+ char : '*'
+ int: 42
+ float: 42.0f
+ double: 42.0
+
+
+[1;31m testing value:  ff42.0f [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  42.7fhhkf [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  42f [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  -999.999999999999999999999999999999999999.f [0m
+
+[1;32m you entered a float [0;35m-1000
+
+ char : impossible
+ int: -1000
+ float: -1000.0f
+ double: -1000.0
+
+
+[1;31m testing value:  78.6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666f [0m
+
+[1;32m you entered a float [0;35m78.666664
+
+ char : 'N'
+ int: 78
+ float: 78.666664f
+ double: 78.666664
+
+
+[1;31m testing value:  9999999.666f [0m
+
+[1;32m you entered a float [0;35m10000000
+
+ char : impossible
+ int: 10000000
+ float: 10000000.0f
+ double: 10000000.0
+
+
+[1;31m testing value:  9999999.666f [0m
+
+[1;32m you entered a float [0;35m10000000
+
+ char : impossible
+ int: 10000000
+ float: 10000000.0f
+ double: 10000000.0
+
+
+[1;31m testing value:  99999999.666f [0m
+
+[1;32m you entered a float [0;35m1e+08
+
+ char : impossible
+ int: 100000000
+ float: 1e+08f
+ double: 1e+08
+
+
+[1;31m testing value:  -99999999.666f [0m
+
+[1;32m you entered a float [0;35m-1e+08
+
+ char : impossible
+ int: -100000000
+ float: -1e+08f
+ double: -1e+08
+
+
+[1;31m testing value:  6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666.0f [0m
+
+[1m 🥶...you entered an invalid input...🤯 [0m
+
+ char : impossible
+ int : impossible
+ float : impossible
+ double : impossible
+
+
+[1;31m testing value:  0.00000000002f [0m

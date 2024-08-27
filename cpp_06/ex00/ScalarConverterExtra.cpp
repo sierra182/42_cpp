@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverterExtra.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:59:25 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/26 11:04:29 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/27 15:29:21 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,10 +143,10 @@ void ScalarConverter::convert( std::string const & entry )
 		return specialCase(entry);	
 	if (entry.find_first_of('.') != std::string::npos && *--entry.end() == 'f')
 		floatCase(entry);		
-	else if (entry.find_first_of('.') != std::string::npos)
-		doubleCase(entry);	
 	else if (entry.length() == 1 && !std::isdigit(*entry.c_str()))			
 		charCase(entry);
+	else if (entry.find_first_of('.') != std::string::npos)
+		doubleCase(entry);	
 	else	
 		intCase(entry);	
 }

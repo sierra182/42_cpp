@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/27 07:47:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/27 15:39:33 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,17 @@ int	main( int argc, char * argv[])
 	std::cout << std::endl;
 	if (!(argc == 3 && std::string(argv[1]) == "hardcore tests"))
 	{
-	std::cout << "\e[0m---enter h for hardcore_tests" << std::endl;
+	std::cout << "\e[0m---enter h for hardcore_tests or press entry"
+		<< std::endl;
 	if (std::cin.get() == 'h' && std::cin.get() == '\n')
 		{
+			system("clear");	
 			std::cout << std::endl;
 			std::cout << "\e[1;5;36m" << 
-				" 🥶 HARD_CORE TEST LAUNCHED - KEEP ARMS INSIDE THE RIDE 🥶"
+				"\t🥶 HARD_CORE TEST LAUNCHED - KEEP ARMS INSIDE THE RIDE 🥶"
 			<< "\e[0m" << std::endl;
 			sleep(5);
-			system("./hardcore_tests.sh");		
+			system("./hardcore_tests.sh");				
 		}	 
 	}	
 	return (0);
