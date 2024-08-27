@@ -30,7 +30,7 @@ index=0
 while [ $index -lt ${#values[@]} ]
 do
     echo -e "\n\033[1;31m testing value: " ${values[$index]} "\033[0m"
-    ./conversionOfScalarTypes ${values[$index]} gyWE78pxhzaph782qY
+    ./conversionOfScalarTypes ${values[$index]} "hardcore tests"
     ((index++))
     sleep 0.1
 done

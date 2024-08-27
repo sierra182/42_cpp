@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:28:49 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/26 11:38:41 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/27 07:47:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int	main( int argc, char * argv[])
 {	
 	if (argc != 2 && !(argc == 3 && std::string(argv[2])
-		== "gyWE78pxhzaph782qY"))
+		== "hardcore tests"))
 		return (std::cerr << std::endl
 			<< "\e[31m 🤬 we need one argument please...\e[0m"
 				<< std::endl << std::endl, 1);
@@ -30,7 +30,7 @@ int	main( int argc, char * argv[])
 	
 	ScalarConverter::convert(entry);
 	std::cout << std::endl;
-	if (!(argc == 3 && std::string(argv[1]) == "gyWE78pxhzaph782qY"))
+	if (!(argc == 3 && std::string(argv[1]) == "hardcore tests"))
 	{
 	std::cout << "\e[0m---enter h for hardcore_tests" << std::endl;
 	if (std::cin.get() == 'h' && std::cin.get() == '\n')
