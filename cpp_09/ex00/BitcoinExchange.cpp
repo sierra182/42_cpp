@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 16:51:19 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/26 12:03:48 by seblin           ###   ########.fr       */
+/*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
+/*   Updated: 2024/08/26 16:21:12 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "BitcoinExchange.hpp"
 
-ScalarConverter::ScalarConverter( void )
+BitcoinExchange::BitcoinExchange( void ){}
+
+BitcoinExchange::~BitcoinExchange( void ){}
+
+BitcoinExchange::BitcoinExchange( const BitcoinExchange & src )
 {
-	return ;
+	*this = src;
 }
-
-ScalarConverter::~ScalarConverter( void )
+BitcoinExchange & BitcoinExchange::operator=( const BitcoinExchange & )
 {
-	return ;
+	return (*this);
 }
 
-ScalarConverter::ScalarConverter( const ScalarConverter & )
-{
-	return ;
-}
 
-ScalarConverter & ScalarConverter::operator=( const ScalarConverter & )
-{	
-	return (*this); 
-}
+	

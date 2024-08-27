@@ -6,11 +6,11 @@
 #    By: seblin <seblin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 13:41:27 by seblin            #+#    #+#              #
-#    Updated: 2024/08/26 12:03:21 by seblin           ###   ########.fr        #
+#    Updated: 2024/08/26 15:14:34 by seblin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = conversionOfScalarTypes
+NAME = btc
 CXX = c++
 
 HDRDIRS := $(shell find . \( -name '*.h' -o -name '*.hpp' -o -name '*.tpp' \) \
@@ -25,12 +25,16 @@ HDR = $(shell find . \( -name "*.hpp" -o -name "*.h" -o -name "*.tpp" \))
 SRC = $(shell find . -name "*.cpp" | sed 's|^\./||')
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-.PHONY: all clean fclean re intro l newline backline emoticon
+.PHONY: all clean fclean re intro l newline backline emoticon nof
 
 all: intro $(NAME) 
 
 l: design emoticon $(NAME) 
 
+nof:
+	@$(eval CFLAGS = $(HDRFLAGS))
+	@:
+	
 TOG = 0
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp $(HDR)
