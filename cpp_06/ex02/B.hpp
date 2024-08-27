@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 13:51:10 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/05 14:34:27 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/27 14:25:27 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Base.hpp"
 
-class B : public Base {};;
+class B : public Base {};

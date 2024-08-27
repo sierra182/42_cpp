@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 13:46:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/25 13:48:17 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/27 14:25:48 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-	std::cout << std::endl << "\e[1;34m & \e[0m identification with reference:"  << std::endl
-		<< std::endl;
+	std::cout << std::endl << "\e[1;34m & \e[0m identification with reference:"
+		 << std::endl << std::endl;
 	try	{
 		(void) dynamic_cast<A&>(p);		
 		std::cout << " the actual type is : A" << std::endl;
