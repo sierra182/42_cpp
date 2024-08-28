@@ -1,33 +1,40 @@
 #include <iostream>
 #include <Array.hpp>
 #include <cstdlib>
+#include "MyStyl.hpp"
 
 #define MAX_VAL 750
 
 void other_tests()
 {
-	std::cout << std::endl;
-	std::cout << " *****others tests*****" << std::endl
-		<< std::endl;
-	std::cout << " create empty array" << std::endl;
+	// std::cout << std::endl;
+    MyStyl::addTest("empty array");
+
+    MyStyl::addAction("create empty array");
 	Array<int> str1(0);
 	try {
-		std::cout << " try acces to empty array" << std::endl;
+        MyStyl::addAction("try acces to empty array");
+        std::cout << std::endl;
+        MyStyl::addAction("str1[0]");
 		str1[0];
 	}
 	catch (const std::exception & e)
-		{ std::cerr << e.what() << std::endl; }
+		{ MyStyl::addWhat(e.what()); }
+
 	Array<Array<int> > inception(MAX_VAL);
-	std::cout << std::endl;
-	std::cout << " test create n element default initialized" << std::endl
-		<< " ";
+	
+    MyStyl::addTest("create n element default initialized");
+    MyStyl::addAction("Array<const int> definit(42)");
+    std::cout << std::endl;
 	Array<const int> definit(42);
 	for (int i = 0; i < 42; i++)
 			std::cout << definit[i] << " ";
 
 	std::cout << std::endl << std::endl;
-	std::cout << " test copy array with different sizes - str1(maxVal) - \
-str2(42)" << std::endl;
+    
+    MyStyl::addTest("copy array with different sizes - str1(maxVal) - \
+str2(42)");
+
 	Array<std::string> str(MAX_VAL);
 	Array<std::string> str2(42);
 	std::cout << " str1 = str2 " << std::endl << " str2[2] = \"haha\""
@@ -41,9 +48,10 @@ str2(42)" << std::endl;
 	try {
 		for (int i = 0; i < MAX_VAL; i++)
 			std::cout << str[i] << i << " ";
+    
 	}
 	catch (const std::exception & e)
-		{ std::cerr << std::endl << e.what() << std::endl; }
+		{ std::cout << std::endl; MyStyl::addWhat(e.what()); }
 	std::cout << std::endl;
 
 	Array<int> t;
@@ -53,6 +61,8 @@ str2(42)" << std::endl;
 
 int main(int, char**)
 {
+    MyStyl::addTest("index limits", 0);
+
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
@@ -77,21 +87,21 @@ int main(int, char**)
         }
     }
     try
-    {
+    {        
+        MyStyl::addSubTest("negative index");
+        MyStyl::addAction("numbers[-2] = 0");
         numbers[-2] = 0;
     }
     catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+        { MyStyl::addWhat(e.what()); }
     try
     {
+        MyStyl::addSubTest("index too hight");
+        MyStyl::addAction("numbers[MAX_VAL] = 0");
         numbers[MAX_VAL] = 0;
     }
     catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+        { MyStyl::addWhat(e.what()); }
 
     for (int i = 0; i < MAX_VAL; i++)
     {

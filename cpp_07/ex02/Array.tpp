@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:58 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/09 16:19:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/28 11:11:13 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ template <typename T>
 T & Array<T>::operator[]( const int i ) const
 {
 	if (i < 0 || i >= static_cast<int> (this->_len))
-		throw std::out_of_range(" Exception: \e[1;31mindex is out \
-of bounds!\e[0m");
+		throw std::out_of_range("index is out of bounds!");
 	return (_array[i]);
 }
  
