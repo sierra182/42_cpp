@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:30:58 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/28 11:11:13 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/28 14:47:08 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,17 @@ size_t Array<T>::size( void ) const
 }
 
 template <typename T>
-T & Array<T>::operator[]( const int i ) const
+T & Array<T>::operator[]( const int i ) 
 {
 	if (i < 0 || i >= static_cast<int> (this->_len))
 		throw std::out_of_range("index is out of bounds!");
 	return (_array[i]);
 }
- 
+
+template <typename T>
+T const & Array<T>::operator[]( const int i ) const
+{
+	if (i < 0 || i >= static_cast<int> (this->_len))
+		throw std::out_of_range("index is out of bounds!");
+	return (_array[i]);
+}

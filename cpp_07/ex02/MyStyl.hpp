@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:36:42 by svidot            #+#    #+#             */
-/*   Updated: 2024/08/28 11:22:37 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/28 14:54:36 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ struct MyStyl
 	static void addWhat(T what)
 	{
 		std::cerr << std::endl << std::endl << "\e[1m\t   Exception: \e[1;31m"
-		<< what	<< "\e[0m" << std::endl << std::endl;
+			<< what	<< "\e[0m" << std::endl << std::endl;
 	}	
 };

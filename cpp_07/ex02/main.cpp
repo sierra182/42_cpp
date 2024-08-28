@@ -28,8 +28,8 @@ void other_tests()
     std::cout << std::endl;
 	Array<const int> definit(42);
 	for (int i = 0; i < 42; i++)
-			std::cout << definit[i] << " ";
-
+		std::cout << definit[i] << " ";
+    // definit[0] = 42; const impossible
 	std::cout << std::endl << std::endl;
     
     MyStyl::addTest("copy array with different sizes - str1(maxVal) - \
@@ -69,6 +69,20 @@ str2(42)", 0);
 	Array<int> t;
 	Array<int> t2(26);
 	t = t2;
+    {
+        MyStyl::addTest("const instance");
+
+        MyStyl::addAction("create const instance str");
+        const Array<std::string> str(2);
+        const Array<std::string> str2(2);
+        
+        // str = str2;
+        MyStyl::addAction("print str");
+        // str[0] = "\n fantomas"; // test here     
+        std::cout << str[0] << std::endl;
+        std::cout << " 👻👻👻" << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 int main(int, char**)
