@@ -7,14 +7,14 @@
 
 void other_tests()
 {
-	// std::cout << std::endl;
     MyStyl::addTest("empty array");
 
     MyStyl::addAction("create empty array");
+    MyStyl::addAction("Array<int> str1(0)");
 	Array<int> str1(0);
+    std::cout << std::endl;
 	try {
-        MyStyl::addAction("try acces to empty array");
-        std::cout << std::endl;
+        MyStyl::addAction("try acces to empty array");       
         MyStyl::addAction("str1[0]");
 		str1[0];
 	}
@@ -33,22 +33,34 @@ void other_tests()
 	std::cout << std::endl << std::endl;
     
     MyStyl::addTest("copy array with different sizes - str1(maxVal) - \
-str2(42)");
+str2(42)", 0);
+    MyStyl::addSubTest("and finnaly try acces to str1[MAX_VAL - 1]");
 
+    MyStyl::addAction("create str1");
+    MyStyl::addAction("str1(MAX_VAL)");    
 	Array<std::string> str(MAX_VAL);
+
+    std::cout << std::endl;
+    MyStyl::addAction("create str2");
+    MyStyl::addAction("str2(42)");
 	Array<std::string> str2(42);
-	std::cout << " str1 = str2 " << std::endl << " str2[2] = \"haha\""
-		<< std::endl << std::endl;
+
+    std::cout << std::endl;
+    MyStyl::addAction("str1 = str2");
+    MyStyl::addAction("str2[2] = \"haha\"");
+    std::cout << std::endl;
+    std::cout << std::endl;
+    
 	str = str2;
 	str2[2] = "haha ";
 	std::cout << " str2 :" << std::endl << " ";
 	for (int i = 0; i < 42; i++)
 		std::cout << str2[i] << i << " ";
+    std::cout << std::endl;
 	std::cout << std::endl << " str1 :" << std::endl << " ";
 	try {
 		for (int i = 0; i < MAX_VAL; i++)
-			std::cout << str[i] << i << " ";
-    
+			std::cout << str[i] << i << " ";    
 	}
 	catch (const std::exception & e)
 		{ std::cout << std::endl; MyStyl::addWhat(e.what()); }
@@ -61,8 +73,10 @@ str2(42)");
 
 int main(int, char**)
 {
-    MyStyl::addTest("index limits", 0);
-
+    MyStyl::addTest("mandatory");
+    
+    MyStyl::addAction("create array");
+    MyStyl::addAction("Array<int> numbers(MAX_VAL)");
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));

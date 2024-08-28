@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 16:51:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/28 10:58:02 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/28 12:13:51 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 int main (void )
 {
-	std::cout << std::endl;
-	MyStyl::addTest("all", 0);
+	MyStyl::addTest("my own tests", 0);
 			
 	{
 		MyStyl::addSubTest("type: int");	
