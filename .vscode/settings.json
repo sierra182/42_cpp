@@ -53,6 +53,7 @@
 		"list": "cpp",
 		"set": "cpp",
 		"cstring": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"map": "cpp"
 	}
 }
