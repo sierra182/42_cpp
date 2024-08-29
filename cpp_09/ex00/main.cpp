@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/28 22:17:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/29 06:28:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <cstdlib>
 #include <limits>
 #include <cmath>
-
+//!! ADD CONTS
 bool parseDate(std::string & date, std::string::iterator & it,  int max, int delim)
 {
 	int nbr = 0;
@@ -50,32 +50,55 @@ bool parseDate(std::string & date, std::string::iterator & it,  int max, int del
 	return std::cout << "not enought" << std::endl, false;
 }
 
-long double	tryCastLongDouble(std::string::iterator & begin,
-	std::string::iterator & end)
+template <class T>
+void	errnoHandle(T value)
+{
+	if (errno == ERANGE)
+	{
+		if (value == 0.0)
+		{
+			if (std::signbit(value))
+				throw std::underflow_error("negative underflow");
+			else
+				throw std::underflow_error("positive underflow");			
+		}
+		else if (std::isinf(value))
+		{
+			if (value < 0.0)
+				throw std::overflow_error("negative overflow");
+			else
+				throw std::overflow_error("positive overflow");
+		} 
+	}
+}
+
+long double	tryCastLongDouble(const std::string::iterator & begin,
+	const std::string::iterator & end)
 {
 	errno = 0;
 	char * end_char;	
 	long double val_ldbl;
 	
 	val_ldbl = std::strtold(std::string(begin, end).c_str(),
-		&end_char);				
-	if (errno == ERANGE)
-	{
-		if (val_ldbl == 0.0L)
-		{
-			if (std::signbit(val_ldbl))
-				std::cout << "negative underflow" << std::endl;
-			else
-				std::cout << "positive underflow" << std::endl;			
-		}
-		else if (std::isinf(val_ldbl))
-		{
-			if (val_ldbl < 0)
-				std::cout << "negative overflow" << std::endl;
-			else
-				std::cout << "positive overflow" << std::endl;
-		} 
-	}
+		&end_char);
+	errnoHandle(val_ldbl);				
+	// if (errno == ERANGE)
+	// {
+	// 	if (val_ldbl == 0.0L)
+	// 	{
+	// 		if (std::signbit(val_ldbl))
+	// 			throw std::underflow_error("negative underflow");
+	// 		else
+	// 			throw std::underflow_error("positive underflow");			
+	// 	}
+	// 	else if (std::isinf(val_ldbl))
+	// 	{
+	// 		if (val_ldbl < 0)
+	// 			throw std::overflow_error("negative overflow");
+	// 		else
+	// 			throw std::overflow_error("positive overflow");
+	// 	} 
+	// }
 	if (*end_char)
 		std::cout << "partial convertion" << std::endl;
 	else
@@ -85,45 +108,57 @@ long double	tryCastLongDouble(std::string::iterator & begin,
 
 float	tryCastFloat(long double value)
 {
+	if (std::isnan(value))
+		throw std::invalid_argument("value is NaN");
 	float val_flt = static_cast<float>(value);
-	
-	if (val_flt == 0.0f)
-	{
-		if (std::signbit(val_flt))	
-			std::cout << "negative underflow" << std::endl;
-		else
-			std::cout << "positive underflow" << std::endl;	
-	}
-	else if (std::isinf(val_flt))
-	{			
-		if (val_flt < 0)
-			std::cout << "negative overflow" << std::endl;
-		else
-			std::cout << "positive overflow" << std::endl;		 
-	}
+	errnoHandle(val_flt);
+	// if (val_flt == 0.0f)
+	// {
+	// 	if (std::signbit(val_flt))	
+	// 		std::cout << "negative underflow" << std::endl;
+	// 	else
+	// 		std::cout << "positive underflow" << std::endl;	
+	// }
+	// else if (std::isinf(val_flt))
+	// {			
+	// 	if (val_flt < 0)
+	// 		std::cout << "negative overflow" << std::endl;
+	// 	else
+	// 		std::cout << "positive overflow" << std::endl;		 
+	// }
 	return (val_flt);
 }
 
 int	tryCastInt(long double value)
 {
+	if (std::isnan(value))
+		throw std::invalid_argument("value is NaN");
 	long double trunc = static_cast<long double>(static_cast<int>(value));
 	long double min = static_cast<long double>(std::numeric_limits<int>::min());
 	long double max = static_cast<long double>(std::numeric_limits<int>::max());
 	
 	if (value < min	&& trunc != min)
-		std::cout << "negative overflow" << std::endl;
+		throw std::overflow_error("int negative overflow");
 	else if (value > max && trunc != max)
-		std::cout << "positive overflow" << std::endl;
+		throw std::overflow_error("int positive overflow");
 	return (static_cast<int>(value));
 }
 
-std::stringstream ss(std::string(it, value.end()));	
-	float ss_flt;
-	ss >> ss_flt;	
-	if (ss && ss.eof())
-		return std::cout << "the float is: " << ss_flt << std::endl, true;
-	else 
-		return std::cout << "the float is bad --> fuck you: " << ss_flt <<  std::endl, false;
+// std::stringstream ss(std::string(it, value.end()));	
+// 	float ss_flt;
+// 	ss >> ss_flt;	
+// 	if (ss && ss.eof())
+// 		return std::cout << "the float is: " << ss_flt << std::endl, true;
+// 	else 
+// 		return std::cout << "the float is bad --> fuck you: " << ss_flt <<  std::endl, false;
+
+bool	parseValue( std::string & value, const std::string::iterator it)
+{
+	long double val_ldbl = tryCastLongDouble(it, value.end());
+	std::cout << tryCastInt(val_ldbl) << std::endl;
+	
+	return true;
+}
 
 void	parseLine(std::string line)
 {
