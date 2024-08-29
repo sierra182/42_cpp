@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 20:08:40 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/29 21:27:40 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,23 @@ void	parseLine(std::string line, std::map<std::string, float> & input_map, int n
 	float value = 0.0f;
 	if (parseDate(line, it, 4, '-', n_line) && parseDate(line, it, 2, '-', n_line) && parseDate(line, it, 2, '|', n_line))
 	{
+		std::cout << "\e[3;4mInput file:\e[0m  " << n_line << " \e[31mline: " << "\e[37;45m" << line << "\e[0m" << std::endl;
 		value = parseValue(line, it);
 		if (value < 0)
 		{
-			std::cout << "Error: not a positive number. : index: " << n_line << " " << line << std::endl;
+			std::cout << "Error: not a positive number." << std::endl;
 			return;
 		}
 		else if (value > 1000)
 		{
-			std::cout << "Error: too large a number. : index: " << n_line << " " << line << std::endl;	
+			std::cout << "Error: too large a number." << std::endl;	
 			return;	
 		}
-		std::cout << "line parsed with succes: " << line << " v: " << value << std::endl;
 		std::map<std::string, float>::iterator it = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-		if (it == input_map.end())
-			input_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), '|')), value));
+		if (it == input_map.end())		
+			input_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), '|')), value));		
 		else
-			std::cout << "the entry yet exist index: " << n_line << " " << line << " data.cvs : " << searchIndex(input_map, it->first)  << std::endl;	
+			std::cout << "Error: the entry yet exist." << std::endl;	
 	}
 	// else	
 	// 	std::cout << "holy shit: " << line <<  std::endl;
@@ -155,7 +155,7 @@ int main(int argc, char * argv[])
 			parseLine(line, input_map, n_line);	
 			// std::cout << "YOUPI " << std::string(line.begin(), std::find(line.begin(), line.end(), '|')) << std::endl;	
 			
-			it_inp = data_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
+			it_inp = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
 			
 			it_data = data_map.lower_bound(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
 			// if (it_data == data_map.end())
@@ -183,10 +183,10 @@ int main(int argc, char * argv[])
 			// {
 			// 	it_data = input_map
 			// }//?
-			
-			std::cout << "\e[31mThe place is \e[0m" << it_data->first << " " << it_data->second << std::endl;
-			std::cout << "\e[31mat the index \e[0m" << searchIndex(data_map, it_data->first) << std::endl;
-			std::cout << "\e[31m " << it_inp->second * it_data->second << " \e[0m" << std::endl;
+			std::cout << "\e[3;4mData.csv:\e[0m  " << searchIndex(data_map, it_data->first) << " \e[31mline: " << "\e[37;46m" << it_data->first << ',' << it_data->second << "\e[0m" << std::endl;
+			// std::cout << searchIndex(data_map, it_data->first) << "\e[31m The place is \e[0m" << it_data->first << " " << it_data->second << std::endl;
+			// std::cout << "\e[31mat the index \e[0m" << searchIndex(data_map, it_data->first) << std::endl;
+			std::cout << "\e[31m " << it_inp->second << " * " << it_data->second << " => " << it_inp->second * it_data->second << " \e[0m" << std::endl;
 			// else 
 			// 	std::cout << "not find" << std::endl;
 			n_line++;
@@ -203,5 +203,6 @@ int main(int argc, char * argv[])
 	// for (std::map<std::string, float>::iterator it = data_map.begin(); it != data_map.end(); it++)
 	// 	std::cout << "data: " << it->first << " : " << it->second << std::endl;
 	(void) argc, (void) argv;
+	std::cout << std::endl;
 	return (0);
 }
