@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 08:06:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/29 09:48:25 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ struct Parser
 		char * end_char;	
 		long double val_ldbl;
 		
-		const char * str_c = std::string(begin, end).c_str();
-		val_ldbl = std::strtold(str_c,
-			&end_char);
-			if (errno == ERANGE)
-				flowHandle(val_ldbl, "long double");
-					
+		std::string str_tmp = std::string(begin, end);
+		const char * str_c = str_tmp.c_str();
+		val_ldbl = std::strtold(str_c, &end_char);
 
-		if (end_char != str_c + std::string(begin, end).length())
+		if (errno == ERANGE)
+			flowHandle(val_ldbl, "long double");
+					
+		if (*end_char)
 		{
 			std::string rem = std::string(end_char);
 			std::string::iterator it = std::find_if(rem.begin(), rem.end(),
@@ -64,7 +64,7 @@ struct Parser
 			if (it != rem.end())
 			{
 				std::cout << rem << std::endl;	
-				throw std::invalid_argument("partial cast");	
+				throw std::invalid_argument("partial cast");
 			}
 		}
 		return (val_ldbl);
@@ -74,10 +74,10 @@ struct Parser
 	{
 		if (std::isnan(value))
 			throw std::invalid_argument("value is NaN");
-			
+
 		float val_flt = static_cast<float>(value);
-		flowHandle(val_flt, "float");
-				
+		if (value)
+			flowHandle(val_flt, "float");		
 		return (val_flt);
 	}
 
@@ -85,14 +85,16 @@ struct Parser
 	{
 		if (std::isnan(value))
 			throw std::invalid_argument("value is NaN");
-		long double trunc = static_cast<long double>(static_cast<int>(value));
-		long double min = static_cast<long double>(std::numeric_limits<int>::min());
-		long double max = static_cast<long double>(std::numeric_limits<int>::max());
+	
+		long double min = static_cast<long double>
+			(std::numeric_limits<int>::min());
+		long double max = static_cast<long double>
+			(std::numeric_limits<int>::max());
 		
-		if (value < min)//	&& trunc != min)
+		if (value < min)
 			throw std::overflow_error("int negative overflow");
-		else if (value > max)// && trunc != max)
-			throw std::overflow_error("int positive overflow");
+		else if (value > max)
+			throw std::overflow_error("int positive overflow");			
 		return (static_cast<int>(value));
 	}
 };

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 07:28:26 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/29 09:40:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,14 @@ int main(int argc, char * argv[])
 	while (std::getline(inf, line))
 	{
 		// std::cout << line << std::endl;
-		parseLine(line);
+		if (!line.empty())
+		{
+			parseLine(line);
+		}	
 		// return 0;
 		// line.find()
 		
 	}	
-		
 	
 	(void) argc, (void) argv;
 	return (0);
