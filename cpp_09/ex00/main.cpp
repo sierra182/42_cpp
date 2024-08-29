@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 18:26:55 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/29 19:58:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@
 #include "Parser.hpp"
 
 //!! ADD CONTS
-bool parseDate(std::string & date, std::string::iterator & it,  int max, int delim)
+bool parseDate(std::string & date, std::string::iterator & it,  int max, int delim, int n_line)
 {
 	int nbr = 0;
-	
-	
+		
 	while (it != date.end() && *it != delim)
 	{
 		while (std::isspace(*it))
@@ -40,9 +39,9 @@ bool parseDate(std::string & date, std::string::iterator & it,  int max, int del
 			nbr++; 
 		}
 		if (nbr > max)
-			return std::cout << "too much digit" << std::endl, false;		
+			return std::cout << "too much digit : index: " << n_line << ", " << date << std::endl, false;		
 		if (!std::isdigit(*it) && *it != delim && !std::isspace(*it))
-			{ std::cout << "bad input" << std::endl; return false;}		
+			{ std::cout << "bad input: index: " << n_line << " : " << date << std::endl; return false;}		
 		if (*it == delim && nbr == max)
 			return it++, true;
 
@@ -71,22 +70,22 @@ float	parseValue( std::string & value, const std::string::iterator it)
 	// return true;
 }
 //!gerer les exception float et long double
-void	parseLine(std::string line, std::map<std::string, float> & input_map)
+void	parseLine(std::string line, std::map<std::string, float> & input_map, int n_line)
 {
 	
 	std::string::iterator it = line.begin();
 	float value = 0.0f;
-	if (parseDate(line, it, 4, '-') && parseDate(line, it, 2, '-') && parseDate(line, it, 2, '|'))
+	if (parseDate(line, it, 4, '-', n_line) && parseDate(line, it, 2, '-', n_line) && parseDate(line, it, 2, '|', n_line))
 	{
 		value = parseValue(line, it);
 		if (value < 0)
 		{
-			std::cout << "Error: not a positive number." << std::endl;
+			std::cout << "Error: not a positive number. : index: " << n_line << line << std::endl;
 			return;
 		}
 		else if (value > 1000)
 		{
-			std::cout << "Error: too large a number." << std::endl;	
+			std::cout << "Error: too large a number. : index: " << n_line << line << std::endl;	
 			return;	
 		}
 		std::cout << "line parsed with succes: " << line << " v: " << value << std::endl;
@@ -102,11 +101,11 @@ void	parseLine(std::string line, std::map<std::string, float> & input_map)
 
 int searchIndex(std::map<std::string, float> map, std::string const & key)
 {
-	int i = 0;
+	int i = 1;
 	std::map<std::string, float>::iterator it = map.begin();
 	while (it != map.end() && it->first != key)
 		it++, i++;
-	return i;
+	return ++i;
 }
 
 int main(int argc, char * argv[])
@@ -144,14 +143,15 @@ int main(int argc, char * argv[])
 	//! wrong date
 	//!num of ligne 
 		//!test with empty file (or with only space)
-	first = false;	
+	first = false;
+	int n_line = 1;	
 	while (std::getline(inf_inp, line))	
 		if (!line.empty() && (first = true))
 		{
 			std::cout << std::endl;
 			std::map<std::string, float>::iterator it_inp;
 			std::map<std::string, float>::iterator it_data;
-			parseLine(line, input_map);	
+			parseLine(line, input_map, n_line);	
 			// std::cout << "YOUPI " << std::string(line.begin(), std::find(line.begin(), line.end(), '|')) << std::endl;	
 			
 			it_inp = data_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
@@ -184,11 +184,11 @@ int main(int argc, char * argv[])
 			// }//?
 			
 			std::cout << "\e[31mThe place is \e[0m" << it_data->first << " " << it_data->second << std::endl;
-			std::cout << "\e[31mat the index \e[0m" << searchIndex(itit_data->first) << std::endl;
+			std::cout << "\e[31mat the index \e[0m" << searchIndex(data_map, it_data->first) << std::endl;
 			std::cout << "\e[31m " << it_inp->second * it_data->second << " \e[0m" << std::endl;
 			// else 
 			// 	std::cout << "not find" << std::endl;
-			
+			n_line++;
 		}		
 	if (!first)
 		return (MyStyl::error("the file is empty"), 1);
