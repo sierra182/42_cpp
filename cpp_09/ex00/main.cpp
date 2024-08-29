@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 14:10:12 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/29 15:02:04 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,17 @@ bool parseDate(std::string & date, std::string::iterator & it,  int max, int del
 	
 	while (it != date.end() && *it != delim)
 	{
-
 		while (std::isspace(*it))
 			it = date.erase(it);
 		while (std::isdigit(*it))
-		{std::cout << "digit: " << *it << std::endl;
+		{
 			it++;
 			nbr++; 
 		}
 		if (nbr > max)
-			return std::cout << "too much digit" << std::endl, false;
-		std::cout << "ici " << *it << std::endl;
+			return std::cout << "too much digit" << std::endl, false;		
 		if (!std::isdigit(*it) && *it != delim && !std::isspace(*it))
-			{ std::cout << "la" <<  *it << std::endl; std::cout << "not digit" << std::endl; return false;}		
+			{ std::cout << "not digit" << std::endl; return false;}		
 		if (*it == delim && nbr == max)
 			return it++, true;
 
@@ -114,10 +112,6 @@ int main(int argc, char * argv[])
 	std::map<std::string, float> data_map;
 	
 	std::string line;		
-	while (std::getline(inf_inp, line))	
-		if (!line.empty())		
-			parseLine(line, input_map);		
-
 	bool first = true;		
 	while (std::getline(inf_data, line))
 	{				
@@ -133,13 +127,35 @@ int main(int argc, char * argv[])
 				first = !first;
 		}				
 	}	
-				
-	for (std::map<std::string, float>::iterator it = input_map.begin(); it != input_map.end(); it++)
-		std::cout << "map: " << it->first << " : " << it->second << std::endl;
+		
+	while (std::getline(inf_inp, line))	
+		if (!line.empty())
+		{
+			std::map<std::string, float>::iterator it_inp;
+			std::map<std::string, float>::iterator it_data;
+			parseLine(line, input_map);	
+			std::cout << "YOU" << std::string(line.begin(), std::find(line.begin(), line.end(), '|')) << std::endl;	
+			it_inp = data_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
+			it_data = data_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
+			if (it_inp != data_map.end())
+			{
+				std::cout << "\e[31mFind !\e[0m" << it_inp->first << " " << it_inp->second << std::endl;
+				std::cout << "\e[31m " << it_inp->second * it_data->second << " \e[0m" << std::endl;
+			}
+			else 
+				std::cout << "not find" << std::endl;
+			
+		}		
 
-	std::cout << "****************" << std::endl;	
-	for (std::map<std::string, float>::iterator it = data_map.begin(); it != data_map.end(); it++)
-		std::cout << "data: " << it->first << " : " << it->second << std::endl;
+
+	// for (std::map<std::string, float>::iterator it = ; it != )
+			
+	// for (std::map<std::string, float>::iterator it = input_map.begin(); it != input_map.end(); it++)
+	// 	std::cout << "map: " << it->first << " : " << it->second << std::endl;
+
+	// std::cout << "****************" << std::endl;	
+	// for (std::map<std::string, float>::iterator it = data_map.begin(); it != data_map.end(); it++)
+	// 	std::cout << "data: " << it->first << " : " << it->second << std::endl;
 	(void) argc, (void) argv;
 	return (0);
 }
