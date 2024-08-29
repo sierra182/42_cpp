@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 09:48:25 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/29 13:56:46 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ struct Parser
 			throw std::invalid_argument("value is NaN");
 
 		float val_flt = static_cast<float>(value);
-		if (value)
+		if (value != 0.0f)
 			flowHandle(val_flt, "float");		
 		return (val_flt);
 	}

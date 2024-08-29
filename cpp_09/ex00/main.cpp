@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 09:40:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/29 14:10:12 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "MyStyl.hpp"
 #include <sstream>
 #include <map>
+#include <utility>
 #include <cstdlib>
 #include <limits>
 #include <cmath>
@@ -39,8 +40,6 @@ bool parseDate(std::string & date, std::string::iterator & it,  int max, int del
 			it++;
 			nbr++; 
 		}
-		// while (std::isspace(*it))
-		// 	it = date.erase(it);
 		if (nbr > max)
 			return std::cout << "too much digit" << std::endl, false;
 		std::cout << "ici " << *it << std::endl;
@@ -63,29 +62,39 @@ bool parseDate(std::string & date, std::string::iterator & it,  int max, int del
 // 	else 
 // 		return std::cout << "the float is bad --> fuck you: " << ss_flt <<  std::endl, false;
 
-bool	parseValue( std::string & value, const std::string::iterator it)
+float	parseValue( std::string & value, const std::string::iterator it)
 {
 	Parser parser;
 	long double val_ldbl = parser.tryCastLongDouble(it, value.end());
-	std::cout << parser.tryCastFloat(val_ldbl) << std::endl;
+	// std::cout << parser.tryCastFloat(val_ldbl) << std::endl;
 	// std::cout << parser.tryCastInt(val_ldbl) << std::endl;
 	
-	return true;
+	return parser.tryCastFloat(val_ldbl);
+	// return true;
 }
 
-void	parseLine(std::string line)
+void	parseLine(std::string line, std::map<std::string, float> & input_map)
 {
-	std::map<std::string, float> input_map;
+	
 	std::string::iterator it = line.begin();
-	if (parseDate(line, it, 4, '-') && parseDate(line, it, 2, '-') && parseDate(line, it, 2, '|') && parseValue(line, it))
+	float value = 0.0f;
+	if (parseDate(line, it, 4, '-') && parseDate(line, it, 2, '-') && parseDate(line, it, 2, '|'))
 	{
-		std::cout << "line parsed with succes: " << line <<  std::endl;
-		// input_map.insert(make_pair())
-		// if 
-		// line.substr(0, std::distance(line.begin(), it));
+		value = parseValue(line, it);
+		std::cout << "line parsed with succes: " << line << " v: " << value << std::endl;
+		std::map<std::string, float>::iterator it = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
+		if (it == input_map.end())
+			input_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), '|')), value));
+		else
+			std::cout << "steel exist !!!!!!" << std::endl;	
 	}
 	else	
 		std::cout << "holy shit: " << line <<  std::endl;
+}
+
+void addDataOnMap()
+{
+	
 }
 
 int main(int argc, char * argv[])
@@ -93,23 +102,44 @@ int main(int argc, char * argv[])
 	if (argc != 2)
 		return (MyStyl::error("we need one argument"), 1);
 	errno = 0;
-	std::ifstream inf(argv[1]);	
-	if (inf.fail())	
-		MyStyl::error(std::strerror(errno));
+	std::ifstream inf_inp(argv[1]);	
+	if (inf_inp.fail())	
+		return MyStyl::error(std::strerror(errno)), 1;
+	errno = 0;
+	std::ifstream inf_data("data.csv");	
+	if (inf_data.fail())	
+		return MyStyl::error(std::strerror(errno)), 1;
+	
+	std::map<std::string, float> input_map;
+	std::map<std::string, float> data_map;
 	
 	std::string line;		
-	while (std::getline(inf, line))
-	{
-		// std::cout << line << std::endl;
+	while (std::getline(inf_inp, line))	
+		if (!line.empty())		
+			parseLine(line, input_map);		
+
+	bool first = true;		
+	while (std::getline(inf_data, line))
+	{				
 		if (!line.empty())
 		{
-			parseLine(line);
-		}	
-		// return 0;
-		// line.find()
-		
+			if (!first)
+			{				
+				float value = parseValue(line, ++std::find(line.begin(), line.end(), ','));
+				data_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), ',')),
+				value));
+			}
+			else
+				first = !first;
+		}				
 	}	
-	
+				
+	for (std::map<std::string, float>::iterator it = input_map.begin(); it != input_map.end(); it++)
+		std::cout << "map: " << it->first << " : " << it->second << std::endl;
+
+	std::cout << "****************" << std::endl;	
+	for (std::map<std::string, float>::iterator it = data_map.begin(); it != data_map.end(); it++)
+		std::cout << "data: " << it->first << " : " << it->second << std::endl;
 	(void) argc, (void) argv;
 	return (0);
 }
