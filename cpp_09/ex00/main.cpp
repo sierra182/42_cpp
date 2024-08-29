@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 19:58:49 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/29 20:08:40 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 
 #include "Parser.hpp"
 
+int searchIndex(std::map<std::string, float> map, std::string const & key)
+{
+	int i = 1;
+	std::map<std::string, float>::iterator it = map.begin();
+	while (it != map.end() && it->first != key)
+		it++, i++;
+	return ++i;
+}
 //!! ADD CONTS
 bool parseDate(std::string & date, std::string::iterator & it,  int max, int delim, int n_line)
 {
@@ -39,14 +47,14 @@ bool parseDate(std::string & date, std::string::iterator & it,  int max, int del
 			nbr++; 
 		}
 		if (nbr > max)
-			return std::cout << "too much digit : index: " << n_line << ", " << date << std::endl, false;		
+			return std::cout << "too much digit: index: " << n_line << ", " << date << std::endl, false;		
 		if (!std::isdigit(*it) && *it != delim && !std::isspace(*it))
 			{ std::cout << "bad input: index: " << n_line << " : " << date << std::endl; return false;}		
 		if (*it == delim && nbr == max)
 			return it++, true;
 
 	}
-	return std::cout << "not enought" << std::endl, false;
+	return std::cout << "not enought digit: index: " << n_line << " : " << date << std::endl, false;
 }
 
 
@@ -80,12 +88,12 @@ void	parseLine(std::string line, std::map<std::string, float> & input_map, int n
 		value = parseValue(line, it);
 		if (value < 0)
 		{
-			std::cout << "Error: not a positive number. : index: " << n_line << line << std::endl;
+			std::cout << "Error: not a positive number. : index: " << n_line << " " << line << std::endl;
 			return;
 		}
 		else if (value > 1000)
 		{
-			std::cout << "Error: too large a number. : index: " << n_line << line << std::endl;	
+			std::cout << "Error: too large a number. : index: " << n_line << " " << line << std::endl;	
 			return;	
 		}
 		std::cout << "line parsed with succes: " << line << " v: " << value << std::endl;
@@ -93,20 +101,13 @@ void	parseLine(std::string line, std::map<std::string, float> & input_map, int n
 		if (it == input_map.end())
 			input_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), '|')), value));
 		else
-			std::cout << "steel exist !!!!!!" << std::endl;	
+			std::cout << "the entry yet exist index: " << n_line << " " << line << " data.cvs : " << searchIndex(input_map, it->first)  << std::endl;	
 	}
-	else	
-		std::cout << "holy shit: " << line <<  std::endl;
+	// else	
+	// 	std::cout << "holy shit: " << line <<  std::endl;
 }
 
-int searchIndex(std::map<std::string, float> map, std::string const & key)
-{
-	int i = 1;
-	std::map<std::string, float>::iterator it = map.begin();
-	while (it != map.end() && it->first != key)
-		it++, i++;
-	return ++i;
-}
+
 
 int main(int argc, char * argv[])
 {
