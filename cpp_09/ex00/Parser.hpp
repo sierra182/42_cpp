@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 13:56:46 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/29 17:42:37 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ struct Parser
 		char * end_char;	
 		long double val_ldbl;
 		
+		std::string::iterator emp = std::find_if(begin, end, isNotSpace);
+		if (emp == end)
+			throw std::invalid_argument("empty value");
 		std::string str_tmp = std::string(begin, end);
 		const char * str_c = str_tmp.c_str();
 		val_ldbl = std::strtold(str_c, &end_char);

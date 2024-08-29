@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 16:59:55 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/29 18:26:55 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool parseDate(std::string & date, std::string::iterator & it,  int max, int del
 		if (nbr > max)
 			return std::cout << "too much digit" << std::endl, false;		
 		if (!std::isdigit(*it) && *it != delim && !std::isspace(*it))
-			{ std::cout << "not digit" << std::endl; return false;}		
+			{ std::cout << "bad input" << std::endl; return false;}		
 		if (*it == delim && nbr == max)
 			return it++, true;
 
@@ -67,10 +67,10 @@ float	parseValue( std::string & value, const std::string::iterator it)
 	// std::cout << parser.tryCastFloat(val_ldbl) << std::endl;
 	// std::cout << parser.tryCastInt(val_ldbl) << std::endl;
 	
-	return parser.tryCastFloat(val_ldbl);
+	return  parser.tryCastFloat(val_ldbl);
 	// return true;
 }
-
+//!gerer les exception float et long double
 void	parseLine(std::string line, std::map<std::string, float> & input_map)
 {
 	
@@ -79,6 +79,16 @@ void	parseLine(std::string line, std::map<std::string, float> & input_map)
 	if (parseDate(line, it, 4, '-') && parseDate(line, it, 2, '-') && parseDate(line, it, 2, '|'))
 	{
 		value = parseValue(line, it);
+		if (value < 0)
+		{
+			std::cout << "Error: not a positive number." << std::endl;
+			return;
+		}
+		else if (value > 1000)
+		{
+			std::cout << "Error: too large a number." << std::endl;	
+			return;	
+		}
 		std::cout << "line parsed with succes: " << line << " v: " << value << std::endl;
 		std::map<std::string, float>::iterator it = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
 		if (it == input_map.end())
@@ -90,9 +100,13 @@ void	parseLine(std::string line, std::map<std::string, float> & input_map)
 		std::cout << "holy shit: " << line <<  std::endl;
 }
 
-void addDataOnMap()
+int searchIndex(std::map<std::string, float> map, std::string const & key)
 {
-	
+	int i = 0;
+	std::map<std::string, float>::iterator it = map.begin();
+	while (it != map.end() && it->first != key)
+		it++, i++;
+	return i;
 }
 
 int main(int argc, char * argv[])
@@ -127,9 +141,12 @@ int main(int argc, char * argv[])
 				first = !first;
 		}				
 	}	
+	//! wrong date
+	//!num of ligne 
 		//!test with empty file (or with only space)
+	first = false;	
 	while (std::getline(inf_inp, line))	
-		if (!line.empty())
+		if (!line.empty() && (first = true))
 		{
 			std::cout << std::endl;
 			std::map<std::string, float>::iterator it_inp;
@@ -167,12 +184,14 @@ int main(int argc, char * argv[])
 			// }//?
 			
 			std::cout << "\e[31mThe place is \e[0m" << it_data->first << " " << it_data->second << std::endl;
+			std::cout << "\e[31mat the index \e[0m" << searchIndex(itit_data->first) << std::endl;
 			std::cout << "\e[31m " << it_inp->second * it_data->second << " \e[0m" << std::endl;
 			// else 
 			// 	std::cout << "not find" << std::endl;
 			
 		}		
-
+	if (!first)
+		return (MyStyl::error("the file is empty"), 1);
 
 	// for (std::map<std::string, float>::iterator it = ; it != )
 			
