@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 15:02:04 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/29 16:59:55 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int main(int argc, char * argv[])
 	
 	std::map<std::string, float> input_map;
 	std::map<std::string, float> data_map;
-	
+
 	std::string line;		
 	bool first = true;		
 	while (std::getline(inf_data, line))
@@ -127,23 +127,49 @@ int main(int argc, char * argv[])
 				first = !first;
 		}				
 	}	
-		
+		//!test with empty file (or with only space)
 	while (std::getline(inf_inp, line))	
 		if (!line.empty())
 		{
+			std::cout << std::endl;
 			std::map<std::string, float>::iterator it_inp;
 			std::map<std::string, float>::iterator it_data;
 			parseLine(line, input_map);	
-			std::cout << "YOU" << std::string(line.begin(), std::find(line.begin(), line.end(), '|')) << std::endl;	
+			// std::cout << "YOUPI " << std::string(line.begin(), std::find(line.begin(), line.end(), '|')) << std::endl;	
+			
 			it_inp = data_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-			it_data = data_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-			if (it_inp != data_map.end())
+			
+			it_data = data_map.lower_bound(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
+			// if (it_data == data_map.end())
+				// std::cout << "c la end!" << std::endl;
+			if (it_data != data_map.end() && it_inp->first == it_data->first)
 			{
-				std::cout << "\e[31mFind !\e[0m" << it_inp->first << " " << it_inp->second << std::endl;
-				std::cout << "\e[31m " << it_inp->second * it_data->second << " \e[0m" << std::endl;
+				std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;
 			}
-			else 
-				std::cout << "not find" << std::endl;
+			else if (it_data == data_map.end() || (it_inp->first != it_data->first && data_map.begin() != it_data))
+			{
+				std::cout << "\e[35mwe will take the previous entry\e[0m" << std::endl;
+				it_data--;
+			}
+			else
+			{
+				std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;
+			}
+				
+				// else if (it_data == data_map.end())
+				// {
+					
+				// }	
+			
+			// else if (it_inp->first != it_data->first && input_map.end() == it_data)
+			// {
+			// 	it_data = input_map
+			// }//?
+			
+			std::cout << "\e[31mThe place is \e[0m" << it_data->first << " " << it_data->second << std::endl;
+			std::cout << "\e[31m " << it_inp->second * it_data->second << " \e[0m" << std::endl;
+			// else 
+			// 	std::cout << "not find" << std::endl;
 			
 		}		
 
