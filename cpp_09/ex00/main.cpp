@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/30 17:31:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/30 20:09:50 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ float	parseValue( std::string & value, const std::string::iterator it)
 	// return true;
 }
 //!gerer les exception float et long double
-void	parseLine(std::string line, std::map<std::string, float> & input_map)
+void	parseLine(std::string & line, std::map<std::string, float> & input_map)
 {
 	
 	std::string::iterator it = line.begin();
@@ -93,12 +93,12 @@ void	parseLine(std::string line, std::map<std::string, float> & input_map)
 			throw std::invalid_argument("Error: not a positive number.");		
 		else if (value > 1000)
 			throw std::invalid_argument("Error: too large a number.");
-				
-		std::map<std::string, float>::iterator it = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-		if (it == input_map.end())		
-			input_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), '|')), value));		
-		else
-			throw std::invalid_argument("Error: the entry yet exist.");	//add value that exist		
+		input_map[std::string(line.begin(), std::find(line.begin(), line.end(), '|'))] = value;	
+		// std::map<std::string, float>::iterator it = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
+		// if (it == input_map.end())		
+			// input_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), '|')), value));		
+		// else
+		// 	throw std::invalid_argument("Error: the entry yet exist.");	//add value that exist		
 	}
 	// else	
 	// 	std::cout << "holy shit: " << line <<  std::endl;
@@ -160,20 +160,25 @@ int main(int argc, char * argv[])
 				
 				it_data = data_map.lower_bound(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
 				// if (it_data == data_map.end())
-					// std::cout << "c la end!" << std::endl;
-				if (it_data != data_map.end() && it_inp->first == it_data->first)
+					// std::cout << "comp! " << it_inp->first << " " << it_data->first << std::endl;
+				// if (it_data != data_map.end() && it_inp->first == it_data->first)
+				if (input_map.end() != it_inp && data_map.end() != it_data
+					&& it_inp->first == it_data->first)
 				{
 					std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;
 				}
-				else if (it_data == data_map.end() || (it_inp->first != it_data->first && data_map.begin() != it_data))
+				else if (it_data == data_map.begin())
+				{
+					std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;
+				}
+				else// if (it_data == data_map.end())// || (it_inp->first != it_data->first && data_map.begin() != it_data))
 				{
 					std::cout << "\e[35mwe will take the previous entry\e[0m" << std::endl;
 					it_data--;
 				}
-				else
-				{
-					std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;
-				}			
+				// else
+				// 	std::cout << "\e[36munhandled problem\e[0m" << std::endl;	
+							
 				std::cout << "\e[3;4mData.csv:\e[0m  " << searchIndex(data_map, it_data->first) << " \e[31mline: " << "\e[37;46m" << it_data->first << ',' << it_data->second << "\e[0m" << std::endl;
 				std::cout << "\e[31m " << it_inp->second << " * " << it_data->second << " => " << it_inp->second * it_data->second << " \e[0m" << std::endl;			
 			}		
