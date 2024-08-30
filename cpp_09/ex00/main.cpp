@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/30 20:28:32 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/30 21:48:14 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,21 @@ bool parseDate(std::string & date, std::string::iterator & it,
 	throw std::invalid_argument("not enought digit");	
 }
 
-float	parseValue( std::string & value, const std::string::iterator it)
-{
-	Parser parser;
-	long double val_ldbl = parser.tryCastLongDouble(it, value.end());	
-	return  parser.tryCastFloat(val_ldbl);
-}
-//!gerer les exception float et long double
 void	parseLine(std::string & line, std::map<std::string, float> & input_map)
 {	
+	Parser parser;
 	std::string::iterator it = line.begin();
 	float value = 0.0f;
+	
 	parseDate(line, it, 4, '-');
 	parseDate(line, it, 2, '-');
-	parseDate(line, it, 2, '|');
-	
-	// if (parseDate(line, it, 4, '-') && parseDate(line, it, 2, '-') && parseDate(line, it, 2, '|'))
-	// {
-		// std::cout << "\e[3;4mInput file:\e[0m  " << n_line << " \e[31mline: " << "\e[37;45m" << line << "\e[0m" << std::endl;
-		value = parseValue(line, it);
-		if (value < 0)		
-			throw std::invalid_argument("Error: not a positive number.");		
-		else if (value > 1000)
-			throw std::invalid_argument("Error: too large a number.");
-		input_map[std::string(line.begin(), std::find(line.begin(), line.end(), '|'))] = value;			
-	// }
+	parseDate(line, it, 2, '|');	
+	value = parser.parseToFloat(it, line.end());
+	if (value < 0)		
+		throw std::invalid_argument("Error: not a positive number.");		
+	else if (value > 1000)
+		throw std::invalid_argument("Error: too large a number.");
+	input_map[std::string(line.begin(), std::find(line.begin(), line.end(), '|'))] = value;	
 }
 
 int main(int argc, char * argv[])
@@ -97,7 +87,7 @@ int main(int argc, char * argv[])
 	
 	std::map<std::string, float> input_map;
 	std::map<std::string, float> data_map;
-
+	Parser parser;
 	std::string line;		
 	bool first = true;		
 	while (std::getline(inf_data, line))
@@ -106,7 +96,7 @@ int main(int argc, char * argv[])
 		{
 			if (!first)
 			{				
-				float value = parseValue(line, ++std::find(line.begin(), line.end(), ','));
+				float value = parser.parseToFloat(++std::find(line.begin(), line.end(), ','), line.end()); 
 				data_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), ',')),
 				value));
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/29 17:42:37 by svidot           ###   ########.fr       */
+/*   Updated: 2024/08/30 21:44:59 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include <cmath>
 #include <algorithm>
 
-struct Parser
-{
+class Parser
+{	
 	template <class T>
-	void flowHandle(T value, std::string const type)
+	void	flowHandle(T value, std::string const type)
 	{		
 		if (std::isinf(value))
 		{
@@ -37,28 +37,27 @@ struct Parser
 		}		
 	}
 	
-	static bool isNotSpace(const char c)
+	static bool	isNotSpace(const char c)
 	{
 		return !std::isspace(static_cast<unsigned char>(c));
 	}
 
-	long double	tryCastLongDouble(const std::string::iterator & begin,
-		const std::string::iterator & end)
+	long double	tryCastLongDouble( const std::string::iterator begin,
+		const std::string::iterator end)
 	{
 		errno = 0;
 		char * end_char;	
-		long double val_ldbl;
+		long double val_ldbl = 0.0;		
 		
 		std::string::iterator emp = std::find_if(begin, end, isNotSpace);
 		if (emp == end)
 			throw std::invalid_argument("empty value");
+			
 		std::string str_tmp = std::string(begin, end);
 		const char * str_c = str_tmp.c_str();
 		val_ldbl = std::strtold(str_c, &end_char);
-
 		if (errno == ERANGE)
-			flowHandle(val_ldbl, "long double");
-					
+			flowHandle(val_ldbl, "long double");					
 		if (*end_char)
 		{
 			std::string rem = std::string(end_char);
@@ -100,4 +99,14 @@ struct Parser
 			throw std::overflow_error("int positive overflow");			
 		return (static_cast<int>(value));
 	}
+	
+	public :
+	
+		float	parseToFloat(const std::string::iterator begin, const std::string::iterator end)
+		{		
+			long double val_ldbl = this->tryCastLongDouble(begin, end);
+			float val_flt = this->tryCastFloat(val_ldbl);
+			
+			return (val_flt);
+		}
 };
