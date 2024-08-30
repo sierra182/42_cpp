@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/30 20:09:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/30 20:28:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,85 +26,61 @@
 
 int searchIndex(std::map<std::string, float> map, std::string const & key)
 {
-	int i = 1;
+	int i = 1;	
 	std::map<std::string, float>::iterator it = map.begin();
+	
 	while (it != map.end() && it->first != key)
 		it++, i++;
 	return ++i;
 }
-//!! ADD CONTS
-bool parseDate(std::string & date, std::string::iterator & it,  int max, int delim)
+
+bool parseDate(std::string & date, std::string::iterator & it,
+	 int max, int delim)
 {
 	int nbr = 0;
-		
+			
 	while (it != date.end() && *it != delim)
 	{
 		while (std::isspace(*it))
 			it = date.erase(it);
-		while (std::isdigit(*it))
-		{
-			it++;
-			nbr++; 
-		}
+		while (std::isdigit(*it))		
+			it++, nbr++; 	
 		if (nbr > max)
 			throw std::invalid_argument("too much digit");		
 		if (!std::isdigit(*it) && *it != delim && !std::isspace(*it))
-			throw std::invalid_argument("bad input");
-				
+			throw std::invalid_argument("bad input");				
 		if (*it == delim && nbr == max)
 			return it++, true;
-
 	}
-	throw std::invalid_argument("not enought digit");
-	
+	throw std::invalid_argument("not enought digit");	
 }
-
-
-
-// std::stringstream ss(std::string(it, value.end()));	
-// 	float ss_flt;
-// 	ss >> ss_flt;	
-// 	if (ss && ss.eof())
-// 		return std::cout << "the float is: " << ss_flt << std::endl, true;
-// 	else 
-// 		return std::cout << "the float is bad --> fuck you: " << ss_flt <<  std::endl, false;
 
 float	parseValue( std::string & value, const std::string::iterator it)
 {
 	Parser parser;
-	long double val_ldbl = parser.tryCastLongDouble(it, value.end());
-	// std::cout << parser.tryCastFloat(val_ldbl) << std::endl;
-	// std::cout << parser.tryCastInt(val_ldbl) << std::endl;
-	
+	long double val_ldbl = parser.tryCastLongDouble(it, value.end());	
 	return  parser.tryCastFloat(val_ldbl);
-	// return true;
 }
 //!gerer les exception float et long double
 void	parseLine(std::string & line, std::map<std::string, float> & input_map)
-{
-	
+{	
 	std::string::iterator it = line.begin();
 	float value = 0.0f;
-	if (parseDate(line, it, 4, '-') && parseDate(line, it, 2, '-') && parseDate(line, it, 2, '|'))
-	{
+	parseDate(line, it, 4, '-');
+	parseDate(line, it, 2, '-');
+	parseDate(line, it, 2, '|');
+	
+	// if (parseDate(line, it, 4, '-') && parseDate(line, it, 2, '-') && parseDate(line, it, 2, '|'))
+	// {
 		// std::cout << "\e[3;4mInput file:\e[0m  " << n_line << " \e[31mline: " << "\e[37;45m" << line << "\e[0m" << std::endl;
 		value = parseValue(line, it);
 		if (value < 0)		
 			throw std::invalid_argument("Error: not a positive number.");		
 		else if (value > 1000)
 			throw std::invalid_argument("Error: too large a number.");
-		input_map[std::string(line.begin(), std::find(line.begin(), line.end(), '|'))] = value;	
-		// std::map<std::string, float>::iterator it = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-		// if (it == input_map.end())		
-			// input_map.insert(make_pair(std::string(line.begin(), std::find(line.begin(), line.end(), '|')), value));		
-		// else
-		// 	throw std::invalid_argument("Error: the entry yet exist.");	//add value that exist		
-	}
-	// else	
-	// 	std::cout << "holy shit: " << line <<  std::endl;
+		input_map[std::string(line.begin(), std::find(line.begin(), line.end(), '|'))] = value;			
+	// }
 }
-
-
 
 int main(int argc, char * argv[])
 {
@@ -139,8 +115,6 @@ int main(int argc, char * argv[])
 		}				
 	}	
 	//! wrong date
-	//!num of ligne 
-		//!test with empty file (or with only space)
 	first = false;
 	int n_line = 1;	
 	while (std::getline(inf_inp, line))
@@ -154,31 +128,22 @@ int main(int argc, char * argv[])
 				std::map<std::string, float>::iterator it_inp;
 				std::map<std::string, float>::iterator it_data;
 				parseLine(line, input_map);	
-				// std::cout << "YOUPI " << std::string(line.begin(), std::find(line.begin(), line.end(), '|')) << std::endl;	
+			
 				
-				it_inp = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-				
+				it_inp = input_map.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));				
 				it_data = data_map.lower_bound(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-				// if (it_data == data_map.end())
-					// std::cout << "comp! " << it_inp->first << " " << it_data->first << std::endl;
-				// if (it_data != data_map.end() && it_inp->first == it_data->first)
+							
 				if (input_map.end() != it_inp && data_map.end() != it_data
-					&& it_inp->first == it_data->first)
-				{
-					std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;
-				}
-				else if (it_data == data_map.begin())
-				{
-					std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;
-				}
-				else// if (it_data == data_map.end())// || (it_inp->first != it_data->first && data_map.begin() != it_data))
+					&& it_inp->first == it_data->first)				
+					std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;				
+				else if (it_data == data_map.begin())				
+					std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;				
+				else
 				{
 					std::cout << "\e[35mwe will take the previous entry\e[0m" << std::endl;
 					it_data--;
 				}
-				// else
-				// 	std::cout << "\e[36munhandled problem\e[0m" << std::endl;	
-							
+											
 				std::cout << "\e[3;4mData.csv:\e[0m  " << searchIndex(data_map, it_data->first) << " \e[31mline: " << "\e[37;46m" << it_data->first << ',' << it_data->second << "\e[0m" << std::endl;
 				std::cout << "\e[31m " << it_inp->second << " * " << it_data->second << " => " << it_inp->second * it_data->second << " \e[0m" << std::endl;			
 			}		
