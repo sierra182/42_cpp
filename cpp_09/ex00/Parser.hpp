@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/30 21:44:59 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 08:00:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ class Parser
 		const std::string::iterator end)
 	{
 		errno = 0;
-		char * end_char;	
-		long double val_ldbl = 0.0;		
+		char * endChar;	
+		long double valLdbl = 0.0;		
 		
 		std::string::iterator emp = std::find_if(begin, end, isNotSpace);
 		if (emp == end)
@@ -55,12 +55,12 @@ class Parser
 			
 		std::string str_tmp = std::string(begin, end);
 		const char * str_c = str_tmp.c_str();
-		val_ldbl = std::strtold(str_c, &end_char);
+		valLdbl = std::strtold(str_c, &endChar);
 		if (errno == ERANGE)
-			flowHandle(val_ldbl, "long double");					
-		if (*end_char)
+			flowHandle(valLdbl, "long double");					
+		if (*endChar)
 		{
-			std::string rem = std::string(end_char);
+			std::string rem = std::string(endChar);
 			std::string::iterator it = std::find_if(rem.begin(), rem.end(),
 				isNotSpace);
 			if (it != rem.end())
@@ -69,7 +69,7 @@ class Parser
 				throw std::invalid_argument("partial cast");
 			}
 		}
-		return (val_ldbl);
+		return (valLdbl);
 	}
 
 	float	tryCastFloat(long double value)
@@ -77,10 +77,10 @@ class Parser
 		if (std::isnan(value))
 			throw std::invalid_argument("value is NaN");
 
-		float val_flt = static_cast<float>(value);
+		float valFlt = static_cast<float>(value);
 		if (value != 0.0f)
-			flowHandle(val_flt, "float");		
-		return (val_flt);
+			flowHandle(valFlt, "float");		
+		return (valFlt);
 	}
 
 	int	tryCastInt(long double value)
@@ -104,9 +104,17 @@ class Parser
 	
 		float	parseToFloat(const std::string::iterator begin, const std::string::iterator end)
 		{		
-			long double val_ldbl = this->tryCastLongDouble(begin, end);
-			float val_flt = this->tryCastFloat(val_ldbl);
+			long double valLdbl = this->tryCastLongDouble(begin, end);
+			float valFlt = this->tryCastFloat(valLdbl);
 			
-			return (val_flt);
+			return (valFlt);
+		}
+
+		int	parseToInt(const std::string::iterator begin, const std::string::iterator end)
+		{		
+			long double valLdbl = this->tryCastLongDouble(begin, end);
+			int valInt = this->tryCastInt(valLdbl);
+			
+			return (valInt);
 		}
 };
