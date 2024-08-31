@@ -108,13 +108,5 @@ class Parser
 			float valFlt = this->tryCastFloat(valLdbl);
 			
 			return (valFlt);
-		}
-
-		int	parseToInt(const std::string::iterator begin, const std::string::iterator end)
-		{		
-			long double valLdbl = this->tryCastLongDouble(begin, end);
-			int valInt = this->tryCastInt(valLdbl);
-			
-			return (valInt);
-		}
+		}	
 };
