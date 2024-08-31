@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:16:10 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 11:40:25 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:01:35 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ class BitcoinExchange
 	void	makeExchange(std::string const & line);
 	void	fillDataMap(std::ifstream & infData);
 	void	fillInputMap(std::ifstream & infInp);
-
+	bool	isFirstLineValid(std::string line, Parser & parser,
+		std::string const & comp1, char const comp2,
+		std::string const & comp3);
+		
 	public:
 		
 		BitcoinExchange(std::ifstream & infData, std::ifstream & infInp);

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 11:29:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 15:23:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,21 @@ class Parser
 	Parser & operator=(const Parser &);
 	
 	template <class T>
-	void	flowHandle(T value, std::string const type);	
+	void		flowHandle(T value, std::string const type);	
 	long double	tryCastLongDouble( const std::string::iterator begin,
 		const std::string::iterator end);	
-	float	tryCastFloat(long double value);
-	int	tryCastInt(long double value);
+	float		tryCastFloat(long double value);
+	int			tryCastInt(long double value);
 	
 	public :
 		
 		Parser();
 		~Parser();
-		float	parseToFloat(const std::string::iterator begin,
+		float		parseToFloat(const std::string::iterator begin,
 			const std::string::iterator end);
-		static bool	isNotSpace(const char c);		
+		static bool	isNotSpace(const char c);
+		static bool	isSpace(const char c);
+		void 		revTrim(std::string & str);		
 };
 
 template <class T>

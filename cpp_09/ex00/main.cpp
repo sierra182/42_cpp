@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 11:36:56 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 13:31:49 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int argc, char * argv[])
 		BitcoinExchange be(infData, infInp);
 	}
 	catch (std::exception const & e)
-			{MySty::addWhat(e.what()); return(1);}
+		{MySty::addWhat(e.what()); return(1);}
 	std::cout << std::endl;
 	return (0);
 }

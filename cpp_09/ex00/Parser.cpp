@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:20:47 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 11:30:15 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 15:29:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,17 @@ float	Parser::parseToFloat(const std::string::iterator begin,
 bool	Parser::isNotSpace(const char c)
 {
 	return !std::isspace(static_cast<unsigned char>(c));
-}	
+}
+
+bool	Parser::isSpace(const char c)
+{
+	return std::isspace(static_cast<unsigned char>(c));
+}
+
+void Parser::revTrim(std::string & str)
+{
+	std::string::reverse_iterator rit = std::find_if(str.rbegin(),
+		str.rend(), this->isNotSpace);
+	if (rit != str.rend())		
+		str.erase(rit.base(), str.end());	
+}

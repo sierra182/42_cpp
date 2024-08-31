@@ -6,18 +6,19 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 11:40:19 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:01:48 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include "Parser.hpp"
+#include "MySty.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include "MySty.hpp"
 #include <map>
 #include <ctime>
-#include "Parser.hpp"
+#include <sstream>
 
 BitcoinExchange::BitcoinExchange( void ){}
 
@@ -158,13 +159,16 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 
 void	BitcoinExchange::fillDataMap(std::ifstream & infData)
 {
+	std::string::iterator it;
 	Parser parser;
 	std::string line;		
 	bool first = true;
 	float value = 0.0f;
 			
-	while (std::getline(infData, line))					
-		if (!line.empty())
+	while (std::getline(infData, line))	
+	{		
+		it = std::find_if(line.begin(), line.end(),	parser.isNotSpace);		
+		if ((!line.empty() && it != line.end()))
 		{
 			if (!first)
 			{				
@@ -176,36 +180,67 @@ void	BitcoinExchange::fillDataMap(std::ifstream & infData)
 			else
 				first = !first;
 		}
+	}				
+	if (first)
+		throw std::invalid_argument("the file is empty");
 }
 
+bool	BitcoinExchange::isFirstLineValid(std::string line, Parser & parser,
+	std::string const & comp1, char const comp2, std::string const & comp3)
+{
+	std::istringstream ss(line);
+			 
+	if (std::getline(ss >> std::ws, line, comp2))
+	{
+		parser.revTrim(line);	
+		if (line == comp1)
+		{
+			if (std::getline(ss >> std::ws, line))
+			{
+				parser.revTrim(line);
+				if (line == comp3)
+					return true;
+			}
+		}
+	}
+	return false;
+}
+	
 void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 {
 	std::string::iterator it;
 	std::string line;
 	Parser parser;
-	bool first = false;
+	bool first = true;
 	int nLine = 1;
 	
 	while (std::getline(infInp, line))
 	{		
 		try {
 			it = std::find_if(line.begin(), line.end(),	parser.isNotSpace);		
-			if ((!line.empty() && it != line.end()) && (first = true))
+			if ((!line.empty() && it != line.end()))
 			{
-				std::cout << std::endl;
-				std::cout << "\e[3;4mInput file:\e[0m  " << nLine <<
-					" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
-					<< std::endl;
+				if ((!isFirstLineValid(line, parser, "date", '|', "value")
+					&& first) || !first)
+				{	
+					first = false;				
+					std::cout << std::endl;
+					std::cout << "\e[3;4mInput file:\e[0m  " << nLine <<
+						" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
+						<< std::endl;
 
-				this->parseLine(line, this->inputMap);				
-				this->makeExchange(line);		
-			}		
+					this->parseLine(line, this->inputMap);				
+					this->makeExchange(line);		
+				}
+				else
+					first = false;
+			}
 		}
 		catch (std::exception const & e)
 			{MySty::addWhat(e.what());}
 		nLine++;	
 	}	
-	if (!first)
+	if (first)
 		throw std::invalid_argument("the file is empty");
 }
 	
