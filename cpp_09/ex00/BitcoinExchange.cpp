@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 17:51:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 18:03:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void colorFullLine(const std::string & str, short unsigned int color) {
 	struct winsize ws;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
 	std::string empty(ws.ws_col, ' ');
-	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m" << std::endl;
+	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m";// << std::endl;
     // Créer une chaîne qui remplit la ligne entière
     // std::string padded_text = text;
     // if (padded_text.length() < width) {
@@ -160,7 +160,7 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 		this->searchIndex(dataMap, itData->first) << " \e[31mline: "
 			<< "\e[37;46m" << itData->first << ',' << itData->second
 			<< "\e[0m" << std::endl;
-	colorFullLine(oss.str(), 5);
+	colorFullLine(oss.str(), 6);
 	oss.str("");
 		
 	oss << "\e[31m " << itInp->second << " * " << itData->second <<
@@ -172,7 +172,7 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 {
 	std::map<std::string, float>::iterator itInp;
 	std::map<std::string, float>::iterator itData;
-	
+	std::ostringstream oss; 
 	itInp = inputMap.find(std::string(line.begin(),
 		std::find(line.begin(), line.end(), '|')));				
 	itData = dataMap.lower_bound(std::string(line.begin(),
@@ -180,14 +180,15 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 				
 	if (inputMap.end() != itInp && dataMap.end() != itData
 		&& itInp->first == itData->first)				
-		std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;				
+		oss << "\e[32mthere is an exact entry\e[0m" << std::endl;				
 	else if (itData == dataMap.begin())				
-		std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;				
+		oss << "\e[36mwe will take the first entry\e[0m" << std::endl;				
 	else
 	{
-		std::cout << "\e[35mwe will take the previous entry\e[0m" << std::endl;
+		oss << "\e[35mwe will take the previous entry\e[0m" << std::endl;
 		itData--;
 	}
+	colorFullLine(oss.str(), 6);
 	this->printRslt(itInp, itData);
 }
 
@@ -280,11 +281,12 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 				{	
 					first = false;				
 					std::cout << std::endl;
-					std::cout << "\e[3;4mInput file:\e[0m  " << nLine <<
+					std::ostringstream oss;
+					oss << "\e[3;4mInput file:\e[0m  " << nLine <<
 						" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
 						<< std::endl;
-
-					this->parseLine(line, this->inputMap, '|');				
+					colorFullLine(oss.str(), 6);
+					this->parseLine(line, this->inputMap, '|');		//!this color		
 					this->makeExchange(line);		
 				}
 				else
