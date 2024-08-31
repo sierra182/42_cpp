@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 17:08:24 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 17:51:50 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,17 +123,49 @@ void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
 		std::find(line.begin(), line.end(), sep))] = value;	
 }
 
+#include <sys/ioctl.h>
+#include <unistd.h>
+
+void colorFullLine(const std::string & str, short unsigned int color) {
+    // Obtenir la taille du terminal
+    // struct winsize w;
+    // ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    // int width = w.ws_col;
+
+	struct winsize ws;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
+	std::string empty(ws.ws_col, ' ');
+	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m" << std::endl;
+    // Créer une chaîne qui remplit la ligne entière
+    // std::string padded_text = text;
+    // if (padded_text.length() < width) {
+    //     padded_text += std::string(width - padded_text.length(), ' ');
+    // }
+
+    // Couleur de fond vert avec texte par défaut (en blanc)
+    // std::cout << "\033[42m" << padded_text << "\033[0m" << std::endl;
+}
 void	BitcoinExchange::printRslt(const std::map<std::string,
 	float>::const_iterator itInp, const std::map<std::string,
 	float>::const_iterator itData)
 {
-	std::cout << "\e[3;4mData.csv:\e[0m  " <<
-		this->searchIndex(dataMap, itData->first)	<< " \e[31mline: "
+	// colorFullLine("\e[32mteste moi le cul", 5);
+	// colorFullLine("\e[32mteste moi le cul", 5);
+	// std::string dep;
+	// std::string inpStr = dep + "\e[3;4mData.csv:\e[0m  " + 
+	// this->searchIndex(dataMap, itData->first) + " \e[31mline: " +
+	//  "\e[37;46m" + itData->first + ',' + itData->second + "\e[0m";
+	std::ostringstream oss;
+	oss << "\e[3;4mData.csv:\e[0m  " <<
+		this->searchIndex(dataMap, itData->first) << " \e[31mline: "
 			<< "\e[37;46m" << itData->first << ',' << itData->second
 			<< "\e[0m" << std::endl;
+	colorFullLine(oss.str(), 5);
+	oss.str("");
 		
-	std::cout << "\e[31m " << itInp->second << " * " << itData->second <<
+	oss << "\e[31m " << itInp->second << " * " << itData->second <<
 		" => " << itInp->second * itData->second << " \e[0m" << std::endl;
+	colorFullLine(oss.str(), 6);
 }
 
 void	BitcoinExchange::makeExchange(std::string const & line)
