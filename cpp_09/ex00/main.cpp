@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 09:20:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 09:28:15 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,28 @@ void	parseLine(std::string & line, std::map<std::string, float> & inputMap)
 }
 	std::map<std::string, float> inputMap;
 	std::map<std::string, float> dataMap;
+
+void makeExchange(std::string const & line)
+{
+	std::map<std::string, float>::iterator itInp;
+	std::map<std::string, float>::iterator itData;
+	itInp = inputMap.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));				
+	itData = dataMap.lower_bound(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
+				
+	if (inputMap.end() != itInp && dataMap.end() != itData
+		&& itInp->first == itData->first)				
+		std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;				
+	else if (itData == dataMap.begin())				
+		std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;				
+	else
+	{
+		std::cout << "\e[35mwe will take the previous entry\e[0m" << std::endl;
+		itData--;
+	}
+								
+	std::cout << "\e[3;4mData.csv:\e[0m  " << searchIndex(dataMap, itData->first) << " \e[31mline: " << "\e[37;46m" << itData->first << ',' << itData->second << "\e[0m" << std::endl;
+	std::cout << "\e[31m " << itInp->second << " * " << itData->second << " => " << itInp->second * itData->second << " \e[0m" << std::endl;		
+}
 	
 void fillDataMap(std::ifstream & infData)
 {
@@ -127,32 +149,32 @@ void fillDataMap(std::ifstream & infData)
 	}	
 }
 
-void fillInputMap(std::ifstream & infInput)
+int fillInputMap(std::ifstream & infInp)
 {
-	
-}
+	std::string line;
+	bool first = false;
+	int nLine = 1;	
+	while (std::getline(infInp, line))
+	{		
+		try {		
+			if (!line.empty() && (first = true))
+			{
+				std::cout << std::endl;
+				std::cout << "\e[3;4mInput file:\e[0m  " << nLine <<
+					" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
+					<< std::endl;
 
-void makeExchange(std::string const & line)
-{
-	std::map<std::string, float>::iterator itInp;
-	std::map<std::string, float>::iterator itData;
-	itInp = inputMap.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));				
-	itData = dataMap.lower_bound(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-				
-	if (inputMap.end() != itInp && dataMap.end() != itData
-		&& itInp->first == itData->first)				
-		std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;				
-	else if (itData == dataMap.begin())				
-		std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;				
-	else
-	{
-		std::cout << "\e[35mwe will take the previous entry\e[0m" << std::endl;
-		itData--;
-	}
-								
-	std::cout << "\e[3;4mData.csv:\e[0m  " << searchIndex(dataMap, itData->first) << " \e[31mline: " << "\e[37;46m" << itData->first << ',' << itData->second << "\e[0m" << std::endl;
-	std::cout << "\e[31m " << itInp->second << " * " << itData->second << " => " << itInp->second * itData->second << " \e[0m" << std::endl;			
-
+				parseLine(line, inputMap);				
+				makeExchange(line);		
+			}		
+		}
+		catch (std::exception const & e)
+			{MyStyl::addWhat(e.what());}
+		nLine++;	
+	}	
+	if (!first)
+		return (MyStyl::error("the file is empty"), 1);
+	return (0);
 }
 
 int main(int argc, char * argv[])
@@ -187,57 +209,32 @@ int main(int argc, char * argv[])
 	// 	}				
 	// }
 	fillDataMap(infData);	
+	if (fillInputMap(infInp))
+		return (1);
+	// std::string line;
+	// bool first = false;
+	// int nLine = 1;	
+	// while (std::getline(infInp, line))
+	// {		
+	// 	try {		
+	// 		if (!line.empty() && (first = true))
+	// 		{
+	// 			std::cout << std::endl;
+	// 			std::cout << "\e[3;4mInput file:\e[0m  " << nLine <<
+	// 				" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
+	// 				<< std::endl;
 
-	std::string line;
-	bool first = false;
-	int nLine = 1;	
-	while (std::getline(infInp, line))
-	{		
-		try {		
-			if (!line.empty() && (first = true))
-			{
-				std::cout << std::endl;
-				std::cout << "\e[3;4mInput file:\e[0m  " << nLine <<
-					" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
-					<< std::endl;
-
-				parseLine(line, inputMap);				
-				makeExchange(line);
-			// 	std::map<std::string, float>::iterator itInp;
-			// 	std::map<std::string, float>::iterator itData;
-			// 	itInp = inputMap.find(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));				
-			// 	itData = dataMap.lower_bound(std::string(line.begin(), std::find(line.begin(), line.end(), '|')));
-							
-			// 	if (inputMap.end() != itInp && dataMap.end() != itData
-			// 		&& itInp->first == itData->first)				
-			// 		std::cout << "\e[32mthere is an exact entry\e[0m" << std::endl;				
-			// 	else if (itData == dataMap.begin())				
-			// 		std::cout << "\e[36mwe will take the first entry\e[0m" << std::endl;				
-			// 	else
-			// 	{
-			// 		std::cout << "\e[35mwe will take the previous entry\e[0m" << std::endl;
-			// 		itData--;
-			// 	}
-											
-			// 	std::cout << "\e[3;4mData.csv:\e[0m  " << searchIndex(dataMap, itData->first) << " \e[31mline: " << "\e[37;46m" << itData->first << ',' << itData->second << "\e[0m" << std::endl;
-			// 	std::cout << "\e[31m " << itInp->second << " * " << itData->second << " => " << itInp->second * itData->second << " \e[0m" << std::endl;			
-			// }
-			}		
-		}
-		catch (std::exception const & e)
-			{MyStyl::addWhat(e.what());}
-		nLine++;	
-	}
-	if (!first)
-		return (MyStyl::error("the file is empty"), 1);
-
-			
-	// for (std::map<std::string, float>::iterator it = inputMap.begin(); it != inputMap.end(); it++)
-	// 	std::cout << "map: " << it->first << " : " << it->second << std::endl;
-
-	// std::cout << "****************" << std::endl;	
-	// for (std::map<std::string, float>::iterator it = dataMap.begin(); it != dataMap.end(); it++)
-	// 	std::cout << "data: " << it->first << " : " << it->second << std::endl;
+	// 			parseLine(line, inputMap);				
+	// 			makeExchange(line);		
+	// 		}		
+	// 	}
+	// 	catch (std::exception const & e)
+	// 		{MyStyl::addWhat(e.what());}
+	// 	nLine++;	
+	// }
+	
+	// if (!first)
+	// 	return (MyStyl::error("the file is empty"), 1);	
 	BitcoinExchange be;
 	std::cout << be;
 	(void) argc, (void) argv;
