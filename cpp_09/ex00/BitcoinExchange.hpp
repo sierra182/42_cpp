@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:16:10 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 16:01:35 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:17:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <map>
+#include "Parser.hpp"
 
 class BitcoinExchange
 {
@@ -31,7 +32,7 @@ class BitcoinExchange
 	bool	parseDate(std::string & date, std::string::iterator & it,
 			int max, int delim);
 	void	parseLine(std::string & line,
-		std::map<std::string, float> & inputMap);
+		std::map<std::string, float> & inputMap, char sep);
 	void	printRslt(const std::map<std::string, float>::const_iterator itInp,
 			const std::map<std::string, float>::const_iterator itData);
 	void	makeExchange(std::string const & line);

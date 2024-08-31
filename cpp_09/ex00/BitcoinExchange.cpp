@@ -6,12 +6,11 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 16:01:48 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:35:53 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include "Parser.hpp"
 #include "MySty.hpp"
 #include <iostream>
 #include <fstream>
@@ -102,7 +101,7 @@ bool	BitcoinExchange::parseDate(std::string & date,
 }
 
 void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
-	float> & inputMap)
+	float> & inputMap, char sep)
 {	
 	Parser parser;
 	std::string::iterator it = line.begin();
@@ -110,13 +109,16 @@ void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
 	
 	this->parseDate(line, it, 4, '-');	
 	this->parseDate(line, it, 2, '-');
-	this->parseDate(line, it, 2, '|');	
+	this->parseDate(line, it, 2, sep);	
 	this->checkDate(line);	
 	value = parser.parseToFloat(it, line.end());
-	if (value < 0)		
-		throw std::invalid_argument("Error: not a positive number.");		
-	else if (value > 1000)
-		throw std::invalid_argument("Error: too large a number.");
+	if (sep == '|')
+	{		
+		if (value < 0)		
+			throw std::invalid_argument("Error: not a positive number.");		
+		else if (value > 1000)
+			throw std::invalid_argument("Error: too large a number.");
+	}
 	inputMap[std::string(line.begin(),
 		std::find(line.begin(), line.end(), '|'))] = value;	
 }
@@ -157,34 +159,6 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 	this->printRslt(itInp, itData);
 }
 
-void	BitcoinExchange::fillDataMap(std::ifstream & infData)
-{
-	std::string::iterator it;
-	Parser parser;
-	std::string line;		
-	bool first = true;
-	float value = 0.0f;
-			
-	while (std::getline(infData, line))	
-	{		
-		it = std::find_if(line.begin(), line.end(),	parser.isNotSpace);		
-		if ((!line.empty() && it != line.end()))
-		{
-			if (!first)
-			{				
-				value = parser.parseToFloat(++std::find(line.begin(),
-					line.end(), ','), line.end()); 
-				dataMap.insert(make_pair(std::string(line.begin(),
-					std::find(line.begin(), line.end(), ',')), value));
-			}
-			else
-				first = !first;
-		}
-	}				
-	if (first)
-		throw std::invalid_argument("the file is empty");
-}
-
 bool	BitcoinExchange::isFirstLineValid(std::string line, Parser & parser,
 	std::string const & comp1, char const comp2, std::string const & comp3)
 {
@@ -205,7 +179,44 @@ bool	BitcoinExchange::isFirstLineValid(std::string line, Parser & parser,
 	}
 	return false;
 }
+
+void	BitcoinExchange::fillDataMap(std::ifstream & infData)
+{
+	std::string::iterator it;
+	std::string line;
+	Parser parser;
+	bool first = true;
+	int nLine = 1;
 	
+	while (std::getline(infData, line))
+	{		
+		try {
+			it = std::find_if(line.begin(), line.end(),	parser.isNotSpace);		
+			if ((!line.empty() && it != line.end()))
+			{
+				if ((!isFirstLineValid(line, parser, "date", ',',
+					"exchange_rate") && first) || !first)
+				{	
+					first = false;
+					this->parseLine(line, this->dataMap, ',');
+				}
+				else
+					first = false;
+			}
+		}
+		catch (std::exception const & e)
+		{	
+			std::cout << std::endl;
+			std::cout << "\e[3;4mData file:\e[0m  " << nLine <<
+				" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
+				<< std::endl;
+			MySty::addWhat(e.what());
+		}
+		nLine++;	
+	}	
+	if (first)
+		throw std::invalid_argument("the file is empty");
+}
 void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 {
 	std::string::iterator it;
@@ -229,7 +240,7 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 						" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
 						<< std::endl;
 
-					this->parseLine(line, this->inputMap);				
+					this->parseLine(line, this->inputMap, '|');				
 					this->makeExchange(line);		
 				}
 				else

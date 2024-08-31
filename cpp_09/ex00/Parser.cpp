@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:20:47 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 15:29:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:27:23 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ long double	Parser::tryCastLongDouble( const std::string::iterator begin,
 		std::string rem = std::string(endChar);
 		std::string::iterator it = std::find_if(rem.begin(), rem.end(),
 			this->isNotSpace);
-		if (it != rem.end())
-		{
-			std::cout << rem << std::endl;	
-			throw std::invalid_argument("partial cast");
-		}
+		if (it != rem.end())	
+			throw std::invalid_argument("bad input");		
 	}
 	return (valLdbl);
 }
