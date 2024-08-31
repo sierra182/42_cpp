@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 11:09:27 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 11:36:56 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <cstring>
 #include "MySty.hpp"
 #include "BitcoinExchange.hpp"
-
 
 int main(int argc, char * argv[])
 {

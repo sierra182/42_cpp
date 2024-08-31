@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:16:10 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 10:58:13 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 11:40:25 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,3 @@ class BitcoinExchange
 		BitcoinExchange(std::ifstream & infData, std::ifstream & infInp);
 		~BitcoinExchange( void );	
 };
-
-std::ostream & operator<<(std::ostream & lhs, BitcoinExchange const & rhs);
