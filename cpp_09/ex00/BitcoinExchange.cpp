@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 16:35:53 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 17:08:24 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
 			throw std::invalid_argument("Error: too large a number.");
 	}
 	inputMap[std::string(line.begin(),
-		std::find(line.begin(), line.end(), '|'))] = value;	
+		std::find(line.begin(), line.end(), sep))] = value;	
 }
 
 void	BitcoinExchange::printRslt(const std::map<std::string,
@@ -188,6 +188,7 @@ void	BitcoinExchange::fillDataMap(std::ifstream & infData)
 	bool first = true;
 	int nLine = 1;
 	
+	std::string tmpTime;
 	while (std::getline(infData, line))
 	{		
 		try {
@@ -198,7 +199,17 @@ void	BitcoinExchange::fillDataMap(std::ifstream & infData)
 					"exchange_rate") && first) || !first)
 				{	
 					first = false;
+					std::string tmpLine = line;
 					this->parseLine(line, this->dataMap, ',');
+					std::map<std::string, float>::iterator itOrder;	
+					itOrder = this->dataMap.find(std::string(tmpLine.begin(),
+					std::find(tmpLine.begin(), tmpLine.end(), ',')));				
+					if (itOrder->first < tmpTime)
+						throw std::invalid_argument("data are disordered");
+					else if (itOrder->first == tmpTime)
+						throw std::invalid_argument("data are double");
+					else
+						tmpTime = itOrder->first;
 				}
 				else
 					first = false;
@@ -209,14 +220,15 @@ void	BitcoinExchange::fillDataMap(std::ifstream & infData)
 			std::cout << std::endl;
 			std::cout << "\e[3;4mData file:\e[0m  " << nLine <<
 				" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
-				<< std::endl;
-			MySty::addWhat(e.what());
+				<< std::endl;		
+			throw;
 		}
 		nLine++;	
 	}	
 	if (first)
-		throw std::invalid_argument("the file is empty");
+		throw std::invalid_argument("the data file is empty");
 }
+
 void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 {
 	std::string::iterator it;
@@ -252,6 +264,6 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 		nLine++;	
 	}	
 	if (first)
-		throw std::invalid_argument("the file is empty");
+		throw std::invalid_argument("the input file is empty");
 }
 	
