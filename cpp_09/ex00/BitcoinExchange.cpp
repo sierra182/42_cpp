@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 18:03:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/08/31 22:48:50 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <map>
 #include <ctime>
 #include <sstream>
+#include <sys/ioctl.h>
+#include <unistd.h>
 
 BitcoinExchange::BitcoinExchange( void ){}
 
@@ -123,31 +125,18 @@ void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
 		std::find(line.begin(), line.end(), sep))] = value;	
 }
 
-#include <sys/ioctl.h>
-#include <unistd.h>
-
-void colorFullLine(const std::string & str, short unsigned int color) {
-    // Obtenir la taille du terminal
-    // struct winsize w;
-    // ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-    // int width = w.ws_col;
-
+void BitcoinExchange::colorFullLine(const std::string & str,
+	short unsigned int color)
+{
 	struct winsize ws;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
-	std::string empty(ws.ws_col, ' ');
-	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m";// << std::endl;
-    // Créer une chaîne qui remplit la ligne entière
-    // std::string padded_text = text;
-    // if (padded_text.length() < width) {
-    //     padded_text += std::string(width - padded_text.length(), ' ');
-    // }
-
-    // Couleur de fond vert avec texte par défaut (en blanc)
-    // std::cout << "\033[42m" << padded_text << "\033[0m" << std::endl;
+	std::string empty(static_cast<int>(ws.ws_col * .75f), ' ');
+	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m";
 }
 void	BitcoinExchange::printRslt(const std::map<std::string,
 	float>::const_iterator itInp, const std::map<std::string,
-	float>::const_iterator itData)
+	float>::const_iterator itData, short unsigned int colorArr[],
+	short unsigned int color)
 {
 	// colorFullLine("\e[32mteste moi le cul", 5);
 	// colorFullLine("\e[32mteste moi le cul", 5);
@@ -155,20 +144,25 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 	// std::string inpStr = dep + "\e[3;4mData.csv:\e[0m  " + 
 	// this->searchIndex(dataMap, itData->first) + " \e[31mline: " +
 	//  "\e[37;46m" + itData->first + ',' + itData->second + "\e[0m";
+
 	std::ostringstream oss;
-	oss << "\e[3;4mData.csv:\e[0m  " <<
+	oss << "\e[3;4;4" << colorArr[color] << "m" << "mData.csv:\e[0m" << "\e[4" << colorArr[color] <<  "m " <<
 		this->searchIndex(dataMap, itData->first) << " \e[31mline: "
-			<< "\e[37;46m" << itData->first << ',' << itData->second
+			<< "\e[37;4;4";
+	color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
+			oss << colorArr[color] << "m" << itData->first << ',' << itData->second
 			<< "\e[0m" << std::endl;
-	colorFullLine(oss.str(), 6);
+	color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
+	MySty::colorFullLine(oss.str(), colorArr[color]);
 	oss.str("");
 		
-	oss << "\e[31m " << itInp->second << " * " << itData->second <<
+	oss << "\e[3;4;4" << colorArr[color] << "m\e[31m " << itInp->second << " * " << itData->second <<
 		" => " << itInp->second * itData->second << " \e[0m" << std::endl;
-	colorFullLine(oss.str(), 6);
+	MySty::colorFullLine(oss.str(), colorArr[color]);
 }
 
-void	BitcoinExchange::makeExchange(std::string const & line)
+void	BitcoinExchange::makeExchange(std::string const & line,
+	short unsigned int colorArr[], short unsigned int color)
 {
 	std::map<std::string, float>::iterator itInp;
 	std::map<std::string, float>::iterator itData;
@@ -177,7 +171,7 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 		std::find(line.begin(), line.end(), '|')));				
 	itData = dataMap.lower_bound(std::string(line.begin(),
 		std::find(line.begin(), line.end(), '|')));
-				
+	oss << "\e[4" << color << "m";			
 	if (inputMap.end() != itInp && dataMap.end() != itData
 		&& itInp->first == itData->first)				
 		oss << "\e[32mthere is an exact entry\e[0m" << std::endl;				
@@ -188,8 +182,8 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 		oss << "\e[35mwe will take the previous entry\e[0m" << std::endl;
 		itData--;
 	}
-	colorFullLine(oss.str(), 6);
-	this->printRslt(itInp, itData);
+	MySty::colorFullLine(oss.str(), colorArr[color]);
+	this->printRslt(itInp, itData, colorArr, color);
 }
 
 bool	BitcoinExchange::isFirstLineValid(std::string line, Parser & parser,
@@ -269,7 +263,8 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 	Parser parser;
 	bool first = true;
 	int nLine = 1;
-	
+	short unsigned int color = 0;
+	short unsigned int colorArr[] = {5, 6};
 	while (std::getline(infInp, line))
 	{		
 		try {
@@ -280,21 +275,28 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 					&& first) || !first)
 				{	
 					first = false;				
-					std::cout << std::endl;
+					// std::cout << std::endl;
+					color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);		
 					std::ostringstream oss;
-					oss << "\e[3;4mInput file:\e[0m  " << nLine <<
-						" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
+					oss << "\e[3;4" << colorArr[color] << "mInput file:  " << nLine;
+					color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
+					oss <<	" \e[31mline: " << "\e[37;4" << colorArr[color] << "m" <<
+						 line << "\e[0m"
 						<< std::endl;
-					colorFullLine(oss.str(), 6);
-					this->parseLine(line, this->inputMap, '|');		//!this color		
-					this->makeExchange(line);		
+					color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
+					MySty::colorFullLine(oss.str(), colorArr[color]);
+					this->parseLine(line, this->inputMap, '|');				
+					this->makeExchange(line, colorArr, color);
 				}
 				else
 					first = false;
 			}
 		}
 		catch (std::exception const & e)
-			{MySty::addWhat(e.what());}
+			{
+				color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
+				MySty::addWhat(e.what(), colorArr[color]);
+			}
 		nLine++;	
 	}	
 	if (first)
