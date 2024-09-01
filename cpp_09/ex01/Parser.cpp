@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:20:47 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 11:52:39 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 14:03:59 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ long double	Parser::tryCastLongDouble( const std::string::iterator begin,
 	const char * str_c = str_tmp.c_str();
 	valLdbl = std::strtold(str_c, &endChar);
 	if (errno == ERANGE)
-		this->flowHandle(valLdbl, "long double");					
+		this->decimalFlowHandle(valLdbl, "long double");					
 	if (*endChar)
 	{
 		std::string rem = std::string(endChar);
@@ -58,20 +58,15 @@ long double	Parser::tryCastLongDouble( const std::string::iterator begin,
 	return (valLdbl);
 }
 
-
-void	Parser::LongflowHandle(Long value)// modif flowHandle
+void	Parser::longFlowHandle(long value)
 {		
-	if (value == std::numeric_limits<long>::max())
-	{
-		throw std::overflow_error("Long: positive overflow");
-	} 	
+	if (value == std::numeric_limits<long>::max())	
+		throw std::overflow_error("Long: positive overflow");		
 	else if (value == std::numeric_limits<long>::min())
-	{
 		throw std::overflow_error("Long: negative overflow");			
-	}		
 }
 
-long double	Parser::tryCastLong( const std::string::iterator begin,
+long 	Parser::tryCastLong(const std::string::iterator begin,
 	const std::string::iterator end)
 {
 	errno = 0;
@@ -84,10 +79,9 @@ long double	Parser::tryCastLong( const std::string::iterator begin,
 		
 	std::string str_tmp = std::string(begin, end);
 	const char * str_c = str_tmp.c_str();
-	valL = std::strtol(str_c, &endChar);
+	valL = std::strtol(str_c, &endChar, 10);
 	if (errno == ERANGE)
-		this->Long
-		// this->flowHandle(valL, "long double");					
+		this->longFlowHandle(valL);						
 	if (*endChar)
 	{
 		std::string rem = std::string(endChar);
@@ -106,25 +100,8 @@ float	Parser::tryCastFloat(long double value)
 
 	float valFlt = static_cast<float>(value);
 	if (value != 0.0f)
-		this->flowHandle(valFlt, "float");		
+		this->decimalFlowHandle(valFlt, "float");		
 	return (valFlt);
-}
-
-int	Parser::tryCastInt(long double value)
-{
-	if (std::isnan(value))
-		throw std::invalid_argument("value is NaN");
-
-	long double min = static_cast<long double>
-		(std::numeric_limits<int>::min());
-	long double max = static_cast<long double>
-		(std::numeric_limits<int>::max());
-	
-	if (value < min)
-		throw std::overflow_error("int negative overflow");
-	else if (value > max)
-		throw std::overflow_error("int positive overflow");			
-	return (static_cast<int>(value));
 }
 
 float	Parser::parseToFloat(const std::string::iterator begin,
@@ -136,13 +113,13 @@ float	Parser::parseToFloat(const std::string::iterator begin,
 	return (valFlt);
 }
 
-float	Parser::parseToInt(const std::string::iterator begin,
+int	Parser::parseToInt(const std::string::iterator begin,
 	const std::string::iterator end)
 {		
-	long double valLdbl = this->tryCastLongLong(begin, end);
-	float valFlt = this->tryCastInt(valLdbl);
+	long valL = this->tryCastLong(begin, end);
+	int valInt = this->tryCastInt(valL);
 	
-	return (valFlt);
+	return (valInt);
 }
 
 bool	Parser::isNotSpace(const char c)
