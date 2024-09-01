@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 07:28:31 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 08:07:38 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 
 	std::ostringstream oss;
 	// this->reverseColor();
-	oss << "\e[3;4;4" << this->colorArr[this->color] << "m" << "Data.csv:\e[0m" << "\e[4" << this->colorArr[this->color] <<  "m " <<
+	oss << "\e[3;4" << this->colorArr[this->color] << "m " << "\e[4mData.csv:\e[0m" << "\e[4" << this->colorArr[this->color] <<  "m " <<
 		this->searchIndex(dataMap, itData->first) << " \e[31mline: "
 			<< "\e[37;4;4";
 	// this->reverseColor();
@@ -165,10 +165,10 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 	// this->reverseColor();
 	MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
 	oss.str("");
-	this->reverseColor();
 	oss << "\e[4" <<  this->colorArr[this->color];
-		this->reverseColor();
-	oss << ";" << this->colorArr[this->color] << "m" << "\t\t\t\t\t\t " << itInp->second << " * " << itData->second <<
+	this->reverseColor();
+		// this->reverseColor();
+	oss << ";3" << this->colorArr[this->color] << "m" << "\t\t\t\t\t\t\t " << itInp->second << " * " << itData->second <<
 		" => " << itInp->second * itData->second << " \e[0m" << std::endl;
 	this->reverseColor();		
 
@@ -184,15 +184,15 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 		std::find(line.begin(), line.end(), '|')));				
 	itData = dataMap.lower_bound(std::string(line.begin(),
 		std::find(line.begin(), line.end(), '|')));
-	oss << "\e[4" << 0 << ";3" << this->colorArr[color] << "m";			
+	oss << "\e[4" << 0 << ";3" << this->colorArr[color] << "m ";			
 	if (inputMap.end() != itInp && dataMap.end() != itData
 		&& itInp->first == itData->first)				
-		oss << "there is an exact entry\e[0m" << std::endl;				
+		oss << "there is an exact entry \e[0m" << std::endl;				
 	else if (itData == dataMap.begin())				
-		oss << "we will take the first entry\e[0m" << std::endl;				
+		oss << "we will take the first entry \e[0m" << std::endl;				
 	else
 	{
-		oss << "we will take the previous entry\e[0m" << std::endl;
+		oss << "we will take the previous entry \e[0m" << std::endl;
 		itData--;
 	}
 	// oss << "\e[0m";
@@ -259,7 +259,7 @@ void	BitcoinExchange::fillDataMap(std::ifstream & infData)
 		catch (std::exception const & e)
 		{	
 			std::cout << std::endl;
-			std::cout << "\e[3;4mData file:\e[0m  " << nLine <<
+			std::cout << " \e[3;4mData file:\e[0m  " << nLine <<
 				" \e[31mline: " << "\e[37;45m" << line << "\e[0m"
 				<< std::endl;		
 			throw;
@@ -276,7 +276,8 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 	std::string line;
 	Parser parser;
 	bool first = true;
-	int nLine = 1;	
+	int nLine = 1;
+		
 	while (std::getline(infInp, line))
 	{		
 		try {
@@ -286,11 +287,12 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 				if ((!isFirstLineValid(line, parser, "date", '|', "value")
 					&& first) || !first)
 				{	
-					first = false;				
-					// std::cout << std::endl;
+					if (first)
+						std::cout << std::endl;
+					first = false;
 					this->reverseColor();		
 					std::ostringstream oss;
-					oss << "\e[3;4" << this->colorArr[this->color] << "mInput file:  " << nLine;
+					oss << "\e[3;4" << this->colorArr[this->color] << "m \e[4mInput file:\e[24m  " << nLine;
 					this->reverseColor();
 					oss <<	" \e[31mline: " << "\e[37;4" << this->colorArr[this->color] << "m" <<
 						 line << "\e[0m"
@@ -305,10 +307,10 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 			}
 		}
 		catch (std::exception const & e)
-			{
-				this->reverseColor();
-				MySty::addWhat(e.what(), this->colorArr[this->color]);
-			}
+		{
+			this->reverseColor();
+			MySty::addWhatBg(e.what(), this->colorArr[this->color]);
+		}
 		nLine++;	
 	}	
 	if (first)

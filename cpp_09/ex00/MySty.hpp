@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:36:42 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 06:40:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 07:59:53 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct MySty
 	}
 
     template <typename T>
-	static void addWhat(const T & what, short unsigned int color) //!cerr
+	static void addWhatBg(const T & what, short unsigned int color) //!cerr
 	{	
 		std::ostringstream oss;	
 		oss << std::endl << "\e[0m";
@@ -60,7 +60,14 @@ struct MySty
 	}
 
 	template <typename T>
-	static void error(T what)
+	static void addWhat(const T & what) //!cerr
+	{	
+		std::cerr << std::endl << "\e[1;31m\t 🏴‍☠️   Exception: \e[1;95m"
+			<< what << "   🤢 🤮\e[0m" << std::endl << std::endl;
+	}
+	
+	template <typename T>
+	static void error(const T & what)
 	{
 		std::cerr << std::endl << "\e[1;31m\t 🏴‍☠️   Error: \e[1;95m"
 			<< what << "   🤢 🤮\e[0m" << std::endl << std::endl;
