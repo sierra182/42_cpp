@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 21:11:39 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 21:22:50 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ PmergeMe::PmergeMe(const std::string & str)
 	while (std::getline(iss >> std::ws, item, ' '))
 	{
 		value = psr.parseToInt(item.begin(), item.end());
-		if (value < 0)
+		if (value < 0)		
 			throw std::invalid_argument
-				(std::string("the value must be possitive: " + value));
+				(std::string("the value must be positive: ") + item);		
 	}
 }
