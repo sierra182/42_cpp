@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:20:47 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 16:28:47 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:35:56 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Parser::Parser(const Parser &)
 {
 	return ;
 }
+
 Parser & Parser::operator=(const Parser &)
 {
 	return (*this);
@@ -95,6 +96,14 @@ float	Parser::parseToFloat(const std::string::iterator begin,
 	return (valFlt);
 }
 
+void Parser::revTrim(std::string & str) const
+{
+	std::string::reverse_iterator rit = std::find_if(str.rbegin(),
+		str.rend(), this->isNotSpace);
+	if (rit != str.rend())		
+		str.erase(rit.base(), str.end());	
+}
+
 bool	Parser::isNotSpace(const char c)
 {
 	return !std::isspace(static_cast<unsigned char>(c));
@@ -103,12 +112,4 @@ bool	Parser::isNotSpace(const char c)
 bool	Parser::isSpace(const char c)
 {
 	return std::isspace(static_cast<unsigned char>(c));
-}
-
-void Parser::revTrim(std::string & str) const
-{
-	std::string::reverse_iterator rit = std::find_if(str.rbegin(),
-		str.rend(), this->isNotSpace);
-	if (rit != str.rend())		
-		str.erase(rit.base(), str.end());	
 }

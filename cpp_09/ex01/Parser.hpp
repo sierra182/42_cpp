@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 13:39:32 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:34:48 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,31 @@ class Parser
 	Parser & operator=(const Parser &);
 	
 	template <class T>
-	void		decimalFlowHandle(T value, std::string const type);
-	void		longFlowHandle(long value);
+	void		decimalFlowHandle(T value, std::string const type) const;
+	void		longFlowHandle(long value) const;
 	long double	tryCastLongDouble( const std::string::iterator begin,
-		const std::string::iterator end);	
-	float		tryCastFloat(long double value);
+		const std::string::iterator end) const;	
+	float		tryCastFloat(long double value) const;
 	template <class T>
-	int			tryCastInt(T value);
+	int			tryCastInt(T value) const;
 	long 		tryCastLong(const std::string::iterator begin,
-		const std::string::iterator end);
+		const std::string::iterator end) const;
 	
 	public :
 		
 		Parser();
 		~Parser();
 		float		parseToFloat(const std::string::iterator begin,
-			const std::string::iterator end);
+			const std::string::iterator end) const;
 		int			parseToInt(const std::string::iterator begin,
-			const std::string::iterator end);
+			const std::string::iterator end) const;
 		static bool	isNotSpace(const char c);
 		static bool	isSpace(const char c);
-		void 		revTrim(std::string & str);		
+		void 		revTrim(std::string & str) const;		
 };
 
 template <class T>
-void	Parser::decimalFlowHandle(T value, std::string const type)
+void	Parser::decimalFlowHandle(T value, std::string const type) const
 {		
 	if (std::isinf(value))
 	{
@@ -67,7 +67,7 @@ void	Parser::decimalFlowHandle(T value, std::string const type)
 }
 
 template <class T>
-int	Parser::tryCastInt(T value)
+int	Parser::tryCastInt(T value) const
 {
 	if (std::isnan(value))
 		throw std::invalid_argument("value is NaN");

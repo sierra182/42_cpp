@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:36:42 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 10:26:26 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 15:44:48 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ struct MySty
 	template <typename T>
 	static void addWhat(const T & what) 
 	{	
-		std::cerr << std::endl << "\e[1;31m\t 🏴‍☠️   Exception: \e[1;91m"
+		std::cerr << std::endl << "\e[1;96m\t 🏴‍☠️   Exception: \e[1;95m"
 			<< what << "   🤢 🤮\e[0m" << std::endl << std::endl;
 	}
 	

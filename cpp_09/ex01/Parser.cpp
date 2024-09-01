@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:20:47 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 14:03:59 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:53:59 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ Parser::Parser(const Parser &)
 {
 	return ;
 }
+
 Parser & Parser::operator=(const Parser &)
 {
 	return (*this);
 }
 
 long double	Parser::tryCastLongDouble( const std::string::iterator begin,
-	const std::string::iterator end)
+	const std::string::iterator end) const
 {
 	errno = 0;
 	char * endChar;	
@@ -58,7 +59,7 @@ long double	Parser::tryCastLongDouble( const std::string::iterator begin,
 	return (valLdbl);
 }
 
-void	Parser::longFlowHandle(long value)
+void	Parser::longFlowHandle(long value) const
 {		
 	if (value == std::numeric_limits<long>::max())	
 		throw std::overflow_error("Long: positive overflow");		
@@ -67,7 +68,7 @@ void	Parser::longFlowHandle(long value)
 }
 
 long 	Parser::tryCastLong(const std::string::iterator begin,
-	const std::string::iterator end)
+	const std::string::iterator end) const
 {
 	errno = 0;
 	char * endChar;	
@@ -88,12 +89,13 @@ long 	Parser::tryCastLong(const std::string::iterator begin,
 		std::string::iterator it = std::find_if(rem.begin(), rem.end(),
 			this->isNotSpace);
 		if (it != rem.end())	
-			throw std::invalid_argument("bad input");		
+			throw std::invalid_argument("this shit is unauthorized: "
+				+ std::string(it, rem.end()));		
 	}
 	return (valL);
 }
 
-float	Parser::tryCastFloat(long double value)
+float	Parser::tryCastFloat(long double value) const
 {
 	if (std::isnan(value))
 		throw std::invalid_argument("value is NaN");
@@ -105,7 +107,7 @@ float	Parser::tryCastFloat(long double value)
 }
 
 float	Parser::parseToFloat(const std::string::iterator begin,
-	const std::string::iterator end)
+	const std::string::iterator end) const
 {		
 	long double valLdbl = this->tryCastLongDouble(begin, end);
 	float valFlt = this->tryCastFloat(valLdbl);
@@ -114,12 +116,20 @@ float	Parser::parseToFloat(const std::string::iterator begin,
 }
 
 int	Parser::parseToInt(const std::string::iterator begin,
-	const std::string::iterator end)
+	const std::string::iterator end) const
 {		
 	long valL = this->tryCastLong(begin, end);
 	int valInt = this->tryCastInt(valL);
 	
 	return (valInt);
+}
+
+void Parser::revTrim(std::string & str) const
+{
+	std::string::reverse_iterator rit = std::find_if(str.rbegin(),
+		str.rend(), this->isNotSpace);
+	if (rit != str.rend())		
+		str.erase(rit.base(), str.end());	
 }
 
 bool	Parser::isNotSpace(const char c)
@@ -130,12 +140,4 @@ bool	Parser::isNotSpace(const char c)
 bool	Parser::isSpace(const char c)
 {
 	return std::isspace(static_cast<unsigned char>(c));
-}
-
-void Parser::revTrim(std::string & str)
-{
-	std::string::reverse_iterator rit = std::find_if(str.rbegin(),
-		str.rend(), this->isNotSpace);
-	if (rit != str.rend())		
-		str.erase(rit.base(), str.end());	
 }
