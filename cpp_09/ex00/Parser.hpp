@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 16:12:41 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:29:41 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ class Parser
 	Parser & operator=(const Parser &);
 	
 	template <class T>
-	void		flowHandle(T value, std::string const type);	
+	void		flowHandle(T value, std::string const type) const;	
 	long double	tryCastLongDouble( const std::string::iterator begin,
-		const std::string::iterator end);	
-	float		tryCastFloat(long double value);
-	int			tryCastInt(long double value);
+		const std::string::iterator end) const;	
+	float		tryCastFloat(long double value) const;
+	int			tryCastInt(long double value) const;
 	
 	public :
 		
 		Parser();
 		~Parser();
 		float		parseToFloat(const std::string::iterator begin,
-			const std::string::iterator end);
+			const std::string::iterator end) const;
 		static bool	isNotSpace(const char c);
 		static bool	isSpace(const char c);
-		void 		revTrim(std::string & str);		
+		void 		revTrim(std::string & str) const;		
 };
 
 template <class T>
-void	Parser::flowHandle(T value, std::string const type)
+void	Parser::flowHandle(T value, std::string const type) const
 {		
 	if (std::isinf(value))
 	{

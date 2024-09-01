@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:16:10 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 10:24:55 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:26:37 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ class BitcoinExchange
 	BitcoinExchange & operator=( const BitcoinExchange & rhs);
 		
 	int		searchIndex(std::map<std::string, float> map,
-		std::string const & key);
-	void	isWrongDate(int year, int month, int day);
-	void	checkDate(std::string & line);
+		std::string const & key) const;
+	void	isWrongDate(int year, int month, int day) const;
+	void	checkDate(std::string & line) const;
 	bool	parseDate(std::string & date, std::string::iterator & it,
-			int max, int delim);
+			int max, int delim) const;
 	void	parseLine(std::string & line,
-		std::map<std::string, float> & inputMap, char sep);
+		std::map<std::string, float> & inputMap, char sep) const;
 	void	reverseColor();
 	void	printRslt(const std::map<std::string, float>::const_iterator itInp,
 			const std::map<std::string, float>::const_iterator itData);
@@ -44,7 +44,7 @@ class BitcoinExchange
 	void	fillInputMap(std::ifstream & infInp);
 	bool	isFirstLineValid(std::string line, Parser & parser,
 		std::string const & comp1, char const comp2,
-		std::string const & comp3);
+		std::string const & comp3) const;
 		
 	public:
 		

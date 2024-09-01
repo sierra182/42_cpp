@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 10:24:08 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:31:12 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ BitcoinExchange::BitcoinExchange(std::ifstream & infData,
 }
 
 int BitcoinExchange::searchIndex(std::map<std::string, float> map,
-	std::string const & key)
+	std::string const & key) const
 {
 	int i = 1;	
 	std::map<std::string, float>::iterator it = map.begin();
@@ -55,7 +55,7 @@ int BitcoinExchange::searchIndex(std::map<std::string, float> map,
 	return ++i;
 }
 
-void	BitcoinExchange::isWrongDate(int year, int month, int day)
+void	BitcoinExchange::isWrongDate(int year, int month, int day) const
 {
 	struct tm date;
 	std::memset(&date, 0, sizeof(date));
@@ -69,7 +69,7 @@ void	BitcoinExchange::isWrongDate(int year, int month, int day)
 		throw std::invalid_argument("wrong date");
 }
 
-void	BitcoinExchange::checkDate(std::string & line)
+void	BitcoinExchange::checkDate(std::string & line) const
 {
 	std::string::iterator tmpIt;
 	std::string::iterator tmpIt2;
@@ -85,7 +85,7 @@ void	BitcoinExchange::checkDate(std::string & line)
 }
 
 bool	BitcoinExchange::parseDate(std::string & date,
-	std::string::iterator & it, int max, int delim)
+	std::string::iterator & it, int max, int delim) const
 {
 	int nbr = 0;
 			
@@ -106,7 +106,7 @@ bool	BitcoinExchange::parseDate(std::string & date,
 }
 
 void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
-	float> & inputMap, char sep)
+	float> & inputMap, char sep) const
 {	
 	Parser parser;
 	std::string::iterator it = line.begin();
@@ -167,7 +167,7 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 		std::find(line.begin(), line.end(), '|')));				
 	itData = dataMap.lower_bound(std::string(line.begin(),
 		std::find(line.begin(), line.end(), '|')));
-	oss << "\e[4" << 0 << ";3" << this->colorArr[color] << "m ";			
+	oss << "\e[4" << 0 << ";9" << this->colorArr[color] << "m ";			
 	if (inputMap.end() != itInp && dataMap.end() != itData
 		&& itInp->first == itData->first)				
 		oss << "there is an exact entry \e[0m" << std::endl;				
@@ -184,6 +184,7 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 
 bool	BitcoinExchange::isFirstLineValid(std::string line, Parser & parser,
 	std::string const & comp1, char const comp2, std::string const & comp3)
+	const
 {
 	std::istringstream ss(line);
 			 

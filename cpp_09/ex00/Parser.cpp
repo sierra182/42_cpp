@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:20:47 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 16:27:23 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:28:47 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Parser & Parser::operator=(const Parser &)
 }
 
 long double	Parser::tryCastLongDouble( const std::string::iterator begin,
-	const std::string::iterator end)
+	const std::string::iterator end) const
 {
 	errno = 0;
 	char * endChar;	
@@ -58,7 +58,7 @@ long double	Parser::tryCastLongDouble( const std::string::iterator begin,
 	return (valLdbl);
 }
 
-float	Parser::tryCastFloat(long double value)
+float	Parser::tryCastFloat(long double value) const
 {
 	if (std::isnan(value))
 		throw std::invalid_argument("value is NaN");
@@ -69,7 +69,7 @@ float	Parser::tryCastFloat(long double value)
 	return (valFlt);
 }
 
-int	Parser::tryCastInt(long double value)
+int	Parser::tryCastInt(long double value) const
 {
 	if (std::isnan(value))
 		throw std::invalid_argument("value is NaN");
@@ -87,7 +87,7 @@ int	Parser::tryCastInt(long double value)
 }
 
 float	Parser::parseToFloat(const std::string::iterator begin,
-	const std::string::iterator end)
+	const std::string::iterator end) const
 {		
 	long double valLdbl = this->tryCastLongDouble(begin, end);
 	float valFlt = this->tryCastFloat(valLdbl);
@@ -105,7 +105,7 @@ bool	Parser::isSpace(const char c)
 	return std::isspace(static_cast<unsigned char>(c));
 }
 
-void Parser::revTrim(std::string & str)
+void Parser::revTrim(std::string & str) const
 {
 	std::string::reverse_iterator rit = std::find_if(str.rbegin(),
 		str.rend(), this->isNotSpace);
