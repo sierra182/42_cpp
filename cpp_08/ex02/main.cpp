@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:06:11 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 18:02:49 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 20:23:21 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,7 @@ void copy( void )
 			std::cout << std::endl;
 			MyStyl::addAction("print mstack 2");
 			std::cout << mstack2 << std::endl;
-		}
-		{
-			// test const;
-			int arr[] = {42, 18, -2, 0, 99}; 
-			std::deque<int> deq(arr, arr + 5);
-			const MutantStack<int> * mstack = new MutantStack<int>(deq);
-			// mstack->push(42);
-		}	
+		}		
 	}
 }
 
