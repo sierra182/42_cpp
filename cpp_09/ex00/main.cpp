@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 09:33:35 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 10:17:54 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int main(int argc, char * argv[])
 	if (infData.fail())	
 		return MySty::error(std::string("Data File: ")
 			+ std::strerror(errno)), 1;
+	std::cout << "\e[32m" << std::flush;		
+	system("cat btc_design");
+	std::cout << "\e[0m" << std::endl;
+	usleep(500000);
 	try {
 		BitcoinExchange be(infData, infInp);
 	}

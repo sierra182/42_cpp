@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 09:41:15 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 10:19:50 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 	oss << "\e[4" <<  this->colorArr[this->color];
 	this->reverseColor();
 		// this->reverseColor();
-	oss << ";3" << this->colorArr[this->color] << "m" << "\t\t\t\t\t\t\t " << itInp->second << " * " << itData->second <<
+	oss << ";3" << this->colorArr[this->color] << "m" << "\t\t\t\t\t\t\t\t\t\t " << itInp->second << " * " << itData->second <<
 		" => " << itInp->second * itData->second << " \e[0m" << std::endl;
 	this->reverseColor();		
 
@@ -287,6 +287,7 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 				if ((!isFirstLineValid(line, parser, "date", '|', "value")
 					&& first) || !first)
 				{	
+					usleep(50000);
 					if (first)
 						std::cout << std::endl;
 					first = false;
