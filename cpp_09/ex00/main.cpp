@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:47:23 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 10:17:54 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 10:27:32 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ int main(int argc, char * argv[])
 	std::cout << "\e[32m" << std::flush;		
 	system("cat btc_design");
 	std::cout << "\e[0m" << std::endl;
-	usleep(500000);
+	usleep(100000);
 	try {
 		BitcoinExchange be(infData, infInp);
 	}
 	catch (std::exception const & e)
 		{MySty::addWhat(e.what()); return(1);}
-	std::cout << std::endl;
+		
+	std::cout << std::endl;	
 	return (0);
 }

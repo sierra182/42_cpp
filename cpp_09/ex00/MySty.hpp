@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:36:42 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 09:41:22 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 10:26:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct MySty
 	}
 
     template <typename T>
-	static void addWhatBg(const T & what, short unsigned int color) //!cerr
+	static void addWhatBg(const T & what, short unsigned int color) 
 	{	
 		std::ostringstream oss;	
 		oss << std::endl << "\e[0m";
@@ -60,7 +60,7 @@ struct MySty
 	}
 
 	template <typename T>
-	static void addWhat(const T & what) //!cerr
+	static void addWhat(const T & what) 
 	{	
 		std::cerr << std::endl << "\e[1;31m\t 🏴‍☠️   Exception: \e[1;91m"
 			<< what << "   🤢 🤮\e[0m" << std::endl << std::endl;
@@ -80,6 +80,7 @@ struct MySty
 		struct winsize ws;
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);	
 		std::string empty(static_cast<unsigned int>(ws.ws_col * 0.75f), ' ');
-		std::cout << "    \e[4" << color << "m" << empty << "\r" << "\e[0m" <<  str << "\e[0m";// << std::endl;	
+		std::cout << "    \e[4" << color << "m" << empty << "\r" << "\e[0m" <<
+			 str << "\e[0m";	
 	}	
 };

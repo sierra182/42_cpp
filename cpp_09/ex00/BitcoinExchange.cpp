@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 10:19:50 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 10:24:08 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,15 +128,6 @@ void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
 		std::find(line.begin(), line.end(), sep))] = value;	
 }
 
-// void BitcoinExchange::colorFullLine(const std::string & str,//!to supp
-// 	short unsigned int color)
-// {
-// 	struct winsize ws;
-// 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
-// 	std::string empty(static_cast<int>(ws.ws_col * .75f), ' ');
-// 	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m";
-// }
-
 void	BitcoinExchange::reverseColor()
 {
 	this->color = static_cast<unsigned short int>
@@ -147,31 +138,23 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 	float>::const_iterator itInp, const std::map<std::string,
 	float>::const_iterator itData)
 {
-	// colorFullLine("\e[32mteste moi le cul", 5);
-	// colorFullLine("\e[32mteste moi le cul", 5);
-	// std::string dep;
-	// std::string inpStr = dep + "\e[3;4mData.csv:\e[0m  " + 
-	// this->searchIndex(dataMap, itData->first) + " \e[31mline: " +
-	//  "\e[37;46m" + itData->first + ',' + itData->second + "\e[0m";
-
 	std::ostringstream oss;
-	// this->reverseColor();
-	oss << "    \e[3;4" << this->colorArr[this->color] << "m " << "\e[4mData.csv:\e[0m" << "\e[4" << this->colorArr[this->color] <<  "m " <<
+
+	oss << "    \e[3;4" << this->colorArr[this->color] << "m " <<
+		"\e[4mData.csv:\e[0m" << "\e[4" << this->colorArr[this->color]
+		<<  "m " <<
 		this->searchIndex(dataMap, itData->first) << " \e[31mline: "
-			<< "\e[37;4;4";
-	// this->reverseColor();
-			oss << this->colorArr[this->color] << "m" << itData->first << ',' << itData->second
-			<< "\e[0m" << std::endl;
-	// this->reverseColor();
+		<< "\e[37;4;4" << this->colorArr[this->color] << "m" << itData->first
+		<< ',' << itData->second << "\e[0m" << std::endl;
+
 	MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
 	oss.str("");
 	oss << "\e[4" <<  this->colorArr[this->color];
 	this->reverseColor();
-		// this->reverseColor();
-	oss << ";3" << this->colorArr[this->color] << "m" << "\t\t\t\t\t\t\t\t\t\t " << itInp->second << " * " << itData->second <<
+	oss << ";3" << this->colorArr[this->color] << "m" <<
+		"\t\t\t\t\t\t\t\t\t\t " << itInp->second << " * " << itData->second <<
 		" => " << itInp->second * itData->second << " \e[0m" << std::endl;
-	this->reverseColor();		
-
+	this->reverseColor();	
 	MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
 }
 
@@ -195,7 +178,6 @@ void	BitcoinExchange::makeExchange(std::string const & line)
 		oss << "we will take the previous entry \e[0m" << std::endl;
 		itData--;
 	}
-	// oss << "\e[0m";
 	MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
 	this->printRslt(itInp, itData);
 }
@@ -293,13 +275,15 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 					first = false;
 					this->reverseColor();		
 					std::ostringstream oss;
-					oss << "    \e[3;4" << this->colorArr[this->color] << "m \e[4mInput file:\e[24m  " << nLine;
+					oss << "    \e[3;4" << this->colorArr[this->color] <<
+						"m \e[4mInput file:\e[24m  " << nLine;
 					this->reverseColor();
-					oss <<	" \e[31mline: " << "\e[37;4" << this->colorArr[this->color] << "m" <<
-						 line << "\e[0m"
-						<< std::endl;
+					oss <<	" \e[31mline: " << "\e[37;4" <<
+						this->colorArr[this->color] << "m" <<
+						 line << "\e[0m" << std::endl;
 					this->reverseColor();
-					MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
+					MySty::colorFullLine(oss.str(),
+						this->colorArr[this->color]);
 					this->parseLine(line, this->inputMap, '|');				
 					this->makeExchange(line);
 				}
