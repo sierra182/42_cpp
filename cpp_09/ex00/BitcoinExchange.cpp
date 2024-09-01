@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 08:07:38 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 09:41:15 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ BitcoinExchange::BitcoinExchange(std::ifstream & infData,
 	std::ifstream & infInp)
 {
 	this->color = 0;
-	this->colorArr[0] = 5;
-	this->colorArr[1] = 6;
+	this->colorArr[0] = 2;
+	this->colorArr[1] = 4;
 	this->fillDataMap(infData);	
 	this->fillInputMap(infInp);		
 }
@@ -156,7 +156,7 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 
 	std::ostringstream oss;
 	// this->reverseColor();
-	oss << "\e[3;4" << this->colorArr[this->color] << "m " << "\e[4mData.csv:\e[0m" << "\e[4" << this->colorArr[this->color] <<  "m " <<
+	oss << "    \e[3;4" << this->colorArr[this->color] << "m " << "\e[4mData.csv:\e[0m" << "\e[4" << this->colorArr[this->color] <<  "m " <<
 		this->searchIndex(dataMap, itData->first) << " \e[31mline: "
 			<< "\e[37;4;4";
 	// this->reverseColor();
@@ -292,7 +292,7 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 					first = false;
 					this->reverseColor();		
 					std::ostringstream oss;
-					oss << "\e[3;4" << this->colorArr[this->color] << "m \e[4mInput file:\e[24m  " << nLine;
+					oss << "    \e[3;4" << this->colorArr[this->color] << "m \e[4mInput file:\e[24m  " << nLine;
 					this->reverseColor();
 					oss <<	" \e[31mline: " << "\e[37;4" << this->colorArr[this->color] << "m" <<
 						 line << "\e[0m"

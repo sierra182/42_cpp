@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MySty.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 10:36:42 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 07:59:53 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 09:41:22 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ struct MySty
 		oss << std::endl << "\e[0m";
 		colorFullLine(oss.str(), color);
 		oss.str("");
-		oss << "\e[1;36;4" << color << "m\t 🏴‍☠️   Exception: \e[1;95m"
+		oss << "\e[1;96;4" << color << "m\t 🏴‍☠️   Exception: \e[1;35m"
 			<< what << "   🤢 🤮  \e[0m" << std::endl;
 		colorFullLine(oss.str(), color);
 		oss.str("");
@@ -62,7 +62,7 @@ struct MySty
 	template <typename T>
 	static void addWhat(const T & what) //!cerr
 	{	
-		std::cerr << std::endl << "\e[1;31m\t 🏴‍☠️   Exception: \e[1;95m"
+		std::cerr << std::endl << "\e[1;31m\t 🏴‍☠️   Exception: \e[1;91m"
 			<< what << "   🤢 🤮\e[0m" << std::endl << std::endl;
 	}
 	
@@ -79,7 +79,7 @@ struct MySty
 	{		
 		struct winsize ws;
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);	
-		std::string empty(static_cast<int>(ws.ws_col * 0.75f), ' ');
-		std::cout << "\e[4" << color << "m" << empty << "\r" << "\e[0m" <<  str << "\e[0m";// << std::endl;	
+		std::string empty(static_cast<unsigned int>(ws.ws_col * 0.75f), ' ');
+		std::cout << "    \e[4" << color << "m" << empty << "\r" << "\e[0m" <<  str << "\e[0m";// << std::endl;	
 	}	
 };
