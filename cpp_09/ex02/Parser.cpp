@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:20:47 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 21:15:16 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 21:15:02 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ long double	Parser::tryCastLongDouble( const std::string::iterator begin,
 		std::string::iterator it = std::find_if(rem.begin(), rem.end(),
 			this->isNotSpace);
 		if (it != rem.end())	
-			throw std::invalid_argument("bad input");		
+			throw std::invalid_argument("bad input: "
+				+ std::string(it, rem.end()));		
 	}
 	return (valLdbl);
 }
@@ -89,7 +90,7 @@ long 	Parser::tryCastLong(const std::string::iterator begin,
 		std::string::iterator it = std::find_if(rem.begin(), rem.end(),
 			this->isNotSpace);
 		if (it != rem.end())	
-			throw std::invalid_argument("this shit is unauthorized: "
+			throw std::invalid_argument("bad input: "
 				+ std::string(it, rem.end()));		
 	}
 	return (valL);

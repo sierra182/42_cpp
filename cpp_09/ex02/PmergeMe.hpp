@@ -21,6 +21,7 @@ class PmergeMe
     PmergeMe & operator=(const PmergeMe & rhs);
     
     public :
-
+		
+		PmergeMe(const std::string & str);
         ~PmergeMe();
 };
