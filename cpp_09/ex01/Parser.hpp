@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:40:57 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 16:34:48 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/01 21:33:52 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ class Parser
 	Parser & operator=(const Parser &);
 	
 	template <class T>
-	void		decimalFlowHandle(T value, std::string const type) const;
-	void		longFlowHandle(long value) const;
+	void		decimalFlowHandle(T value, std::string const type,
+		const std::string & item) const;
+	void		longFlowHandle(long value, const std::string & item) const;
 	long double	tryCastLongDouble( const std::string::iterator begin,
 		const std::string::iterator end) const;	
-	float		tryCastFloat(long double value) const;
+	float		tryCastFloat(long double value,
+		const std::string & item) const;
 	template <class T>
-	int			tryCastInt(T value) const;
+	int			tryCastInt(T value, const std::string & item) const;
 	long 		tryCastLong(const std::string::iterator begin,
 		const std::string::iterator end) const;
 	
@@ -48,26 +50,27 @@ class Parser
 };
 
 template <class T>
-void	Parser::decimalFlowHandle(T value, std::string const type) const
+void	Parser::decimalFlowHandle(T value, std::string const type,
+	const std::string & item) const
 {		
 	if (std::isinf(value))
 	{
 		if (value < 0.0)
-			throw std::overflow_error(type + ": negative overflow");
+			throw std::overflow_error(type + ": negative overflow: " + item);
 		else
-			throw std::overflow_error(type + ": positive overflow");
+			throw std::overflow_error(type + ": positive overflow: " + item);
 	} 	
 	else if (value == 0.0)
 	{
 		if (std::signbit(value))
-			throw std::underflow_error(type + ": negative underflow");
+			throw std::underflow_error(type + ": negative underflow: " + item);
 		else
-			throw std::underflow_error(type + ": positive underflow");			
+			throw std::underflow_error(type + ": positive underflow: " + item);			
 	}		
 }
 
 template <class T>
-int	Parser::tryCastInt(T value) const
+int	Parser::tryCastInt(T value, const std::string & item) const
 {
 	if (std::isnan(value))
 		throw std::invalid_argument("value is NaN");
@@ -76,8 +79,8 @@ int	Parser::tryCastInt(T value) const
 	T max = static_cast<T>(std::numeric_limits<int>::max());
 	
 	if (value < min)
-		throw std::overflow_error("int negative overflow");
+		throw std::overflow_error("int negative overflow: " + item);
 	else if (value > max)
-		throw std::overflow_error("int positive overflow");			
+		throw std::overflow_error("int positive overflow: " + item);			
 	return (static_cast<int>(value));
 }
