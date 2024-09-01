@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:18:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 22:48:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 07:28:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ BitcoinExchange & BitcoinExchange::operator=( const BitcoinExchange & )
 BitcoinExchange::BitcoinExchange(std::ifstream & infData,
 	std::ifstream & infInp)
 {
+	this->color = 0;
+	this->colorArr[0] = 5;
+	this->colorArr[1] = 6;
 	this->fillDataMap(infData);	
 	this->fillInputMap(infInp);		
 }
@@ -125,18 +128,24 @@ void	BitcoinExchange::parseLine(std::string & line, std::map<std::string,
 		std::find(line.begin(), line.end(), sep))] = value;	
 }
 
-void BitcoinExchange::colorFullLine(const std::string & str,
-	short unsigned int color)
+// void BitcoinExchange::colorFullLine(const std::string & str,//!to supp
+// 	short unsigned int color)
+// {
+// 	struct winsize ws;
+// 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
+// 	std::string empty(static_cast<int>(ws.ws_col * .75f), ' ');
+// 	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m";
+// }
+
+void	BitcoinExchange::reverseColor()
 {
-	struct winsize ws;
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
-	std::string empty(static_cast<int>(ws.ws_col * .75f), ' ');
-	std::cout << "\e[4" << color << "m" << empty << "\r" << str << "\e[0m";
+	this->color = static_cast<unsigned short int>
+		(((static_cast<unsigned int>(this->color)) + 1) % 2);
 }
+
 void	BitcoinExchange::printRslt(const std::map<std::string,
 	float>::const_iterator itInp, const std::map<std::string,
-	float>::const_iterator itData, short unsigned int colorArr[],
-	short unsigned int color)
+	float>::const_iterator itData)
 {
 	// colorFullLine("\e[32mteste moi le cul", 5);
 	// colorFullLine("\e[32mteste moi le cul", 5);
@@ -146,23 +155,27 @@ void	BitcoinExchange::printRslt(const std::map<std::string,
 	//  "\e[37;46m" + itData->first + ',' + itData->second + "\e[0m";
 
 	std::ostringstream oss;
-	oss << "\e[3;4;4" << colorArr[color] << "m" << "mData.csv:\e[0m" << "\e[4" << colorArr[color] <<  "m " <<
+	// this->reverseColor();
+	oss << "\e[3;4;4" << this->colorArr[this->color] << "m" << "Data.csv:\e[0m" << "\e[4" << this->colorArr[this->color] <<  "m " <<
 		this->searchIndex(dataMap, itData->first) << " \e[31mline: "
 			<< "\e[37;4;4";
-	color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
-			oss << colorArr[color] << "m" << itData->first << ',' << itData->second
+	// this->reverseColor();
+			oss << this->colorArr[this->color] << "m" << itData->first << ',' << itData->second
 			<< "\e[0m" << std::endl;
-	color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
-	MySty::colorFullLine(oss.str(), colorArr[color]);
+	// this->reverseColor();
+	MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
 	oss.str("");
-		
-	oss << "\e[3;4;4" << colorArr[color] << "m\e[31m " << itInp->second << " * " << itData->second <<
+	this->reverseColor();
+	oss << "\e[4" <<  this->colorArr[this->color];
+		this->reverseColor();
+	oss << ";" << this->colorArr[this->color] << "m" << "\t\t\t\t\t\t " << itInp->second << " * " << itData->second <<
 		" => " << itInp->second * itData->second << " \e[0m" << std::endl;
-	MySty::colorFullLine(oss.str(), colorArr[color]);
+	this->reverseColor();		
+
+	MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
 }
 
-void	BitcoinExchange::makeExchange(std::string const & line,
-	short unsigned int colorArr[], short unsigned int color)
+void	BitcoinExchange::makeExchange(std::string const & line)
 {
 	std::map<std::string, float>::iterator itInp;
 	std::map<std::string, float>::iterator itData;
@@ -171,19 +184,20 @@ void	BitcoinExchange::makeExchange(std::string const & line,
 		std::find(line.begin(), line.end(), '|')));				
 	itData = dataMap.lower_bound(std::string(line.begin(),
 		std::find(line.begin(), line.end(), '|')));
-	oss << "\e[4" << color << "m";			
+	oss << "\e[4" << 0 << ";3" << this->colorArr[color] << "m";			
 	if (inputMap.end() != itInp && dataMap.end() != itData
 		&& itInp->first == itData->first)				
-		oss << "\e[32mthere is an exact entry\e[0m" << std::endl;				
+		oss << "there is an exact entry\e[0m" << std::endl;				
 	else if (itData == dataMap.begin())				
-		oss << "\e[36mwe will take the first entry\e[0m" << std::endl;				
+		oss << "we will take the first entry\e[0m" << std::endl;				
 	else
 	{
-		oss << "\e[35mwe will take the previous entry\e[0m" << std::endl;
+		oss << "we will take the previous entry\e[0m" << std::endl;
 		itData--;
 	}
-	MySty::colorFullLine(oss.str(), colorArr[color]);
-	this->printRslt(itInp, itData, colorArr, color);
+	// oss << "\e[0m";
+	MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
+	this->printRslt(itInp, itData);
 }
 
 bool	BitcoinExchange::isFirstLineValid(std::string line, Parser & parser,
@@ -262,9 +276,7 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 	std::string line;
 	Parser parser;
 	bool first = true;
-	int nLine = 1;
-	short unsigned int color = 0;
-	short unsigned int colorArr[] = {5, 6};
+	int nLine = 1;	
 	while (std::getline(infInp, line))
 	{		
 		try {
@@ -276,17 +288,17 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 				{	
 					first = false;				
 					// std::cout << std::endl;
-					color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);		
+					this->reverseColor();		
 					std::ostringstream oss;
-					oss << "\e[3;4" << colorArr[color] << "mInput file:  " << nLine;
-					color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
-					oss <<	" \e[31mline: " << "\e[37;4" << colorArr[color] << "m" <<
+					oss << "\e[3;4" << this->colorArr[this->color] << "mInput file:  " << nLine;
+					this->reverseColor();
+					oss <<	" \e[31mline: " << "\e[37;4" << this->colorArr[this->color] << "m" <<
 						 line << "\e[0m"
 						<< std::endl;
-					color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
-					MySty::colorFullLine(oss.str(), colorArr[color]);
+					this->reverseColor();
+					MySty::colorFullLine(oss.str(), this->colorArr[this->color]);
 					this->parseLine(line, this->inputMap, '|');				
-					this->makeExchange(line, colorArr, color);
+					this->makeExchange(line);
 				}
 				else
 					first = false;
@@ -294,8 +306,8 @@ void	BitcoinExchange::fillInputMap(std::ifstream & infInp)
 		}
 		catch (std::exception const & e)
 			{
-				color = static_cast<unsigned short int>(((static_cast<unsigned int>(color)) + 1) % 2);
-				MySty::addWhat(e.what(), colorArr[color]);
+				this->reverseColor();
+				MySty::addWhat(e.what(), this->colorArr[this->color]);
 			}
 		nLine++;	
 	}	

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:16:10 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/31 22:25:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/01 07:27:11 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ class BitcoinExchange
 	std::map<std::string, float> inputMap;
 	std::map<std::string, float> dataMap;
 	
+	short unsigned int color;
+	short unsigned int colorArr[];
+
 	BitcoinExchange( void );
 	BitcoinExchange( const BitcoinExchange & src );
 	BitcoinExchange & operator=( const BitcoinExchange & rhs);
@@ -33,12 +36,11 @@ class BitcoinExchange
 			int max, int delim);
 	void	parseLine(std::string & line,
 		std::map<std::string, float> & inputMap, char sep);
-	void	colorFullLine(const std::string & str, short unsigned int color);
+	void	reverseColor();
+	// void	colorFullLine(const std::string & str, short unsigned int color);
 	void	printRslt(const std::map<std::string, float>::const_iterator itInp,
-			const std::map<std::string, float>::const_iterator itData,
-			short unsigned int colorArr[], short unsigned int color);
-	void	makeExchange(std::string const & line,
-		short unsigned int colorArr[], short unsigned int color);
+			const std::map<std::string, float>::const_iterator itData);
+	void	makeExchange(std::string const & line);
 	void	fillDataMap(std::ifstream & infData);
 	void	fillInputMap(std::ifstream & infInp);
 	bool	isFirstLineValid(std::string line, Parser & parser,
