@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/02 11:59:02 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/02 12:14:51 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,29 @@ void PmergeMe::calculateTime()
 	double span = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 }
 
+void  PmergeMe::FordJhonson(const int value)
+{
+	this->vect.insert(make_pair(value, value);	
+}
+
 PmergeMe::PmergeMe(char *argv[])//! check doublons 
 {
 	Parser psr;
 	std::istringstream iss;
-	std::string item;
-	
+	std::string item;	
 	int value = 0;
 
 	while (*++argv)
 	{	
 		iss.clear();	
-		iss.str(std::string(*argv));			
+		iss.str(std::string(*argv));		
 		while (std::getline(iss >> std::ws, item, ' '))
 		{
 			value = psr.parseToInt(item.begin(), item.end());
 			if (value < 0)		
 				throw std::invalid_argument
 					(std::string("the value must be positive: ") + item);		
+			FordJhonson(value);
 		}
 	}
 }
