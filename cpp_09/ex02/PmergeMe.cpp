@@ -6,13 +6,14 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 21:22:50 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/02 08:10:39 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include "Parser.hpp"
 #include <sstream>
+#include <ctime>
 
 PmergeMe::PmergeMe()
 {
@@ -34,7 +35,15 @@ PmergeMe::~PmergeMe()
     return ;
 }
 
-PmergeMe::PmergeMe(const std::string & str)
+void PmergeMe::calculateTime()
+{
+	std::clock_t start = std::clock();
+	std::clock_t end = std::clock();
+
+	double span = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+}
+
+PmergeMe::PmergeMe(const std::string & str)//! check doublons 
 {
 	Parser psr;
 	std::istringstream iss(str);
