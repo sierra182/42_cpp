@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/02 15:01:37 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/02 15:06:03 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,5 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons
 	
 	std::cout << "sort vectA" << std::endl;		
 	std::sort(this->vectA.begin(), this->vectA.end());
-	printPairVector(this->vectA);
-	
-			
+	printPairVector(this->vectA);			
 }
