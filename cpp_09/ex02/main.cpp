@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:01:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 21:22:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/02 11:48:08 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char * argv[])
         return (MySty::error("we need at least one argument"), 1); //? one or two ...
 	
 	try {
-		PmergeMe pm(*++argv);
+		PmergeMe pm(argv);
 	}
 	catch (std::exception const & e)
 		{ MySty::addWhat(e.what()); }    

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/02 08:10:39 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/02 11:59:02 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,24 @@ void PmergeMe::calculateTime()
 	double span = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 }
 
-PmergeMe::PmergeMe(const std::string & str)//! check doublons 
+PmergeMe::PmergeMe(char *argv[])//! check doublons 
 {
 	Parser psr;
-	std::istringstream iss(str);
+	std::istringstream iss;
 	std::string item;
+	
 	int value = 0;
-	while (std::getline(iss >> std::ws, item, ' '))
-	{
-		value = psr.parseToInt(item.begin(), item.end());
-		if (value < 0)		
-			throw std::invalid_argument
-				(std::string("the value must be positive: ") + item);		
+
+	while (*++argv)
+	{	
+		iss.clear();	
+		iss.str(std::string(*argv));			
+		while (std::getline(iss >> std::ws, item, ' '))
+		{
+			value = psr.parseToInt(item.begin(), item.end());
+			if (value < 0)		
+				throw std::invalid_argument
+					(std::string("the value must be positive: ") + item);		
+		}
 	}
 }
