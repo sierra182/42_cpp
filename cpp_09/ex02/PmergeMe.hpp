@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/02 12:15:09 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/02 12:41:14 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class PmergeMe
 {
-    std::vector<std::pair<const int, const int> > vect;
+    std::vector<std::pair<int, int> > vect;
     std::deque<int> deq;
            
     PmergeMe();
@@ -27,7 +27,7 @@ class PmergeMe
     PmergeMe & operator=(const PmergeMe & rhs);
     
 	void calculateTime();
-    void FordJhonson(const int value);
+    void FordJhonson(int value);
 
     public :
 		
