@@ -6,14 +6,13 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 23:04:17 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 00:10:41 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include "Parser.hpp"
 #include <sstream>
-#include <ctime>
 
 PmergeMe::PmergeMe()
 {
@@ -35,13 +34,9 @@ PmergeMe::~PmergeMe()
     return ;
 }
 
-void	PmergeMe::calculateTime()
+double	PmergeMe::calculateTime(std::clock_t start, std::clock_t end) const
 {
-	std::clock_t start = std::clock();
-	std::clock_t end = std::clock();
-
-	double span = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-	(void) span;
+	return (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC); //* 1000000.0
 }
 
 void 	PmergeMe::fillA(int value)
@@ -153,7 +148,7 @@ void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator start
 
 
 
-PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
+PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 {
 	Parser psr;
 	std::istringstream iss;
@@ -161,6 +156,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 	int value = 0;
 
 	// this->vectA.reserve(100);
+	char **argv_sav = argv;
 	while (*++argv)
 	{	
 		iss.clear();	
@@ -176,26 +172,31 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 		
 	}
 	fillA(-1);
+	std::clock_t start = std::clock();
 	
-	printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-	printVector(this->vectB);
+	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+	// printVector(this->vectB);
 	
 	std::cout << "sort vectA" << std::endl;	
 			
 	if (!this->vectA.empty())
 		this->firstBinarySort(++this->vectA.begin(), this->vectA.end(), this->vectA.begin(), this->vectA.begin());
 
-	std::cout << "vectA" << std::endl;
-	printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+	// std::cout << "vectA" << std::endl;
+	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	
 	if (!this->vectA.empty())	
 		this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
 	
-	std::cout << "print vect B" << std::endl;		
-	printVector(this->vectB);
+	// std::cout << "print vect B" << std::endl;		
+	// printVector(this->vectB);
 	
 	this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
 	
+	std::clock_t end = std::clock();
 	std::cout << "print vect C" << std::endl;	
 	printVector(this->vectC);		
+	std::cout << calculateTime(start, end) << std::endl;
+	this->PmergeMeDeq(argv_sav);
 }
+//  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1
