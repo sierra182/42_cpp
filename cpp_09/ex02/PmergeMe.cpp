@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 15:10:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/03 15:36:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,29 @@ void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, st
 	else //!else if
 		binarySort(startA, endA, ++middle, endB);	
 }
+
+void PmergeMe::mergeSort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA,
+std::vector<int>::iterator startB, std::vector<int>::iterator endB)
+{
+	while (startA != endA && startB != endB)
+	{		
+		if (startA->first < *startB)
+			this->vectC.push_back(startA++->first);
+		else
+			this->vectC.push_back(*startB++);		
+	}
+	while (startA != endA)
+	{
+		std::cout << "ONE !" << std::endl;
+		this->vectC.push_back(startA++->first);
+	}
+	while (startB != endB)
+	{
+		std::cout << "TWO !" << std::endl;
+		this->vectC.push_back(*startB++);
+	}
+}
+
 PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 {
 	Parser psr;
@@ -189,8 +212,10 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 	// binarySort(D.begin(), --D.end(), C.begin(), --C.end());	
 	binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
 	std::cout << "print vect B" << std::endl;		
-	printVector(this->vectB);	
-	// printVector(D);		
+	printVector(this->vectB);
+	mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
+	std::cout << "print vect C" << std::endl;	
+	printVector(this->vectC);		
 }
 
 
