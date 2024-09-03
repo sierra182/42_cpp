@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 22:54:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/03 23:04:17 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, i
 			std::cout << "\e[35m";	
 	}
 	std::cout << "end" << std::endl;
-	// std::cout << "\e[0m";
+	std::cout << "\e[0m";
 }
 
 void printVector(std::vector<int> const & vect)
@@ -90,62 +90,6 @@ void printVector(std::vector<int> const & vect)
 		std::cout << *it << std::endl;
 	std::cout << "end" << std::endl;
 }
-// std::vector<int> D;
-// std::vector<int> C;
-// void PmergeMe::binarySort(std::vector<int>::iterator startA, std::vector<int>::iterator endA
-// , std::vector<int>::iterator startB, std::vector<int>::iterator endB)
-// {
-// 	std::vector<int>::iterator middle = startB;
-// 	std::advance(middle, std::distance(startB, endB) / 2);
-// 	std::cout << "start is : " << *startB <<  " MID is " << *middle << " end is : " << *endB <<
-// 	 " DIST: " << std::distance(startB, endB) << std::endl;
-// 	if (std::distance(startB, endB) < 0)
-// 	{
-// 		if (startB == endB && startB != C.end())
-// 			std::cout << "start b egal end: " << *startB++ << " endb " <<  *endB << std::endl;
-			
-// 		std::cout << "the position is: " << *startB << " " <<  *startA << std::endl;
-// 		// if (startB >= vectB.begin() && startB <= vectB.end()) 			
-// 		// {
-// 			// std::cout << "the position is: " << *startB << " " <<  *startA << std::endl;
-// 			 C.insert(startB, *startA);
-// 			//  D.erase(startA);
-// 			 std::cout << "PRINT C" << std::endl;
-// 			 printVector(C);
-// 			  std::cout << "PRINT D" << std::endl;
-// 			 printVector(D);
-// 		// }
-// 		// else
-// 		// 	std::cout << "pb" << std::endl;
-// 		// if (startA != endA)
-// 		 	// binarySort(startA, endA, C.begin(), C.end());
-// 		if (++startA != D.end())//endA)
-// 		{
-// 			 binarySort(startA, endA, C.begin(), --C.end());
-// 			//  binarySort(startA, endA, C.begin(), --C.end());
-// 			// binarySort(D.begin(), --D.end(), C.begin(), --C.end());
-// 		}
-// 		 	std::cout << "start is end end: " << std::endl; //binarySort(D.begin(), D.end(), C.begin(), C.end());
-// 		// binarySort(startA, endA, this->vectB.begin(), this->vectB.end());
-// 		return ; 
-// 	}
-// 	if (*startA < *middle)
-// 	{
-// 		// endB = --middle;
-// 		binarySort(startA, endA, startB, --middle);
-// 	}
-// 	else// if (*startA > *middle)
-// 	{		
-// 		// startB = ++middle;
-// 		binarySort(startA, endA, ++middle, endB);
-// 	}
-// 	// else 
-// 	// {
-// 	// 	std::cout << "the position is: middle:" << *middle << std::endl;   
-// 	// 	return ;
-// 	// }
-// }
-
 
 void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
 , std::vector<int>::iterator startB, std::vector<int>::iterator endB)
@@ -164,9 +108,7 @@ void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, st
 	else if (startA->second < *middle)	
 		this->binarySort(startA, endA, startB, --middle);		
 	else if (startA->second > *middle)
-		this->binarySort(startA, endA, ++middle, endB);	
- 
-		
+		this->binarySort(startA, endA, ++middle, endB);	 
 }
 
 
@@ -180,16 +122,10 @@ std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 		else
 			this->vectC.push_back(*startB++);		
 	}
-	while (startA != endA)
-	{
-		std::cout << "ONE !" << std::endl;
-		this->vectC.push_back(startA++->first);
-	}
+	while (startA != endA)	
+		this->vectC.push_back(startA++->first);	
 	while (startB != endB)
-	{
-		std::cout << "TWO !" << std::endl;
 		this->vectC.push_back(*startB++);
-	}
 }
 
 void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
@@ -197,11 +133,7 @@ void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator start
 {
 	std::vector<std::pair<int, int> >::iterator middle = startB;
 	std::advance(middle, std::distance(startB, endB) / 2);
-	
-	// std::cout << std::endl << "start is: " << startB->first <<  ", mid is: " << middle->first << ", end is: " << endB->first <<
-	//  " / Dist: " << std::distance(startB, endB) << std::endl; 
-	// printPairVector(this->vectA, startA, endA, startB, endB);
-	
+		
 	if (std::distance(startB, endB) < 0 || startA->first == middle->first
 		|| (startA->first < middle->first && middle == this->vectA.begin()))	
 	{
@@ -227,7 +159,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 	std::istringstream iss;
 	std::string item;	
 	int value = 0;
-	// int n_value = 0;
+
 	// this->vectA.reserve(100);
 	while (*++argv)
 	{	
@@ -244,43 +176,26 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 		
 	}
 	fillA(-1);
+	
 	printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	printVector(this->vectB);
 	
 	std::cout << "sort vectA" << std::endl;	
-		
-	// std::sort(this->vectA.begin(), this->vectA.end());
-	
-	// std::vector<std::pair<int, int> >::iterator startA 
-	
+			
 	if (!this->vectA.empty())
 		this->firstBinarySort(++this->vectA.begin(), this->vectA.end(), this->vectA.begin(), this->vectA.begin());
-		// this->firstBinarySort(this->vectA.begin(), this->vectA.end() - 2, this->vectA.end() - 1, this->vectA.end() - 1 );
-		
-		
+
+	std::cout << "vectA" << std::endl;
+	printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	
-	
-std::cout << "Final print vectA" << std::endl;
-	// printPairVector(this->vectA);
-		printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-	// int arr[] = {02, 12, 33, 78, 80, 85, 100};
-	// C.assign(arr, arr + 7);
-	// int arr2[] = {199, 15, 7, 6, 0, 199, 99};
-	// D.assign(arr2, arr2 + 7);
-	// binarySort(D.begin(), --D.end(), C.begin(), --C.end());	
-	
-	if (!this->vectA.empty())
-	{		
+	if (!this->vectA.empty())	
 		this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
-	}
+	
 	std::cout << "print vect B" << std::endl;		
 	printVector(this->vectB);
+	
 	this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
+	
 	std::cout << "print vect C" << std::endl;	
 	printVector(this->vectC);		
 }
-
-
-
-	// std::cout <<  "D  DIST: " << std::distance(D.begin(), D.end()) << std::endl;
-	// std::cout <<  "C  DIST: " << std::distance(C.begin(), C.end()) << std::endl;
