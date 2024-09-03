@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 22:46:28 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/03 22:54:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,32 +198,25 @@ void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator start
 	std::vector<std::pair<int, int> >::iterator middle = startB;
 	std::advance(middle, std::distance(startB, endB) / 2);
 	
-	std::cout << std::endl << "start is: " << startB->first <<  ", mid is: " << middle->first << ", end is: " << endB->first <<
-	 " / Dist: " << std::distance(startB, endB) << std::endl; 
-	printPairVector(this->vectA, startA, endA, startB, endB);
+	// std::cout << std::endl << "start is: " << startB->first <<  ", mid is: " << middle->first << ", end is: " << endB->first <<
+	//  " / Dist: " << std::distance(startB, endB) << std::endl; 
+	// printPairVector(this->vectA, startA, endA, startB, endB);
 	
 	if (std::distance(startB, endB) < 0 || startA->first == middle->first
-		)//|| (startA->first < middle->first && middle == this->vectA.begin()))	
+		|| (startA->first < middle->first && middle == this->vectA.begin()))	
 	{
-		std::pair<int, int> startA_tmp = *startA; //! ou ++
-		startA = this->vectA.erase(startA);
-		
-		std::pair<int, int> endB_tmp; 
-			
-		this->vectA.insert(startB, startA_tmp);
-							
-		if (++startA != this->vectA.end())	//!
+		std::pair<int, int> startA_tmp = *startA;
+		startA = this->vectA.erase(startA);		
+		std::pair<int, int> endB_tmp; 			
+		this->vectA.insert(startB, startA_tmp);							
+		if (++startA != this->vectA.end())
 			this->firstBinarySort(startA, --this->vectA.end(), this->vectA.begin(), startA - 1);
 		return ; 
 	}	
 	if (startA->first < middle->first)
-	{	
-		this->firstBinarySort(startA, endA, startB, --middle);			
-	}
+		this->firstBinarySort(startA, endA, startB, --middle);
 	else if (startA->first > middle->first)
-	{
-		this->firstBinarySort(startA, endA, ++middle, endB);	
-	}
+		this->firstBinarySort(startA, endA, ++middle, endB);
 }
 
 
@@ -235,7 +228,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 	std::string item;	
 	int value = 0;
 	// int n_value = 0;
-	this->vectA.reserve(100);
+	// this->vectA.reserve(100);
 	while (*++argv)
 	{	
 		iss.clear();	
@@ -276,15 +269,15 @@ std::cout << "Final print vectA" << std::endl;
 	// D.assign(arr2, arr2 + 7);
 	// binarySort(D.begin(), --D.end(), C.begin(), --C.end());	
 	
-	// if (!this->vectA.empty())
-	// {		
-	// 	this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
-	// }
-	// std::cout << "print vect B" << std::endl;		
-	// printVector(this->vectB);
-	// this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
-	// std::cout << "print vect C" << std::endl;	
-	// printVector(this->vectC);		
+	if (!this->vectA.empty())
+	{		
+		this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
+	}
+	std::cout << "print vect B" << std::endl;		
+	printVector(this->vectB);
+	this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
+	std::cout << "print vect C" << std::endl;	
+	printVector(this->vectC);		
 }
 
 
