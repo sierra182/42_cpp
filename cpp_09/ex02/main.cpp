@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:01:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/02 22:24:51 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/03 16:07:34 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(int argc, char * argv[])
 {
 	if (argc <= 1) 
-        return (MySty::error("we need at least one argument"), 1); //? one or two ...//! parralle ?
+        return (MySty::error("we need at least one argument"), 1); //? one or two ...//! parrallel ?
 	
 	try {
 		PmergeMe pm(argv);
