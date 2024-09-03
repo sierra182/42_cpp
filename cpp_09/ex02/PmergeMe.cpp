@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 11:46:28 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/03 14:36:08 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,39 +77,62 @@ void printVector(std::vector<int> const & vect)
 		std::cout << *it << std::endl;
 	std::cout << "end" << std::endl;
 }
-
+std::vector<int> D;
+std::vector<int> C;
 void PmergeMe::binarySort(std::vector<int>::iterator startA, std::vector<int>::iterator endA
 , std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 {
-	// std::vector<int>::iterator middle = std::next(startB, std::distance(startB, endB) * 0.5);
 	std::vector<int>::iterator middle = startB;
 	std::advance(middle, std::distance(startB, endB) / 2);
-	if (std::distance(endB, startB) > 0)
+	std::cout << "start is : " << *startB <<  " MID is " << *middle << " end is : " << *endB <<
+	 " DIST: " << std::distance(startB, endB) << std::endl;
+	if (std::distance(startB, endB) < 0)
 	{
-		std::cout << "the position is: " << *startB << std::endl;
+		if (startB == endB && startB != C.end())
+			std::cout << "start b egal end: " << *startB++ << " endb " <<  *endB << std::endl;
+			
+		std::cout << "the position is: " << *startB << " " <<  *startA << std::endl;
+		// if (startB >= vectB.begin() && startB <= vectB.end()) 			
+		// {
+			// std::cout << "the position is: " << *startB << " " <<  *startA << std::endl;
+			 C.insert(startB, *startA);
+			 D.erase(startA);
+			 std::cout << "PRINT C" << std::endl;
+			 printVector(C);
+			  std::cout << "PRINT D" << std::endl;
+			 printVector(D);
+		// }
+		// else
+		// 	std::cout << "pb" << std::endl;
+		// if (startA != endA)
+		 	// binarySort(startA, endA, C.begin(), C.end());
+		if (startA != D.end())//endA)
+		{
+			
+			binarySort(D.begin(), --D.end(), C.begin(), --C.end());
+		}
+		 	std::cout << "start is end end: " << std::endl; //binarySort(D.begin(), D.end(), C.begin(), C.end());
+		// binarySort(startA, endA, this->vectB.begin(), this->vectB.end());
 		return ; 
 	}
 	if (*startA < *middle)
 	{
-		endB = --middle;
-		binarySort(startA, endA, startB, endB);
+		// endB = --middle;
+		binarySort(startA, endA, startB, --middle);
 	}
-	else if (*startA > *middle)
+	else// if (*startA > *middle)
 	{		
-		startB = ++middle;
-		binarySort(startA, endA, startB, endB);
+		// startB = ++middle;
+		binarySort(startA, endA, ++middle, endB);
 	}
-	else 
-	{
-		std::cout << "the position is: middle:" << *middle << std::endl;   
-		return ;
-	}
-
-
-	
+	// else 
+	// {
+	// 	std::cout << "the position is: middle:" << *middle << std::endl;   
+	// 	return ;
+	// }
 }
 
-PmergeMe::PmergeMe(char *argv[])//! check doublons 
+PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 {
 	Parser psr;
 	std::istringstream iss;
@@ -140,8 +163,11 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons
 	printPairVector(this->vectA);
 	
 	int arr[] = {02, 12, 33, 78, 80, 85, 100};
-	std::vector<int> C(arr, arr + 7);
-	int arr2[] = {80, 12, 33, 78, 80, 18, 100};
-	std::vector<int> D(arr2, arr2 + 7);
-	binarySort(D.begin(), D.end(), C.begin(), C.end());			
+	C.assign(arr, arr + 7);
+	int arr2[] = {199, 15, 7, 6, 0, 199, 99};
+	D.assign(arr2, arr2 + 7);
+	std::cout <<  "D  DIST: " << std::distance(D.begin(), D.end()) << std::endl;
+	std::cout <<  "C  DIST: " << std::distance(C.begin(), C.end()) << std::endl;
+	binarySort(D.begin(), --D.end(), C.begin(), --C.end());	
+	printVector(D);		
 }
