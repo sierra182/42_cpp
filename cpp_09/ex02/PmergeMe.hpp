@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 11:06:48 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/03 15:03:42 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ class PmergeMe
     
 	void    calculateTime();
     void    fillA(int value);
-void binarySort(std::vector<int>::iterator startA, std::vector<int>::iterator endA
+// void binarySort(std::vector<int>::iterator startA, std::vector<int>::iterator endA
+// , std::vector<int>::iterator startB, std::vector<int>::iterator endB);
+
+void binarySort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
 , std::vector<int>::iterator startB, std::vector<int>::iterator endB);
     public :
 		

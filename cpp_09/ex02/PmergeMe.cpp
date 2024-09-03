@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 14:57:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/03 15:10:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void printVector(std::vector<int> const & vect)
 		std::cout << *it << std::endl;
 	std::cout << "end" << std::endl;
 }
-std::vector<int> D;
-std::vector<int> C;
+// std::vector<int> D;
+// std::vector<int> C;
 // void PmergeMe::binarySort(std::vector<int>::iterator startA, std::vector<int>::iterator endA
 // , std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 // {
@@ -134,7 +134,7 @@ std::vector<int> C;
 // }
 
 
-void PmergeMe::binarySort(std::vector<int>::iterator startA, std::vector<int>::iterator endA
+void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
 , std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 {
 	std::vector<int>::iterator middle = startB;
@@ -142,12 +142,12 @@ void PmergeMe::binarySort(std::vector<int>::iterator startA, std::vector<int>::i
 
 	if (std::distance(startB, endB) < 0)
 	{	
-		C.insert(startB, *startA);	
-		if (++startA != D.end())		
-			binarySort(startA, endA, C.begin(), --C.end());
+		this->vectB.insert(startB, startA->second);	
+		if (++startA != this->vectA.end())		
+			binarySort(startA, endA, this->vectB.begin(), --this->vectB.end());
 		return ; 
 	}
-	if (*startA < *middle)
+	if (startA->second < *middle)
 		binarySort(startA, endA, startB, --middle);	
 	else //!else if
 		binarySort(startA, endA, ++middle, endB);	
@@ -182,15 +182,15 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve
 	std::sort(this->vectA.begin(), this->vectA.end());
 	printPairVector(this->vectA);
 	
-	int arr[] = {02, 12, 33, 78, 80, 85, 100};
-	C.assign(arr, arr + 7);
-	int arr2[] = {199, 15, 7, 6, 0, 199, 99};
-	D.assign(arr2, arr2 + 7);
-	binarySort(D.begin(), --D.end(), C.begin(), --C.end());	
-	// binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
-
-	printVector(C);	
-	printVector(D);		
+	// int arr[] = {02, 12, 33, 78, 80, 85, 100};
+	// C.assign(arr, arr + 7);
+	// int arr2[] = {199, 15, 7, 6, 0, 199, 99};
+	// D.assign(arr2, arr2 + 7);
+	// binarySort(D.begin(), --D.end(), C.begin(), --C.end());	
+	binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
+	std::cout << "print vect B" << std::endl;		
+	printVector(this->vectB);	
+	// printVector(D);		
 }
 
 
