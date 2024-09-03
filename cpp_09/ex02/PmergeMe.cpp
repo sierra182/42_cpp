@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/02 15:06:03 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/03 11:46:28 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,37 @@ void printVector(std::vector<int> const & vect)
 	std::cout << "end" << std::endl;
 }
 
+void PmergeMe::binarySort(std::vector<int>::iterator startA, std::vector<int>::iterator endA
+, std::vector<int>::iterator startB, std::vector<int>::iterator endB)
+{
+	// std::vector<int>::iterator middle = std::next(startB, std::distance(startB, endB) * 0.5);
+	std::vector<int>::iterator middle = startB;
+	std::advance(middle, std::distance(startB, endB) / 2);
+	if (std::distance(endB, startB) > 0)
+	{
+		std::cout << "the position is: " << *startB << std::endl;
+		return ; 
+	}
+	if (*startA < *middle)
+	{
+		endB = --middle;
+		binarySort(startA, endA, startB, endB);
+	}
+	else if (*startA > *middle)
+	{		
+		startB = ++middle;
+		binarySort(startA, endA, startB, endB);
+	}
+	else 
+	{
+		std::cout << "the position is: middle:" << *middle << std::endl;   
+		return ;
+	}
+
+
+	
+}
+
 PmergeMe::PmergeMe(char *argv[])//! check doublons 
 {
 	Parser psr;
@@ -106,5 +137,11 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons
 	
 	std::cout << "sort vectA" << std::endl;		
 	std::sort(this->vectA.begin(), this->vectA.end());
-	printPairVector(this->vectA);			
+	printPairVector(this->vectA);
+	
+	int arr[] = {02, 12, 33, 78, 80, 85, 100};
+	std::vector<int> C(arr, arr + 7);
+	int arr2[] = {80, 12, 33, 78, 80, 18, 100};
+	std::vector<int> D(arr2, arr2 + 7);
+	binarySort(D.begin(), D.end(), C.begin(), C.end());			
 }
