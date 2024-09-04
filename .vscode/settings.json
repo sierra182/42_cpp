@@ -55,6 +55,8 @@
 		"cstring": "cpp",
 		"stack": "cpp",
 		"map": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"chrono": "cpp",
+		"ratio": "cpp"
 	}
 }

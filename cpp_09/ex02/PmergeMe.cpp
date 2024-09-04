@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 11:06:54 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:24:51 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	
 	std::clock_t end = std::clock();
 	std::cout << "print vect C" << std::endl;	
-	printVector(this->vectC);		
+	// printVector(this->vectC);		
 	std::cout << calculateTime(start, end) << std::endl;
 	checkFinalVector(this->vectC);
 	this->PmergeMeDeq(argv_sav);

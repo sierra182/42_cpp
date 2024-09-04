@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 11:23:03 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:25:01 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,51 +97,6 @@ std::deque<int>::iterator startB, std::deque<int>::iterator endB)
 	while (startB != endB)
 		this->deqC.push_back(*startB++);
 }
-
-// void PmergeMe::firstBinarySortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA
-// , std::deque<std::pair<int, int> >::iterator startB, std::deque<std::pair<int, int> >::iterator endB)
-// {
-// 	std::deque<std::pair<int, int> >::iterator middle = startB;
-// 	std::advance(middle, std::distance(startB, endB) / 2);
-// std::cout << "lo : start: " << startB->first << " endB: " << endB->first << " DIST " << std::distance(startB, endB) << std::endl;
-
-// 	if (std::distance(startB, endB) < 0 || startA->first == middle->first)
-// 		// || (startA->first < middle->first && middle == this->deqA.begin()))
-// 	{
-		
-// 		std::pair<int, int> startA_tmp = *startA;
-// 		startA = this->deqA.erase(startA);	
-// 		std::cout << "yy" << std::endl;
-// 			std::cout << "start A:" << startA->first << std::endl;
-// 			std::cout << "ee" << std::endl;
-// 		// std::deque<std::pair<int, int> >::iterator newEndB;// = startA; 			
-// 		startB = this->deqA.insert(startB, startA_tmp);
-// 		std::cout << "zz" << std::endl;	
-// 		if (startB != this->deqA.begin())
-// 			std::advance(startA, 1);
-// 		std::deque<std::pair<int, int> >::iterator newEndB = startA;
-// 			std::advance(newEndB, -1);					
-// 		if (startA != this->deqA.end())
-// 		{
-// 				std::deque<std::pair<int, int> >::iterator newEndA = this->deqA.end();
-// 				std::advance(newEndA, -1);
-// 			this->firstBinarySortDeq(startA, newEndA, this->deqA.begin(), newEndB);
-// 		}
-// 		return ; 
-// 	}	
-// 	std::cout << "xx" << std::endl;
-// 	if (startA->first < middle->first)
-// 	{
-// 		std::advance(middle, -1);
-// 		this->firstBinarySortDeq(startA, endA, startB, middle); //--middle);
-// 	}
-// 	else if (startA->first > middle->first)
-// 	{
-// 		std::advance(middle, 1);
-// 		this->firstBinarySortDeq(startA, endA,  middle, endB);// ++middle, endB);
-// 	}
-// }
-
 
 void PmergeMe::firstBinarySortDeq(long unsigned int startA, long unsigned int endA
 , long unsigned int startB, long unsigned int endB)
@@ -236,7 +191,7 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	
 	std::clock_t end = std::clock();
 	std::cout << "print deq C" << std::endl;	
-	printDeq(this->deqC);		
+	// printDeq(this->deqC);		
 	std::cout << calculateTime(start, end) << std::endl;
 	checkFinalDeq(this->deqC);
 }
