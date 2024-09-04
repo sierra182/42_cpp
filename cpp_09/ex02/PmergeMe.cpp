@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 17:12:02 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/04 19:23:10 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, i
 		if (it == endA)
 			std::cout << "\e[31m";
 		else if (it == endB)
-			std::cout << "\e[35m";	
+			std::cout << "\e[35m";
+		std::cout << "\r" << std::endl;	
 	}
 	std::cout << "end" << std::endl;
 	std::cout << "\e[0m";
@@ -90,9 +91,10 @@ void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, st
 , std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 {
 	std::vector<int>::iterator middle = startB;
-	std::advance(middle, std::distance(startB, endB) / 2);
-
-	if (std::distance(startB, endB) < 0 || startA->second == *middle
+	// std::advance(middle, std::distance(startB, endB) / 2);
+	middle += (endB - startB) / 2;
+	// if (std::distance(startB, endB) < 0 || startA->second == *middle
+		if (endB - startB < 0 || startA->second == *middle
 		|| (startA->second < *middle && middle == this->vectB.begin()))	
 	{	
 		this->vectB.insert(startB, startA->second);	
@@ -173,7 +175,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	std::string item;	
 	int value = 0;
 
-	// this->vectA.reserve(100);
+	this->vectA.reserve(100);
 	char **argv_sav = argv;
 	while (*++argv)
 	{	
@@ -190,7 +192,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 		
 	}
 	fillA(-1);
-	std::clock_t start = std::clock();
+	// std::clock_t start = std::clock();
 	
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	// printVector(this->vectB);
@@ -202,10 +204,9 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	// if (!this->vectA.empty())
 		while (startA != this->vectA.end())	
 			this->firstBinarySort(++startA, this->vectA.end(), this->vectA.begin(), startA);		
-
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-	
+	std::cout << "sort vectA 00" << std::endl;	
 	{
 		
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();	
@@ -213,19 +214,23 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 		while (startA != this->vectA.end())					
 			this->binarySort(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
 	}
-	// if (!this->vectA.empty())	
+	std::cout << "sort vectA 22" << std::endl;	
+	// if (!this->vectA.empty())	printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+	// printVector(this->vectB);
 	// 	this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
 	
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->vectB);
 	
-	this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
+	// this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
 	
-	std::clock_t end = std::clock();
+	// std::clock_t end = std::clock();
 	std::cout << "print vect C" << std::endl;	
-	// printVector(this->vectC);		
-	std::cout << calculateTime(start, end) << std::endl;
-	checkFinalVector(this->vectC);
+	// printVector(this->vectC);
+	// if (start < end + 20000000)		
+		// std::cout << calculateTime(start, end) << std::endl;		
+	// std::cout << calculateTime(start, end) << std::endl;
+	// checkFinalVector(this->vectC);
 	this->PmergeMeDeq(argv_sav);
 }
 //  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1
