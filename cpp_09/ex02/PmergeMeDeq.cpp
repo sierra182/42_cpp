@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 11:06:37 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:23:03 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,24 +147,19 @@ void PmergeMe::firstBinarySortDeq(long unsigned int startA, long unsigned int en
 , long unsigned int startB, long unsigned int endB)
 {
 	long unsigned int middle = ((endB - startB) / 2) + startB;
-		
+			
 	if (endB < startB || this->deqA[startA].first == this->deqA[middle].first 
 		|| (this->deqA[startA].first < this->deqA[middle].first && middle == 0))
 	{
-		std::pair<int, int> startA_tmp = this->deqA[startA];
-		
+		std::pair<int, int> startA_tmp = this->deqA[startA];		
 		std::deque<std::pair<int, int> >::iterator itStartA = this->deqA.begin();
 		std::advance(itStartA, startA);
 		this->deqA.erase(itStartA);
-
 		std::deque<std::pair<int, int> >::iterator itStartB = this->deqA.begin();
-		std::advance(itStartB, startB);		
-		// std::vector<std::pair<int, int> >::iterator newEndB = startA; 
-					
-		this->deqA.insert(itStartB, startA_tmp);
-									
-		if (++startA != this->vectA.size() - 1)
-			this->firstBinarySortDeq(startA, this->vectA.size() - 1, 0, startA - 1);
+		std::advance(itStartB, startB);								
+		this->deqA.insert(itStartB, startA_tmp);									
+		if (++startA != this->deqA.size())
+			this->firstBinarySortDeq(startA, this->deqA.size() - 1, 0, startA - 1);
 		return ; 
 	}	
 	if (this->deqA[startA].first < this->deqA[middle].first)
