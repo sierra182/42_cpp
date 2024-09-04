@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 17:09:09 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/04 17:12:02 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,12 +199,9 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 
 		
-	if (!this->vectA.empty())
-		while (startA != this->vectA.end())
-		{
-			
-			this->firstBinarySort(++startA, this->vectA.end(), this->vectA.begin(), startA);
-		}
+	// if (!this->vectA.empty())
+		while (startA != this->vectA.end())	
+			this->firstBinarySort(++startA, this->vectA.end(), this->vectA.begin(), startA);		
 
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
@@ -212,7 +209,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	{
 		
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();	
-	if (!this->deqA.empty())		
+	// if (!this->deqA.empty())		
 		while (startA != this->vectA.end())					
 			this->binarySort(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
 	}

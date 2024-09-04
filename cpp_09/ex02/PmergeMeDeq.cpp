@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 16:48:34 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/04 17:28:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ void PmergeMe::firstBinarySortDeq(long unsigned int startA, long unsigned int en
 		std::deque<std::pair<int, int> >::iterator itStartB = this->deqA.begin();
 		std::advance(itStartB, startB);								
 		this->deqA.insert(itStartB, startA_tmp);									
-		if (++startA != this->deqA.size())
-			this->firstBinarySortDeq(startA, this->deqA.size() - 1, 0, startA - 1);
+		// if (++startA != this->deqA.size())
+		// 	this->firstBinarySortDeq(startA, this->deqA.size() - 1, 0, startA - 1);
 		return ; 
 	}	
 	if (this->deqA[startA].first < this->deqA[middle].first)
@@ -175,9 +175,18 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	// if (!this->deqA.empty())
 	// 	this->firstBinarySortDeq(++this->deqA.begin(), this->deqA.end(), this->deqA.begin(), this->deqA.begin());
 
-	if (!this->deqA.empty())
-		this->firstBinarySortDeq(1, this->deqA.size() - 1, 0, 0);
-
+	// if (!this->deqA.empty())
+	// 	this->firstBinarySortDeq(1, this->deqA.size() - 1, 0, 0);
+	{
+		long unsigned int startA = 0; long unsigned int endA = this->deqA.size() - 1;		
+		long unsigned tmp;	
+		while (startA != this->deqA.size() - 1)
+		{
+			tmp = startA++;
+			// startA++;
+			this->firstBinarySortDeq(startA, endA, 0, tmp);				
+		}	
+	}
 	// std::cout << "deqA" << std::endl;
 	// printPairVector(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 	std::cout << "sort deqA 1 " << std::endl;
