@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 19:23:10 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/04 20:20:21 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,9 +135,13 @@ void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator start
 		|| (startA->first < middle->first && middle == this->vectA.begin()))	
 	{
 		std::pair<int, int> startA_tmp = *startA;
-		startA = this->vectA.erase(startA);		
+		// if (startA != this->vectA.end())
+		// {
+			
+			startA = this->vectA.erase(startA);		
 		// std::vector<std::pair<int, int> >::iterator newEndB = startA; 			
-		this->vectA.insert(startB, startA_tmp);							
+		startB = this->vectA.insert(startB, startA_tmp);							
+		// }
 		// if (++startA != this->vectA.end())
 		// 	this->firstBinarySort(startA, --this->vectA.end(), this->vectA.begin(), newEndB);
 		return ; 
@@ -192,7 +196,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 		
 	}
 	fillA(-1);
-	// std::clock_t start = std::clock();
+	std::clock_t start = std::clock();
 	
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	// printVector(this->vectB);
@@ -201,8 +205,8 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 
 		
-	// if (!this->vectA.empty())
-		while (startA != this->vectA.end())	
+	if (!this->vectA.empty())
+		while (startA + 1 != this->vectA.end())	
 			this->firstBinarySort(++startA, this->vectA.end(), this->vectA.begin(), startA);		
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
@@ -224,13 +228,13 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	
 	// this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
 	
-	// std::clock_t end = std::clock();
+	std::clock_t end = std::clock();
 	std::cout << "print vect C" << std::endl;	
 	// printVector(this->vectC);
 	// if (start < end + 20000000)		
 		// std::cout << calculateTime(start, end) << std::endl;		
-	// std::cout << calculateTime(start, end) << std::endl;
-	// checkFinalVector(this->vectC);
+	std::cout << calculateTime(start, end) << std::endl;
+	checkFinalVector(this->vectC);
 	this->PmergeMeDeq(argv_sav);
 }
 //  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMeDeq.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 19:20:57 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/04 20:22:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 		
 	}
 	fillADeq(-1);
-	// std::clock_t start = std::clock();
+	std::clock_t start = std::clock();
 	
 	// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 	// printDeq(this->deqB);
@@ -177,8 +177,7 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 
 	// if (!this->deqA.empty())
 	// 	this->firstBinarySortDeq(1, this->deqA.size() - 1, 0, 0);
-	if (!this->deqA.empty())	
-	{
+	
 		long unsigned int startA = 0; long unsigned int endA = this->deqA.size() - 1;		
 		long unsigned tmp;	
 		while (!this->deqA.empty() && startA != this->deqA.size() - 1)
@@ -187,7 +186,7 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 			// startA++;
 			this->firstBinarySortDeq(startA, endA, 0, tmp);				
 		}	
-	}
+	
 	// std::cout << "deqA" << std::endl;
 	// printPairVector(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 	std::cout << "sort deqA 1 " << std::endl;
@@ -208,11 +207,11 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	
 	// this->mergeSortDeq(this->deqA.begin(), this->deqA.end(), this->deqB.begin(), this->deqB.end());
 	
-	// std::clock_t end = std::clock();
+	std::clock_t end = std::clock();
 	std::cout << "print deq C" << std::endl;	
 	// printDeq(this->deqC);
 	// if (start < end + 20)		
-	// 	std::cout << calculateTime(start, end) << std::endl;
-	// checkFinalDeq(this->deqC);
+		std::cout << calculateTime(start, end) << std::endl;
+	checkFinalDeq(this->deqC);
 }
 //  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1
