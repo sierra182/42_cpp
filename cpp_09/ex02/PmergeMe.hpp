@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 10:57:44 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 20:32:47 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include <deque>
 #include <utility>
 #include <ctime>
+#include <sstream>
+#include "Parser.hpp"
+#include <unistd.h>
 
 class PmergeMe
 {

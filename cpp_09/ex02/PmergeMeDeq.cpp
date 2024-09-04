@@ -6,13 +6,11 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 20:22:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 20:47:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include "Parser.hpp"
-#include <sstream>
 
 void 	PmergeMe::fillADeq(int value)
 {	
@@ -43,11 +41,13 @@ std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int
 			std::cout << "\e[32m";	
 		else if (it == startB)
 			std::cout << "\e[34m";
-		std::cout << it->first << ", " << it->second << std::endl;
+		std::cout << it->first << " " << it->second << ", " << std::flush;
 		if (it == endA)
 			std::cout << "\e[31m";
 		else if (it == endB)
 			std::cout << "\e[35m";	
+		// std::cout << "\r";
+		// usleep(100000);
 	}
 	std::cout << "end" << std::endl;
 	std::cout << "\e[0m";
@@ -57,7 +57,10 @@ void printDeq(std::deque<int> const & vect)
 {
 	std::cout << "print deque:" << std::endl;
 	for (std::deque<int>::const_iterator it = vect.begin(); it != vect.end(); it++)
-		std::cout << *it << std::endl;
+	{
+		std::cout << *it << std::flush;
+		std::cout << "\r" ;
+	}
 	std::cout << "end" << std::endl;
 }
 
@@ -166,8 +169,8 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	fillADeq(-1);
 	std::clock_t start = std::clock();
 	
-	// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
-	// printDeq(this->deqB);
+	printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
+	printDeq(this->deqB);
 	
 	std::cout << "sort deqA" << std::endl;	
 	// std::sort(this->deqA.begin(), this->deqA.end());
@@ -184,7 +187,13 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 		{
 			tmp = startA++;
 			// startA++;
-			this->firstBinarySortDeq(startA, endA, 0, tmp);				
+			this->firstBinarySortDeq(startA, endA, 0, tmp);	
+			printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
+			if (startA != this->deqA.size() - 1)
+			{
+				std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
+				usleep(100000);
+			}
 		}	
 	
 	// std::cout << "deqA" << std::endl;
@@ -198,8 +207,16 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 		
 	std::deque<std::pair<int, int> >::iterator startAA = this->deqA.begin();	
 	// if (!this->deqA.empty())		
-		while (startAA != this->deqA.end())					
+		while (startAA != this->deqA.end())
+		{
+			
 			this->binarySortDeq(startAA++, --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
+			if (startAA != this->deqA.end())
+			{
+				std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
+				usleep(100000);
+			}
+		}				
 
 	
 	// std::cout << "print vect B" << std::endl;		

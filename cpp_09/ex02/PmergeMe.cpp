@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 20:20:21 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 21:41:53 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,34 @@ void printPairVector(std::vector<std::pair<int, int> > const & vect,
 std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
 , std::vector<std::pair<int, int> >::iterator startB, std::vector<std::pair<int, int> >::iterator endB)
 {
-	std::cout << "print pair vector:" << std::endl;
 	for (std::vector<std::pair<int, int> >::const_iterator it = vect.begin(); it != vect.end(); it++)
 	{
+		// std::cout << "vla" << std::endl;
 		if (it == startA)
 			std::cout << "\e[32m";	
-		else if (it == startB)
+		if (it == startB)
 			std::cout << "\e[34m";
-		std::cout << it->first << ", " << it->second << std::endl;
 		if (it == endA)
 			std::cout << "\e[31m";
-		else if (it == endB)
-			std::cout << "\e[35m";
-		std::cout << "\r" << std::endl;	
-	}
-	std::cout << "end" << std::endl;
-	std::cout << "\e[0m";
+		if (it == endB)
+			std::cout << "\e[35m";	
+		std::cout << it->first << ", " << it->second << "\e[0m" << std::endl;
+		// if (it == endA)
+		// 	std::cout << "\e[31m";
+		// else if (it == endB)
+		// 	std::cout << "\e[35m";			
+	}	
+	std::cout << "\e[0m" << std::endl;
 }
 
 void printVector(std::vector<int> const & vect)
 {
 	std::cout << "print vector:" << std::endl;
 	for (std::vector<int>::const_iterator it = vect.begin(); it != vect.end(); it++)
-		std::cout << *it << std::endl;
+	{
+		std::cout << *it << std::flush;
+		std::cout << "\r" ;
+	}
 	std::cout << "end" << std::endl;
 }
 
@@ -207,7 +212,17 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 		
 	if (!this->vectA.empty())
 		while (startA + 1 != this->vectA.end())	
+		{
+			std::vector<std::pair<int, int> >::iterator startATmp = startA;
 			this->firstBinarySort(++startA, this->vectA.end(), this->vectA.begin(), startA);		
+			printPairVector(this->vectA, startA, this->vectA.end(), this->vectA.begin(), startATmp);
+			if (startA != this->vectA.end())
+			{
+				std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
+				usleep(1000000);
+			}
+		}
+	return;
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	std::cout << "sort vectA 00" << std::endl;	
@@ -215,9 +230,18 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 		
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();	
 	// if (!this->deqA.empty())		
-		while (startA != this->vectA.end())					
+		while (startA != this->vectA.end())	
+		{
 			this->binarySort(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
+			printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+			if (startA != this->vectA.end())
+			{
+				std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
+				usleep(1000000);
+			}
+		}				
 	}
+	
 	std::cout << "sort vectA 22" << std::endl;	
 	// if (!this->vectA.empty())	printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	// printVector(this->vectB);
