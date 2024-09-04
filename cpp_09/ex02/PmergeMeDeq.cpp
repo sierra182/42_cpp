@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMeDeq.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 11:25:01 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 16:48:34 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void PmergeMe::binarySortDeq(std::deque<std::pair<int, int> >::iterator startA, 
 		|| (startA->second < *middle && middle == this->deqB.begin()))	
 	{	
 		this->deqB.insert(startB, startA->second);	
-		if (++startA != this->deqA.end())		
-			this->binarySortDeq(startA, endA, this->deqB.begin(), --this->deqB.end());
+		// if (++startA != this->deqA.end())		
+		// 	this->binarySortDeq(startA, endA, this->deqB.begin(), --this->deqB.end());
 		return ; 
 	}
 	else if (startA->second < *middle)	
@@ -180,9 +180,18 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 
 	// std::cout << "deqA" << std::endl;
 	// printPairVector(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
-	std::cout << "sort deqA 1" << std::endl;
-	if (!this->deqA.empty())	
-		this->binarySortDeq(this->deqA.begin(), --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
+	std::cout << "sort deqA 1 " << std::endl;
+	// if (!this->deqA.empty())	
+	// 	this->binarySortDeq(this->deqA.begin(), --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
+
+		// if (!this->deqA.empty())	
+		// this->binarySortDeq(this->deqA.begin(), --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
+		
+	std::deque<std::pair<int, int> >::iterator startA = this->deqA.begin();	
+	if (!this->deqA.empty())		
+		while (startA != this->deqA.end())					
+			this->binarySortDeq(startA++, --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
+
 	
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->deqB);

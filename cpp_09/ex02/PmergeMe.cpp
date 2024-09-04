@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 11:24:51 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 16:58:58 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, st
 		|| (startA->second < *middle && middle == this->vectB.begin()))	
 	{	
 		this->vectB.insert(startB, startA->second);	
-		if (++startA != this->vectA.end())		
-			this->binarySort(startA, endA, this->vectB.begin(), --this->vectB.end());
+		// if (++startA != this->vectA.end())		
+		// 	this->binarySort(startA, endA, this->vectB.begin(), --this->vectB.end());
 		return ; 
 	}
 	else if (startA->second < *middle)	
@@ -196,15 +196,23 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	// printVector(this->vectB);
 	
 	std::cout << "sort vectA" << std::endl;	
-			
+
+	std::vector<std::pair<int, int> >::iterator startA = ++this->vectA.begin(); std::vector<std::pair<int, int> >::iterator endA = this->vectA.end();
+	std::vector<std::pair<int, int> >::iterator startB = this->vectA.begin(); std::vector<std::pair<int, int> >::iterator endB = this->vectA.begin();	
+		
 	if (!this->vectA.empty())
-		this->firstBinarySort(++this->vectA.begin(), this->vectA.end(), this->vectA.begin(), this->vectA.begin());
+		while (++startA != this->vectA.end())
+			this->firstBinarySort(startA, endA, startB, endB);
 
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	
-	if (!this->vectA.empty())	
-		this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
+	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();	
+	if (!this->deqA.empty())		
+		while (startA != this->vectA.end())					
+			this->binarySort(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
+	// if (!this->vectA.empty())	
+	// 	this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
 	
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->vectB);
