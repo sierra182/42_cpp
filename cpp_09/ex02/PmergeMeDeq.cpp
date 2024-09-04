@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 00:24:47 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:06:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,27 +98,98 @@ std::deque<int>::iterator startB, std::deque<int>::iterator endB)
 		this->deqC.push_back(*startB++);
 }
 
-void PmergeMe::firstBinarySortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA
-, std::deque<std::pair<int, int> >::iterator startB, std::deque<std::pair<int, int> >::iterator endB)
-{
-	std::deque<std::pair<int, int> >::iterator middle = startB;
-	std::advance(middle, std::distance(startB, endB) / 2);
+// void PmergeMe::firstBinarySortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA
+// , std::deque<std::pair<int, int> >::iterator startB, std::deque<std::pair<int, int> >::iterator endB)
+// {
+// 	std::deque<std::pair<int, int> >::iterator middle = startB;
+// 	std::advance(middle, std::distance(startB, endB) / 2);
+// std::cout << "lo : start: " << startB->first << " endB: " << endB->first << " DIST " << std::distance(startB, endB) << std::endl;
+
+// 	if (std::distance(startB, endB) < 0 || startA->first == middle->first)
+// 		// || (startA->first < middle->first && middle == this->deqA.begin()))
+// 	{
 		
-	if (std::distance(startB, endB) < 0 || startA->first == middle->first
-		|| (startA->first < middle->first && middle == this->deqA.begin()))	
+// 		std::pair<int, int> startA_tmp = *startA;
+// 		startA = this->deqA.erase(startA);	
+// 		std::cout << "yy" << std::endl;
+// 			std::cout << "start A:" << startA->first << std::endl;
+// 			std::cout << "ee" << std::endl;
+// 		// std::deque<std::pair<int, int> >::iterator newEndB;// = startA; 			
+// 		startB = this->deqA.insert(startB, startA_tmp);
+// 		std::cout << "zz" << std::endl;	
+// 		if (startB != this->deqA.begin())
+// 			std::advance(startA, 1);
+// 		std::deque<std::pair<int, int> >::iterator newEndB = startA;
+// 			std::advance(newEndB, -1);					
+// 		if (startA != this->deqA.end())
+// 		{
+// 				std::deque<std::pair<int, int> >::iterator newEndA = this->deqA.end();
+// 				std::advance(newEndA, -1);
+// 			this->firstBinarySortDeq(startA, newEndA, this->deqA.begin(), newEndB);
+// 		}
+// 		return ; 
+// 	}	
+// 	std::cout << "xx" << std::endl;
+// 	if (startA->first < middle->first)
+// 	{
+// 		std::advance(middle, -1);
+// 		this->firstBinarySortDeq(startA, endA, startB, middle); //--middle);
+// 	}
+// 	else if (startA->first > middle->first)
+// 	{
+// 		std::advance(middle, 1);
+// 		this->firstBinarySortDeq(startA, endA,  middle, endB);// ++middle, endB);
+// 	}
+// }
+
+
+void PmergeMe::firstBinarySortDeq(long unsigned int startA, long unsigned int endA
+, long unsigned int startB, long unsigned int endB)
+{
+	long unsigned int middle = ((endB - startB) / 2) + startB;
+		
+	if (endB < startB || this->deqA[startA].first == this->deqA[middle].first 
+		|| (this->deqA[startA].first < this->deqA[middle].first && middle == 0))
 	{
-		std::pair<int, int> startA_tmp = *startA;
-		startA = this->deqA.erase(startA);		
-		std::pair<int, int> endB_tmp; 			
-		this->deqA.insert(startB, startA_tmp);							
-		if (++startA != this->deqA.end())
-			this->firstBinarySortDeq(startA, --this->deqA.end(), this->deqA.begin(), startA - 1);
+		std::pair<int, int> startA_tmp = this->deqA[startA];
+		
+		std::deque<std::pair<int, int> >::iterator itStartA = this->deqA.begin();
+		std::advance(itStartA, startA);
+		this->deqA.erase(itStartA);
+
+		std::deque<std::pair<int, int> >::iterator itStartB = this->deqA.begin();
+		std::advance(itStartB, startB);		
+		// std::vector<std::pair<int, int> >::iterator newEndB = startA; 
+					
+		this->deqA.insert(itStartB, startA_tmp);
+									
+		if (++startA != this->vectA.size() - 1)
+			this->firstBinarySortDeq(startA, this->vectA.size() - 1, 0, startA - 1);
 		return ; 
 	}	
-	if (startA->first < middle->first)
+	if (this->deqA[startA].first < this->deqA[middle].first)
 		this->firstBinarySortDeq(startA, endA, startB, --middle);
-	else if (startA->first > middle->first)
+	else if (this->deqA[startA].first > this->deqA[middle].first)
 		this->firstBinarySortDeq(startA, endA, ++middle, endB);
+}
+
+void checkFinalDeq(std::deque<int> deq)
+{
+	std::deque<int>::iterator it = deq.begin();
+	std::deque<int>::iterator it_tmp = deq.begin();
+	for (; it != deq.end(); it++)
+	{
+		if (*it >= *it_tmp)
+		{
+			it_tmp = it;
+		}
+		else
+		{
+			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp << "\e[0m" << std::endl;
+			return;
+		}
+	}
+	std::cout << "\e[32m no problemo\e[0m" << std::endl;
 }
 
 void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
@@ -150,8 +221,12 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	
 	std::cout << "sort deqA" << std::endl;	
 	// std::sort(this->deqA.begin(), this->deqA.end());
+	
+	// if (!this->deqA.empty())
+	// 	this->firstBinarySortDeq(++this->deqA.begin(), this->deqA.end(), this->deqA.begin(), this->deqA.begin());
+
 	if (!this->deqA.empty())
-		this->firstBinarySortDeq(++this->deqA.begin(), this->deqA.end(), this->deqA.begin(), this->deqA.begin());
+		this->firstBinarySortDeq(1, this->deqA.size() - 1, 0, 0);
 
 	// std::cout << "deqA" << std::endl;
 	// printPairVector(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
@@ -168,5 +243,6 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	std::cout << "print deq C" << std::endl;	
 	printDeq(this->deqC);		
 	std::cout << calculateTime(start, end) << std::endl;
+	checkFinalDeq(this->deqC);
 }
 //  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1

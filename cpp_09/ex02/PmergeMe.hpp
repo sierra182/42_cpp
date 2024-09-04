@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/03 23:41:41 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 10:57:44 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ std::vector<int>::iterator startB, std::vector<int>::iterator endB);
 
     void    fillADeq(int value);
 
-void firstBinarySortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA
-, std::deque<std::pair<int, int> >::iterator startB, std::deque<std::pair<int, int> >::iterator endB);
+// void firstBinarySortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA
+// , std::deque<std::pair<int, int> >::iterator startB, std::deque<std::pair<int, int> >::iterator endB);
+
+
+void firstBinarySortDeq(long unsigned int startA, long unsigned int endA
+, long unsigned int startB, long unsigned int endB);
 
 void binarySortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA
 , std::deque<int>::iterator startB, std::deque<int>::iterator endB);
@@ -55,7 +59,9 @@ void binarySortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque
 void mergeSortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA,
 std::deque<int>::iterator startB, std::deque<int>::iterator endB);
 	void PmergeMeDeq(char * argv[]);
-	
+
+
+
     public :
 		
 		PmergeMe(char * argv[]);

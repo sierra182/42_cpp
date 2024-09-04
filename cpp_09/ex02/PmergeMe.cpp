@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 00:10:41 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/04 11:06:54 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,10 @@ void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator start
 	{
 		std::pair<int, int> startA_tmp = *startA;
 		startA = this->vectA.erase(startA);		
-		std::pair<int, int> endB_tmp; 			
+		std::vector<std::pair<int, int> >::iterator newEndB = startA; 			
 		this->vectA.insert(startB, startA_tmp);							
 		if (++startA != this->vectA.end())
-			this->firstBinarySort(startA, --this->vectA.end(), this->vectA.begin(), startA - 1);
+			this->firstBinarySort(startA, --this->vectA.end(), this->vectA.begin(), newEndB);
 		return ; 
 	}	
 	if (startA->first < middle->first)
@@ -147,6 +147,24 @@ void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator start
 }
 
 
+void checkFinalVector(std::vector<int> vect)
+{
+	std::vector<int>::iterator it = vect.begin();
+	std::vector<int>::iterator it_tmp = vect.begin();
+	for (; it != vect.end(); it++)
+	{
+		if (*it >= *it_tmp)
+		{
+			it_tmp = it;
+		}
+		else
+		{
+			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp << "\e[0m" << std::endl;
+			return;
+		}
+	}
+	std::cout << "\e[32m no problemo\e[0m" << std::endl;
+}
 
 PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 {
@@ -197,6 +215,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	std::cout << "print vect C" << std::endl;	
 	printVector(this->vectC);		
 	std::cout << calculateTime(start, end) << std::endl;
+	checkFinalVector(this->vectC);
 	this->PmergeMeDeq(argv_sav);
 }
 //  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1
