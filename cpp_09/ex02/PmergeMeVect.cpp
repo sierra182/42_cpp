@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 10:24:52 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 10:32:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Parser.hpp"
 #include <sstream>
 
-void 	PmergeMe::fillA(int value)
+void 	PmergeMe::fillAVect(int value)
 {	
 	static int lcl_value = -1;
 	
@@ -32,7 +32,7 @@ void 	PmergeMe::fillA(int value)
 	}		
 }
 
-void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA,
+void PmergeMe::binarySortVect(std::vector<std::pair<int, int> >::iterator startA,
 	std::vector<std::pair<int, int> >::iterator endA,
 	std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 {
@@ -46,12 +46,12 @@ void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA,
 		return ; 
 	}
 	else if (startA->second < *middle)	
-		this->binarySort(startA, endA, startB, --middle);		
+		this->binarySortVect(startA, endA, startB, --middle);		
 	else if (startA->second > *middle)
-		this->binarySort(startA, endA, ++middle, endB);	 
+		this->binarySortVect(startA, endA, ++middle, endB);	 
 }
 
-void PmergeMe::mergeSort(std::vector<std::pair<int, int> >::iterator startA,
+void PmergeMe::mergeSortVect(std::vector<std::pair<int, int> >::iterator startA,
 	std::vector<std::pair<int, int> >::iterator endA,
 	std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 {
@@ -68,7 +68,7 @@ void PmergeMe::mergeSort(std::vector<std::pair<int, int> >::iterator startA,
 		this->vectC.push_back(*startB++);
 }
 
-void PmergeMe::firstBinarySort(
+void PmergeMe::firstBinarySortVect(
 	std::vector<std::pair<int, int> >::iterator startA,
 	std::vector<std::pair<int, int> >::iterator endA,
 	std::vector<std::pair<int, int> >::iterator startB,
@@ -86,9 +86,9 @@ void PmergeMe::firstBinarySort(
 		return ; 
 	}	
 	if (startA->first < middle->first)
-		this->firstBinarySort(startA, endA, startB, --middle);
+		this->firstBinarySortVect(startA, endA, startB, --middle);
 	else if (startA->first > middle->first)
-		this->firstBinarySort(startA, endA, ++middle, endB);
+		this->firstBinarySortVect(startA, endA, ++middle, endB);
 }
 
 void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
@@ -110,13 +110,13 @@ void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
 			if (value < 0)		
 				throw std::invalid_argument
 					(std::string("the value must be positive: ") + item);		
-			fillA(value);		
+			fillAVect(value);		
 			if (++nValue > 100000)
 				throw std::invalid_argument
 					(std::string("the max value is reached: 100000"));
 		}		
 	}
-	fillA(-1);
+	fillAVect(-1);
 	std::cout << "n value: " << nValue << std::endl;
 	this->vectB.reserve((nValue / 2) + 1);
 	this->vectC.reserve(nValue);
@@ -132,7 +132,7 @@ void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
 		while (startA + 1 != this->vectA.end())	
 		{
 			// std::vector<std::pair<int, int> >::iterator startATmp = startA;
-			this->firstBinarySort(++startA, this->vectA.end(), this->vectA.begin(), startA);		
+			this->firstBinarySortVect(++startA, this->vectA.end(), this->vectA.begin(), startA);		
 			// printPairVector(this->vectA, startA, this->vectA.end(), this->vectA.begin(), startATmp);
 			if (startA != this->vectA.end())
 			{
@@ -153,7 +153,7 @@ void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
 			
 		while (startA != this->vectA.end())	
 		{
-			this->binarySort(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
+			this->binarySortVect(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
 			// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 			if (startA != this->vectA.end())
 			{
@@ -166,7 +166,7 @@ void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->vectB);
 	
-	this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
+	this->mergeSortVect(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
 	
 	std::cout << "print vect C" << std::endl;	
 	// printVector(this->vectC);
