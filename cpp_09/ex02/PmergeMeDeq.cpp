@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 10:23:26 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:42:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void PmergeMe::binarySortDeq(std::deque<std::pair<int, int> >::iterator startA,
 	std::deque<int>::iterator startB, std::deque<int>::iterator endB)
 {
 	std::deque<int>::iterator middle = startB;
+	if (startA == endA || startB == endB) {
+       std::cout << "probleme" << std::endl;
+        return;
 	std::advance(middle, std::distance(startB, endB) / 2);
-
+    }
 	if (std::distance(startB, endB) < 0 || startA->second == *middle
 		|| (startA->second < *middle && middle == this->deqB.begin()))	
 	{	
@@ -92,7 +95,7 @@ void PmergeMe::firstBinarySortDeq(
 		this->firstBinarySortDeq(startA, endA, ++middle, endB);
 }
 
-void PmergeMe::Deque(char *argv[])
+std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 {
 	Parser psr;
 	std::istringstream iss;
@@ -117,16 +120,16 @@ void PmergeMe::Deque(char *argv[])
 		}		
 	}
 	fillADeq(-1);
-	std::cout << "n value: " << nValue << std::endl;
+	// std::cout << "n value: " << nValue << std::endl;
 	std::clock_t start = std::clock();
 	
-	this->printPair(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
-	this->printCont(this->deqB);
+	// this->printPair(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
+	// this->printCont(this->deqB);
 	
-	std::cout << "sort deqA" << std::endl;	
+	// std::cout << "sort deqA" << std::endl;	
 	// std::sort(this->deqA.begin(), this->deqA.end());
 	
-	long unsigned tmp;	
+	long unsigned tmp = 0;	
 	long unsigned int startA = 0;
 	long unsigned int endA = this->deqA.size() - 1;	
 		
@@ -145,7 +148,7 @@ void PmergeMe::Deque(char *argv[])
 	
 	// std::cout << "deqA" << std::endl;
 	// printPairVector(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
-	std::cout << "sort deqA 1 " << std::endl;
+	// std::cout << "sort deqA 1 " << std::endl;
 		
 	std::deque<std::pair<int, int> >::iterator startAA = this->deqA.begin();	
 	
@@ -166,10 +169,11 @@ void PmergeMe::Deque(char *argv[])
 	this->mergeSortDeq(this->deqA.begin(), this->deqA.end(), this->deqB.begin(), this->deqB.end());
 	
 	std::clock_t end = std::clock();
-	std::cout << "print deq C" << std::endl;	
+	// std::cout << "print deq C" << std::endl;	
 	// printDeq(this->deqC);
 	
-	std::cout << calculateTime(start, end) << std::endl;
+	double time = calculateTime(start, end);
 	this->checkFinal(this->deqC, nValue);
+	return (std::make_pair(time, nValue));
 }
 

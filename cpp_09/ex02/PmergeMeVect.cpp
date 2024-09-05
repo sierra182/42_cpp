@@ -6,13 +6,11 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 10:32:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:19:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include "Parser.hpp"
-#include <sstream>
 
 void 	PmergeMe::fillAVect(int value)
 {	
@@ -91,15 +89,14 @@ void PmergeMe::firstBinarySortVect(
 		this->firstBinarySortVect(startA, endA, ++middle, endB);
 }
 
-void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
+std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 {
 	Parser psr;
 	std::istringstream iss;
 	std::string item;	
 	int value = 0;
 	long unsigned int nValue = 0;
-	// 
-	// char **argv_sav = argv;
+
 	while (*++argv)
 	{	
 		iss.clear();	
@@ -117,15 +114,15 @@ void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
 		}		
 	}
 	fillAVect(-1);
-	std::cout << "n value: " << nValue << std::endl;
+	// std::cout << "n value: " << nValue << std::endl;
 	this->vectB.reserve((nValue / 2) + 1);
 	this->vectC.reserve(nValue);
 	std::clock_t start = std::clock();
 	
-	this->printPair(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-	this->printCont(this->vectB);
+	// this->printPair(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+	// this->printCont(this->vectB);
 	
-	std::cout << "sort vectA" << std::endl;	
+	// std::cout << "sort vectA" << std::endl;	
 
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 		
 	if (!this->vectA.empty())
@@ -146,7 +143,7 @@ void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 
-	std::cout << "sort vectA 00" << std::endl;	
+	// std::cout << "sort vectA 00" << std::endl;	
 	{
 		
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();
@@ -168,12 +165,12 @@ void PmergeMe::Vector(char *argv[])//! check doublons  //reserve // const!
 	
 	this->mergeSortVect(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
 	
-	std::cout << "print vect C" << std::endl;	
-	// printVector(this->vectC);
+	// std::cout << "print vect C" << std::endl;	
+	printCont(this->vectC);
 	
 	std::clock_t end = std::clock();
-	std::cout << calculateTime(start, end) << std::endl;
+	double time = calculateTime(start, end);
 	this->checkFinal(this->vectC, nValue);
-	// this->PmergeMeDeq(argv_sav);
+	return (std::make_pair(time, nValue));
 }
 

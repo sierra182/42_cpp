@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 10:26:39 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:15:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,23 @@ double	PmergeMe::calculateTime(std::clock_t start, std::clock_t end) const
 	return (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC);
 }
 
+void	printArgs(char *argv[])
+{
+	std::cout << std::endl;
+	while (*++argv)
+		std::cout << std::string(*argv) << " ";
+	std::cout << std::endl << std::endl;
+}
+
 PmergeMe::PmergeMe(char *argv[])
 {
-	this->Vector(argv);
-	this->Deque(argv);
+	printArgs(argv);
+	std::pair<double, long unsigned int> rVect = this->Vector(argv);
+	std::pair<double, long unsigned int> rDeq = this->Deque(argv);
+	
+	std::cout << "time vector : " << rVect.first << ", n values :"
+		<<  rVect.second << std::endl;
+	std::cout << "time deque : " << rDeq.first << ", n values :"
+		<<  rDeq.second << std::endl;
 }
 

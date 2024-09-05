@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:27:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/05 10:46:52 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:20:57 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void PmergeMe::printPair(
 			std::cout << "\e[31m";
 		if (it == endB)
 			std::cout << "\e[35m";	
-		std::cout << it->first << ", " << it->second << "\e[0m" << std::endl;
+		std::cout << it->first << ", " << it->second << " \e[0m" << std::endl;
 		// if (it == endA)
 		// 	std::cout << "\e[31m";
 		// else if (it == endB)
@@ -48,14 +48,14 @@ void PmergeMe::printPair(
 template < template < typename, typename > class T >
 void PmergeMe::printCont(T<int, std::allocator<int> > const & vect) const
 {
-	std::cout << "print vector:" << std::endl;
+	// std::cout << "print vector:" << std::endl;
 	for (typename T<int, std::allocator<int> >::const_iterator
 		it = vect.begin(); it != vect.end(); it++)
 	{
-		std::cout << *it << std::flush;
+		std::cout << *it << " " << std::flush;
 		// std::cout << "\r" ;
 	}
-	std::cout << "end" << std::endl;
+	std::cout << std::endl;
 }
 
 template < template < typename, typename > class T > 

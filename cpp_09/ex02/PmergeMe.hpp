@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 10:43:39 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:13:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class PmergeMe
     PmergeMe(const PmergeMe & src);
     PmergeMe & operator=(const PmergeMe & rhs);
 	
-    void	Vector(char *argv[]);
-	void	Deque(char *argv[]);
+    std::pair<double, long unsigned int>	Vector(char *argv[]);
+	std::pair<double, long unsigned int>	Deque(char *argv[]);
 		
     void    fillAVect(int value);
 	
