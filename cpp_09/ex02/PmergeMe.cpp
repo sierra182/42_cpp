@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 08:54:07 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 08:59:58 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,6 @@ PmergeMe & PmergeMe::operator=(const PmergeMe & )
 PmergeMe::~PmergeMe()
 {
     return ;
-}
-
-double	PmergeMe::calculateTime(std::clock_t start, std::clock_t end) const
-{
-	return (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC);
-}
-
-void 	PmergeMe::fillA(int value)
-{	
-	static int lcl_value = -1;
-	
-	if (value < 0 && lcl_value >= 0)	
-		this->vectB.push_back(lcl_value);	
-	else if (lcl_value < 0)		
-		lcl_value = value;	
-	else
-	{	
-		if (value < lcl_value)		
-			this->vectA.push_back(std::make_pair(value, lcl_value));	
-		else
-			this->vectA.push_back(std::make_pair(lcl_value, value));
-		lcl_value = -1;
-	}		
 }
 
 void printPairVector(std::vector<std::pair<int, int> > const & vect,
@@ -111,6 +88,29 @@ void checkFinalVector(std::vector<int> vect, long unsigned int len)
 		}
 	}
 	std::cout << "\e[32m no problemo\e[0m" << std::endl;
+}
+
+double	PmergeMe::calculateTime(std::clock_t start, std::clock_t end) const
+{
+	return (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC);
+}
+
+void 	PmergeMe::fillA(int value)
+{	
+	static int lcl_value = -1;
+	
+	if (value < 0 && lcl_value >= 0)	
+		this->vectB.push_back(lcl_value);	
+	else if (lcl_value < 0)		
+		lcl_value = value;	
+	else
+	{	
+		if (value < lcl_value)		
+			this->vectA.push_back(std::make_pair(value, lcl_value));	
+		else
+			this->vectA.push_back(std::make_pair(lcl_value, value));
+		lcl_value = -1;
+	}		
 }
 
 void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA,
@@ -172,9 +172,6 @@ void PmergeMe::firstBinarySort(
 		this->firstBinarySort(startA, endA, ++middle, endB);
 }
 
-
-
-
 PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 {
 	Parser psr;
@@ -194,8 +191,10 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 			if (value < 0)		
 				throw std::invalid_argument
 					(std::string("the value must be positive: ") + item);		
-			fillA(value);
-			++nValue;
+			fillA(value);		
+			if (++nValue > 100000)
+				throw std::invalid_argument
+					(std::string("the max value is reached: 100000"));
 		}		
 	}
 	fillA(-1);
