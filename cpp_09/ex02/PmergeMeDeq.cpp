@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 11:42:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:49:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void PmergeMe::binarySortDeq(std::deque<std::pair<int, int> >::iterator startA,
 	std::deque<int>::iterator startB, std::deque<int>::iterator endB)
 {
 	std::deque<int>::iterator middle = startB;
-	if (startA == endA || startB == endB) {
-       std::cout << "probleme" << std::endl;
-        return;
+	// if (startA == endA || startB == endB) {
+    //    std::cout << "probleme" << std::endl;
+    //     return;
+    // }
 	std::advance(middle, std::distance(startB, endB) / 2);
-    }
 	if (std::distance(startB, endB) < 0 || startA->second == *middle
 		|| (startA->second < *middle && middle == this->deqB.begin()))	
 	{	
@@ -174,6 +174,7 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 	
 	double time = calculateTime(start, end);
 	this->checkFinal(this->deqC, nValue);
+	std::cout << std::endl;
 	return (std::make_pair(time, nValue));
 }
 

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:27:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/05 11:20:57 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:49:05 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void PmergeMe::printCont(T<int, std::allocator<int> > const & vect) const
 		std::cout << *it << " " << std::flush;
 		// std::cout << "\r" ;
 	}
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 }
 
 template < template < typename, typename > class T > 

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 11:15:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:50:25 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ PmergeMe::PmergeMe(char *argv[])
 		<<  rVect.second << std::endl;
 	std::cout << "time deque : " << rDeq.first << ", n values :"
 		<<  rDeq.second << std::endl;
+	std::cout << std::endl;
 }
 
