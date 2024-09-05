@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 13:37:44 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:44:04 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,7 @@ void PmergeMe::inBinarySortVect(
 		
 	if (std::distance(startB, endB) < 0 || startA->first == middle->first
 		|| (startA->first < middle->first && middle == this->vectA.begin()))	
-	{
-		// std::pair<int, int> startA_tmp = *startA;	
-		// startA = this->vectA.erase(startA);
-		// startB = this->vectA.insert(startB, startA_tmp);
-		// return ; 			
+	{				
 		startB = this->vectA.insert(startB, *startA);
 		startA = this->vectA.erase(++startA);
 		return ; 

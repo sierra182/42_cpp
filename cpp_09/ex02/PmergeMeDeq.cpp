@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 13:41:08 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:44:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,7 @@ void PmergeMe::inBinarySortDeq(
 	if (endB < startB || this->deqA[startA].first == this->deqA[middle].first 
 		|| (this->deqA[startA].first < this->deqA[middle].first
 		&& middle == 0))
-	{
-		// std::pair<int, int> startA_tmp = this->deqA[startA];		
-		// std::deque<std::pair<int, int> >::iterator itStartA
-		// = this->deqA.begin();
-		// std::advance(itStartA, startA);
-		// this->deqA.erase(itStartA);		
-		// itStartA = this->deqA.begin();	
-		// std::advance(itStartA, startB);								
-		// this->deqA.insert(itStartA, startA_tmp);
-		// return ; 				
+	{						
 		std::deque<std::pair<int, int> >::iterator itStartA
 			= this->deqA.begin();	
 		std::advance(itStartA, startB);								
