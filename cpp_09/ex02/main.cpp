@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:01:55 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 09:11:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 14:57:14 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(int argc, char * argv[])
 {
 	if (argc <= 1) 
-        return (MySty::error("we need at least one argument"), 1); //?parrallel ? //verif si deja trié 
+        return (MySty::error("we need at least one argument"), 1);
 	
 	try {
 		PmergeMe pm(argv);

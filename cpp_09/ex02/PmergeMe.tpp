@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:27:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/05 11:49:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:02:41 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void PmergeMe::printPair(
 template < template < typename, typename > class T >
 void PmergeMe::printCont(T<int, std::allocator<int> > const & vect) const
 {
-	// std::cout << "print vector:" << std::endl;
+	std::cout << "\e[32m After: " << std::endl;
 	for (typename T<int, std::allocator<int> >::const_iterator
 		it = vect.begin(); it != vect.end(); it++)
 	{
 		std::cout << *it << " " << std::flush;
 		// std::cout << "\r" ;
 	}
-	std::cout << std::endl << std::endl;
+	std::cout << "\e[0m" << std::endl << std::endl;
 }
 
 template < template < typename, typename > class T > 
