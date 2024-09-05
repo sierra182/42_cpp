@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 13:44:04 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 14:07:30 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void PmergeMe::inBinarySortVect(
 	if (std::distance(startB, endB) < 0 || startA->first == middle->first
 		|| (startA->first < middle->first && middle == this->vectA.begin()))	
 	{				
-		startB = this->vectA.insert(startB, *startA);
-		startA = this->vectA.erase(++startA);
+		std::pair<int, int> startA_tmp = *startA;	
+		startA = this->vectA.erase(startA);
+		startB = this->vectA.insert(startB, startA_tmp);
 		return ; 
 	}	
 	if (startA->first < middle->first)
@@ -146,7 +147,12 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 	{
 		
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();
-			
+			// std::deque<std::pair<int, int> >::iterator startAA = this->deqA.begin();	
+	if (this->vectB.empty())
+	{
+		this->vectB.insert(this->vectB.begin(), this->vectA.begin()->second);		
+		startA++;	
+	}	
 		while (startA != this->vectA.end())	
 		{
 			this->binarySortVect(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
