@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/18 09:36:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 17:34:26 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void randexec( void )
 
 void randtest( void )
 {
-	std::cout << std::endl << std::endl;
+	std::cout << std::endl << std::endl << std::endl;
 	MyStyl::addTest("more 10000");
 	try	{			
 		std::cout << "ready ?" << std::endl;	
@@ -152,7 +152,7 @@ void exc( void )
 		{ MyStyl::addWhat(e.what()); }
 	
 	try	{
-		MyStyl::addAction("create span with N = 3");		
+		MyStyl::addAction("create span with N = 3");				
 		Span sp(3);
 		MyStyl::addAction("add a number");
 		sp.addNumber(1);
@@ -168,7 +168,6 @@ void exc( void )
 		
 	try	{
 		MyStyl::addAction("create span with N = 4");
-
 		Span sp(4);
 		MyStyl::addAction("add a plage of 5 items");
 		int arr[] = {2, 1, 99, -100, -200};
@@ -176,8 +175,31 @@ void exc( void )
 	}
 	catch(const std::exception & e)
 		{ MyStyl::addWhat(e.what()); }	
-			
-	std::cout << std::endl << std::endl;	
+
+	try	{
+		MyStyl::addAction("create span with N = 4");
+		Span sp(4);
+		MyStyl::addAction("add a plage of 4 items");
+		int arr[] = {2, 1, 99, -100};
+		sp.addNumber(arr, arr + 4);	
+	}
+	catch(const std::exception & e)
+		{ MyStyl::addWhat(e.what()); }
+
+	try	{
+		std::cout << std::endl;
+		MyStyl::addAction("create span with N = 4");
+		Span sp(4);
+		MyStyl::addAction("add a number");
+		sp.addNumber(1);
+		MyStyl::addAction("add a plage of 3 items");
+		int arr[] = {2, 1, 99, 200};
+		sp.addNumber(arr, arr + 3);	
+	}
+	catch(const std::exception & e)
+		{ MyStyl::addWhat(e.what()); }
+						
+	std::cout << std::endl << std::endl << std::endl;	
 	{
 		MyStyl::addTest("exception inversed");	
 			
@@ -310,8 +332,7 @@ void normal()
 		MyStyl::addAction("longest span");
 		std::cout << sp.longestSpan() << std::endl;
 		MyStyl::addAction("shortest span");
-		std::cout << sp.shortestSpan() << std::endl;
-				
+		std::cout << sp.shortestSpan() << std::endl;				
 	}
 	catch(const std::exception & e)
 		{ MyStyl::addWhat(e.what()); }
@@ -320,7 +341,7 @@ void normal()
 int allTests( void )
 {
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
-	std::cout << std::endl << std::endl << std::endl;
+	std::cout << std::endl;
 	
 	exc();
 	copy();
