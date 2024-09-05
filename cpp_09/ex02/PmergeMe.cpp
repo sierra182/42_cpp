@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 15:07:23 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:18:46 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	printArgs(char *argv[])
 	std::cout << std::endl << "\e[31m Before : " << std::endl;
 	while (*++argv)
 		std::cout << std::string(*argv) << " ";
-	std::cout << "\e[0m" << std::endl << std::endl;
+	std::cout << "\e[0m" << std::endl;
 }
 
 PmergeMe::PmergeMe(char *argv[])

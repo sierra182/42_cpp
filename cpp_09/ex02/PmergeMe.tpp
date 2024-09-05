@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:27:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/05 15:02:41 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:21:19 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ void PmergeMe::printPair(
 			std::cout << "\e[31m";
 		if (it == endB)
 			std::cout << "\e[35m";	
-		std::cout << it->first << ", " << it->second << " \e[0m" << std::endl;
-		// if (it == endA)
-		// 	std::cout << "\e[31m";
-		// else if (it == endB)
-		// 	std::cout << "\e[35m";			
+		std::cout << it->first << ", " << it->second << " \e[0m" << std::endl;				
 	}	
 	std::cout << "\e[0m" << std::endl;
 }
@@ -48,13 +44,12 @@ void PmergeMe::printPair(
 template < template < typename, typename > class T >
 void PmergeMe::printCont(T<int, std::allocator<int> > const & vect) const
 {
-	std::cout << "\e[32m After: " << std::endl;
+	std::cout << std::endl << "\e[32m After: " << std::endl;
+	
 	for (typename T<int, std::allocator<int> >::const_iterator
-		it = vect.begin(); it != vect.end(); it++)
-	{
+		it = vect.begin(); it != vect.end(); it++)	
 		std::cout << *it << " " << std::flush;
-		// std::cout << "\r" ;
-	}
+		
 	std::cout << "\e[0m" << std::endl << std::endl;
 }
 
@@ -70,10 +65,8 @@ void PmergeMe::checkFinal(T<int, std::allocator<int> > vect,
 	typename T<int, std::allocator<int> >::iterator it_tmp = vect.begin();
 	for (; it != vect.end(); it++)
 	{
-		if (*it >= *it_tmp)
-		{
-			it_tmp = it;
-		}
+		if (*it >= *it_tmp)		
+			it_tmp = it;		
 		else
 		{
 			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp

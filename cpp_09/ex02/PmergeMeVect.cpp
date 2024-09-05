@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMeVect.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 14:07:30 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:16:02 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,63 +114,30 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 		}		
 	}
 	fillAVect(-1);
-	// std::cout << "n value: " << nValue << std::endl;
+	
 	this->vectB.reserve((nValue / 2) + 1);
 	this->vectC.reserve(nValue);
 	std::clock_t start = std::clock();
 	
-	// this->printPair(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-	// this->printCont(this->vectB);
-	
-	// std::cout << "sort vectA" << std::endl;	
-
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 		
 	if (!this->vectA.empty())
 		while (startA + 1 != this->vectA.end())	
-		{
-			// std::vector<std::pair<int, int> >::iterator startATmp = startA;
 			this->inBinarySortVect(++startA, this->vectA.end(), this->vectA.begin(), startA);		
-			// printPairVector(this->vectA, startA, this->vectA.end(), this->vectA.begin(), startATmp);
-			if (startA != this->vectA.end())
-			{
-				// std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
-				// usleep(1000000);
-			}
-		}
-		
-	// return;
 	
-	// std::cout << "vectA" << std::endl;
-	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-
-	// std::cout << "sort vectA 00" << std::endl;	
 	{
 		
-	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();
-			// std::deque<std::pair<int, int> >::iterator startAA = this->deqA.begin();	
+	startA = this->vectA.begin();			
 	if (this->vectB.empty())
 	{
 		this->vectB.insert(this->vectB.begin(), this->vectA.begin()->second);		
 		startA++;	
 	}	
-		while (startA != this->vectA.end())	
-		{
-			this->binarySortVect(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
-			// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-			if (startA != this->vectA.end())
-			{
-				// std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
-				// usleep(1000000);
-			}
-		}				
-	}
-		
-	// std::cout << "print vect B" << std::endl;		
-	// printVector(this->vectB);
+	while (startA != this->vectA.end())		
+		this->binarySortVect(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());			
+	}	
 	
 	this->mergeSortVect(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
-	
-	// std::cout << "print vect C" << std::endl;	
+			
 	printCont(this->vectC);
 	
 	std::clock_t end = std::clock();
