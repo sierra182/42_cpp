@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 20:32:47 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 10:14:38 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ class PmergeMe
     
 	double	calculateTime(std::clock_t start, std::clock_t end) const;
     void    fillA(int value);
+
+template < template <typename, typename> class T>
+void printCont(T<int, std::allocator<int> > const & vect) const;
+
+template < template < typename, typename > class T>
+void printPair(
+	const T<std::pair<int, int>, std::allocator<std::pair<int, int> > > &vect,
+ 	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::const_iterator startA, 
+	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::const_iterator endA,
+	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::iterator startB, 
+	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::iterator endB) const;
+
+template < template < typename, typename > class T > 
+void checkFinal(T<int, std::allocator<int> > vect, long unsigned int len) const;
 
 void firstBinarySort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
 , std::vector<std::pair<int, int> >::iterator startB, std::vector<std::pair<int, int> >::iterator endB);
@@ -70,3 +84,65 @@ std::deque<int>::iterator startB, std::deque<int>::iterator endB);
 		PmergeMe(char * argv[]);
         ~PmergeMe();
 };
+
+template < template < typename, typename > class T >
+void PmergeMe::printPair(
+	const T<std::pair<int, int>, std::allocator<std::pair<int, int> > > &vect,
+ 	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::const_iterator startA, 
+	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::const_iterator endA,
+	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::iterator startB, 
+	typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::iterator endB) const
+{
+	for (typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >::const_iterator it = vect.begin(); it != vect.end(); it++)
+	{		
+		if (it == startA)
+			std::cout << "\e[32m";	
+		if (it == startB)
+			std::cout << "\e[34m";
+		if (it == endA)
+			std::cout << "\e[31m";
+		if (it == endB)
+			std::cout << "\e[35m";	
+		std::cout << it->first << ", " << it->second << "\e[0m" << std::endl;
+		// if (it == endA)
+		// 	std::cout << "\e[31m";
+		// else if (it == endB)
+		// 	std::cout << "\e[35m";			
+	}	
+	std::cout << "\e[0m" << std::endl;
+}
+
+template < template < typename, typename > class T >
+void PmergeMe::printCont(T<int, std::allocator<int> > const & vect) const
+{
+	std::cout << "print vector:" << std::endl;
+	for (typename T<int, std::allocator<int> >::const_iterator it = vect.begin(); it != vect.end(); it++)
+	{
+		std::cout << *it << std::flush;
+		// std::cout << "\r" ;
+	}
+	std::cout << "end" << std::endl;
+}
+
+template < template < typename, typename > class T > 
+void PmergeMe::checkFinal(T<int, std::allocator<int> > vect, long unsigned int len) const
+{
+	if (len != vect.size())
+		std::cout << "\e[31m Error: final size : " << vect.size() << ", needed: " << len << std::endl;
+	typename T<int, std::allocator<int> >::iterator it = vect.begin();
+	typename T<int, std::allocator<int> >::iterator it_tmp = vect.begin();
+	for (; it != vect.end(); it++)
+	{
+		if (*it >= *it_tmp)
+		{
+			it_tmp = it;
+		}
+		else
+		{
+			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp
+				<< "\e[0m" << std::endl;
+			return;
+		}
+	}
+	std::cout << "\e[32m no problemo\e[0m" << std::endl;
+}

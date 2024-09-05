@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 09:07:14 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 10:11:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,62 +33,62 @@ PmergeMe::~PmergeMe()
 {
     return ;
 }
+// template <class T>
+// void printPairVector(std::T<std::pair<int, int> > const & vect,
+// std::T<std::pair<int, int> >::iterator startA, std::T<std::pair<int, int> >::iterator endA
+// , std::T<std::pair<int, int> >::iterator startB, std::T<std::pair<int, int> >::iterator endB)
+// {
+// 	for (std::vector<std::pair<int, int> >::const_iterator it = vect.begin(); it != vect.end(); it++)
+// 	{		
+// 		if (it == startA)
+// 			std::cout << "\e[32m";	
+// 		if (it == startB)
+// 			std::cout << "\e[34m";
+// 		if (it == endA)
+// 			std::cout << "\e[31m";
+// 		if (it == endB)
+// 			std::cout << "\e[35m";	
+// 		std::cout << it->first << ", " << it->second << "\e[0m" << std::endl;
+// 		// if (it == endA)
+// 		// 	std::cout << "\e[31m";
+// 		// else if (it == endB)
+// 		// 	std::cout << "\e[35m";			
+// 	}	
+// 	std::cout << "\e[0m" << std::endl;
+// }
 
-void printPairVector(std::vector<std::pair<int, int> > const & vect,
-std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
-, std::vector<std::pair<int, int> >::iterator startB, std::vector<std::pair<int, int> >::iterator endB)
-{
-	for (std::vector<std::pair<int, int> >::const_iterator it = vect.begin(); it != vect.end(); it++)
-	{		
-		if (it == startA)
-			std::cout << "\e[32m";	
-		if (it == startB)
-			std::cout << "\e[34m";
-		if (it == endA)
-			std::cout << "\e[31m";
-		if (it == endB)
-			std::cout << "\e[35m";	
-		std::cout << it->first << ", " << it->second << "\e[0m" << std::endl;
-		// if (it == endA)
-		// 	std::cout << "\e[31m";
-		// else if (it == endB)
-		// 	std::cout << "\e[35m";			
-	}	
-	std::cout << "\e[0m" << std::endl;
-}
+// void printVector(std::vector<int> const & vect)
+// {
+// 	std::cout << "print vector:" << std::endl;
+// 	for (std::vector<int>::const_iterator it = vect.begin(); it != vect.end(); it++)
+// 	{
+// 		std::cout << *it << std::flush;
+// 		std::cout << "\r" ;
+// 	}
+// 	std::cout << "end" << std::endl;
+// }
 
-void printVector(std::vector<int> const & vect)
-{
-	std::cout << "print vector:" << std::endl;
-	for (std::vector<int>::const_iterator it = vect.begin(); it != vect.end(); it++)
-	{
-		std::cout << *it << std::flush;
-		std::cout << "\r" ;
-	}
-	std::cout << "end" << std::endl;
-}
-
-void checkFinalVector(std::vector<int> vect, long unsigned int len)
-{
-	if (len != vect.size())
-		std::cout << "\e[31m Error: final size : " << vect.size() << ", needed: " << len << std::endl;
-	std::vector<int>::iterator it = vect.begin();
-	std::vector<int>::iterator it_tmp = vect.begin();
-	for (; it != vect.end(); it++)
-	{
-		if (*it >= *it_tmp)
-		{
-			it_tmp = it;
-		}
-		else
-		{
-			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp
-				<< "\e[0m" << std::endl;
-			return;
-		}
-	}
-	std::cout << "\e[32m no problemo\e[0m" << std::endl;
-}
+// void checkFinalVector(std::vector<int> vect, long unsigned int len)
+// {
+// 	if (len != vect.size())
+// 		std::cout << "\e[31m Error: final size : " << vect.size() << ", needed: " << len << std::endl;
+// 	std::vector<int>::iterator it = vect.begin();
+// 	std::vector<int>::iterator it_tmp = vect.begin();
+// 	for (; it != vect.end(); it++)
+// 	{
+// 		if (*it >= *it_tmp)
+// 		{
+// 			it_tmp = it;
+// 		}
+// 		else
+// 		{
+// 			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp
+// 				<< "\e[0m" << std::endl;
+// 			return;
+// 		}
+// 	}
+// 	std::cout << "\e[32m no problemo\e[0m" << std::endl;
+// }
 
 double	PmergeMe::calculateTime(std::clock_t start, std::clock_t end) const
 {
@@ -203,8 +203,8 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	this->vectC.reserve(nValue);
 	std::clock_t start = std::clock();
 	
-	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-	// printVector(this->vectB);
+	this->printPair(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+	this->printCont(this->vectB);
 	
 	std::cout << "sort vectA" << std::endl;	
 
@@ -254,7 +254,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	
 	std::clock_t end = std::clock();
 	std::cout << calculateTime(start, end) << std::endl;
-	checkFinalVector(this->vectC, nValue);
+	this->checkFinal(this->vectC, nValue);
 	this->PmergeMeDeq(argv_sav);
 }
 
