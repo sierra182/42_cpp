@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 11:49:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:26:21 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ void PmergeMe::binarySortDeq(std::deque<std::pair<int, int> >::iterator startA,
 	std::deque<int>::iterator startB, std::deque<int>::iterator endB)
 {
 	std::deque<int>::iterator middle = startB;
-	// if (startA == endA || startB == endB) {
-    //    std::cout << "probleme" << std::endl;
-    //     return;
-    // }
+
 	std::advance(middle, std::distance(startB, endB) / 2);
 	if (std::distance(startB, endB) < 0 || startA->second == *middle
 		|| (startA->second < *middle && middle == this->deqB.begin()))	
@@ -120,7 +117,7 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 		}		
 	}
 	fillADeq(-1);
-	// std::cout << "n value: " << nValue << std::endl;
+
 	std::clock_t start = std::clock();
 	
 	// this->printPair(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
@@ -132,11 +129,10 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 	long unsigned tmp = 0;	
 	long unsigned int startA = 0;
 	long unsigned int endA = this->deqA.size() - 1;	
-		
+
 	while (!this->deqA.empty() && startA != this->deqA.size() - 1)
 	{
-		tmp = startA++;
-		// startA++;
+		tmp = startA++;	
 		this->firstBinarySortDeq(startA, endA, 0, tmp);	
 		// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 		if (startA != this->deqA.size() - 1)
@@ -145,24 +141,25 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 			// usleep(100000);
 		}
 	}	
-	
+		//  this->printCont(this->deqB);
+		//  std::cout << "size " << this->deqB.size() << std::endl;
 	// std::cout << "deqA" << std::endl;
 	// printPairVector(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 	// std::cout << "sort deqA 1 " << std::endl;
-		
 	std::deque<std::pair<int, int> >::iterator startAA = this->deqA.begin();	
+	if (this->deqB.empty())
+	{
+		this->deqB.insert(this->deqB.begin(), this->deqA.begin()->second);		
+		startAA++;	
+	}
 	
 	while (startAA != this->deqA.end())
 	{
 		
-		this->binarySortDeq(startAA++, --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
-		if (startAA != this->deqA.end())
-		{
-			// std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
-			// usleep(100000);
-		}
-	}				
+			this->binarySortDeq(startAA++, --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
 	
+	}				
+
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->deqB);
 	
