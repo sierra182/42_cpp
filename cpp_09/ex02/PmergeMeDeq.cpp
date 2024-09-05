@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 08:16:20 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 08:24:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->deqB);
 	
-	// this->mergeSortDeq(this->deqA.begin(), this->deqA.end(), this->deqB.begin(), this->deqB.end());
+	this->mergeSortDeq(this->deqA.begin(), this->deqA.end(), this->deqB.begin(), this->deqB.end());
 	
 	std::clock_t end = std::clock();
 	std::cout << "print deq C" << std::endl;	

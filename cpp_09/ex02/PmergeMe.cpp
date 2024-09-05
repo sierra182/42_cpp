@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 08:15:51 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 08:24:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,72 +91,6 @@ void printVector(std::vector<int> const & vect)
 	std::cout << "end" << std::endl;
 }
 
-void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
-, std::vector<int>::iterator startB, std::vector<int>::iterator endB)
-{
-	std::vector<int>::iterator middle = startB;
-	std::advance(middle, std::distance(startB, endB) / 2);
-	// middle += (endB - startB) / 2;
-		// if (endB - startB < 0 || startA->second == *middle
-	if (std::distance(startB, endB) < 0 || startA->second == *middle
-		|| (startA->second < *middle && middle == this->vectB.begin()))	
-	{	
-		this->vectB.insert(startB, startA->second);	
-		// if (++startA != this->vectA.end())		
-		// 	this->binarySort(startA, endA, this->vectB.begin(), --this->vectB.end());
-		return ; 
-	}
-	else if (startA->second < *middle)	
-		this->binarySort(startA, endA, startB, --middle);		
-	else if (startA->second > *middle)
-		this->binarySort(startA, endA, ++middle, endB);	 
-}
-
-
-void PmergeMe::mergeSort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA,
-std::vector<int>::iterator startB, std::vector<int>::iterator endB)
-{
-	while (startA != endA && startB != endB)
-	{		
-		if (startA->first < *startB)
-			this->vectC.push_back(startA++->first);
-		else
-			this->vectC.push_back(*startB++);		
-	}
-	while (startA != endA)	
-		this->vectC.push_back(startA++->first);	
-	while (startB != endB)
-		this->vectC.push_back(*startB++);
-}
-
-void PmergeMe::firstBinarySort(std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, int> >::iterator endA
-, std::vector<std::pair<int, int> >::iterator startB, std::vector<std::pair<int, int> >::iterator endB)
-{
-	std::vector<std::pair<int, int> >::iterator middle = startB;
-	std::advance(middle, std::distance(startB, endB) / 2);
-		
-	if (std::distance(startB, endB) < 0 || startA->first == middle->first
-		|| (startA->first < middle->first && middle == this->vectA.begin()))	
-	{
-		std::pair<int, int> startA_tmp = *startA;
-		// if (startA != this->vectA.end())
-		// {
-			
-			startA = this->vectA.erase(startA);		
-		// std::vector<std::pair<int, int> >::iterator newEndB = startA; 			
-		startB = this->vectA.insert(startB, startA_tmp);							
-		// }
-		// if (++startA != this->vectA.end())
-		// 	this->firstBinarySort(startA, --this->vectA.end(), this->vectA.begin(), newEndB);
-		return ; 
-	}	
-	if (startA->first < middle->first)
-		this->firstBinarySort(startA, endA, startB, --middle);
-	else if (startA->first > middle->first)
-		this->firstBinarySort(startA, endA, ++middle, endB);
-}
-
-
 void checkFinalVector(std::vector<int> vect)
 {
 	std::vector<int>::iterator it = vect.begin();
@@ -175,6 +109,68 @@ void checkFinalVector(std::vector<int> vect)
 	}
 	std::cout << "\e[32m no problemo\e[0m" << std::endl;
 }
+
+void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA,
+	std::vector<std::pair<int, int> >::iterator endA,
+	std::vector<int>::iterator startB, std::vector<int>::iterator endB)
+{
+	std::vector<int>::iterator middle = startB;
+	std::advance(middle, std::distance(startB, endB) / 2);
+
+	if (std::distance(startB, endB) < 0 || startA->second == *middle
+		|| (startA->second < *middle && middle == this->vectB.begin()))	
+	{	
+		this->vectB.insert(startB, startA->second);	
+		return ; 
+	}
+	else if (startA->second < *middle)	
+		this->binarySort(startA, endA, startB, --middle);		
+	else if (startA->second > *middle)
+		this->binarySort(startA, endA, ++middle, endB);	 
+}
+
+void PmergeMe::mergeSort(std::vector<std::pair<int, int> >::iterator startA,
+	std::vector<std::pair<int, int> >::iterator endA,
+	std::vector<int>::iterator startB, std::vector<int>::iterator endB)
+{
+	while (startA != endA && startB != endB)
+	{		
+		if (startA->first < *startB)
+			this->vectC.push_back(startA++->first);
+		else
+			this->vectC.push_back(*startB++);		
+	}
+	while (startA != endA)	
+		this->vectC.push_back(startA++->first);	
+	while (startB != endB)
+		this->vectC.push_back(*startB++);
+}
+
+void PmergeMe::firstBinarySort(
+	std::vector<std::pair<int, int> >::iterator startA,
+	std::vector<std::pair<int, int> >::iterator endA,
+	std::vector<std::pair<int, int> >::iterator startB,
+	std::vector<std::pair<int, int> >::iterator endB)
+{
+	std::vector<std::pair<int, int> >::iterator middle = startB;
+	std::advance(middle, std::distance(startB, endB) / 2);	
+		
+	if (std::distance(startB, endB) < 0 || startA->first == middle->first
+		|| (startA->first < middle->first && middle == this->vectA.begin()))	
+	{
+		std::pair<int, int> startA_tmp = *startA;	
+		startA = this->vectA.erase(startA);
+		startB = this->vectA.insert(startB, startA_tmp);
+		return ; 
+	}	
+	if (startA->first < middle->first)
+		this->firstBinarySort(startA, endA, startB, --middle);
+	else if (startA->first > middle->first)
+		this->firstBinarySort(startA, endA, ++middle, endB);
+}
+
+
+
 
 PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 {
@@ -249,15 +245,14 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->vectB);
 	
-	// this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
+	this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
 	
 	std::clock_t end = std::clock();
 	std::cout << "print vect C" << std::endl;	
 	// printVector(this->vectC);
-	// if (start < end + 20000000)		
-		// std::cout << calculateTime(start, end) << std::endl;		
+	
 	std::cout << calculateTime(start, end) << std::endl;
 	checkFinalVector(this->vectC);
 	this->PmergeMeDeq(argv_sav);
 }
-//  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1
+
