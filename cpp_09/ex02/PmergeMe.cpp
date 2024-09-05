@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 08:59:58 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 09:07:14 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	std::string item;	
 	int value = 0;
 	long unsigned int nValue = 0;
-	// this->vectA.reserve(100);
+	// 
 	char **argv_sav = argv;
 	while (*++argv)
 	{	
@@ -199,6 +199,8 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	}
 	fillA(-1);
 	std::cout << "n value: " << nValue << std::endl;
+	this->vectB.reserve((nValue / 2) + 1);
+	this->vectC.reserve(nValue);
 	std::clock_t start = std::clock();
 	
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
@@ -221,13 +223,15 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 		}
 		
 	// return;
+	
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+
 	std::cout << "sort vectA 00" << std::endl;	
 	{
 		
-	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();	
-	// if (!this->deqA.empty())		
+	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin();
+			
 		while (startA != this->vectA.end())	
 		{
 			this->binarySort(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
@@ -239,12 +243,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 			}
 		}				
 	}
-	
-	std::cout << "sort vectA 22" << std::endl;	
-	// if (!this->vectA.empty())	printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
-	// printVector(this->vectB);
-	// 	this->binarySort(this->vectA.begin(), --this->vectA.end(), this->vectB.begin(), --this->vectB.end());	
-	
+		
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->vectB);
 	

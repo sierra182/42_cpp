@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 08:58:59 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 09:04:19 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,49 +181,39 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	std::cout << "sort deqA" << std::endl;	
 	// std::sort(this->deqA.begin(), this->deqA.end());
 	
-	// if (!this->deqA.empty())
-	// 	this->firstBinarySortDeq(++this->deqA.begin(), this->deqA.end(), this->deqA.begin(), this->deqA.begin());
-
-	// if (!this->deqA.empty())
-	// 	this->firstBinarySortDeq(1, this->deqA.size() - 1, 0, 0);
-	
-		long unsigned int startA = 0; long unsigned int endA = this->deqA.size() - 1;		
-		long unsigned tmp;	
-		while (!this->deqA.empty() && startA != this->deqA.size() - 1)
+	long unsigned tmp;	
+	long unsigned int startA = 0;
+	long unsigned int endA = this->deqA.size() - 1;	
+		
+	while (!this->deqA.empty() && startA != this->deqA.size() - 1)
+	{
+		tmp = startA++;
+		// startA++;
+		this->firstBinarySortDeq(startA, endA, 0, tmp);	
+		// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
+		if (startA != this->deqA.size() - 1)
 		{
-			tmp = startA++;
-			// startA++;
-			this->firstBinarySortDeq(startA, endA, 0, tmp);	
-			// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
-			if (startA != this->deqA.size() - 1)
-			{
-				// std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
-				// usleep(100000);
-			}
-		}	
+			// std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
+			// usleep(100000);
+		}
+	}	
 	
 	// std::cout << "deqA" << std::endl;
 	// printPairVector(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 	std::cout << "sort deqA 1 " << std::endl;
-	// if (!this->deqA.empty())	
-	// 	this->binarySortDeq(this->deqA.begin(), --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
-
-		// if (!this->deqA.empty())	
-		// this->binarySortDeq(this->deqA.begin(), --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
 		
 	std::deque<std::pair<int, int> >::iterator startAA = this->deqA.begin();	
-	// if (!this->deqA.empty())		
-		while (startAA != this->deqA.end())
+	
+	while (startAA != this->deqA.end())
+	{
+		
+		this->binarySortDeq(startAA++, --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
+		if (startAA != this->deqA.end())
 		{
-			
-			this->binarySortDeq(startAA++, --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
-			if (startAA != this->deqA.end())
-			{
-				// std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
-				// usleep(100000);
-			}
-		}				
-
+			// std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
+			// usleep(100000);
+		}
+	}				
 	
 	// std::cout << "print vect B" << std::endl;		
 	// printVector(this->deqB);
@@ -233,8 +223,8 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	std::clock_t end = std::clock();
 	std::cout << "print deq C" << std::endl;	
 	// printDeq(this->deqC);
-	// if (start < end + 20)		
-		std::cout << calculateTime(start, end) << std::endl;
+	
+	std::cout << calculateTime(start, end) << std::endl;
 	checkFinalDeq(this->deqC, nValue);
 }
-//  "199 15 7 6 0 199 99 02 12 33 78 80 85 100" 1
+
