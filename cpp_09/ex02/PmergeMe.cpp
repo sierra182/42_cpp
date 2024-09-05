@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 21:41:53 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 08:15:51 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ PmergeMe::~PmergeMe()
 
 double	PmergeMe::calculateTime(std::clock_t start, std::clock_t end) const
 {
-	return (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC); //* 1000000.0
+	return (static_cast<double>(end - start) * 1000000.0 / CLOCKS_PER_SEC);
 }
 
 void 	PmergeMe::fillA(int value)
@@ -62,8 +62,7 @@ std::vector<std::pair<int, int> >::iterator startA, std::vector<std::pair<int, i
 , std::vector<std::pair<int, int> >::iterator startB, std::vector<std::pair<int, int> >::iterator endB)
 {
 	for (std::vector<std::pair<int, int> >::const_iterator it = vect.begin(); it != vect.end(); it++)
-	{
-		// std::cout << "vla" << std::endl;
+	{		
 		if (it == startA)
 			std::cout << "\e[32m";	
 		if (it == startB)
@@ -96,10 +95,10 @@ void PmergeMe::binarySort(std::vector<std::pair<int, int> >::iterator startA, st
 , std::vector<int>::iterator startB, std::vector<int>::iterator endB)
 {
 	std::vector<int>::iterator middle = startB;
-	// std::advance(middle, std::distance(startB, endB) / 2);
-	middle += (endB - startB) / 2;
-	// if (std::distance(startB, endB) < 0 || startA->second == *middle
-		if (endB - startB < 0 || startA->second == *middle
+	std::advance(middle, std::distance(startB, endB) / 2);
+	// middle += (endB - startB) / 2;
+		// if (endB - startB < 0 || startA->second == *middle
+	if (std::distance(startB, endB) < 0 || startA->second == *middle
 		|| (startA->second < *middle && middle == this->vectB.begin()))	
 	{	
 		this->vectB.insert(startB, startA->second);	
@@ -184,7 +183,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	std::string item;	
 	int value = 0;
 
-	this->vectA.reserve(100);
+	// this->vectA.reserve(100);
 	char **argv_sav = argv;
 	while (*++argv)
 	{	
@@ -213,16 +212,16 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	if (!this->vectA.empty())
 		while (startA + 1 != this->vectA.end())	
 		{
-			std::vector<std::pair<int, int> >::iterator startATmp = startA;
+			// std::vector<std::pair<int, int> >::iterator startATmp = startA;
 			this->firstBinarySort(++startA, this->vectA.end(), this->vectA.begin(), startA);		
-			printPairVector(this->vectA, startA, this->vectA.end(), this->vectA.begin(), startATmp);
+			// printPairVector(this->vectA, startA, this->vectA.end(), this->vectA.begin(), startATmp);
 			if (startA != this->vectA.end())
 			{
-				std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
-				usleep(1000000);
+				// std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
+				// usleep(1000000);
 			}
 		}
-	return;
+	// return;
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 	std::cout << "sort vectA 00" << std::endl;	
@@ -233,11 +232,11 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 		while (startA != this->vectA.end())	
 		{
 			this->binarySort(startA++, --this->vectA.end(), this->vectB.begin(), --this->vectB.end());
-			printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
+			// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
 			if (startA != this->vectA.end())
 			{
-				std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
-				usleep(1000000);
+				// std::cout << "\e[" << this->vectA.size() + 1 << "A" << std::flush;
+				// usleep(1000000);
 			}
 		}				
 	}

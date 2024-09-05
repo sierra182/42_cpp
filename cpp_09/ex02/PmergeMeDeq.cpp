@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/04 20:47:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 08:16:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,8 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 	fillADeq(-1);
 	std::clock_t start = std::clock();
 	
-	printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
-	printDeq(this->deqB);
+	// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
+	// printDeq(this->deqB);
 	
 	std::cout << "sort deqA" << std::endl;	
 	// std::sort(this->deqA.begin(), this->deqA.end());
@@ -188,11 +188,11 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 			tmp = startA++;
 			// startA++;
 			this->firstBinarySortDeq(startA, endA, 0, tmp);	
-			printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
+			// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 			if (startA != this->deqA.size() - 1)
 			{
-				std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
-				usleep(100000);
+				// std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
+				// usleep(100000);
 			}
 		}	
 	
@@ -213,8 +213,8 @@ void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
 			this->binarySortDeq(startAA++, --this->deqA.end(), this->deqB.begin(), --this->deqB.end());	
 			if (startAA != this->deqA.end())
 			{
-				std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
-				usleep(100000);
+				// std::cout << "\e[" << this->deqA.size() << "A" << std::flush;
+				// usleep(100000);
 			}
 		}				
 
