@@ -6,66 +6,11 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 10:13:01 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 10:23:26 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-// void printPairDeq(std::deque<std::pair<int, int> > const & vect,
-// std::deque<std::pair<int, int> >::iterator startA, std::deque<std::pair<int, int> >::iterator endA
-// , std::deque<std::pair<int, int> >::iterator startB, std::deque<std::pair<int, int> >::iterator endB)
-// {
-// 	std::cout << "print pair deque:" << std::endl;
-// 	for (std::deque<std::pair<int, int> >::const_iterator it = vect.begin(); it != vect.end(); it++)
-// 	{
-// 		if (it == startA)
-// 			std::cout << "\e[32m";	
-// 		else if (it == startB)
-// 			std::cout << "\e[34m";
-// 		std::cout << it->first << " " << it->second << ", " << std::flush;
-// 		if (it == endA)
-// 			std::cout << "\e[31m";
-// 		else if (it == endB)
-// 			std::cout << "\e[35m";	
-// 		// std::cout << "\r";
-// 		// usleep(100000);
-// 	}
-// 	std::cout << "end" << std::endl;
-// 	std::cout << "\e[0m";
-// }
-
-// void printDeq(std::deque<int> const & vect)
-// {
-// 	std::cout << "print deque:" << std::endl;
-// 	for (std::deque<int>::const_iterator it = vect.begin(); it != vect.end(); it++)
-// 	{
-// 		std::cout << *it << std::flush;
-// 		std::cout << "\r" ;
-// 	}
-// 	std::cout << "end" << std::endl;
-// }
-
-// void checkFinalDeq(std::deque<int> deq, long unsigned int len)
-// {
-// 	if (len != deq.size())
-// 		std::cout << "\e[31m Error: final size : " << deq.size() << ", needed: " << len << std::endl;
-// 	std::deque<int>::iterator it = deq.begin();
-// 	std::deque<int>::iterator it_tmp = deq.begin();
-// 	for (; it != deq.end(); it++)
-// 	{
-// 		if (*it >= *it_tmp)
-// 		{
-// 			it_tmp = it;
-// 		}
-// 		else
-// 		{
-// 			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp << "\e[0m" << std::endl;
-// 			return;
-// 		}
-// 	}
-// 	std::cout << "\e[32m no problemo\e[0m" << std::endl;
-// }
 
 void 	PmergeMe::fillADeq(int value)
 {	
@@ -147,7 +92,7 @@ void PmergeMe::firstBinarySortDeq(
 		this->firstBinarySortDeq(startA, endA, ++middle, endB);
 }
 
-void PmergeMe::PmergeMeDeq(char *argv[])//! check doublons // const!
+void PmergeMe::Deque(char *argv[])
 {
 	Parser psr;
 	std::istringstream iss;

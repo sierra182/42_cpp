@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 10:14:38 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 10:23:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void mergeSortDeq(std::deque<std::pair<int, int> >::iterator startA, std::deque<
 std::deque<int>::iterator startB, std::deque<int>::iterator endB);
 	void PmergeMeDeq(char * argv[]);
 
-
+void Vector(char *argv[]);
+void Deque(char *argv[]);
 
     public :
 		
