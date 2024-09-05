@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 15:18:46 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:52:55 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ PmergeMe::PmergeMe(char *argv[])
 	std::pair<double, long unsigned int> rVect = this->Vector(argv);
 	std::pair<double, long unsigned int> rDeq = this->Deque(argv);
 	
-	std::cout << " Time to process a range of " << rVect.second << " elements with std::vector : " << rVect.first << " us" << std::endl;
-	std::cout << " Time to process a range of " << rDeq.second << " elements with std::deque : " << rDeq.first << " us" << std::endl;
+	std::cout << " Time to process a range of " << rVect.second <<
+		" elements with std::vector : " << rVect.first << " us" << std::endl;
+	std::cout << " Time to process a range of " << rDeq.second
+		<< " elements with std::deque : " << rDeq.first << " us" << std::endl;
 	std::cout << std::endl;
 }
 
