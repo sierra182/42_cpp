@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 08:24:06 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 08:54:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,10 @@ void printVector(std::vector<int> const & vect)
 	std::cout << "end" << std::endl;
 }
 
-void checkFinalVector(std::vector<int> vect)
+void checkFinalVector(std::vector<int> vect, long unsigned int len)
 {
+	if (len != vect.size())
+		std::cout << "\e[31m Error: final size : " << vect.size() << ", needed: " << len << std::endl;
 	std::vector<int>::iterator it = vect.begin();
 	std::vector<int>::iterator it_tmp = vect.begin();
 	for (; it != vect.end(); it++)
@@ -103,7 +105,8 @@ void checkFinalVector(std::vector<int> vect)
 		}
 		else
 		{
-			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp << "\e[0m" << std::endl;
+			std::cout << "\e[31m Error: " << *it << ", " << *it_tmp
+				<< "\e[0m" << std::endl;
 			return;
 		}
 	}
@@ -178,7 +181,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	std::istringstream iss;
 	std::string item;	
 	int value = 0;
-
+	long unsigned int nValue = 0;
 	// this->vectA.reserve(100);
 	char **argv_sav = argv;
 	while (*++argv)
@@ -192,10 +195,11 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 				throw std::invalid_argument
 					(std::string("the value must be positive: ") + item);		
 			fillA(value);
-		}
-		
+			++nValue;
+		}		
 	}
 	fillA(-1);
+	std::cout << "n value: " << nValue << std::endl;
 	std::clock_t start = std::clock();
 	
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
@@ -203,8 +207,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	
 	std::cout << "sort vectA" << std::endl;	
 
-	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 
-		
+	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 		
 	if (!this->vectA.empty())
 		while (startA + 1 != this->vectA.end())	
 		{
@@ -217,6 +220,7 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 				// usleep(1000000);
 			}
 		}
+		
 	// return;
 	// std::cout << "vectA" << std::endl;
 	// printPairVector(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(),  this->vectA.end());
@@ -247,12 +251,12 @@ PmergeMe::PmergeMe(char *argv[])//! check doublons  //reserve // const!
 	
 	this->mergeSort(this->vectA.begin(), this->vectA.end(), this->vectB.begin(), this->vectB.end());
 	
-	std::clock_t end = std::clock();
 	std::cout << "print vect C" << std::endl;	
 	// printVector(this->vectC);
 	
+	std::clock_t end = std::clock();
 	std::cout << calculateTime(start, end) << std::endl;
-	checkFinalVector(this->vectC);
+	checkFinalVector(this->vectC, nValue);
 	this->PmergeMeDeq(argv_sav);
 }
 
