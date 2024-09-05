@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 13:30:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:34:35 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ class PmergeMe
 	
     std::pair<double, long unsigned int>	Vector(char *argv[]);
 	std::pair<double, long unsigned int>	Deque(char *argv[]);
-		
+
+	void	argHandleDeq(char *argv[], long unsigned int & nValue,
+		void (PmergeMe::*fill)(int));	
     void    fillAVect(int value);
 	
 	void 	inBinarySortVect(
