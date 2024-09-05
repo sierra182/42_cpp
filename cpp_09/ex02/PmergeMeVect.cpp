@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 11:49:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:31:20 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void PmergeMe::mergeSortVect(std::vector<std::pair<int, int> >::iterator startA,
 		this->vectC.push_back(*startB++);
 }
 
-void PmergeMe::firstBinarySortVect(
+void PmergeMe::inBinarySortVect(
 	std::vector<std::pair<int, int> >::iterator startA,
 	std::vector<std::pair<int, int> >::iterator endA,
 	std::vector<std::pair<int, int> >::iterator startB,
@@ -84,9 +84,9 @@ void PmergeMe::firstBinarySortVect(
 		return ; 
 	}	
 	if (startA->first < middle->first)
-		this->firstBinarySortVect(startA, endA, startB, --middle);
+		this->inBinarySortVect(startA, endA, startB, --middle);
 	else if (startA->first > middle->first)
-		this->firstBinarySortVect(startA, endA, ++middle, endB);
+		this->inBinarySortVect(startA, endA, ++middle, endB);
 }
 
 std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
@@ -129,7 +129,7 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 		while (startA + 1 != this->vectA.end())	
 		{
 			// std::vector<std::pair<int, int> >::iterator startATmp = startA;
-			this->firstBinarySortVect(++startA, this->vectA.end(), this->vectA.begin(), startA);		
+			this->inBinarySortVect(++startA, this->vectA.end(), this->vectA.begin(), startA);		
 			// printPairVector(this->vectA, startA, this->vectA.end(), this->vectA.begin(), startATmp);
 			if (startA != this->vectA.end())
 			{

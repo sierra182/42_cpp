@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 11:13:05 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:30:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class PmergeMe
 		
     void    fillAVect(int value);
 	
-	void 	firstBinarySortVect(
+	void 	inBinarySortVect(
 		std::vector<std::pair<int, int> >::iterator startA,
 		std::vector<std::pair<int, int> >::iterator endA,
 		std::vector<std::pair<int, int> >::iterator startB,
@@ -60,7 +60,7 @@ class PmergeMe
 
     void    fillADeq(int value);
 
-	void	firstBinarySortDeq(
+	void	inBinarySortDeq(
 		long unsigned int startA,
 		long unsigned int endA,
 		long unsigned int startB,

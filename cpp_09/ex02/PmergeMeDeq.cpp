@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 13:26:21 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:30:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,32 @@ void 	PmergeMe::fillADeq(int value)
 			this->deqA.push_back(std::make_pair(lcl_value, value));
 		lcl_value = -1;
 	}		
+}
+
+void PmergeMe::inBinarySortDeq(
+	long unsigned int startA, long unsigned int endA,
+	long unsigned int startB, long unsigned int endB)
+{
+	long unsigned int middle = ((endB - startB) / 2) + startB;
+			
+	if (endB < startB || this->deqA[startA].first == this->deqA[middle].first 
+		|| (this->deqA[startA].first < this->deqA[middle].first
+		&& middle == 0))
+	{
+		std::pair<int, int> startA_tmp = this->deqA[startA];		
+		std::deque<std::pair<int, int> >::iterator itStartA
+		= this->deqA.begin();
+		std::advance(itStartA, startA);
+		this->deqA.erase(itStartA);		
+		itStartA = this->deqA.begin();	
+		std::advance(itStartA, startB);								
+		this->deqA.insert(itStartA, startA_tmp);
+		return ; 
+	}	
+	if (this->deqA[startA].first < this->deqA[middle].first)
+		this->inBinarySortDeq(startA, endA, startB, --middle);
+	else if (this->deqA[startA].first > this->deqA[middle].first)
+		this->inBinarySortDeq(startA, endA, ++middle, endB);
 }
 
 void PmergeMe::binarySortDeq(std::deque<std::pair<int, int> >::iterator startA,
@@ -64,32 +90,6 @@ void PmergeMe::mergeSortDeq(std::deque<std::pair<int, int> >::iterator startA,
 		this->deqC.push_back(startA++->first);	
 	while (startB != endB)
 		this->deqC.push_back(*startB++);
-}
-
-void PmergeMe::firstBinarySortDeq(
-	long unsigned int startA, long unsigned int endA,
-	long unsigned int startB, long unsigned int endB)
-{
-	long unsigned int middle = ((endB - startB) / 2) + startB;
-			
-	if (endB < startB || this->deqA[startA].first == this->deqA[middle].first 
-		|| (this->deqA[startA].first < this->deqA[middle].first
-		&& middle == 0))
-	{
-		std::pair<int, int> startA_tmp = this->deqA[startA];		
-		std::deque<std::pair<int, int> >::iterator itStartA
-		= this->deqA.begin();
-		std::advance(itStartA, startA);
-		this->deqA.erase(itStartA);		
-		itStartA = this->deqA.begin();	
-		std::advance(itStartA, startB);								
-		this->deqA.insert(itStartA, startA_tmp);
-		return ; 
-	}	
-	if (this->deqA[startA].first < this->deqA[middle].first)
-		this->firstBinarySortDeq(startA, endA, startB, --middle);
-	else if (this->deqA[startA].first > this->deqA[middle].first)
-		this->firstBinarySortDeq(startA, endA, ++middle, endB);
 }
 
 std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
@@ -133,7 +133,7 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 	while (!this->deqA.empty() && startA != this->deqA.size() - 1)
 	{
 		tmp = startA++;	
-		this->firstBinarySortDeq(startA, endA, 0, tmp);	
+		this->inBinarySortDeq(startA, endA, 0, tmp);	
 		// printPairDeq(this->deqA, this->deqA.begin(), this->deqA.end(), this->deqA.begin(),  this->deqA.end());
 		if (startA != this->deqA.size() - 1)
 		{
