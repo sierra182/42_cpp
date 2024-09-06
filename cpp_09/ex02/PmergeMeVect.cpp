@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 14:24:55 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:28:39 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 	if (!this->vectA.empty())
 		while (startA + 1 != this->vectA.end())	
 			this->inBinarySortVect(++startA, this->vectA.end(),
-			this->vectA.begin(), startA);
+				this->vectA.begin(), startA);
 		
 	startA = this->vectA.begin();			
 	if (this->vectB.empty())
