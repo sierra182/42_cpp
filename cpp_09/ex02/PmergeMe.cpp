@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 14:31:43 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:37:32 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ PmergeMe::PmergeMe(char *argv[])
 	// 	<< " elements with std::deque : " << rDeq.first << " us" << std::endl;
 	// std::cout << std::endl;
 }
-

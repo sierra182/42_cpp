@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 14:24:09 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:34:22 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,4 +158,3 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 	std::cout << std::endl;
 	return (std::make_pair(time, nValue));
 }
-
