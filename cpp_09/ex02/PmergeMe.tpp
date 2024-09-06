@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:27:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/05 15:21:19 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:59:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void PmergeMe::printPair(
 	::iterator endB) 
 	const
 {
+	std::cout << "\e[H";
+	
 	for (typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >
 		::const_iterator it = vect.begin(); it != vect.end(); it++)
 	{		
@@ -39,6 +41,8 @@ void PmergeMe::printPair(
 		std::cout << it->first << ", " << it->second << " \e[0m" << std::endl;				
 	}	
 	std::cout << "\e[0m" << std::endl;
+	
+	usleep(100000);	
 }
 
 template < template < typename, typename > class T >

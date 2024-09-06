@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 14:37:32 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:56:29 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	printArgs(char *argv[])
 PmergeMe::PmergeMe(char *argv[])
 {
 	printArgs(argv);
-	std::pair<double, long unsigned int> rVect = this->Vector(argv);
+	// std::pair<double, long unsigned int> rVect = 
+	this->Vector(argv);
 	// std::pair<double, long unsigned int> rDeq = this->Deque(argv);
 	
 	// std::cout << " Time to process a range of " << rVect.second <<

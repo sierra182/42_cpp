@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 14:43:18 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 15:03:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,15 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 	this->vectB.reserve((nValue / 2) + 1);
 	this->vectC.reserve(nValue);
 	
-	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 		
+	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 
+	system("clear");		
 	if (!this->vectA.empty())
-		while (startA + 1 != this->vectA.end())	
+		while (startA + 1 != this->vectA.end())
+		{
+			this->printPair(this->vectA, startA, this->vectA.end(), startA, this->vectA.end());	
 			this->inBinarySortVect(++startA, this->vectA.end(),
 				this->vectA.begin(), startA);
+		}
 		
 	startA = this->vectA.begin();			
 	if (this->vectB.empty())
