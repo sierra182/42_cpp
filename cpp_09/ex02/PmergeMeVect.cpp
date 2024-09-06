@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 14:28:39 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:43:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 			
 	std::clock_t end = std::clock();
 	double time = calculateTime(start, end);
-	printCont(this->vectC);
+	this->printCont(this->vectC);
 	
 	this->checkFinal(this->vectC, nValue);
 	return (std::make_pair(time, nValue));
