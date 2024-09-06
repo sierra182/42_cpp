@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 15:03:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:22:37 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,26 @@ void PmergeMe::mergeSortVect(
 	std::vector<int>::iterator startB,
 	std::vector<int>::iterator endB)
 {
+	system("clear");
 	while (startA != endA && startB != endB)
 	{		
 		if (startA->first < *startB)
 			this->vectC.push_back(startA++->first);
 		else
-			this->vectC.push_back(*startB++);		
+			this->vectC.push_back(*startB++);
+		this->printContStyl(this->vectC);		
 	}
-	while (startA != endA)	
-		this->vectC.push_back(startA++->first);	
+	while (startA != endA)
+	{
+		
+		this->vectC.push_back(startA++->first);
+		this->printContStyl(this->vectC);	
+	}	
 	while (startB != endB)
+	{
 		this->vectC.push_back(*startB++);
+		this->printContStyl(this->vectC);
+	}
 }
 
 std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
@@ -106,20 +115,30 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 	if (!this->vectA.empty())
 		while (startA + 1 != this->vectA.end())
 		{
-			this->printPair(this->vectA, startA, this->vectA.end(), startA, this->vectA.end());	
-			this->inBinarySortVect(++startA, this->vectA.end(),
-				this->vectA.begin(), startA);
+			startA++;
+			this->printPair(this->vectA, startA, this->vectA.end(), this->vectA.begin(), startA);
+			this->inBinarySortVect(startA, this->vectA.end(),
+				this->vectA.begin(), startA);	
+			// this->inBinarySortVect(++startA, this->vectA.end(),
+				//this->vectA.begin(), startA);
 		}
-		
+	// std::cin.get();
+	// startA++;
+	this->printPair(this->vectA, startA, this->vectA.end(), this->vectA.begin(), ++startA);
+	// this->printPair(this->vectA, this->vectA.begin(), this->vectA.end(), this->vectA.begin(), this->vectA.end());
+	system("clear");	
 	startA = this->vectA.begin();			
 	if (this->vectB.empty())
 	{
 		this->vectB.insert(this->vectB.begin(), this->vectA.begin()->second);		
 		startA++;	
 	}	
-	while (startA != this->vectA.end())		
+	while (startA != this->vectA.end())
+	{
+		this->printContStyl(this->vectB);		
 		this->binarySortVect(startA++, --this->vectA.end(),
 			this->vectB.begin(), --this->vectB.end());	
+	}		
 	this->mergeSortVect(this->vectA.begin(), this->vectA.end(),
 		this->vectB.begin(), this->vectB.end());
 			

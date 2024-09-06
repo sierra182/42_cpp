@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:27:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/06 15:13:21 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:42:46 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,25 @@ void PmergeMe::printPair(
 	::iterator endB) 
 	const
 {
-	std::cout << "\e[H\e[K";
+	std::cout << "\e[H";
 	
 	for (typename T<std::pair<int, int>, std::allocator<std::pair<int, int> > >
 		::const_iterator it = vect.begin(); it != vect.end(); it++)
 	{		
-		if (it == startA)
-			std::cout << "\e[32m";	
 		if (it == startB)
-			std::cout << "\e[34m";
-		if (it == endA)
-			std::cout << "\e[31m";
-		if (it == endB)
-			std::cout << "\e[35m";	
-		std::cout << it->first << ", " << it->second << " \e[0m" << std::endl;				
-	}	
+			std::cout << "\e[44m";
+		else if (it == startA)
+			std::cout << "\e[42m";	
+		std::cout << "\e[2K" << it->first << ", " << it->second << std::endl;// " \e[0m" << std::endl;			
+		// if (it == endA)
+		// 	std::cout << "\e[31m";
+		// if (it == endB)
+		// 	std::cout << "\e[35m";
+	}
+	std::cout << std::endl;
+	// std::cin.get();
+	usleep(20000);	
 	std::cout << "\e[0m" << std::endl;
-	
-	usleep(100000);	
 }
 
 template < template < typename, typename > class T >
@@ -52,9 +53,23 @@ void PmergeMe::printCont(T<int, std::allocator<int> > const & vect) const
 	
 	for (typename T<int, std::allocator<int> >::const_iterator
 		it = vect.begin(); it != vect.end(); it++)	
-		std::cout << *it << " " << std::flush;
+			std::cout << *it << " " << std::flush;
 		
 	std::cout << "\e[0m" << std::endl << std::endl;
+}
+
+template < template < typename, typename > class T >
+void PmergeMe::printContStyl(T<int, std::allocator<int> > const & vect) const
+{
+	std::cout << "\r\e[2K";
+	for (typename T<int, std::allocator<int> >::const_iterator
+		it = vect.begin(); it != vect.end(); it++)	
+		std::cout << *it << " " << std::flush;
+		
+	// std::cout << "\e[4A";	
+	
+	std::cout << "\e[0m";// << std::endl;
+	usleep(100000);
 }
 
 template < template < typename, typename > class T > 

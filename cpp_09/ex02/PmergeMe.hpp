@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:02:09 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 15:04:47 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 16:57:39 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ class PmergeMe
 	
 	template < template <typename, typename> class T>
 	void	printCont(T<int, std::allocator<int> > const & vect) const;
+
+	template < template <typename, typename> class T>
+	void	printContStyl(T<int, std::allocator<int> > const & vect) const;
 
 	template < template < typename, typename > class T>
 	void	printPair(
