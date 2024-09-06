@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 15:49:51 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/06 10:23:15 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 {	
 	long unsigned int nValue = 0;
 	
-	this->argHandleDeq(argv, nValue, &PmergeMe::fillAVect);	
+	this->argHandle(argv, nValue, &PmergeMe::fillAVect);	
 	this->vectB.reserve((nValue / 2) + 1);
 	this->vectC.reserve(nValue);
 	std::clock_t start = std::clock();	

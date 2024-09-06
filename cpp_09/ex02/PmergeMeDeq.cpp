@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/05 15:51:00 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/06 10:22:46 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void PmergeMe::mergeSortDeq(
 		this->deqC.push_back(*startB++);
 }
 
-void PmergeMe::argHandleDeq(char *argv[], long unsigned int & nValue,
+void PmergeMe::argHandle(char *argv[], long unsigned int & nValue,
 	void (PmergeMe::*fill)(int))
 {
 	Parser psr;
@@ -127,7 +127,7 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 {	
 	long unsigned int nValue = 0;
 
-	this->argHandleDeq(argv, nValue, &PmergeMe::fillADeq);
+	this->argHandle(argv, nValue, &PmergeMe::fillADeq);
 	std::clock_t start = std::clock();
 	
 	long unsigned tmp = 0;	

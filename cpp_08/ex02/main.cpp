@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:06:11 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/01 20:23:21 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 11:11:43 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,33 @@
 #include <stack>
 #include <list>
 #include "MyStyl.hpp"
+
+void constit( void )
+{
+	MyStyl::addTest("const iterator");
+	
+	MyStyl::addAction("create new mstack, fill with string");
+	std::string arr[] = {"\n Comment s'appelle la biere de la voie lactee ?",
+		" : ...", "la voielactesaoule"}; 
+	std::list<std::string> list(arr, arr + 3);
+	MutantStack<std::string, std::list<std::string> > mstack(list);
+	MutantStack<std::string, std::list<std::string> >::const_iterator
+		it =  mstack.begin();
+	MutantStack<std::string, std::list<std::string> >::const_iterator
+		ite = mstack.end();
+	// 	MutantStack<std::string, std::list<std::string> >::iterator
+	// 	it =  mstack.begin();
+	// MutantStack<std::string, std::list<std::string> >::iterator
+	// 	ite = mstack.end();
+	MyStyl::addAction("print mstack");
+	while (it != ite)
+	{
+		// *it = "arrete avec tes blagues pourries";
+		std::cout << "\e0 " << *it++ << std::endl;		
+	}
+	std::cout << std::endl << " \e[1;36mcheck the compile error in code\e[0m"
+		<< std::endl;
+}
 
 void copy( void )
 {	
@@ -80,8 +107,8 @@ void changeDefCont( void )
 	
 	MyStyl::addSubTest("MutantStack with default constructor");	
 	
-	MyStyl::addAction("MutantStack<float, std::list<float> > mstack");
-	MutantStack<float, std::list<float> > mstack;
+	MyStyl::addAction("MutantStack<float> mstack");
+	MutantStack<float> mstack;
 	MyStyl::addAction("push 42");
 	mstack.push(42);
 	
@@ -91,7 +118,7 @@ void changeDefCont( void )
 	
 	MyStyl::addSubTest("MutantStack with container constructor");
 
-	MyStyl::addAction("create list : 42, 18, -2, 0, 99");
+	MyStyl::addAction("create list : 42.1f, 18.2f, -2.5f, 0, 99.6f");
 	float arr[] = {42.1f, 18.2f, -2.5f, 0, 99.6f}; 
 	std::list<float> list(arr, arr + 5);
 	MyStyl::addAction("MutantStack<float, std::list<float> > mstack2(list)");
@@ -154,6 +181,7 @@ int main()
 
 	changeWithList();
 	changeDefCont();
-	copy();
+	constit();
+	copy();	
 	return 0;
 }

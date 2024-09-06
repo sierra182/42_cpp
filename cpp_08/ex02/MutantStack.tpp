@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:07:53 by seblin            #+#    #+#             */
-/*   Updated: 2024/08/19 11:15:33 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 10:57:11 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ std::ostream & operator<<(std::ostream & oss,
 {
 	typename MutantStack<T, U>::const_iterator it = rhs.begin();
 	typename MutantStack<T, U>::const_iterator ite = rhs.end();
-	while (it != ite)
-		oss << *it++ << std::endl;
+	while (it != ite)	
+		oss << *it++ << std::endl;		
+	
 	return (oss);
 }

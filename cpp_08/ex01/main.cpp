@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 06:42:01 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/05 17:34:26 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/06 11:16:08 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ void notenought( void )
 			MyStyl::addAction("not fill it");
 			std::cout << std::endl;		
 			MyStyl::addAction("display span");
-			std::cout << sp << "🐁" << std::endl << std::endl;
+			std::cout << "🐁" << sp << std::endl;
 			try	{
 				MyStyl::addAction("longest span");
 				std::cout << sp.longestSpan() << std::endl;
