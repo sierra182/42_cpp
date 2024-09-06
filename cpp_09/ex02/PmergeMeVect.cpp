@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMeVect.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 10:23:15 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:24:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,11 @@ void PmergeMe::mergeSortVect(
 
 std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 {	
-	long unsigned int nValue = 0;
-	
+	std::clock_t start = std::clock();	
+	long unsigned int nValue = 0;	
 	this->argHandle(argv, nValue, &PmergeMe::fillAVect);	
 	this->vectB.reserve((nValue / 2) + 1);
 	this->vectC.reserve(nValue);
-	std::clock_t start = std::clock();	
 	
 	std::vector<std::pair<int, int> >::iterator startA = this->vectA.begin(); 		
 	if (!this->vectA.empty())
@@ -120,10 +119,10 @@ std::pair<double, long unsigned int> PmergeMe::Vector(char *argv[])
 	this->mergeSortVect(this->vectA.begin(), this->vectA.end(),
 		this->vectB.begin(), this->vectB.end());
 			
-	printCont(this->vectC);
-	
 	std::clock_t end = std::clock();
 	double time = calculateTime(start, end);
+	printCont(this->vectC);
+	
 	this->checkFinal(this->vectC, nValue);
 	return (std::make_pair(time, nValue));
 }

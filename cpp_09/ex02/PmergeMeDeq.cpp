@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMeDeq.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 10:22:46 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:24:09 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,9 @@ void PmergeMe::argHandle(char *argv[], long unsigned int & nValue,
 
 std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 {	
-	long unsigned int nValue = 0;
-
-	this->argHandle(argv, nValue, &PmergeMe::fillADeq);
 	std::clock_t start = std::clock();
+	long unsigned int nValue = 0;
+	this->argHandle(argv, nValue, &PmergeMe::fillADeq);
 	
 	long unsigned tmp = 0;	
 	long unsigned int startA = 0;
