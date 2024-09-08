@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:07:15 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/06 10:56:59 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:10:38 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ template <class T, class U = std::deque<T> >
 class MutantStack : public std::stack<T, U> 
 {
 	public:
+	
 		MutantStack( void );
 		MutantStack( const U & cont );
 		MutantStack( const MutantStack<T, U> & src );
