@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:06:11 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/06 11:11:43 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/08 12:33:58 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ void copy( void )
 	}
 	{
 		MyStyl::addSubTest("copy constr");
-			
-		std::cout << std::endl;	
+				
 		{	
 			MyStyl::addAction("create new mstack, fill with 42, 18, -2, 0, 99");
 			int arr[] = {42, 18, -2, 0, 99}; 
