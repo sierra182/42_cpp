@@ -6,7 +6,7 @@
 /*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:38:43 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/01 16:53:25 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/09 14:29:13 by svidot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void RPN::operatorHandle(const std::string & entry)
 RPN::RPN(std::string str)
 {
     Parser psr;
-
+    int value;
     if (str.empty() || std::find_if(str.begin(), str.end(),
         psr.isNotSpace) == str.end())
         throw std::runtime_error("the string is empty");
@@ -78,7 +78,12 @@ RPN::RPN(std::string str)
         if (entry.length() == 1 && !std::isdigit(*entry.begin()))           
             operatorHandle(entry);          
         else
-            this->stack.push(psr.parseToInt(entry.begin(), entry.end()));
+        {            
+            value = psr.parseToInt(entry.begin(), entry.end());
+            if (value >= 10) 
+                throw std::runtime_error("number must be less than 10: " + entry);
+            this->stack.push(value);
+        }
     }
     if (this->stack.size() == 1)
         std::cout << "the result is : " << this->stack.top() << std::endl;
