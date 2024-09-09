@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:04:38 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/06 14:34:22 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/09 12:30:13 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void PmergeMe::inBinarySortDeq(
 {
 	long unsigned int middle = ((endB - startB) / 2) + startB;
 			
-	if (endB < startB || this->deqA[startA].first == this->deqA[middle].first 
+	if (endB < startB// || this->deqA[startA].first == this->deqA[middle].first 
 		|| (this->deqA[startA].first < this->deqA[middle].first
 		&& middle == 0))
 	{						
@@ -52,7 +52,7 @@ void PmergeMe::inBinarySortDeq(
 	}	
 	if (this->deqA[startA].first < this->deqA[middle].first)
 		this->inBinarySortDeq(startA, endA, startB, --middle);
-	else if (this->deqA[startA].first > this->deqA[middle].first)
+	else// if (this->deqA[startA].first > this->deqA[middle].first)
 		this->inBinarySortDeq(startA, endA, ++middle, endB);
 }
 
@@ -65,7 +65,7 @@ void PmergeMe::binarySortDeq(
 	std::deque<int>::iterator middle = startB;
 
 	std::advance(middle, std::distance(startB, endB) / 2);
-	if (std::distance(startB, endB) < 0 || startA->second == *middle
+	if (std::distance(startB, endB) < 0// || startA->second == *middle
 		|| (startA->second < *middle && middle == this->deqB.begin()))	
 	{	
 		this->deqB.insert(startB, startA->second);	
@@ -73,7 +73,7 @@ void PmergeMe::binarySortDeq(
 	}
 	else if (startA->second < *middle)	
 		this->binarySortDeq(startA, endA, startB, --middle);		
-	else if (startA->second > *middle)
+	else// if (startA->second > *middle)
 		this->binarySortDeq(startA, endA, ++middle, endB);	 
 }
 
@@ -132,12 +132,13 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 	long unsigned tmp = 0;	
 	long unsigned int startA = 0;
 	long unsigned int endA = this->deqA.size() - 1;	
-
-	while (!this->deqA.empty() && startA != this->deqA.size() - 1)
-	{
-		tmp = startA++;	
-		this->inBinarySortDeq(startA, endA, 0, tmp);
-	}
+	
+	if (!this->vectA.empty())
+		while (startA != this->deqA.size() - 1)
+		{
+			tmp = startA++;	
+			this->inBinarySortDeq(startA, endA, 0, tmp);
+		}
 	{		
 		std::deque<std::pair<int, int> >::iterator startA = this->deqA.begin();	
 		if (this->deqB.empty())
@@ -151,9 +152,11 @@ std::pair<double, long unsigned int> PmergeMe::Deque(char *argv[])
 	}	
 	this->mergeSortDeq(this->deqA.begin(), this->deqA.end(),
 		this->deqB.begin(), this->deqB.end());
-	
+
 	std::clock_t end = std::clock();	
 	double time = calculateTime(start, end);
+	// this->printCont(this->deqC);
+
 	this->checkFinal(this->deqC, nValue);
 	std::cout << std::endl;
 	return (std::make_pair(time, nValue));
