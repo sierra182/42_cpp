@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:27:52 by seblin            #+#    #+#             */
-/*   Updated: 2024/09/06 17:42:46 by seblin           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:51:18 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,20 @@ void PmergeMe::printCont(T<int, std::allocator<int> > const & vect) const
 			std::cout << *it << " " << std::flush;
 		
 	std::cout << "\e[0m" << std::endl << std::endl;
+}
+
+template < template < typename, typename > class T >
+void PmergeMe::printContStyl(T<int, std::allocator<int> > const & vect) const
+{
+	std::cout << "\r\e[2K";
+	for (typename T<int, std::allocator<int> >::const_iterator
+		it = vect.begin(); it != vect.end(); it++)	
+		std::cout << *it << " " << std::flush;
+		
+	// std::cout << "\e[4A";	
+	
+	std::cout << "\e[0m";// << std::endl;
+	usleep(100000);
 }
 
 template < template < typename, typename > class T >
