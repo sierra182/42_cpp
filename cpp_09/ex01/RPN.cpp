@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svidot <svidot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:38:43 by svidot            #+#    #+#             */
-/*   Updated: 2024/09/09 14:29:13 by svidot           ###   ########.fr       */
+/*   Updated: 2024/09/09 19:43:31 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void RPN::operatorHandle(const std::string & entry)
             break;
         case '/':
             nbrs = this->getPair();
+			if (!nbrs.second)
+				throw std::runtime_error(std::string("division by zero: ") + entry); 
             this->stack.push(nbrs.first / nbrs.second);
             break;
         default:
